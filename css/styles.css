@@ -1,0 +1,1359 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+
+body{
+    margin: 0;
+    font-family: "Lato", sans-serif;
+    box-sizing: border-box;
+    
+}
+
+.sidenav{
+    height: 100%;
+    width: 280px;
+    position: fixed;
+    top: 0;
+    left: -280px; 
+    background-color: #033683;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 39px;
+    z-index: 1;
+}
+
+.sidenav .bcplogo{
+    width: 12%;
+    height: 3.5%;
+    margin-top: -150px;
+    margin-left: 9%;
+}
+
+
+/* upper nav open*/
+.sidenav .nav-link{
+    margin-top: -16%;
+    margin-left: 38%;
+}
+
+.sidenav .nav-link li{
+    position: relative;
+    list-style: none;
+    height: 50px;
+    width: 45%;
+  }
+
+.sidenav .nav-link .bellNotiff{
+    margin-top: -16%;
+    margin-left: 10%;
+}
+
+.sidenav .nav-link .userProfile{
+    margin-top: -38%;
+    margin-left: 50%;
+}
+
+.sidenav .nav-link li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  }
+
+.sidenav .nav-link li i{
+    min-width: 60px;
+    text-align: center;
+    font-size: 22px;
+    color: lightgray;
+  }
+
+  .avatar{
+    width: 80%;
+    height: 80%;
+    margin-left: -47%;
+    margin-top: 30%;
+    border-radius: 50%;
+  }
+
+.user-profile{
+    margin-left: -60%;
+    
+  }
+
+  tr,td{
+    text-align: center;
+  }
+
+  .user-name{
+    color: white;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .user-mail{
+    color: #A8A8A8;
+    font-size: 13px;
+   
+  }
+
+/* upper nav close*/
+
+/* lower nav */
+.sidenav .nav-links{
+    margin-top: 5%;
+    margin-left: -15%;
+    text-decoration: none;
+  }
+
+.sidenav .nav-links li{
+    position: relative;
+    list-style: none;
+    height: 50px;
+  }
+.sidenav .nav-links li a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  }
+  
+.sidenav .nav-links li a:hover{
+    background: gray;
+    border-radius: 10px;
+  }
+
+.sidenav .nav-links li i{
+    min-width: 60px;
+    text-align: center;
+    font-size: 18px;
+    color: white;
+  }
+
+.sidenav .nav-links li a .links_name{
+    color: white;
+    font-size: 14px;
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+/* hover effect for links */
+.sidenav a:hover{
+    color: #f1f1f1;
+}
+
+/* Departments */
+
+.sidenav::-webkit-scrollbar{
+  width: 0px;
+
+}
+
+.dashboard{
+  border: 0.5px solid #4D6EA0;
+  height: 10%;
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+}
+
+tr,td{
+  text-align: center;
+}
+
+/* css for admin-Dashboard */
+
+.frame1{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 140vh;
+  justify-content: center;
+  align-items: center;
+
+ }
+
+ .frame2{
+  background-color: white;
+  width: 100%;
+  height: 15vh;
+  justify-content: center;
+  align-items: center;
+  
+ }
+
+ .dashboardName{
+  margin-left: 2%;
+  font-size: 14px;
+  color: #7064DD;
+
+}
+
+.dashboardAnnouncement{
+  margin-left: 2%;
+  font-size: 32px;
+  color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboardContent{
+  position: relative;
+  padding-top: 10px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*margin-bottom: 25px;*/
+  color: white;
+}
+
+.dashboardContent .box{
+  width: 53%;
+  height: 175px;
+  display: flex;
+  background: white;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-left: 2%;
+  margin-top: 3%; 
+
+ /* width: 90%;
+  height: 175px;
+  display: flex;
+  background: white;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-left: 2%;
+  margin-top: 3%; */
+  
+}
+
+.dashboardContent .box .studentInfo{
+  margin-left: 4%;
+  
+}
+
+.dashboardContent .box .studentName{
+  color: black;
+  font-weight: 600;
+  font-size: 22px;
+  
+}
+
+.dashboardContent .box  .studentInfo1{
+  font-size: 14px;
+  color: #646363;
+  font-weight: 500;
+  font-style: normal;
+  margin: 10px;
+}
+
+.dashboardContent .box1{
+  width: 37%;
+  height: 175px;
+  display: flex;
+  background: white;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-left: 58%;
+  margin-top: -12%;
+
+  /*width: 90%;
+  height: 175px;
+  display: flex;
+  background: white;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-left: 2%;
+  margin-top: 5%; */
+  
+}
+
+.dashboardContent .box1 .adviserInfo{
+  margin-left: 5%;
+  margin-top: 0%;
+  padding: 5px;
+  color: #646363;
+  font-size: 14px;
+  
+}
+
+.dashboardContent .box1 .adviserName{
+  color: black;
+  font-weight: 600;
+  font-size: 22px;
+  
+}
+
+.announcementContent{
+  position: relative;
+  padding-top: 10px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /*margin-bottom: 25px;*/
+  color: white;
+}
+
+.announcementContent .box2{
+  width: 93%;
+  height: 800px;
+  display: flex;
+  background: white;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-left: 2%;
+  margin-top: 1%;
+  
+}
+
+.announcementContent .box2 .announcementInfo{
+  margin-left: 2%;
+  margin-top: 2%;
+  padding: 5px;
+  color: #646363;
+  font-size: 14px;
+}
+
+.announcementContent .box2 .announcementName{
+  font-size: 22px;
+  color: black;
+  font-weight: 600;
+ 
+  
+}
+
+/* Pagination */
+
+.containers{
+	max-width: 1000px;
+	margin: auto;
+ 
+}
+.gallery{
+	width: 100%;
+	padding:30px 15px;
+  margin-left: 55%;
+  
+}
+.gallery .gallery-items .item{
+	/*width: 100%;
+	position: relative; */
+  width: 70%;
+  position: absolute;
+  margin-top: -34.5%;
+  overflow: hidden;
+}
+.gallery .gallery-items .item.hide{
+	display: none;
+}
+.gallery .gallery-items .item.show{
+	display: block;
+	animation: show .5s ease;
+}
+@keyframes show{
+    0%{
+    	opacity:0;
+    	transform: scale(0.9);
+    }
+    100%{
+    	opacity:1;
+    	transform: scale(1);
+    }
+}
+
+
+.gallery .gallery-items .item img{
+	width: 100%;
+	display: block;
+  height: 500px;
+  
+}
+.gallery .pagination{
+	width: 100%;
+/*	margin-top: 20%;
+    padding:15px; */
+  margin-top: 230%;
+  margin-left: 150%;
+}
+.gallery .pagination div{
+	display: inline-block;
+	margin:0 10px;
+}
+.gallery .pagination .page{
+	color:gray;
+}
+.gallery .pagination .prev{
+ color: white;
+ border: 1px solid black;
+ background-color: red;
+ font-size:15px;
+ padding:7px 15px;
+ cursor: pointer;
+}
+
+.gallery .pagination .next{
+  color: white;
+  border: 1px solid black;
+  background-color: green;
+  font-size:15px;
+  padding:7px 15px;
+  cursor: pointer;
+ }
+
+.gallery .pagination .prev.disabled,
+.gallery .pagination .next.disabled{
+	border-color: gray;
+	color:gray;
+	pointer-events: none;
+}
+
+/* #################################################### */
+
+/* css for admin-Administrative */
+
+.administrative{
+  border: 0.5px solid #4D6EA0;
+  height: 10%;
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+}
+
+tr,td{
+  text-align: center;
+}
+
+.main{
+  margin-left: 9%;
+  font-size: 14px;
+  color: #7064DD;
+
+}
+
+.sub{
+  color: #A8A8A8;
+  margin-left: 9%;
+  font-size: 12px;
+}
+
+/* #################################################### */
+
+/* css for admin-Admission */
+
+.admission{
+  border: 0.5px solid #4D6EA0;
+  height: 10%;
+  width: 100%;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+}
+
+tr,td{
+  text-align: center;
+}
+
+.main{
+  margin-left: 9%;
+  font-size: 14px;
+  color: #7064DD;
+
+}
+
+.sub{
+  color: #A8A8A8;
+  margin-left: 9%;
+  font-size: 12px;
+}
+
+/* #################################################### */
+
+/* Sms Profile Dropdown */
+
+.dropdownSmsprofile{
+  border: 0.5px solid #4D6EA0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-bottom: 10%;
+}
+
+.sidenav a, .dropdownSmsprofile .dropdown-btn{
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdownSmsprofile .dropdown-btn i{
+  min-width: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+}
+
+.dropdownSmsprofile .dropdown-btn .droplinks_name{
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  margin-left: -3%;
+}
+
+.dropdownSmsprofile .dropdown-btn:hover{
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  
+}
+
+/* #################################################### */
+
+/* Request Form Dropdown */
+
+.dropdownrequestForm{
+  border: 0.5px solid #4D6EA0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-bottom: 10%;
+}
+
+.sidenav a, .dropdownrequestForm .dropdown-btn{
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdownrequestForm .dropdown-btn i{
+  min-width: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+}
+
+.dropdownrequestForm .dropdown-btn .droplinks_name{
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  margin-left: -3%;
+}
+
+.dropdownrequestForm .dropdown-btn:hover{
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  
+}
+
+/* css for admin-RequestForm */
+
+.requestForm-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+ }
+
+ .requestForm-frame2{
+  background-color: white;
+  width: 100%;
+  height: 15vh;
+  justify-content: center;
+  align-items: center;
+  
+ }
+
+ .requestform-table{
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.rf, .req{
+  text-align: center;
+  padding: 8px;
+}
+
+.reqf:nth-child(even){background-color: #f2f2f2}
+
+.rf{
+  background-color: #033683;
+  color: white;
+}
+
+.reqform-btn{
+  width: 30%;
+  height: 35px;
+ border-radius: 5px;
+}
+
+.reqform-btn:hover{
+  background-color: skyblue;
+  color: red;
+}
+
+
+
+
+
+
+
+/* #################################################### */
+
+/* Cashier Dropdown */
+
+.dropdownCashier{
+  border: 0.5px solid #4D6EA0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-bottom: 10%;
+}
+
+.sidenav a, .dropdownCashier .dropdown-btn{
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdownCashier .dropdown-btn i{
+  min-width: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+}
+
+.dropdownCashier .dropdown-btn .droplinks_name{
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  margin-left: -3%;
+}
+
+.dropdownCashier .dropdown-btn:hover{
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  
+}
+
+/* Enrollment Dropdown */
+
+.dropdownEnrollment{
+  border: 0.5px solid #4D6EA0;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  padding-bottom: 10%;
+}
+
+.sidenav a, .dropdownEnrollment .dropdown-btn{
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdownEnrollment .dropdown-btn i{
+  min-width: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: white;
+}
+
+.dropdownEnrollment .dropdown-btn .droplinks_name{
+  color: white;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  margin-left: -3%;
+}
+
+.dropdownEnrollment .dropdown-btn:hover{
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.4s ease;
+  
+}
+
+
+
+.sidenav a:hover, .dropdown-btn:hover{
+  color: #f1f1f1;
+}
+
+.active {
+  background-color: #033683;
+  color: white;
+}
+
+
+.dropdown-container{
+  display: none;
+  background-color: #033683;
+  padding-left: 8px;
+  margin-top: 5%;
+}
+
+.dropdown-container .dropdown-a{
+  margin-left: 14%;
+  padding: 15px;
+}
+
+.dropdown-container .dropdown-a:hover{
+  background-color: #A8A8A8;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.fa-caret-down{
+  float: right;
+  padding-right: 8px;
+}
+
+tr,td{
+  text-align: center;
+}
+
+.main{
+  margin-left: 9%;
+  font-size: 14px;
+  color: #7064DD;
+
+}
+
+.sub{
+  color: #A8A8A8;
+  margin-left: 9%;
+  font-size: 12px;
+} 
+
+
+#uppernav{
+    transition: margin-left 0.3s;
+    padding: 12px;
+    
+}
+
+.upnav{
+    
+    border-bottom: 2px solid lightgray;
+}
+
+/* button to open or close the sidebar */
+.openbtn{
+    font-size: 21px;
+    cursor: pointer;
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    margin-bottom: .3%;
+    
+}
+
+/* Container for content
+
+ .container{
+    width: 99%;
+    height: 85vh;
+    background-color: rgb(238, 238, 238);
+    top: 0;
+    left: -280px; 
+    overflow-x: hidden;
+       
+}
+
+/*.container .side-bar{
+    width: 20%;
+    height: 85vh;
+    background-color: red;
+    top: 0;
+    left: -280px; 
+    overflow-x: hidden;
+}
+
+.container .side-bar{
+  background: #1b1a1b;
+  backdrop-filter: blur(15px);
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -250px;
+  overflow-y: auto;
+  transition: 0.6s ease;
+  transition-property: left;
+ } */
+
+.foot h4{
+	color: black;
+	font-size: 16px;
+  text-align: center;
+}
+
+
+
+
+@media screen and (max-width: 360px), 
+       screen and (max-height: 640px){
+.frame1{
+  width: 100%;
+  height: 160vh;
+  background-color: rgb(242, 247, 250);
+  overflow: hidden;
+}     
+  .frame2{
+   width: 100%;
+   height: 17vh;
+   justify-content: center;
+   align-items: center;
+  }
+  .dashboardName{
+    margin-left: 2%;
+    font-size: 14px;
+    color: #7064DD;
+  }
+  .dashboardAnnouncement{
+    margin-left: 2%;
+    font-size: 22px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+  }
+  .dashboardContent .box{
+    width: 82%;
+    height: 170px;
+    margin-top: 5%;
+    margin-left: 5%;
+  }
+  .dashboardContent .box .studentInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box .studentInfo .studentName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+
+  .dashboardContent .box1{
+    width: 82%;
+    height: 120px;
+    margin-top: 2%;
+    margin-left: 5%;
+  }
+
+  .dashboardContent .box1 .adviserInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box1 .adviserInfo .adviserName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box1 .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+  .uppernav .box{
+    display: none;
+
+  }
+  
+  .announcementContent .box2{
+    width: 87.5%;
+    height: 450px;
+    
+  }
+
+  /* Pagination Media Querry */
+
+  .containers{
+    max-width: 100px;
+    margin: auto;
+  }
+
+  .gallery{
+    width: 30%;
+    padding:30px 15px;
+    margin-left: -15%;
+    
+  }
+  .gallery .gallery-items .item{
+    /*width: 100%;
+    position: relative; */
+    width: 89%;
+    position: absolute;
+    margin-top: -95%;
+  }
+ 
+ 
+  .gallery .gallery-items .item img{
+    width: 100%;
+    display: block;
+    height: 300px;
+    border: 1px solid skyblue;
+  }
+  .gallery .pagination{
+    width: 100%;
+  /*	margin-top: 20%; */
+    margin-top: 510%;
+    padding:15px;
+    text-align: center;
+    margin-left: 50%;
+    display: flex;
+  }
+}
+
+/*###############################################*/
+
+@media screen and (max-width: 375px), 
+       screen and (max-height: 667px){
+.frame1{
+  width: 100%;
+  height: 160vh;
+  background-color: rgb(242, 247, 250);
+  overflow: hidden;
+}     
+  .frame2{
+   width: 100%;
+   height: 17vh;
+   justify-content: center;
+   align-items: center;
+  }
+  .dashboardName{
+    margin-left: 2%;
+    font-size: 14px;
+    color: #7064DD;
+  }
+  .dashboardAnnouncement{
+    margin-left: 2%;
+    font-size: 22px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+  }
+  .dashboardContent .box{
+    width: 82%;
+    height: 170px;
+    margin-top: 5%;
+    margin-left: 5%;
+  }
+  .dashboardContent .box .studentInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box .studentInfo .studentName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+
+  .dashboardContent .box1{
+    width: 82%;
+    height: 120px;
+    margin-top: 2%;
+    margin-left: 5%;
+  }
+
+  .dashboardContent .box1 .adviserInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box1 .adviserInfo .adviserName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box1 .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+  .uppernav .box{
+    display: none;
+
+  }
+  
+  .announcementContent .box2{
+    width: 87.5%;
+    height: 450px;
+    
+  }
+
+  /* Pagination Media Querry */
+
+  .containers{
+    max-width: 100px;
+    margin: auto;
+  }
+
+  .gallery{
+    width: 30%;
+    padding:30px 15px;
+    margin-left: -15%;
+    
+  }
+  .gallery .gallery-items .item{
+    /*width: 100%;
+    position: relative; */
+    width: 89%;
+    position: absolute;
+    margin-top: -93%;
+  }
+ 
+ 
+  .gallery .gallery-items .item img{
+    width: 100%;
+    display: block;
+    height: 300px;
+    border: 1px solid skyblue;
+  }
+  .gallery .pagination{
+    width: 100%;
+  /*	margin-top: 20%; */
+    margin-top: 510%;
+    padding:15px;
+    text-align: center;
+    margin-left: 50%;
+    display: flex;
+  }
+}
+
+/*###############################################*/
+
+@media screen and (max-width: 414px), 
+       screen and (max-height: 896px){
+.frame1{
+  width: 100%;
+  height: 160vh;
+  background-color: red;
+  overflow: hidden;
+}     
+  .frame2{
+   width: 100%;
+   height: 17vh;
+  }
+  .dashboardName{
+    margin-left: 2%;
+    font-size: 14px;
+    color: #7064DD;
+  }
+  .dashboardAnnouncement{
+    margin-left: 2%;
+    font-size: 22px;
+    color: black;
+  }
+  .dashboardContent .box{
+    width: 82%;
+    height: 170px;
+    margin-top: 5%;
+    margin-left: 5%;
+  }
+  .dashboardContent .box .studentInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box .studentInfo .studentName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+
+  .dashboardContent .box1{
+    width: 82%;
+    height: 120px;
+    margin-top: 2%;
+    margin-left: 5%;
+  }
+
+  .dashboardContent .box1 .adviserInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box1 .adviserInfo .adviserName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box1 .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+  .uppernav .box{
+    display: none;
+
+  }
+  
+  .announcementContent .box2{
+    width: 87.5%;
+    height: 450px;
+    
+  }
+
+  /* Pagination Media Querry */
+
+  .containers{
+    max-width: 100px;
+    margin: auto;
+  }
+
+  .gallery{
+    width: 30%;
+    padding:30px 15px;
+    margin-left: -15%;
+    
+  }
+  .gallery .gallery-items .item{
+    /*width: 100%;
+    position: relative; */
+    width: 89%;
+    position: absolute;
+    margin-top: -93%;
+  }
+ 
+ 
+  .gallery .gallery-items .item img{
+    width: 100%;
+    display: block;
+    height: 300px;
+    border: 1px solid skyblue;
+  }
+  .gallery .pagination{
+    width: 100%;
+  /*	margin-top: 20%; */
+    margin-top: 510%;
+    padding:15px;
+    text-align: center;
+    margin-left: 50%;
+    display: flex;
+  }
+}
+
+/*###############################################*/
+
+@media screen and (max-width: 430px), 
+       screen and (max-height: 932px){
+.frame1{
+  width: 100%;
+  height: 160vh;
+  background-color: rgb(242, 247, 250);
+  overflow: hidden;
+}     
+  .frame2{
+   width: 100%;
+   height: 17vh;
+   justify-content: center;
+   align-items: center;
+  }
+  .dashboardName{
+    margin-left: 2%;
+    font-size: 14px;
+    color: #7064DD;
+  }
+  .dashboardAnnouncement{
+    margin-left: 2%;
+    font-size: 22px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+  }
+  .dashboardContent .box{
+    width: 82%;
+    height: 170px;
+    margin-top: 5%;
+    margin-left: 5%;
+  }
+  .dashboardContent .box .studentInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box .studentInfo .studentName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+
+  .dashboardContent .box1{
+    width: 82%;
+    height: 120px;
+    margin-top: 2%;
+    margin-left: 5%;
+  }
+
+  .dashboardContent .box1 .adviserInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box1 .adviserInfo .adviserName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box1 .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+  .uppernav .box{
+    display: none;
+
+  }
+  
+  .announcementContent .box2{
+    width: 87.5%;
+    height: 450px;
+    
+  }
+
+  /* Pagination Media Querry */
+
+  .containers{
+    max-width: 100px;
+    margin: auto;
+  }
+
+  .gallery{
+    width: 30%;
+    padding:30px 15px;
+    margin-left: -15%;
+    
+  }
+  .gallery .gallery-items .item{
+    /*width: 100%;
+    position: relative; */
+    width: 89%;
+    position: absolute;
+    margin-top: -93%;
+  }
+ 
+ 
+  .gallery .gallery-items .item img{
+    width: 100%;
+    display: block;
+    height: 300px;
+    border: 1px solid skyblue;
+  }
+  .gallery .pagination{
+    width: 100%;
+  /*	margin-top: 20%; */
+    margin-top: 510%;
+    padding:15px;
+    text-align: center;
+    margin-left: 50%;
+    display: flex;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+.dashboardContent .overviewBoxes{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0 20px;
+  margin-bottom: 26px;
+  color: white;
+  
+}
+.overviewBoxes .box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(100% / 4 - 15px);
+  height: 100px;
+  background: black;
+  padding: 15px 14px;
+  border-radius: 12px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+.overviewBoxes .box-topic{
+  font-size: 20px;
+  font-weight: 500;
+}
+.dashboardContent .box .number{
+  display: inline-block;
+  font-size: 35px;
+  margin-top: -6px;
+  font-weight: 500;
+} */
+
+
