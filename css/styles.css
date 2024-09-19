@@ -173,7 +173,8 @@ tr,td{
   height: 140vh;
   justify-content: center;
   align-items: center;
-
+  position: absolute;
+  
  }
 
  .frame2{
@@ -836,6 +837,759 @@ tr,td{
 }
 
 
+@media (max-width: 1280px) {
+  
+.frame1{
+  width: 98%;
+  height: 130vh;
+  background-color: rgb(242, 247, 250);
+  overflow: hidden;
+  position: absolute;
+  overflow-y: scroll;
+}     
+  .frame2{
+   width: 100%;
+   height: 17vh;
+   justify-content: center;
+   align-items: center;
+   
+  }
+  .dashboardName{
+    margin-left: 2%;
+    font-size: 14px;
+    color: #7064DD;
+  }
+  .dashboardAnnouncement{
+    margin-left: 2%;
+    font-size: 22px;
+    color: black;
+    justify-content: center;
+    align-items: center;
+  }
+  .dashboardContent .box{
+    width: 50%;
+    height: 160px;
+    margin-top: 3%;
+    margin-left: 5%;
+  }
+  .dashboardContent .box .studentInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box .studentInfo .studentName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+
+  .dashboardContent .box1{
+    width: 30%;
+    height: 160px;
+    margin-top: -18%;
+    margin-left: 58%;
+  }
+
+  .dashboardContent .box1 .adviserInfo{
+    padding: 10px;
+  }
+
+  .dashboardContent .box1 .adviserInfo .adviserName{
+    font-size: 18px;
+  }
+
+  .dashboardContent .box1 .studentInfo1{
+    font-size: 12px;
+    color: #646363;
+    margin: 5px;
+    font-weight: 500;
+  }
+  .uppernav .box{
+    display: none;
+
+  }
+  
+  .announcementContent .box2{
+    width: 83%;
+    height: 450px;
+    margin-left: 5%;
+    
+  }
+
+  /* Pagination Media Querry */
+
+  .containers{
+    max-width: 100px;
+    margin: auto;
+  }
+
+  .gallery{
+    width: 30%;
+    padding:30px 15px;
+    margin-left: 80%;
+    
+  }
+  .gallery .gallery-items .item{
+    /*width: 100%;
+    position: relative; */
+    width: 89%;
+    position: absolute;
+    margin-top: -23%;
+  }
+ 
+ 
+  .gallery .gallery-items .item img{
+    width: 60%;
+    display: block;
+    height: 250px;
+    border: 1px solid skyblue;
+    
+  }
+  .gallery .pagination{
+    width: 100%;
+  /*	margin-top: 20%; */
+    margin-top: 510%;
+    padding:15px;
+    text-align: center;
+    margin-left: 400%;
+    display: flex;
+  }
+}
+
+/* ######################################################## */
+
+
+
+@media (max-width: 1423px) {
+  
+  .frame1{
+    width: 98%;
+    height: 130vh;
+    background-color: rgb(242, 247, 250);
+    overflow: hidden;
+    position: absolute;
+    overflow-y: scroll;
+  }     
+    .frame2{
+     width: 100%;
+     height: 17vh;
+     justify-content: center;
+     align-items: center;
+     
+    }
+    .dashboardName{
+      margin-left: 2%;
+      font-size: 14px;
+      color: #7064DD;
+    }
+    .dashboardAnnouncement{
+      margin-left: 2%;
+      font-size: 22px;
+      color: black;
+      justify-content: center;
+      align-items: center;
+    }
+    .dashboardContent .box{
+      width: 50%;
+      height: 160px;
+      margin-top: 3%;
+      margin-left: 5%;
+    }
+    .dashboardContent .box .studentInfo{
+      padding: 10px;
+    }
+  
+    .dashboardContent .box .studentInfo .studentName{
+      font-size: 18px;
+    }
+  
+    .dashboardContent .box .studentInfo1{
+      font-size: 12px;
+      color: #646363;
+      margin: 5px;
+      font-weight: 500;
+    }
+  
+    .dashboardContent .box1{
+      width: 30%;
+      height: 160px;
+      margin-top: -14.8%;
+      margin-left: 58%;
+    }
+  
+    .dashboardContent .box1 .adviserInfo{
+      padding: 10px;
+    }
+  
+    .dashboardContent .box1 .adviserInfo .adviserName{
+      font-size: 18px;
+    }
+  
+    .dashboardContent .box1 .studentInfo1{
+      font-size: 12px;
+      color: #646363;
+      margin: 5px;
+      font-weight: 500;
+    }
+    .uppernav .box{
+      display: none;
+  
+    }
+    
+    .announcementContent .box2{
+      width: 83%;
+      height: 450px;
+      margin-left: 5%;
+      
+    }
+  
+    /* Pagination Media Querry */
+  
+    .containers{
+      max-width: 100px;
+      margin: auto;
+    }
+  
+    .gallery{
+      width: 30%;
+      padding:30px 15px;
+      margin-left: 80%;
+      
+    }
+    .gallery .gallery-items .item{
+      /*width: 100%;
+      position: relative; */
+      width: 89%;
+      position: absolute;
+      margin-top: -21%;
+    }
+   
+   
+    .gallery .gallery-items .item img{
+      width: 60%;
+      display: block;
+      height: 250px;
+      border: 1px solid skyblue;
+      
+    }
+    .gallery .pagination{
+      width: 100%;
+    /*	margin-top: 20%; */
+      margin-top: 510%;
+      padding:15px;
+      text-align: center;
+      margin-left: 400%;
+      display: flex;
+    }
+  }
+
+  /* ################################### */
+
+  @media (max-width: 1024px) {
+  
+    .frame1{
+      width: 96%;
+      height: 100vh;
+      background-color: rgb(242, 247, 250);
+      overflow: hidden;
+      position: absolute;
+      overflow-y: scroll;
+    }     
+      .frame2{
+       width: 100%;
+       height: 17vh;
+       justify-content: center;
+       align-items: center;
+       
+      }
+      .dashboardName{
+        margin-left: 2%;
+        font-size: 14px;
+        color: #7064DD;
+      }
+      .dashboardAnnouncement{
+        margin-left: 2%;
+        font-size: 22px;
+        color: black;
+        justify-content: center;
+        align-items: center;
+      }
+      .dashboardContent .box{
+        width: 83%;
+        height: 160px;
+        margin-top: 3%;
+        margin-left: 5%;
+      }
+      .dashboardContent .box .studentInfo{
+        padding: 10px;
+      }
+    
+      .dashboardContent .box .studentInfo .studentName{
+        font-size: 18px;
+      }
+    
+      .dashboardContent .box .studentInfo1{
+        font-size: 12px;
+        color: #646363;
+        margin: 5px;
+        font-weight: 500;
+      }
+    
+      .dashboardContent .box1{
+        width: 83%;
+        height: 160px;
+        margin-top: 2%;
+        margin-left: 5%;
+      }
+    
+      .dashboardContent .box1 .adviserInfo{
+        padding: 10px;
+      }
+    
+      .dashboardContent .box1 .adviserInfo .adviserName{
+        font-size: 18px;
+      }
+    
+      .dashboardContent .box1 .studentInfo1{
+        font-size: 12px;
+        color: #646363;
+        margin: 5px;
+        font-weight: 500;
+      }
+      .uppernav .box{
+        display: none;
+    
+      }
+      
+      .announcementContent .box2{
+        width: 83%;
+        height: 360px;
+        margin-left: 5%;
+        
+      }
+    
+      /* Pagination Media Querry */
+    
+      .containers{
+        max-width: 100px;
+        margin: auto;
+      }
+    
+      .gallery{
+        width: 30%;
+        padding:30px 15px;
+        margin-left: 15%;
+        
+      }
+      .gallery .gallery-items .item{
+        /*width: 100%;
+        position: relative; */
+        width: 89%;
+        position: absolute;
+        margin-top: -40%;
+      }
+     
+     
+      .gallery .gallery-items .item img{
+        width: 70%;
+        display: block;
+        height: 200px;
+        border: 1px solid skyblue;
+        
+      }
+      .gallery .pagination{
+        width: 100%;
+      /*	margin-top: 20%; */
+        margin-top: 380%;
+        padding:15px;
+        text-align: center;
+        margin-left: 100%;
+        display: flex;
+      }
+    }
+
+  /* ############################################## */
+
+  @media (max-width: 820px) {
+  
+    .frame1{
+      width: 96%;
+      height: 100vh;
+      background-color: rgb(242, 247, 250);
+      overflow: hidden;
+      position: absolute;
+      overflow-y: scroll;
+    }     
+      .frame2{
+       width: 100%;
+       height: 17vh;
+       justify-content: center;
+       align-items: center;
+       
+      }
+      .dashboardName{
+        margin-left: 2%;
+        font-size: 14px;
+        color: #7064DD;
+      }
+      .dashboardAnnouncement{
+        margin-left: 2%;
+        font-size: 22px;
+        color: black;
+        justify-content: center;
+        align-items: center;
+      }
+      .dashboardContent .box{
+        width: 83%;
+        height: 160px;
+        margin-top: 3%;
+        margin-left: 5%;
+      }
+      .dashboardContent .box .studentInfo{
+        padding: 10px;
+      }
+    
+      .dashboardContent .box .studentInfo .studentName{
+        font-size: 18px;
+      }
+    
+      .dashboardContent .box .studentInfo1{
+        font-size: 12px;
+        color: #646363;
+        margin: 5px;
+        font-weight: 500;
+      }
+    
+      .dashboardContent .box1{
+        width: 83%;
+        height: 160px;
+        margin-top: 2%;
+        margin-left: 5%;
+      }
+    
+      .dashboardContent .box1 .adviserInfo{
+        padding: 10px;
+      }
+    
+      .dashboardContent .box1 .adviserInfo .adviserName{
+        font-size: 18px;
+      }
+    
+      .dashboardContent .box1 .studentInfo1{
+        font-size: 12px;
+        color: #646363;
+        margin: 5px;
+        font-weight: 500;
+      }
+      .uppernav .box{
+        display: none;
+    
+      }
+      
+      .announcementContent .box2{
+        width: 83%;
+        height: 360px;
+        margin-left: 5%;
+        
+      }
+    
+      /* Pagination Media Querry */
+    
+      .containers{
+        max-width: 100px;
+        margin: auto;
+      }
+    
+      .gallery{
+        width: 30%;
+        padding:30px 15px;
+        margin-left: 15%;
+        
+      }
+      .gallery .gallery-items .item{
+        /*width: 100%;
+        position: relative; */
+        width: 89%;
+        position: absolute;
+        margin-top: -40%;
+      }
+     
+     
+      .gallery .gallery-items .item img{
+        width: 70%;
+        display: block;
+        height: 200px;
+        border: 1px solid skyblue;
+        
+      }
+      .gallery .pagination{
+        width: 100%;
+      /*	margin-top: 20%; */
+        margin-top: 380%;
+        padding:15px;
+        text-align: center;
+        margin-left: 100%;
+        display: flex;
+      }
+    }
+
+  /* ######################################################## */
+
+  @media (max-width: 600px) {
+  
+    .frame1{
+      width: 96%;
+      height: 100vh;
+      background-color: rgb(242, 247, 250);
+      overflow: hidden;
+      position: absolute;
+      overflow-y: scroll;
+    }     
+      .frame2{
+       width: 100%;
+       height: 17vh;
+       justify-content: center;
+       align-items: center;
+       
+      }
+      .dashboardName{
+        margin-left: 2%;
+        font-size: 14px;
+        color: #7064DD;
+      }
+      .dashboardAnnouncement{
+        margin-left: 2%;
+        font-size: 22px;
+        color: black;
+        justify-content: center;
+        align-items: center;
+      }
+      .dashboardContent .box{
+        width: 83%;
+        height: 160px;
+        margin-top: 3%;
+        margin-left: 5%;
+      }
+      .dashboardContent .box .studentInfo{
+        padding: 10px;
+      }
+    
+      .dashboardContent .box .studentInfo .studentName{
+        font-size: 18px;
+      }
+    
+      .dashboardContent .box .studentInfo1{
+        font-size: 12px;
+        color: #646363;
+        margin: 5px;
+        font-weight: 500;
+      }
+    
+      .dashboardContent .box1{
+        width: 83%;
+        height: 160px;
+        margin-top: 2%;
+        margin-left: 5%;
+      }
+    
+      .dashboardContent .box1 .adviserInfo{
+        padding: 10px;
+      }
+    
+      .dashboardContent .box1 .adviserInfo .adviserName{
+        font-size: 18px;
+      }
+    
+      .dashboardContent .box1 .studentInfo1{
+        font-size: 12px;
+        color: #646363;
+        margin: 5px;
+        font-weight: 500;
+      }
+      .uppernav .box{
+        display: none;
+    
+      }
+      
+      .announcementContent .box2{
+        width: 83%;
+        height: 360px;
+        margin-left: 5%;
+        
+      }
+    
+      /* Pagination Media Querry */
+    
+      .containers{
+        max-width: 100px;
+        margin: auto;
+      }
+    
+      .gallery{
+        width: 30%;
+        padding:30px 15px;
+        margin-left: 15%;
+        
+      }
+      .gallery .gallery-items .item{
+        /*width: 100%;
+        position: relative; */
+        width: 89%;
+        position: absolute;
+        margin-top: -40%;
+      }
+     
+     
+      .gallery .gallery-items .item img{
+        width: 70%;
+        display: block;
+        height: 200px;
+        border: 1px solid skyblue;
+        
+      }
+      .gallery .pagination{
+        width: 100%;
+      /*	margin-top: 20%; */
+        margin-top: 380%;
+        padding:15px;
+        text-align: center;
+        margin-left: 100%;
+        display: flex;
+      }
+    }
+
+    /* ###################################################### */
+
+    @media (max-width: 480px) {
+  
+      .frame1{
+        width: 96%;
+        height: 100vh;
+        background-color: rgb(242, 247, 250);
+        overflow: hidden;
+        position: absolute;
+        overflow-y: scroll;
+      }     
+        .frame2{
+         width: 100%;
+         height: 17vh;
+         justify-content: center;
+         align-items: center;
+         
+        }
+        .dashboardName{
+          margin-left: 2%;
+          font-size: 14px;
+          color: #7064DD;
+        }
+        .dashboardAnnouncement{
+          margin-left: 2%;
+          font-size: 22px;
+          color: black;
+          justify-content: center;
+          align-items: center;
+        }
+        .dashboardContent .box{
+          width: 83%;
+          height: 160px;
+          margin-top: 3%;
+          margin-left: 5%;
+        }
+        .dashboardContent .box .studentInfo{
+          padding: 10px;
+        }
+      
+        .dashboardContent .box .studentInfo .studentName{
+          font-size: 18px;
+        }
+      
+        .dashboardContent .box .studentInfo1{
+          font-size: 12px;
+          color: #646363;
+          margin: 5px;
+          font-weight: 500;
+        }
+      
+        .dashboardContent .box1{
+          width: 83%;
+          height: 160px;
+          margin-top: 2%;
+          margin-left: 5%;
+        }
+      
+        .dashboardContent .box1 .adviserInfo{
+          padding: 10px;
+        }
+      
+        .dashboardContent .box1 .adviserInfo .adviserName{
+          font-size: 18px;
+        }
+      
+        .dashboardContent .box1 .studentInfo1{
+          font-size: 12px;
+          color: #646363;
+          margin: 5px;
+          font-weight: 500;
+        }
+        .uppernav .box{
+          display: none;
+      
+        }
+        
+        .announcementContent .box2{
+          width: 83%;
+          height: 360px;
+          margin-left: 5%;
+          
+        }
+      
+        /* Pagination Media Querry */
+      
+        .containers{
+          max-width: 100px;
+          margin: auto;
+        }
+      
+        .gallery{
+          width: 30%;
+          padding:30px 15px;
+          margin-left: 15%;
+          
+        }
+        .gallery .gallery-items .item{
+          /*width: 100%;
+          position: relative; */
+          width: 89%;
+          position: absolute;
+          margin-top: -40%;
+        }
+       
+       
+        .gallery .gallery-items .item img{
+          width: 70%;
+          display: block;
+          height: 200px;
+          border: 1px solid skyblue;
+          
+        }
+        .gallery .pagination{
+          width: 100%;
+        /*	margin-top: 20%; */
+          margin-top: 380%;
+          padding:15px;
+          text-align: center;
+          margin-left: 100%;
+          display: flex;
+        }
+      }
+
+
+
+  /*
 
 
 @media screen and (max-width: 360px), 
@@ -918,7 +1672,7 @@ tr,td{
   }
 
   /* Pagination Media Querry */
-
+/*
   .containers{
     max-width: 100px;
     margin: auto;
@@ -933,6 +1687,7 @@ tr,td{
   .gallery .gallery-items .item{
     /*width: 100%;
     position: relative; */
+    /*
     width: 89%;
     position: absolute;
     margin-top: -95%;
@@ -948,7 +1703,7 @@ tr,td{
   .gallery .pagination{
     width: 100%;
   /*	margin-top: 20%; */
-    margin-top: 510%;
+  /*    margin-top: 510%;
     padding:15px;
     text-align: center;
     margin-left: 50%;
@@ -957,7 +1712,7 @@ tr,td{
 }
 
 /*###############################################*/
-
+/*
 @media screen and (max-width: 375px), 
        screen and (max-height: 667px){
 .frame1{
@@ -1038,7 +1793,7 @@ tr,td{
   }
 
   /* Pagination Media Querry */
-
+/*
   .containers{
     max-width: 100px;
     margin: auto;
@@ -1053,6 +1808,7 @@ tr,td{
   .gallery .gallery-items .item{
     /*width: 100%;
     position: relative; */
+    /*
     width: 89%;
     position: absolute;
     margin-top: -93%;
@@ -1068,6 +1824,7 @@ tr,td{
   .gallery .pagination{
     width: 100%;
   /*	margin-top: 20%; */
+  /*
     margin-top: 510%;
     padding:15px;
     text-align: center;
@@ -1077,7 +1834,7 @@ tr,td{
 }
 
 /*###############################################*/
-
+/*
 @media screen and (max-width: 414px), 
        screen and (max-height: 896px){
 .frame1{
@@ -1154,7 +1911,7 @@ tr,td{
   }
 
   /* Pagination Media Querry */
-
+/*
   .containers{
     max-width: 100px;
     margin: auto;
@@ -1169,6 +1926,7 @@ tr,td{
   .gallery .gallery-items .item{
     /*width: 100%;
     position: relative; */
+    /*
     width: 89%;
     position: absolute;
     margin-top: -93%;
@@ -1184,6 +1942,7 @@ tr,td{
   .gallery .pagination{
     width: 100%;
   /*	margin-top: 20%; */
+  /*
     margin-top: 510%;
     padding:15px;
     text-align: center;
@@ -1193,7 +1952,7 @@ tr,td{
 }
 
 /*###############################################*/
-
+/*
 @media screen and (max-width: 430px), 
        screen and (max-height: 932px){
 .frame1{
@@ -1274,7 +2033,7 @@ tr,td{
   }
 
   /* Pagination Media Querry */
-
+/*
   .containers{
     max-width: 100px;
     margin: auto;
@@ -1289,6 +2048,7 @@ tr,td{
   .gallery .gallery-items .item{
     /*width: 100%;
     position: relative; */
+    /*
     width: 89%;
     position: absolute;
     margin-top: -93%;
@@ -1304,6 +2064,7 @@ tr,td{
   .gallery .pagination{
     width: 100%;
   /*	margin-top: 20%; */
+  /*
     margin-top: 510%;
     padding:15px;
     text-align: center;
