@@ -176,7 +176,7 @@
         <div class="requestForm-frame2"><br><br>
           <span class="dashboardName"><b>Request Form</b></span><br>
           <h1 class="dashboardAnnouncement">Form List</h1>
-        </div>
+        </div><br>
 
         <table class="requestform-table">
             <tr>
@@ -189,27 +189,49 @@
               <td class="req">1</td>
               <td class="req">Evaluation Grade</td>
               <td class="req">200</td>
-              <td class="req"><a href="#"><button class="reqform-btn">Send Request</button></a></td>
+              <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('sf01').style.display='block'">Send Request</button></a></td>
             </tr>
             <tr>
               <td class="req">2</td>
               <td class="req">TOR</td>
               <td class="req">150</td>
-              <td class="req"><a href="#"><button class="reqform-btn">Send Request</button></a></td>
+              <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('sf01').style.display='block'">Send Request</button></a></td>
             </tr>
             <tr class="reqf">
               <td class="req">3</td>
               <td class="req">Diploma</td>
               <td class="req">300</td>
-              <td class="req"><a href="#"><button class="reqform-btn">Send Request</button></a></td>
+              <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('sf01').style.display='block'">Send Request</button></a></td>
             </tr>
             <tr>
               <td class="req">4</td>
               <td class="req">COR</td>
               <td class="req">100</td>
-              <td class="req"><a href="#"><button class="reqform-btn">Send Request</button></a></td>
+              <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('sf01').style.display='block'">Send Request</button></a></td>
           </tr>
           </table>
+
+           <div id="sf01" class="modal">
+            <span onclick="document.getElementById('sf01').style.display='none'" class="close" title="Close Modal"></span>
+            <form class="modal-content" action="/action_page.php">
+              <div class="modal-container">
+                <h1>Send Form</h1>
+                <hr>
+                <label for="email"><b>Student Number</b></label>
+                <input type="text" placeholder="Enter Student Number" name="studentNum" required>
+          
+                <label for="psw"><b>Student Name</b></label>
+                <input type="text" placeholder="Student Name" name="studentName" required>
+          
+                <label for="psw-repeat"><b>Price</b></label>
+                <input type="text" placeholder="200" name="formPrice" required> 
+                <div class="clearfix">
+                  <button type="button" onclick="document.getElementById('sf01').style.display='none'" class="cancelbtn">Cancel</button>
+                  <button class="sendF" type="submit" class="signup">Send Form</button>
+                </div>
+              </div>
+            </form>
+          </div>
           
         
     </div>
@@ -249,68 +271,12 @@ for (i = 0; i < dropdown.length; i++) {
   });
 }
 
-// Pagination
-
-const galleryItems=document.querySelector(".gallery-items").children;
- const prev=document.querySelector(".prev");
- const next=document.querySelector(".next");
- const page=document.querySelector(".page-num");
- const maxItem=1;
- let index=1;
-  
-  const pagination=Math.ceil(galleryItems.length/maxItem);
-  console.log(pagination)
-
-  prev.addEventListener("click",function(){
-    index--;
-    check();
-    showItems();
-  })
-  next.addEventListener("click",function(){
-  	index++;
-  	check();
-    showItems();  
-  })
-
-  function check(){
-  	 if(index==pagination){
-  	 	next.classList.add("disabled");
-  	 }
-  	 else{
-  	   next.classList.remove("disabled");	
-  	 }
-
-  	 if(index==1){
-  	 	prev.classList.add("disabled");
-  	 }
-  	 else{
-  	   prev.classList.remove("disabled");	
-  	 }
-  }
-
-  function showItems() {
-  	 for(let i=0;i<galleryItems.length; i++){
-  	 	galleryItems[i].classList.remove("show");
-  	 	galleryItems[i].classList.add("hide");
-
-
-  	    if(i>=(index*maxItem)-maxItem && i<index*maxItem){
-  	 	  // if i greater than and equal to (index*maxItem)-maxItem;
-  		  // means  (1*8)-8=0 if index=2 then (2*8)-8=8
-          galleryItems[i].classList.remove("hide");
-          galleryItems[i].classList.add("show");
-  	    }
-  	    page.innerHTML=index;
-  	 }
-
-  	 	
-  }
-
-  window.onload=function(){
-  	showItems();
-  	check();
-  }
-
+  var modal = document.getElementById('sf01');
+  window.onclick = function(event){
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 
 
 
