@@ -443,6 +443,101 @@ tr,td{
   cursor: pointer;
 }
 
+     /* Responsive Media Query */
+     @media (max-width: 1280px) {
+      .sidebar{
+        width: 60px;
+      }
+      .sidebar.active{
+        width: 220px;
+      }
+      .home-section{
+        position: absolute;
+        width: calc(100% - 60px);
+        left: 30px;
+      }
+      .sidebar.active ~ .home-section{
+        /* width: calc(100% - 220px); */
+        overflow: hidden;
+        left: 220px;
+      }
+      .home-section nav{
+        width: calc(100% - 60px);
+        left: 60px;
+      }
+      .sidebar.active ~ .home-section nav{
+        width: calc(100% - 220px);
+        left: 220px;
+      }
+    }
+    @media (max-width: 1150px) {
+      .home-content .sales-boxes{
+        flex-direction: column;
+      }
+      .home-content .sales-boxes .box{
+        position: absolute;
+        width: 100%;
+        overflow-x: scroll;
+        margin-bottom: 30px;
+      }
+      .home-content .sales-boxes .top-sales{
+        margin: 0;
+      }
+    }
+    @media (max-width: 1000px) {
+      .overview-boxes .box{
+        width: calc(100% / 2 - 15px);
+        margin-bottom: 15px;
+      }
+    }
+    @media (max-width: 700px) {
+      nav .sidebar-button .dashboard,
+      nav .profile-details .admin_name,
+      nav .profile-details i{
+        display: none;
+      }
+      .home-section nav .profile-details{
+        height: 50px;
+        min-width: 40px;
+      }
+      .home-content .sales-boxes .sales-details{
+        width: 560px;
+      }
+    }
+    @media (max-width: 550px) {
+      .overview-boxes .box{
+        width: 100%;
+        margin-bottom: 15px;
+      }
+      .sidebar.active ~ .home-section nav .profile-details{
+        display: none;
+      }
+    }
+      @media (max-width: 400px) {
+      .sidebar{
+        width: 0;
+      }
+      .sidebar.active{
+        width: 60px;
+      }
+      .home-section{
+        width: 100%;
+        left: 0;
+      }
+      .sidebar.active ~ .home-section{
+        left: 60px;
+        width: calc(100% - 60px);
+      }
+      .home-section nav{
+        width: 100%;
+        left: 0;
+      }
+      .sidebar.active ~ .home-section nav{
+        left: 60px;
+        width: calc(100% - 60px);
+      }
+    }
+
 
 /* #################################################### */
 
@@ -576,6 +671,7 @@ tr,td{
   width: calc(100% - 100px);
   transition: all 0.5s ease;
 }
+
 /*
 .studentInformation-frame1{
   background: white;
@@ -636,7 +732,9 @@ tr,td{
 }
 form .user-details .input-box{
   margin-bottom: 15px;
-  width: calc(100% / 3 - 40px);
+  width: calc(100% / 2 - 40px);
+  display: flex;
+  flex-direction: column;
 }
 form .input-box span.details{
   display: block;
@@ -656,6 +754,420 @@ form .input-box span.details{
   border-bottom-width: 2px;
   transition: all 0.3s ease;
   border: 1px solid rgb(161, 161, 161);
+}
+
+@media (max-width: 750px){
+  body{
+    overflow-x: hidden;
+    display: flex;
+  }
+  .studentInformation-frame{
+    height: 100vh;
+  }
+  .sidenav .user-details{
+      overflow-y: scroll;
+  }
+  .sidenav .user-details::-webkit-scrollbar{
+     display: none;
+  }
+  .user-details .input-box{
+      width: calc(100% / 2 - 15px);
+  }
+}
+
+@media (max-width: 1440px){
+  body{
+    overflow-x: hidden;
+    display: flex;
+  }
+ 
+  #uppernav{
+  overflow-x: hidden;
+  }
+
+  .user-details{
+    overflow-y: scroll;
+    width: 100vw;
+    margin-top: 1%;   
+   
+}
+.user-details::-webkit-scrollbar{
+   display: none;
+}
+  
+.studentInformation-frame{
+    position: absolute; 
+    left:-3px; right:0;
+    top:70px; bottom:0px;
+    overflow-x: hidden;
+    width: 105vw;
+  }
+
+  .dashboardAnnouncement{
+    font-size: 18px;
+   
+  }
+  .studentInformation-frame1{
+    width: 95%;
+    margin-top: 5%;
+    height: 90vh;
+  }
+
+  .studentInformation-frame1 .user-details .input-box{
+    width: calc(100% / 3 - 15px);
+  }
+  .studentInformation-frame1 .SSI{
+    font-size: 16px;
+  }
+  .studentInformation-frame1 .search-txt{
+    width: 20%;
+    height: 33px;
+    border: 1px solid rgb(134, 133, 133);
+   
+   
+  }
+  
+  .studentInformation-frame1 .search-btn{
+    width: 10%;
+    height: 37px;
+    border: 1px solid rgb(134, 133, 133);
+    padding: 5px;
+    font-size: 14px;
+    background-color: rgb(232, 234, 235);
+    color: black;
+    margin-top: 5px;
+  }
+
+}
+
+@media (max-width: 1024px){
+  body{
+    overflow-x: hidden;
+    display: flex;
+  }
+ 
+  #uppernav{
+  overflow-x: hidden;
+  }
+
+  .user-details{
+    overflow-y: scroll;
+    width: 100vw;
+    margin-top: -2%;   
+   
+}
+.user-details::-webkit-scrollbar{
+   display: none;
+}
+  
+.studentInformation-frame{
+    position: absolute; 
+    left:-3px; right:0;
+    top:70px; bottom:0px;
+    overflow-x: hidden;
+    width: 105vw;
+  }
+
+  .dashboardAnnouncement{
+    font-size: 16px;
+   
+  }
+  .studentInformation-frame1{
+    width: 95%;
+    margin-top: 7%;
+    height: 100vh;
+  }
+
+  .studentInformation-frame1 .user-details .input-box{
+    width: calc(100% / 2 - 15px);
+  }
+  .studentInformation-frame1 .SSI{
+    font-size: 14px;
+  }
+  .studentInformation-frame1 .search-txt{
+    width: 20%;
+    height: 33px;
+    border: 1px solid rgb(134, 133, 133);
+   
+   
+  }
+  
+  .studentInformation-frame1 .search-btn{
+    width: 10%;
+    height: 37px;
+    border: 1px solid rgb(134, 133, 133);
+    padding: 5px;
+    font-size: 14px;
+    background-color: rgb(232, 234, 235);
+    color: black;
+    margin-top: 5px;
+  }
+
+}
+
+@media (max-width: 768px){
+  body{
+    overflow-x: hidden;
+    display: flex;
+  }
+ 
+  #uppernav{
+  overflow-x: hidden;
+  }
+
+  .user-details{
+    overflow-y: scroll;
+    width: 120vw;
+    margin-top: -2%;   
+   
+}
+.user-details::-webkit-scrollbar{
+   display: none;
+}
+  
+.studentInformation-frame{
+    position: absolute; 
+    left:-3px; right:0;
+    top:70px; bottom:0px;
+    overflow-x: hidden;
+    width: 105vw;
+  }
+
+  .dashboardAnnouncement{
+    font-size: 16px;
+   
+  }
+  .studentInformation-frame1{
+    width: 95%;
+    margin-top: 7%;
+    height: 185vh;
+  }
+
+  .studentInformation-frame1 .user-details .input-box{
+    width: calc(100% / 1 - 15px);
+  }
+  .studentInformation-frame1 .SSI{
+    font-size: 14px;
+  }
+  .studentInformation-frame1 .search-txt{
+    width: 50%;
+    height: 33px;
+    border: 1px solid rgb(134, 133, 133);
+    margin-left: 4%;
+   
+  }
+  
+  .studentInformation-frame1 .search-btn{
+    width: 20%;
+    height: 37px;
+    border: 1px solid rgb(134, 133, 133);
+    padding: 5px;
+    font-size: 14px;
+    background-color: rgb(232, 234, 235);
+    color: black;
+    margin-top: 5px;
+  }
+
+}
+
+
+@media (max-width: 425px){
+  body{
+    overflow-x: hidden;
+    display: flex;
+  }
+ 
+  #uppernav{
+  overflow-x: hidden;
+  }
+
+  .user-details{
+    overflow-y: scroll;
+    width: 135vw;
+    margin-top: -2%;   
+   
+}
+.user-details::-webkit-scrollbar{
+   display: none;
+}
+  
+.studentInformation-frame{
+    position: absolute; 
+    left:-3px; right:0;
+    top:70px; bottom:0px;
+    overflow-x: hidden;
+    width: 120vw;
+  }
+
+  .dashboardAnnouncement{
+    font-size: 16px;
+   
+  }
+  .studentInformation-frame1{
+    width: 95%;
+    margin-top: 10%;
+    height: 185vh;
+  }
+
+  .studentInformation-frame1 .user-details .input-box{
+    width: calc(100% / 1 - 15px);
+  }
+  .studentInformation-frame1 .SSI{
+    font-size: 14px;
+  }
+  .studentInformation-frame1 .search-txt{
+    width: 70%;
+    height: 33px;
+    border: 1px solid rgb(134, 133, 133);
+    margin-left: 4%;
+   
+  }
+  
+  .studentInformation-frame1 .search-btn{
+    width: 20%;
+    height: 37px;
+    border: 1px solid rgb(134, 133, 133);
+    padding: 5px;
+    font-size: 14px;
+    background-color: rgb(232, 234, 235);
+    color: black;
+    margin-top: 5px;
+  }
+
+}
+
+@media (max-width: 375px){
+  body{
+    overflow-x: hidden;
+    display: flex;
+  }
+ 
+  #uppernav{
+  overflow-x: hidden;
+  }
+
+  .user-details{
+    overflow-y: scroll;
+    width: 155vw;
+    margin-top: -2%;   
+   
+}
+.user-details::-webkit-scrollbar{
+   display: none;
+}
+  
+.studentInformation-frame{
+    position: absolute; 
+    left:-3px; right:0;
+    top:70px; bottom:0px;
+    overflow-x: hidden;
+    width: 135vw;
+  }
+
+  .dashboardAnnouncement{
+    font-size: 16px;
+   
+  }
+  .studentInformation-frame1{
+    width: 96%;
+    margin-top: 10%;
+    height: 185vh;
+  }
+
+  .studentInformation-frame1 .user-details .input-box{
+    width: calc(100% / 1 - 15px);
+  }
+  .studentInformation-frame1 .SSI{
+    font-size: 15px;
+  }
+  .studentInformation-frame1 .search-txt{
+    width: 70%;
+    height: 33px;
+    border: 1px solid rgb(134, 133, 133);
+    margin-left: 4%;
+   
+  }
+  
+  .studentInformation-frame1 .search-btn{
+    width: 20%;
+    height: 37px;
+    border: 1px solid rgb(134, 133, 133);
+    padding: 5px;
+    font-size: 14px;
+    background-color: rgb(232, 234, 235);
+    color: black;
+    margin-top: 5px;
+  }
+
+}
+
+@media (max-width: 320px){
+  body{
+    overflow-x: hidden;
+    display: flex;
+  }
+ 
+  #uppernav{
+  overflow-x: hidden;
+  }
+
+  .user-details{
+    overflow-y: scroll;
+    width: 100vw;
+    margin-top: -5%;   
+   
+}
+
+.user-details::-webkit-scrollbar{
+   display: none;
+}
+  
+.studentInformation-frame{
+    position: absolute; 
+    left:0px; right:0;
+    top:70px; bottom:0px;
+    overflow-x: hidden;
+    width: 99vw;
+  }
+
+  .dashboardAnnouncement{
+    font-size: 16px;
+  }
+  .studentInformation-frame1{
+    width: 95%;
+    margin-top: 15%;
+    height: 180vh;
+  }
+
+  .studentInformation-frame1 .user-details .input-box{
+    width: calc(100% / 1 - 15px);
+  }
+  .studentInformation-frame1 .SSI{
+    font-size: 14px;
+  }
+  .studentInformation-frame1 .search-txt{
+    width: 65%;
+    height: 33px;
+    border: 1px solid rgb(134, 133, 133);
+    margin-left: 1%;
+   
+  }
+  
+  .studentInformation-frame1 .search-btn{
+    width: 30%;
+    height: 37px;
+    border: 1px solid rgb(134, 133, 133);
+    padding: 5px;
+    font-size: 14px;
+    background-color: rgb(232, 234, 235);
+    color: black;
+    margin-top: 4px;
+  }
+
+  .details{
+    font-size: 14px;
+  }
+
 }
 
 /*### Student Information - Student Personal Information css ends here ###*/
@@ -985,97 +1497,100 @@ hr {
 
 /* Section Management - new & old css & transferee & edit & octoberian */
 
-.new-old-box{
+.fields{
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 35%;
-  height: 12%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 1%;
+}
+
+.fields .box-fields{
+  display: flex;
+  width: calc(100% / 2 - 15px);
+  width: 38%;
+  height: 120px;
+  flex-direction: column;
+  margin: 10px 0px;
   border: 1px solid black;
-  padding: 30px;
+  padding: 20px;
   background-color: white;
   border-radius: 5px;
   box-shadow: 3px 3px 10px rgb(51, 51, 51);
-  margin-left: 8%;
-  margin-top: 2%;
-  position: absolute;
-  left:19px; right:0;
-  top:230px; bottom:0px;
+  
 }
 
-.addStud-Name{
-  font-size: 18px;
-  color: #7064DD;
+.fields-label{
+  font-size: 16px;
+  font-weight: 600;
+  color: #585858;
+  text-align: center;
+  margin-top: 5px;
 }
 
-.addStud-btn{
-  width: 100%;
+a .addStud-btn{
+  width: 50%;
   height: 50px;
   margin-top: 5%;
+  margin-left: 25%;
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
 }
 
-/* Transferee Student*/
-
-.transferee-box{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35%;
-  height: 12%;
-  border: 1px solid black;
-  padding: 30px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px rgb(51, 51, 51);
-  margin-left: 48%;
-  margin-top: 3.5%;
-  position: absolute;
-  left:18px; right:0;
-  top:202px; bottom:0px;
+@media (max-width: 750px){
+  body{
+    
+    overflow-x: hidden;
+    display: flex;
+  }
+  .requestForm-frame1{
+    height: 100vh;
+  }
+  .sidenav .fields{
+      overflow-y: scroll;
+  }
+  .sidenav .fields::-webkit-scrollbar{
+     display: none;
+  }
+  .fields .box-fields{
+      width: calc(100% / 2 - 15px);
+  }
 }
 
-/* Edit Student*/
-
-.edit-box{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35%;
-  height: 12%;
-  border: 1px solid black;
-  padding: 30px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px rgb(51, 51, 51);
-  margin-left: 8%;
-  margin-top: 2%;
-  position: absolute;
-  left:19px; right:0;
-  top:460px; bottom:0px;
+@media (max-width: 550px){
+  body{
+    width: 80vh;
+    overflow-x: hidden;
+    display: flex;
+  }
+  .fields .box-fields{
+      width: 70%;
+  }
 }
 
-/* Octoberian Student*/
+@media (max-width: 320px){
+  body{
+    width: 101vw;
+    overflow-x: hidden;
+    display: flex;
+  }
+ 
+  #uppernav{
+  overflow-x: hidden;
+  }
+  
+  .requestForm-frame1{
+    position: absolute; 
+    left:2px; right:0;
+    top:70px; bottom:0px;
+    overflow-x: hidden;
+  }
 
-.octoberian-box{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 35%;
-  height: 12%;
-  border: 1px solid black;
-  padding: 30px;
-  background-color: white;
-  border-radius: 5px;
-  box-shadow: 3px 3px 10px rgb(51, 51, 51);
-  margin-left: 48%;
-  margin-top: 3.5%;
-  position: absolute;
-  left:18px; right:0;
-  top:432px; bottom:0px;
 }
+
+
+
 
 /*#### new & old css ends here */
 
@@ -1412,98 +1927,96 @@ hr{
   /* ################################### */
 
 
-      /* Responsive Media Query */
-@media (max-width: 1280px) {
-  .sidebar{
-    width: 60px;
-  }
-  .sidebar.active{
-    width: 220px;
-  }
-  .home-section{
-    position: absolute;
-    width: calc(100% - 60px);
-    left: 30px;
-  }
-  .sidebar.active ~ .home-section{
-    /* width: calc(100% - 220px); */
-    overflow: hidden;
-    left: 220px;
-  }
-  .home-section nav{
-    width: calc(100% - 60px);
-    left: 60px;
-  }
-  .sidebar.active ~ .home-section nav{
-    width: calc(100% - 220px);
-    left: 220px;
-  }
+ 
+/* .new-old-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 12%;
+  border: 1px solid black;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgb(51, 51, 51);
+  margin-left: 8%;
+  margin-top: 2%;
+  position: absolute;
+  left:19px; right:0;
+  top:230px; bottom:0px;
 }
-@media (max-width: 1150px) {
-  .home-content .sales-boxes{
-    flex-direction: column;
-  }
-  .home-content .sales-boxes .box{
-    position: absolute;
-    width: 100%;
-    overflow-x: scroll;
-    margin-bottom: 30px;
-  }
-  .home-content .sales-boxes .top-sales{
-    margin: 0;
-  }
+
+.addStud-Name{
+  font-size: 18px;
+  color: #7064DD;
 }
-@media (max-width: 1000px) {
-  .overview-boxes .box{
-    width: calc(100% / 2 - 15px);
-    margin-bottom: 15px;
-  }
+
+.addStud-btn{
+  width: 100%;
+  height: 50px;
+  margin-top: 5%;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
 }
-@media (max-width: 700px) {
-  nav .sidebar-button .dashboard,
-  nav .profile-details .admin_name,
-  nav .profile-details i{
-    display: none;
-  }
-  .home-section nav .profile-details{
-    height: 50px;
-    min-width: 40px;
-  }
-  .home-content .sales-boxes .sales-details{
-    width: 560px;
-  }
+
+/* Transferee Student*/
+/*
+.transferee-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 12%;
+  border: 1px solid black;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgb(51, 51, 51);
+  margin-left: 48%;
+  margin-top: 3.5%;
+  position: absolute;
+  left:18px; right:0;
+  top:202px; bottom:0px;
 }
-@media (max-width: 550px) {
-  .overview-boxes .box{
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  .sidebar.active ~ .home-section nav .profile-details{
-    display: none;
-  }
+
+/* Edit Student*/
+/*
+.edit-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 12%;
+  border: 1px solid black;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgb(51, 51, 51);
+  margin-left: 8%;
+  margin-top: 2%;
+  position: absolute;
+  left:19px; right:0;
+  top:460px; bottom:0px;
 }
-  @media (max-width: 400px) {
-  .sidebar{
-    width: 0;
-  }
-  .sidebar.active{
-    width: 60px;
-  }
-  .home-section{
-    width: 100%;
-    left: 0;
-  }
-  .sidebar.active ~ .home-section{
-    left: 60px;
-    width: calc(100% - 60px);
-  }
-  .home-section nav{
-    width: 100%;
-    left: 0;
-  }
-  .sidebar.active ~ .home-section nav{
-    left: 60px;
-    width: calc(100% - 60px);
-  }
+
+/* Octoberian Student*/
+/*
+.octoberian-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35%;
+  height: 12%;
+  border: 1px solid black;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgb(51, 51, 51);
+  margin-left: 48%;
+  margin-top: 3.5%;
+  position: absolute;
+  left:18px; right:0;
+  top:432px; bottom:0px;
 }
 
