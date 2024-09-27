@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Sms4</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+</head>
+<body>
+    <div id="sidenav" class="sidenav">
+        <img src="image/bcplogo-mini.png" alt="img" class="bcplogo">
+        <ul class="nav-link">
+            <li class="bellNotiff">
+            <a href="#" class="active">
+                <i class='bx bx-bell'></i>
+            </a>
+            </li>
+            <li class="userProfile">
+            <a href="#">
+                 <i class='bx bx-user'></i>
+            </a>
+            </li>
+            <img src="image/avatar.jpg" alt="avatar" class="avatar"><br><br>
+            <table class="user-profile">
+              <tr>
+                <td><span class="user-name"><b>Admin@gmail.com</b></span></td>
+              </tr>
+              <tr>
+                  <td> <span class="user-mail">Admin</span></td>    
+              </tr>
+            </table>        
+        </ul><br><br>
+
+        <table class="dashboard">
+          <tr>
+            <td>
+              <ul class="nav-links">
+              <li>
+                <a href="adminDashboard.html">
+                  <i class='bx bx-grid-alt' ></i>
+                  <span class="links_name">Dashboard</span>
+                </a>
+              </li>
+            </ul>   
+            </td>
+          </tr>            
+        </table>
+
+        <div class="dropdownSmsprofile">
+          <button class="dropdown-btn"> <i class='bx bx-user' ></i>
+            <span class="droplinks_name">Admin Profile</span>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a class="dropdown-a" href="#"><span class="droplinks_name">Account</span></a>
+            <a class="dropdown-a" href="#"><span class="droplinks_name">Security</span></a>
+            <a class="dropdown-a" href="#"><span class="droplinks_name">Additional Information</span></a>
+          </div>
+          </div>
+
+        <br><br>
+          <span class="main"><b>ADMISSION</b></span><br>
+          <span class="sub"><b>Student Admission</b></span>
+        <br><br><br>
+
+        <div class="dropdownStudentInformation">
+          <button class="dropdown-btn"> <i class='bx bx-user' ></i>
+            <span class="droplinks_name">Student Information</span>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">
+            <a class="dropdown-a" href="admin-StudentPersonalInformation.html"><span class="droplinks_name">Student Personal Information</span></a>
+            <a class="dropdown-a" href="admin-DeactivateList.html"><span class="droplinks_name">Deactivate List</span></a> 
+            <a class="dropdown-a" href="admin-PendingStudent.html"><span class="droplinks_name">Pending Student</span></a> 
+            <a class="dropdown-a" href="admin-RequestInformation"><span class="droplinks_name">Request Information</span></a> 
+          </div>
+          </div>
+
+          <div class="dropdownSectionManagement">
+            <button class="dropdown-btn"> <i class='bx bx-user' ></i>
+              <span class="droplinks_name">Section Management</span>
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+              <a class="dropdown-a" href="admin-AddStudent.html"><span class="droplinks_name">Add Student</span></a>
+              <a class="dropdown-a" href="#"><span class="droplinks_name">Section List</span></a>
+              <a class="dropdown-a" href="#"><span class="droplinks_name">Master List</span></a> 
+              <a class="dropdown-a" href="#"><span class="droplinks_name">Manage Class</span></a> 
+            </div>
+            </div><br><br>
+
+        <div class="dropdownDocumentManangement">
+        <span class="main"><b>Document Manangement</b></span><br>
+        <span class="sub"><b>Document Details</b></span><br><br><br>
+        <button class="dropdown-btn"> <i class='bx bx-money' ></i>
+          <span class="droplinks_name">Document</span>
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+          <a class="dropdown-a" href="#"><span class="droplinks_name">Document Request</span></a>
+          <a class="dropdown-a" href="#"><span class="droplinks_name">Document Submit</span></a>
+          <a class="dropdown-a" href="#"><span class="droplinks_name">Pay Later</span></a>
+          <a class="dropdown-a" href="#"><span class="droplinks_name">release history</span></a>    
+        </div>
+        </div><br><br>
+
+        <div class="dropdownCurriculum">
+          <span class="main"><b>Curriculum</b></span><br>
+          <span class="sub"><b>School Curriculum</b></span><br><br><br>
+          <button class="dropdown-btn"> <i class='bx bx-file' ></i>
+            <span class="droplinks_name">Curriculum</span>
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-container">    
+            <a class="dropdown-a" href="#"><span class="droplinks_name">Courses</span></a>   
+          </div>
+          </div>
+
+        <table class="otherService"><br><br>
+          <span class="main"><b>OTHER SERVICES</b></span><br>
+          <tr>
+            <td>
+              <ul class="nav-links">
+              <li>
+                <a href="#">
+                  <i class='bx bx-file' ></i>
+                  <span class="links_name">Non Academic Affairs</span>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class='bx bx-file' ></i>
+                  <span class="links_name">Appointment</span>
+                </a>
+              </li>
+            </ul>   
+            </td>
+          </tr>            
+        </table><br><br><br>
+        
+       
+    </div>
+
+    <div id="uppernav">
+        <div class="upnav">
+        <button class="openbtn" onclick="toggleNav()">☰</button>
+    </div>
+
+    <div class="requestForm-frame1">
+        <!-- dito ka mag simula-->
+        <div class="requestForm-frame2"><br><br>
+          <span class="dashboardName"><b>Student Information</b></span><br>
+          <h1 class="dashboardAnnouncement">Request Information</h1>
+        </div><br>
+
+        <div class="requestinfo-container">
+            <div class="requestinfo-header">
+                <h1 class="requestinfo">Lms</h1>
+
+            <table class="request-table">
+              <tr>
+                <th class="requestcon">No</th>
+                <th class="requestcon">Request</th>
+                <th class="requestcon">Department</th>
+                <th class="requestcon">Status</th>
+                <th class="requestcon">Request Date</th>
+                <th class="requestcon">Action</th>
+              </tr>
+              <tr>
+                <td class="reqdata">01</td>
+                <td class="reqdata">Juan Dela Cruz</td>
+                <td class="reqdata">BSIT</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
+              </tr>
+              <tr>
+                <td class="reqdata">01</td>
+                <td class="reqdata">Pedro Puyat</td>
+                <td class="reqdata">BSIT</td>
+                <td class="reqdata">4102</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
+              </tr>
+              <tr>
+                <td class="reqdata">01</td>
+                <td class="reqdata">Illumi ZolD</td>
+                <td class="reqdata">BSIT</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
+              </tr>
+            </table><br>
+        </div>
+    </div>
+            <div class="requestinfo-container1">
+                <div class="requestinfo-header1">
+                    <h1 class="requestinfo1">Admission</h1>
+    
+                <table class="request-table1">
+                  <tr>
+                    <th class="requestcon">No</th>
+                    <th class="requestcon">Request</th>
+                    <th class="requestcon">Department</th>
+                    <th class="requestcon">Status</th>
+                    <th class="requestcon">Request Date</th>
+                    <th class="requestcon">Action</th>
+                  </tr>
+                  <tr>
+                    <td class="reqdata">01</td>
+                    <td class="reqdata">Juan Dela Cruz</td>
+                    <td class="reqdata">BSIT</td>
+                    <td class="reqdata">4012</td>
+                    <td class="reqdata">4012</td>
+                    <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
+                  </tr>
+                  <tr>
+                    <td class="reqdata">01</td>
+                    <td class="reqdata">Pedro Puyat</td>
+                    <td class="reqdata">BSIT</td>
+                    <td class="reqdata">4102</td>
+                    <td class="reqdata">4012</td>
+                    <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
+                  </tr>
+                  <tr>
+                    <td class="reqdata">01</td>
+                    <td class="reqdata">Illumi ZolD</td>
+                    <td class="reqdata">BSIT</td>
+                    <td class="reqdata">4012</td>
+                    <td class="reqdata">4012</td>
+                    <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
+                  </tr>
+                </table><br><br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+    <script type="text/javascript">
+// SideNav
+    function toggleNav() {
+    const sidenav = document.getElementById("sidenav");
+    const uppernav = document.getElementById("uppernav");
+
+    if (sidenav.style.left === "0px") {
+        sidenav.style.left = "-280px";
+        uppernav.style.marginLeft = "0";
+    } else {
+        sidenav.style.left = "0";
+        uppernav.style.marginLeft = "280px";
+    }
+}
+ 
+// Dropdown
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+
+var modal = document.getElementById('id01');
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+
+    </script>
+</body>
+</html>
