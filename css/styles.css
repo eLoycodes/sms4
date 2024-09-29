@@ -1589,6 +1589,79 @@ a .addStud-btn{
 
 }
 
+/*Section Management - add new & old css */
+
+.add-form{
+  background: white;
+  height: 60vh;
+  width: calc(100% - 100px);
+  margin-left: 2.5%;
+  margin-top: 8%;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(226, 225, 225);
+  position: absolute; 
+  left:0px; right:0;
+  top:50px; bottom:0px;
+  overflow: auto;
+  
+}
+ 
+ 
+/*.add-input-fields{
+  display: flex;
+  width: calc(100% / 7 - 15px);
+  width: 38%;
+  height: 250px;
+  flex-direction: column;
+} */
+
+.add-container{
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  min-height: 20vh;
+}
+
+.input-field,select{
+  width: 160px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px auto;
+  margin-left: 30%;
+  margin-top: 1%;
+}
+
+
+.add-label{
+ font-size: 15px;
+ display: inline-block;
+  margin-top: 20px;
+
+}
+
+.inputclass{
+  margin-left: -5%;
+  text-align: center;
+  padding: 10px;
+  
+}
+
+.add-button{
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: -85%;
+}
+
+.addinput-btn{
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  margin-top: 1%;
+  margin-right: 5%;
+}
 
 
 

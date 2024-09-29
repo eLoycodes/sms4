@@ -76,7 +76,7 @@
             <a class="dropdown-a" href="admin-StudentPersonalInformation.html"><span class="droplinks_name">Student Personal Information</span></a>
             <a class="dropdown-a" href="admin-DeactivateList.html"><span class="droplinks_name">Deactivate List</span></a> 
             <a class="dropdown-a" href="admin-PendingStudent.html"><span class="droplinks_name">Pending Student</span></a> 
-            <a class="dropdown-a" href="admin-RequestInformation.html"><span class="droplinks_name">Request Information</span></a> 
+            <a class="dropdown-a" href="admin-RequestInformation"><span class="droplinks_name">Request Information</span></a> 
           </div>
           </div>
 
@@ -153,164 +153,63 @@
     <div class="requestForm-frame1">
         <!-- dito ka mag simula-->
         <div class="requestForm-frame2"><br><br>
-          <span class="dashboardName"><b>Student Information</b></span><br>
-          <h1 class="dashboardAnnouncement">Deactivate List</h1>
-        </div><br>
-        <div class="deactivate-form">
-            <label class="deac-label">Search Student ID:</label>
-            <input type="text" name="deac-search" class="search-deac">
-            <button type="submit" name="submit" class="search-deac-btn">Search</button>
+          <span class="dashboardName"><b>Section Management</b></span><br>
+          <h1 class="dashboardAnnouncement">Add Student</h1>
         </div>
-        <table class="requestform-table">
-            <tr>
-              <th class="rf">Student ID</th>
-              <th class="rf">LastName</th>
-              <th class="rf">FirstName</th>
-              <th class="rf">MiddleName</th>
-              <th class="rf">Course</th>
-              <th class="rf">YearLevel</th>
-              <th class="rf">Section</th>
-              <th class="rf">AcademicYear</th>
-              <th class="rf">Status</th>
-              <th class="rf">Action</th>
-            </tr>
-            <tr class="reqf">
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>
-              <td class="req">200</td>
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>
-              <td class="req">200</td>
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>
-              <td class="req">200</td>
-              <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('id01').style.display='block'">Deactivate</button></a></td>
-            </tr>
-            <tr>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('id01').style.display='block'">Deactivate</button></a></td>
-            </tr>
-            <tr class="reqf">
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('id01').style.display='block'">Deactivate</button></a></td>
-            </tr>
-            <tr>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('id01').style.display='block'">Deactivate</button></a></td>
-            </tr>
-          </table>
-
-          <!-- Deactivated List -->
-
-          <div class="requestForm-frame3"><br><br>
-            <h1 class="dashboardAnnouncement">Deactivated List</h1>
-          </div>
-          <div class="deactivated-form">
-            <label class="deac-label">Search Student ID:</label>
-            <input type="text" name="deac-search" class="search-deac">
-            <button type="submit" name="submit" class="search-deac-btn">Search</button>
+        <div class="add-form">
+        <div class="add-container">
+            <button class="add-button" onclick="addFn()">Add New Input</button>
+            <div id="inputFields" class="inputclass">
+                <label class="add-label">Student ID
+                <input type="text" placeholder="Enter value" class="input-field"></label>
+                <label class="add-label">Course
+                <input type="text" placeholder="Enter value" class="input-field"></label>
+                <label class="add-label">Year Level
+                    <select required>
+                        <option disabled selected></option>
+                        <option>1st</option>
+                        <option>2nd</option>
+                        <option>3rd</option>
+                        <option>4th</option>
+                    </select>
+                </label>
+                <label class="add-label">Major
+                    <select required>
+                        <option disabled selected></option>
+                        <option>Information Management</option>
+                        <option>Network Administration</option>
+                        <option>Information Security</option>
+                    </select>
+                </label>
+                <label class="add-label">Semester
+                    <select required>
+                        <option disabled selected></option>
+                        <option>1st</option>
+                        <option>2nd</option>
+                    </select>
+                </label>
+                <label class="add-label">Acad&nbspYear
+                    <select required>
+                        <option disabled selected></option>
+                        <option>2023-2024</option>
+                        <option>2024-2025</option>
+                    </select>
+                </label>
+                <label class="add-label">Student&nbspType
+                    <select required>
+                        <option disabled selected></option>
+                        <option>Freshmen</option>
+                        <option>Transferee</option>
+                        <option>Octoberian</option>
+                    </select>
+                </label>
+                
+                       
+            </div>
+                
+            <button type="submit" name="submit" class="addinput-btn">Submit</button>
         </div>
-          <table class="requestform-table1">
-              <tr>
-                <th class="rf">Student ID</th>
-                <th class="rf">Last Name</th>
-                <th class="rf">First Name</th>
-                <th class="rf">Middle Name</th>
-                <th class="rf">Course</th>
-                <th class="rf">Year Level</th>
-                <th class="rf">Section</th>
-                <th class="rf">Academic Year</th>
-                <th class="rf">Status</th>
-              </tr>
-              <tr class="reqf">
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td> 
-              </tr>
-              <tr>
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td>
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td>
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td>   
-              </tr>
-              <tr class="reqf">
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td>
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td>
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td> 
-              </tr>
-              <tr>
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td>
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td>
-                  <td class="req">1</td>
-                  <td class="req">Evaluation Grade</td>
-                  <td class="req">200</td>
-              </tr>
-            </table>
-
-            
-
-          
-          <div id="id01" class="modal">
-            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
-            <form class="modal-content" action="/action_page.php">
-              <div class="deactivate-container">
-                <h1>Deactivate Account</h1>
-                <p>Are you sure you want to deactivate this account?</p>
-          
-                <div class="clearfix">
-                  <button type="button" class="cancelbtn">Cancel</button>
-                  <button type="button" class="deletebtn">Delete</button>
-                </div>
-              </div>
-            </form>
-          </div>
-          
-        
+    </div>
     </div>
 </div>
 
@@ -355,6 +254,59 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+    //add new and old student
+    function addFn() {
+            const divEle = document.getElementById("inputFields");
+            divEle.innerHTML += `
+        <div>
+           <label class="add-label">Student ID
+                <input type="text" placeholder="Enter value" class="input-field"></label>
+                <label class="add-label">Course
+                <input type="text" placeholder="Enter value" class="input-field"></label>
+                <label class="add-label">Year Level
+                    <select required>
+                        <option disabled selected></option>
+                        <option>1st</option>
+                        <option>2nd</option>
+                        <option>3rd</option>
+                        <option>4th</option>
+                    </select>
+                </label>
+                <label class="add-label">Major
+                    <select required>
+                        <option disabled selected></option>
+                        <option>Information Management</option>
+                        <option>Network Administration</option>
+                        <option>Information Security</option>
+                    </select>
+                </label>
+                <label class="add-label">Semester
+                    <select required>
+                        <option disabled selected></option>
+                        <option>1st</option>
+                        <option>2nd</option>
+                    </select>
+                </label>
+                <label class="add-label">Acad&nbspYear
+                    <select required>
+                        <option disabled selected></option>
+                        <option>2023-2024</option>
+                        <option>2024-2025</option>
+                    </select>
+                </label>
+                <label class="add-label">Student&nbspType
+                    <select required>
+                        <option disabled selected></option>
+                        <option>Freshmen</option>
+                        <option>Transferee</option>
+                        <option>Octoberian</option>
+                    </select>
+                </label>
+         
+        </div>
+      `;
+    }
 
 
 
