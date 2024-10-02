@@ -219,69 +219,127 @@
         <!-- dito ka mag simula-->
         <div class="requestForm-frame2"><br><br>
           <span class="dashboardName"><b>Section Management</b></span><br>
-          <h1 class="dashboardAnnouncement">Add Student</h1>
+          <h1 class="dashboardAnnouncement">Edit Transferee</h1>
         </div>
-        <div class="add-form">
-        <div class="add-container">
-            <button class="add-button" onclick="addFn()">Add New Input</button>
-            <div id="inputFields" class="inputclass">
-                <label class="add-label">Student ID
-                <input type="text" placeholder="Enter value" class="input-field"></label>
-                <label class="add-label">Course
-                  <select required>
-                      <option disabled selected></option>
-                      <option>BsIT</option>
-                      <option>BsCrim</option>
-                      <option>BsP</option>
-                      <option>BsCpE</option>
-                  </select>
-              </label>
-                <label class="add-label">Year Level
-                    <select required>
-                        <option disabled selected></option>
-                        <option>1st</option>
-                        <option>2nd</option>
-                        <option>3rd</option>
-                        <option>4th</option>
-                    </select>
-                </label>
-                <label class="add-label">Major
-                    <select required>
-                        <option></option>
-                        <option>Information Management</option>
-                        <option>Network Administration</option>
-                        <option>Information Security</option>
-                    </select>
-                </label>
-                <label class="add-label">Semester
-                    <select required>
-                        <option disabled selected></option>
-                        <option>1st</option>
-                        <option>2nd</option>
-                    </select>
-                </label>
-                <label class="add-label">Acad&nbspYear
-                    <select required>
-                        <option disabled selected></option>
-                        <option>2023-2024</option>
-                        <option>2024-2025</option>
-                    </select>
-                </label>
-                <label class="add-label">Student&nbspType
-                    <select required>
-                        <option disabled selected></option>
-                        <option>Freshmen</option>
-                        <option>Transferee</option>
-                        <option>Octoberian</option>
-                    </select>
-                </label>
-                
-                       
-            </div>
-                
-            <button type="submit" name="submit" class="addinput-btn">Submit</button>
+
+        <div class="transferee-form">
+            <label class="deac-label">Search Student ID:</label>
+            <input type="text" name="deac-search" class="search-deac">
+            <button type="submit" name="submit" class="search-deac-btn">Search</button>
         </div>
-    </div>
+        <table class="requestform-table">
+            <tr>
+              <th class="rf">Student ID</th>
+              <th class="rf">Name</th>
+              <th class="rf">Course</th>
+              <th class="rf">Year Level</th>
+              <th class="rf">Section</th>
+              <th class="rf">Academic Year</th>
+              <th class="rf">Status</th>
+            </tr>
+            <tr class="reqf">
+              <td class="req">1</td>
+              <td class="req">Evaluation Grade</td>   
+              <td class="req">Evaluation Grade</td>
+              <td class="req">200</td>
+              <td class="req">1</td>
+              <td class="req">Evaluation Grade</td>
+              <td class="req">200</td>
+           
+            </tr>
+            <tr>
+                <td class="req">1</td>
+                <td class="req">Evaluation Grade</td>    
+                <td class="req">Evaluation Grade</td>
+                <td class="req">200</td>
+                <td class="req">1</td>
+                <td class="req">Evaluation Grade</td>
+                <td class="req">200</td>
+                
+            </tr>
+            <tr class="reqf">
+                <td class="req">1</td>
+                <td class="req">Evaluation Grade</td>    
+                <td class="req">Evaluation Grade</td>
+                <td class="req">200</td>
+                <td class="req">1</td>
+                <td class="req">Evaluation Grade</td>
+                <td class="req">200</td>
+            </tr>
+            <tr>
+                <td class="req">1</td>
+                <td class="req">Evaluation Grade</td>
+                <td class="req">Evaluation Grade</td>
+                <td class="req">200</td>
+                <td class="req">1</td>
+                <td class="req">Evaluation Grade</td>
+                <td class="req">200</td>
+                
+            </tr>
+          </table>
+
+         
+          <table class="transferee-table">
+            <tr>
+                <td class="trans-td"><h3 class="trans-heading">Select Subject that will credited</h3></td>
+            </tr>
+            <tr>
+                <th class="trans-th">Search Subject</th>
+                <th class="trans-th">Subject Code</th>
+                <th class="trans-th">Subject Name</th>
+                <th class="trans-th">Action</th>
+            </tr>
+            <tr>
+                <td class="trans-td">
+            <input type="text" name="deac-search" class="search-deac">
+            <button type="submit" name="submit" class="search-deac-btn">Search</button>
+                </td>
+                
+                <td class="trans-td">DB1</td>
+                <td class="trans-td">Database 1</td>
+                <td class="req"><a href="#"><button class="reqform-btn">credit</button></a></td>
+            </tr>
+            <tr class="trans-tr">
+                <td class="trans-td">-</td>  
+                <td class="trans-td">DB1</td>
+                <td class="trans-td">Database 1</td>
+                
+            </tr>
+          </table>
+
+          <table class="retake-table">
+            <tr>
+                <td class="trans-td"><h3 class="trans-heading">Select Subject that will retake</h3></td>
+            </tr>
+            <tr>
+                <th class="trans-th">Search Subject</th>
+                <th class="trans-th">Subject Code</th>
+                <th class="trans-th">Subject Name</th>
+                <th class="trans-th">Semester</th>
+                <th class="trans-th">Action</th>
+            </tr>
+            <tr>
+                <td class="trans-td">
+            <input type="text" name="deac-search" class="search-deac">
+            <button type="submit" name="submit" class="search-deac-btn">Search</button>
+                </td>
+                
+                <td class="trans-td">DB1</td>
+                <td class="trans-td">Database 1</td>
+                <td class="trans-td">1st</td>
+                <td class="req"><a href="#"><button class="reqform-btn">retake</button></a></td>
+            </tr>
+            <tr class="trans-tr">
+                <td class="trans-td">-</td>  
+                <td class="trans-td">DB1</td>
+                <td class="trans-td">Database 1</td>
+                <td class="trans-td">1st</td>
+                
+            </tr>
+          </table>
+
+
+       
     </div>
 </div>
 
@@ -326,69 +384,6 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-
-    //add new and old student
-    function addFn() {
-            const divEle = document.getElementById("inputFields");
-            divEle.innerHTML += `
-        <div>
-           <label class="add-label">Student ID
-                <input type="text" placeholder="Enter value" class="input-field"></label>
-                <label class="add-label">Course
-                  <select required>
-                      <option disabled selected></option>
-                      <option>BsIT</option>
-                      <option>BsCrim</option>
-                      <option>BsP</option>
-                      <option>BsCpE</option>
-                  </select>
-              </label>
-                <label class="add-label">Year Level
-                    <select required>
-                        <option disabled selected></option>
-                        <option>1st</option>
-                        <option>2nd</option>
-                        <option>3rd</option>
-                        <option>4th</option>
-                    </select>
-                </label>
-                <label class="add-label">Major
-                    <select required>
-                        <option></option>
-                        <option>Information Management</option>
-                        <option>Network Administration</option>
-                        <option>Information Security</option>
-                    </select>
-                </label>
-                <label class="add-label">Semester
-                    <select required>
-                        <option disabled selected></option>
-                        <option>1st</option>
-                        <option>2nd</option>
-                    </select>
-                </label>
-                <label class="add-label">Acad&nbspYear
-                    <select required>
-                        <option disabled selected></option>
-                        <option>2023-2024</option>
-                        <option>2024-2025</option>
-                    </select>
-                </label>
-                <label class="add-label">Student&nbspType
-                    <select required>
-                        <option disabled selected></option>
-                        <option>Freshmen</option>
-                        <option>Transferee</option>
-                        <option>Octoberian</option>
-                    </select>
-                </label>
-         
-        </div>
-      `;
-    }
-
-
-
 
     </script>
 </body>

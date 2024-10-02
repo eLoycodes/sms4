@@ -321,20 +321,17 @@ tr,td{
 }
 
  .rpcon-btn{
-  width: 65%;
-  background-color: rgb(78, 78, 78);
-  color: white;
+  width: 50%;
+  background-color: white;
+  color: rgb(19, 18, 18);
   font-size: 18px;
   font-family: 'Times New Roman', Times, serif;
   border-radius: 5px;
+  cursor: pointer;
   
 }
 
-.rpcon-btn:hover{
-  background-color: skyblue;
-  color: blue;
 
-}
 
 /*############################*/
 
@@ -734,7 +731,7 @@ tr,td{
 }
 form .user-details .input-box{
   margin-bottom: 15px;
-  width: calc(100% / 2 - 40px);
+  width: calc(100% / 3 - 40px);
   display: flex;
   flex-direction: column;
 }
@@ -1666,9 +1663,286 @@ a .addStud-btn{
   margin-right: 5%;
 }
 
-
-
 /*#### new & old css ends here */
+
+
+/* Section Management - Add Transferee, edit, octoberian css  */
+
+.requestForm-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: calc(100% - 100px);
+  justify-content: center;
+  align-items: center;
+ 
+ }
+
+ .requestForm-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 15vh;
+  justify-content: center;
+  align-items: center;
+  
+ }
+
+ .transferee-form{
+  position: absolute;
+  left:18px; right:0;
+  top:200px; bottom:0px;
+  background-color: rgb(242, 247, 250);
+  height: 50px;
+
+ }
+
+ .deactivate-form .deac-label{
+  font-weight: 600;
+  margin-left: 2%;
+ }
+
+ .deactivated-form .deac-label{
+  font-weight: 600;
+  margin-left: 2%;
+ }
+
+ .requestform-table{
+  border-collapse: collapse;
+  width: 98%;
+  position: absolute; 
+  left:20px; right:0;
+  top:250px; bottom:0px;
+  border: 2px solid black;
+  table-layout: auto;
+  overflow: auto;
+}
+
+.transferee-table{
+  border-collapse: collapse;
+  width: 98%;
+  position: absolute; 
+  left:20px; right:0;
+  top:500px; bottom:0px;
+  border: 2px solid black;
+}
+
+.trans-th, .trans-td{
+  text-align: center;
+  padding: 8px;
+}
+
+.trans-tr:nth-child(even){background-color: #f2f2f2}
+
+.trans-th{
+  background-color: #033683;
+  color: white;
+}
+
+.reqform-btn{
+  width: 70%;
+  height: 35px;
+ border-radius: 5px;
+}
+
+.reqform-btn:hover{
+  background-color: skyblue;
+  color: red;
+}
+
+.trans-heading{
+  float: left;
+  margin-left: 4%;
+}
+
+.selected{
+  height: 40px;
+  margin-left: -2%;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.retake-table{
+  border-collapse: collapse;
+  width: 98%;
+  position: absolute; 
+  left:20px; right:0;
+  top:770px; bottom:0px;
+  border: 2px solid black;
+}
+
+/* ##### Add Transferee, edit, octoberian end css #####*/
+
+/* Section Management - Section List css */
+
+.sectionlist-container{
+  min-height: 350px;
+  max-width: 80%;
+  margin: 70px auto 0px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  padding: 0px 40px 40px 0px;
+  margin-top: -1%;
+  margin-left: 6%; 
+}
+.sectionlistinfo-header{
+  height: 80px;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 2px solid #363636;
+  margin-left: 2%;  
+}
+ 
+.requestinfo{
+  font-size: 22px;
+  font-weight: 600;
+  color: #363636; 
+}
+
+.requestcon{
+  color: #363636;
+}
+
+.request-table{
+  width: 90%;
+  height: 50%;
+  margin-top: 23%;
+  overflow: auto;
+}
+
+.reqdata{
+  border-collapse: collapse;
+  height: 40px;
+  text-align: center; 
+}
+
+ .reqdata-btn{
+  width: 50%;
+  background-color: #dbdbdb;
+  color: black;
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 5px;
+}
+
+.reqdata-btns{
+  width: 50%;
+  background-color: #dbdbdb;
+  color: black;
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* container 2 for Section List */
+
+.sectionlist-container1{
+  min-height: 350px;
+  max-width: 80%;
+  margin: 70px auto 0px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  padding: 0px 40px 40px 0px;
+  margin-top: 2%;
+  margin-left: 6%; 
+}
+.sectionlistinfo-header1{
+  height: 80px;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 2px solid #363636;
+  margin-left: 2%;  
+}
+ 
+.requestinfo1{
+  font-size: 22px;
+  font-weight: 600;
+  color: #363636; 
+}
+
+/* container 3 for Section List */
+
+.sectionlist-container2{
+  min-height: 350px;
+  max-width: 80%;
+  margin: 70px auto 0px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  padding: 0px 40px 40px 0px;
+  margin-top: 2%;
+  margin-left: 6%; 
+}
+.sectionlistinfo-header2{
+  height: 80px;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 2px solid #363636;
+  margin-left: 2%;  
+}
+ 
+.requestinfo2{
+  font-size: 22px;
+  font-weight: 600;
+  color: #363636; 
+}
+
+/* container 4 for Section List */
+
+.sectionlist-container3{
+  min-height: 350px;
+  max-width: 80%;
+  margin: 70px auto 0px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  padding: 0px 40px 40px 0px;
+  margin-top: 2%;
+  margin-left: 6%; 
+}
+.sectionlistinfo-header3{
+  height: 80px;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 2px solid #363636;
+  margin-left: 2%;  
+}
+ 
+.requestinfo3{
+  font-size: 22px;
+  font-weight: 600;
+  color: #363636; 
+}
+
+
+/* ##### section list end css #####*/
+
+/* Section Management - Master List css*/
+
+.masterlist-table{
+  border-collapse: collapse;
+  width: 98%;
+  position: absolute; 
+  left:20px; right:0;
+  top:252px; bottom:0px;
+  border: 2px solid black;
+}
+
+/*#### Master List end css ####*/
+
 
 /* Document Manangement Dropdown */
 
