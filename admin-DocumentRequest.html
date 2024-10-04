@@ -10,70 +10,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 </head>
-<style>
-  .add-form{
-  background: white;
-  height: 60vh;
-  width: calc(100% - 100px);
-  margin-left: 2.5%;
-  margin-top: 8%;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgb(226, 225, 225);
-  position: absolute; 
-  left:0px; right:0;
-  top:50px; bottom:0px;
-  overflow: auto;
-  
-}
-
-.add-container{
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  min-height: 20vh;
-}
-
-.input-field,select{
-  width: 160px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 10px auto;
-  margin-left: 30%;
-  margin-top: 1%;
-}
-
-
-.add-label{
- font-size: 15px;
- display: inline-block;
-  margin-top: 20px;
-
-}
-
-.inputclass{
-  margin-left: -5%;
-  text-align: center;
-  padding: 10px;
-  
-}
-
-.add-button{
-  padding: 8px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: -85%;
-}
-
-.addinput-btn{
-  padding: 8px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  float: right;
-  margin-top: 1%;
-  margin-right: 5%;
-}
-</style>
 <body>
     <div id="sidenav" class="sidenav">
         <img src="image/bcplogo-mini.png" alt="img" class="bcplogo">
@@ -123,7 +59,6 @@
             <a class="dropdown-a" href="#"><span class="droplinks_name">Account</span></a>
             <a class="dropdown-a" href="#"><span class="droplinks_name">Security</span></a>
             <a class="dropdown-a" href="#"><span class="droplinks_name">Additional Information</span></a>
-            <a class="dropdown-a" href="#"><span class="droplinks_name">Log Out</span></a>
           </div>
           </div>
 
@@ -166,7 +101,7 @@
           <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-          <a class="dropdown-a" href="#"><span class="droplinks_name">Document Request</span></a>
+          <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Request</span></a>
           <a class="dropdown-a" href="#"><span class="droplinks_name">Document Submit</span></a>
           <a class="dropdown-a" href="#"><span class="droplinks_name">Pay Later</span></a>
           <a class="dropdown-a" href="#"><span class="droplinks_name">release history</span></a>    
@@ -218,96 +153,92 @@
     <div class="requestForm-frame1">
         <!-- dito ka mag simula-->
         <div class="requestForm-frame2"><br><br>
-          <span class="dashboardName"><b>Section Management</b></span><br>
-          <h1 class="dashboardAnnouncement">Edit Octoberian</h1>
-        </div>
+          <span class="dashboardName"><b>Document Management</b></span><br>
+          <h1 class="dashboardAnnouncement">Document Request</h1>
+        </div><br>
 
-        <div class="transferee-form">
-            <label class="deac-label">Search Student ID:</label>
-            <input type="text" name="deac-search" class="search-deac">
-            <button type="submit" name="submit" class="search-deac-btn">Search</button>
-        </div>
-        <table class="requestform-table">
-            <tr>
-              <th class="rf">Student&nbspID</th>
-              <th class="rf">Name</th>
-              <th class="rf">Course</th>
-              <th class="rf">Year&nbspLevel</th>
-              <th class="rf">Academic&nbspYear</th>
-              <th class="rf">Student&nbspType</th>
-            </tr>
-            <tr class="reqf">
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>   
-              <td class="req">Evaluation Grade</td>
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>
-              <td class="req">200</td>
-           
-            </tr>
-            <tr>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>    
-                <td class="req">Evaluation Grade</td>               
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                
-            </tr>
-            <tr class="reqf">
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>    
-                <td class="req">Evaluation Grade</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-            </tr>
-            <tr>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">Evaluation Grade</td>              
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                
-            </tr>
-          </table>
+        <div class="documentrequest-container">
+            <div class="requestinfo-header">
+                <h1 class="requestinfo">Document&nbspDetails</h1>
 
-         
-          <table class="transferee-table">
-            <tr>
-                <td class="trans-td"><h3 class="trans-heading">Select Subject that will take</h3></td>
-            </tr>
-            <tr>
-                <th class="trans-th">Search Subject</th>
-                <th class="trans-th">Subject Code</th>
-                <th class="trans-th">Subject Name</th>
-                <th class="trans-th">Semester</th>
-                <th class="trans-th">Action</th>
-            </tr>
-            <tr>
-                <td class="trans-td">
-            <input type="text" name="deac-search" class="search-deac">
-            <button type="submit" name="submit" class="search-deac-btn">Search</button>
-                </td>
-                
-                <td class="trans-td">DB1</td>
-                <td class="trans-td">Database 1</td>
-                <td class="trans-td">1st</td>
-                <td class="req"><a href="#"><button class="reqform-btn">Add</button></a></td>
-            </tr>
-            <tr class="trans-tr">
-                <td class="trans-td">-</td>  
-                <td class="trans-td">DB1</td>
-                <td class="trans-td">Database 1</td>
-                <td class="trans-td">1st</td>
-                
-            </tr>
-          </table>  
+            <table class="documentrequest-table">
+              <tr>
+                <th class="requestcon">Document ID</th>      
+                <th class="requestcon">Document Name</th>
+                <th class="requestcon">Price&nbsp</th>
+              </tr>
+              <tr>
+                <td class="reqdata">GRAD FORM</td>
+                <td class="reqdata">Graduation Form</td>
+                <td class="reqdata">100</td>
+              </tr>
+              <tr>
+                <td class="reqdata">COG</td>
+                <td class="reqdata">Certification of Graduation</td>
+                <td class="reqdata">200</td>
+              </tr>
+              <tr>
+                <td class="reqdata">Evaluation</td>
+                <td class="reqdata">Evaluation of Grade</td>
+                <td class="reqdata">100</td>
+              </tr>
+              <tr>
+                <td class="reqdata">DIPLOMA</td>
+                <td class="reqdata">Diploma</td>
+                <td class="reqdata">500</td>
+              </tr>
+              <tr>
+                <td class="reqdata">GWA</td>
+                <td class="reqdata">General Weighted Average</td>
+                <td class="reqdata">200</td>
+              </tr>
+              <tr>
+                <td class="reqdata">NSTP CERT</td>
+                <td class="reqdata">NSTP Certificate</td>
+                <td class="reqdata">250</td>
+              </tr>
+              <tr>
+                <td class="reqdata">HD</td>
+                <td class="reqdata">Highschool Diploma</td>
+                <td class="reqdata">200</td>
+              </tr>
+             
+              
+            </table><br>
+        </div>
+    </div>
+
+      <!-- Transferee Tracking -->
+
+      <div class="documentrequestForm-frame"><br><br>
+        <h1 class="dashboardAnnouncement">Request Document</h1>
+     
+      <div class="documentrequest-search">
+        <label class="deac-label">Search Student ID:</label>
+        <input type="text" name="deac-search" class="search-deac">
+        <button type="submit" name="submit" class="search-deac-btn">Search</button>
+      </div>
+      <table class="documentrequestForm-table">
+          <tr>
+            <th class="rf">Student ID</th>
+            <th class="rf">Last Name</th>
+            <th class="rf">First Name</th>
+            <th class="rf">Middle Name</th>
+            <th class="rf">Course</th>
+            <th class="rf">Action</th>
+          </tr>
+          <tr class="reqf">
+            <td class="req">1</td>
+            <td class="req">Evaluation Grade</td>
+            <td class="req">200</td>
+            <td class="req">1</td>
+            <td class="req">Evaluation Grade</td>
+            <td class="reqdata"><button class="reqdata-btns">Submit</button></td>
+          </tr>
+        </table>
+        </div>
     </div>
 </div>
-
-
 
 
     <script type="text/javascript">
@@ -348,6 +279,9 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+
+
 
     </script>
 </body>

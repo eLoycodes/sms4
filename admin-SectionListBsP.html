@@ -219,93 +219,208 @@
         <!-- dito ka mag simula-->
         <div class="requestForm-frame2"><br><br>
           <span class="dashboardName"><b>Section Management</b></span><br>
-          <h1 class="dashboardAnnouncement">Edit Octoberian</h1>
+          <h1 class="dashboardAnnouncement">Section List</h1>
         </div>
-
-        <div class="transferee-form">
-            <label class="deac-label">Search Student ID:</label>
-            <input type="text" name="deac-search" class="search-deac">
-            <button type="submit" name="submit" class="search-deac-btn">Search</button>
+        <div class="filtercourse-frame">
+          <h6 class="filtername">BS - Psychology</h6>
+          <h1 class="dashboardAnnouncement" style="font-size: 18px;">Filter Course
+            <select required onchange="location = this.value;" class="filterbox">
+                <option disabled selected></option>
+                <option value=admin-SectionList.html>BsIT</option>
+                <option value=admin-SectionListBsCrim.html>BsCrim</option>
+                <option value=admin-SectionListBsP.html>BsP</option>
+                <option value=admin-SectionListBsCpE.html>BsCpE</option>
+            </select>
+          </h1>
         </div>
-        <table class="requestform-table">
-            <tr>
-              <th class="rf">Student&nbspID</th>
-              <th class="rf">Name</th>
-              <th class="rf">Course</th>
-              <th class="rf">Year&nbspLevel</th>
-              <th class="rf">Academic&nbspYear</th>
-              <th class="rf">Student&nbspType</th>
-            </tr>
-            <tr class="reqf">
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>   
-              <td class="req">Evaluation Grade</td>
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>
-              <td class="req">200</td>
-           
-            </tr>
-            <tr>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>    
-                <td class="req">Evaluation Grade</td>               
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                
-            </tr>
-            <tr class="reqf">
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>    
-                <td class="req">Evaluation Grade</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-            </tr>
-            <tr>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">Evaluation Grade</td>              
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                
-            </tr>
-          </table>
+        <div class="sectionlist-container">
+            <div class="sectionlistinfo-header">
+                <h1 class="requestinfo">1st Year</h1>
 
-         
-          <table class="transferee-table">
-            <tr>
-                <td class="trans-td"><h3 class="trans-heading">Select Subject that will take</h3></td>
-            </tr>
-            <tr>
-                <th class="trans-th">Search Subject</th>
-                <th class="trans-th">Subject Code</th>
-                <th class="trans-th">Subject Name</th>
-                <th class="trans-th">Semester</th>
-                <th class="trans-th">Action</th>
-            </tr>
-            <tr>
-                <td class="trans-td">
-            <input type="text" name="deac-search" class="search-deac">
-            <button type="submit" name="submit" class="search-deac-btn">Search</button>
-                </td>
-                
-                <td class="trans-td">DB1</td>
-                <td class="trans-td">Database 1</td>
-                <td class="trans-td">1st</td>
-                <td class="req"><a href="#"><button class="reqform-btn">Add</button></a></td>
-            </tr>
-            <tr class="trans-tr">
-                <td class="trans-td">-</td>  
-                <td class="trans-td">DB1</td>
-                <td class="trans-td">Database 1</td>
-                <td class="trans-td">1st</td>
-                
-            </tr>
-          </table>  
+            <table class="request-table">
+              <tr>
+                <th class="requestcon">Course</th>
+                <th class="requestcon">Year&nbspLevel</th>
+                <th class="requestcon">Section</th>
+                <th class="requestcon">Semester</th>
+                <th class="requestcon">Academic&nbspYear</th>
+                <th class="requestcon">Total</th>
+                <th class="requestcon">Action</th>
+              </tr>
+              <tr>
+                <td class="reqdata">01</td>
+                <td class="reqdata">Juan Dela Cruz</td>
+                <td class="reqdata">BsP</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata">01</td>
+                <td class="reqdata"><button class="reqdata-btns">View</button></td>
+              </tr>
+              <tr>
+                <td class="reqdata">01</td>
+                <td class="reqdata">Pedro Puyat</td>
+                <td class="reqdata">BsP</td>
+                <td class="reqdata">4102</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata">01</td>
+                <td class="reqdata"><button class="reqdata-btns">View</button></td>
+              </tr>
+              <tr>
+                <td class="reqdata">01</td>
+                <td class="reqdata">Illumi ZolD</td>
+                <td class="reqdata">BsP</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata">4012</td>
+                <td class="reqdata">01</td>
+                <td class="reqdata"><button class="reqdata-btns">View</button></td>
+              </tr>
+            </table><br>
+        </div>
+    </div>
+
+    <!--Section List Container 2-->
+
+    <div class="sectionlist-container1">
+        <div class="sectionlistinfo-header1">
+            <h1 class="requestinfo1">2nd Year</h1>
+
+        <table class="request-table">
+          <tr>
+            <th class="requestcon">Course</th>
+            <th class="requestcon">Year&nbspLevel</th>
+            <th class="requestcon">Section</th>
+            <th class="requestcon">Semester</th>
+            <th class="requestcon">Academic&nbspYear</th>
+            <th class="requestcon">Total</th>
+            <th class="requestcon">Action</th>
+          </tr>
+          <tr>
+            <td class="reqdata">01</td>
+            <td class="reqdata">Juan Dela Cruz</td>
+            <td class="reqdata">BSIT</td>
+            <td class="reqdata">4012</td>
+            <td class="reqdata">4012</td>
+            <td class="reqdata">01</td>
+            <td class="reqdata"><button class="reqdata-btns">View</button></td>
+          </tr>
+          <tr>
+            <td class="reqdata">01</td>
+            <td class="reqdata">Pedro Puyat</td>
+            <td class="reqdata">BSIT</td>
+            <td class="reqdata">4102</td>
+            <td class="reqdata">4012</td>
+            <td class="reqdata">01</td>
+            <td class="reqdata"><button class="reqdata-btns">View</button></td>
+          </tr>
+          <tr>
+            <td class="reqdata">01</td>
+            <td class="reqdata">Illumi ZolD</td>
+            <td class="reqdata">BSIT</td>
+            <td class="reqdata">4012</td>
+            <td class="reqdata">4012</td>
+            <td class="reqdata">01</td>
+            <td class="reqdata"><button class="reqdata-btns">View</button></td>
+          </tr>
+        </table><br>
     </div>
 </div>
+
+ <!--Section List Container 3-->
+
+ <div class="sectionlist-container2">
+    <div class="sectionlistinfo-header2">
+        <h1 class="requestinfo2">3rd Year</h1>
+
+    <table class="request-table">
+      <tr>
+        <th class="requestcon">Course</th>
+        <th class="requestcon">Year&nbspLevel</th>
+        <th class="requestcon">Section</th>
+        <th class="requestcon">Semester</th>
+        <th class="requestcon">Academic&nbspYear</th>
+        <th class="requestcon">Total</th>
+        <th class="requestcon">Action</th>
+      </tr>
+      <tr>
+        <td class="reqdata">01</td>
+        <td class="reqdata">Juan Dela Cruz</td>
+        <td class="reqdata">BSIT</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">01</td>
+        <td class="reqdata"><button class="reqdata-btns">View</button></td>
+      </tr>
+      <tr>
+        <td class="reqdata">01</td>
+        <td class="reqdata">Pedro Puyat</td>
+        <td class="reqdata">BSIT</td>
+        <td class="reqdata">4102</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">01</td>
+        <td class="reqdata"><button class="reqdata-btns">View</button></td>
+      </tr>
+      <tr>
+        <td class="reqdata">01</td>
+        <td class="reqdata">Illumi ZolD</td>
+        <td class="reqdata">BSIT</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">01</td>
+        <td class="reqdata"><button class="reqdata-btns">View</button></td>
+      </tr>
+    </table><br>
+</div>
+</div>
+
+ <!--Section List Container 4-->
+
+ <div class="sectionlist-container3">
+    <div class="sectionlistinfo-header3">
+        <h1 class="requestinfo3">4th Year</h1>
+
+    <table class="request-table">
+      <tr>
+        <th class="requestcon">Course</th>
+        <th class="requestcon">Year&nbspLevel</th>
+        <th class="requestcon">Section</th>
+        <th class="requestcon">Semester</th>
+        <th class="requestcon">Academic&nbspYear</th>
+        <th class="requestcon">Total</th>
+        <th class="requestcon">Action</th>
+      </tr>
+      <tr>
+        <td class="reqdata">01</td>
+        <td class="reqdata">Juan Dela Cruz</td>
+        <td class="reqdata">BSIT</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">01</td>
+        <td class="reqdata"><button class="reqdata-btns">View</button></td>
+      </tr>
+      <tr>
+        <td class="reqdata">01</td>
+        <td class="reqdata">Pedro Puyat</td>
+        <td class="reqdata">BSIT</td>
+        <td class="reqdata">4102</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">01</td>
+        <td class="reqdata"><button class="reqdata-btns">View</button></td>
+      </tr>
+      <tr>
+        <td class="reqdata">01</td>
+        <td class="reqdata">Illumi ZolD</td>
+        <td class="reqdata">BSIT</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">4012</td>
+        <td class="reqdata">01</td>
+        <td class="reqdata"><button class="reqdata-btns">View</button></td>
+      </tr>
+    </table>
+</div>
+</div>
+        
+    </div>
+</div><br>
 
 
 

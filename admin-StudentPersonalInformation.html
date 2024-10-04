@@ -87,9 +87,9 @@
             </button>
             <div class="dropdown-container">
               <a class="dropdown-a" href="admin-AddStudent.html"><span class="droplinks_name">Add Student</span></a>
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Section List</span></a>
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Master List</span></a> 
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Manage Class</span></a> 
+              <a class="dropdown-a" href="admin-SectionList.html"><span class="droplinks_name">Section List</span></a>
+              <a class="dropdown-a" href="admin-MasterList.html"><span class="droplinks_name">Master List</span></a> 
+              <a class="dropdown-a" href="admin-ManageClass.html"><span class="droplinks_name">Manage Class</span></a> 
             </div>
             </div><br><br>
 
@@ -157,6 +157,100 @@
                 <h1 class="dashboardAnnouncement">Student Personal Information</h1>
               </div>
 
+              <div class="frames">
+                <form>
+                  <div class="form one">
+                    <div class="details personal">
+                      <div class="admission1">
+                        <label class="SSI">Search Student ID:</label>
+                        <input type="text" name="Search" class="search-txt">
+                        <button type="submit" name="submit" class="search-btn" style=" margin-left: -52%;">Search</button><br><br><br>
+                      </div>
+                    <div class="fields1">
+                      <div class="input-field1">
+                        <label>Student ID *</label>
+                          <input type="text" name="studnumber" placeholder="" required>
+                        </div>
+                        <div class="input-field1">
+                          <label>First Name *</label>
+                            <input type="text" name="fname" placeholder="" required>
+                      </div>
+                      <div class="input-field1">
+                        <label>Middle Name *</label>
+                          <input type="text" name="mname" placeholder="" required>
+                      </div>
+                      <div class="input-field1">
+                        <label>Last Name *</label>
+                          <input type="text" name="lname" placeholder="" required>
+                        </div>
+                        <div class="input-field1">
+                          <label>Suffix Name *</label>
+                            <input type="text" name="sname" placeholder="" required>
+                        </div>
+                        <div class="input-field1">
+                          <label>Email *</label>
+                          <input type="text" name="email" placeholder="" required>
+                        </div>
+                        <div class="input-field1">
+                          <label>Gender *</label>
+                            <input type="text" name="gender" placeholder="" required>
+                        </div>
+                        <div class="input-field1">
+                          <label>Date of Birth *</label>
+                            <input type="date" name="dob" placeholder="" required>
+                        </div>
+                        <div class="input-field1">
+                          <label>Age *</label>
+                          <input type="text" name="age" placeholder="" required>
+                        </div>
+                        <div class="input-field1">
+                          <label>Contact Number *</label>
+                          <input type="number" placeholder="" required>
+                        </div>
+                      </div>
+                    </div>
+                      <button class="nextbutton">
+                        <span class="buttonText">Next</span>     
+                      </button> 
+                    </div>
+
+                    <div class="form second">
+                        <div class="details address">
+                            <div class="fields1">
+                                <div class="input-field1">
+                                    <label>Address # *</label>
+                                    <input type="text" placeholder="" required>
+                                </div>
+        
+                                <div class="input-field1">
+                                    <label>Barangay *</label>
+                                    <input type="text" placeholder="" required>
+                                </div>
+        
+                                <div class="input-field1">
+                                    <label>Municipality / City *</label>
+                                    <input type="text" placeholder="" required>
+                                </div>
+                            </div>
+                        </div><br><br><br><br><br><br><br>
+                        <div class="buttons">  
+                            <div class="backbutton">
+                                <span class="buttonText">Back</span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+
+
+
+
+
+
+
+          <!--  
           <form class="studentInformation-frame1"><br>
             <label class="SSI">Search Student ID:</label>
             <input type="text" name="Search" class="search-txt">
@@ -213,7 +307,7 @@
                 </div>
               </div>      
         </form>
-        </div>
+        </div>-->  
   
 
 
@@ -255,6 +349,24 @@ for (i = 0; i < dropdown.length; i++) {
     }
   });
 }
+
+// profile
+const form = document.querySelector("form"),
+        nextbutton = form.querySelector(".nextbutton"),
+        backbutton = form.querySelector(".backbutton"),
+        allInput = form.querySelectorAll(".one input");
+        nextbutton.addEventListener("click", ()=> {
+            allInput.forEach(input => {
+                if(input.value != ""){
+                    form.classList.add('secActive');
+                }else{
+                    form.classList.remove('secActive');
+                }
+            })
+        })
+
+        backbutton.addEventListener("click", () => form.classList.remove('secActive'));
+   
 
 
     </script>

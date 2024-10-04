@@ -152,9 +152,9 @@
             </button>
             <div class="dropdown-container">
               <a class="dropdown-a" href="admin-AddStudent.html"><span class="droplinks_name">Add Student</span></a>
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Section List</span></a>
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Master List</span></a> 
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Manage Class</span></a> 
+              <a class="dropdown-a" href="admin-SectionList.html"><span class="droplinks_name">Section List</span></a>
+              <a class="dropdown-a" href="admin-MasterList.html"><span class="droplinks_name">Master List</span></a> 
+              <a class="dropdown-a" href="admin-ManageClass.html"><span class="droplinks_name">Manage Class</span></a> 
             </div>
             </div><br><br>
 
@@ -221,7 +221,18 @@
           <span class="dashboardName"><b>Section Management</b></span><br>
           <h1 class="dashboardAnnouncement">Section List</h1>
         </div>
-
+        <div class="filtercourse-frame">
+          <h6 class="filtername">BS - Information Technology</h6>
+          <h1 class="dashboardAnnouncement" style="font-size: 18px;">Filter Course
+            <select required onchange="location = this.value;" class="filterbox">
+                <option disabled selected></option>
+                <option value=admin-SectionList.html>BsIT</option>
+                <option value=admin-SectionListBsCrim.html>BsCrim</option>
+                <option value=admin-SectionListBsP.html>BsP</option>
+                <option value=admin-SectionListBsCpE.html>BsCpE</option>
+            </select>
+          </h1>
+        </div>
         <div class="sectionlist-container">
             <div class="sectionlistinfo-header">
                 <h1 class="requestinfo">1st Year</h1>

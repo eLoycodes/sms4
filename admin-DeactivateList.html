@@ -87,9 +87,9 @@
             </button>
             <div class="dropdown-container">
               <a class="dropdown-a" href="admin-AddStudent.html"><span class="droplinks_name">Add Student</span></a>
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Section List</span></a>
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Master List</span></a> 
-              <a class="dropdown-a" href="#"><span class="droplinks_name">Manage Class</span></a> 
+              <a class="dropdown-a" href="admin-SectionList.html"><span class="droplinks_name">Section List</span></a>
+              <a class="dropdown-a" href="admin-MasterList.html"><span class="droplinks_name">Master List</span></a> 
+              <a class="dropdown-a" href="admin-ManageClass.html"><span class="droplinks_name">Manage Class</span></a> 
             </div>
             </div><br><br>
 
@@ -156,12 +156,13 @@
           <span class="dashboardName"><b>Student Information</b></span><br>
           <h1 class="dashboardAnnouncement">Deactivate List</h1>
         </div><br>
+        <div class="deactivatelistForm-frame">
         <div class="deactivate-form">
             <label class="deac-label">Search Student ID:</label>
             <input type="text" name="deac-search" class="search-deac">
             <button type="submit" name="submit" class="search-deac-btn">Search</button>
         </div>
-        <table class="requestform-table">
+        <table class="deactform-table">
             <tr>
               <th class="rf">Student ID</th>
               <th class="rf">LastName</th>
@@ -223,12 +224,11 @@
                 <td class="req"><a href="#"><button class="reqform-btn" onclick="document.getElementById('id01').style.display='block'">Deactivate</button></a></td>
             </tr>
           </table>
-
+        </div>
           <!-- Deactivated List -->
 
           <div class="requestForm-frame3"><br><br>
             <h1 class="dashboardAnnouncement">Deactivated List</h1>
-          </div>
           <div class="deactivated-form">
             <label class="deac-label">Search Student ID:</label>
             <input type="text" name="deac-search" class="search-deac">
@@ -291,10 +291,7 @@
                   <td class="req">200</td>
               </tr>
             </table>
-
-            
-
-          
+          </div>
           <div id="id01" class="modal">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
             <form class="modal-content" action="/action_page.php">

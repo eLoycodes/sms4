@@ -7,6 +7,7 @@ body{
     box-sizing: border-box;
     width: 105%;
     overflow-x: hidden;
+    background-color: rgb(242, 247, 250);
 }
 
 .sidenav{
@@ -662,13 +663,216 @@ tr,td{
 
 /*  Student Information - Student Personal Information css */
 
-.studentInformation-frame{
+.frames{
+  position: relative;
+  max-width: 1200px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 0 15px;
+  background-color: white;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  margin-left: 12%;
+  margin-top: 4%;
+}
+.frames header{
+  position: relative;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.search-txt{
+  width: 25%;
+  height: 15px;
+  border: 1px solid rgb(134, 133, 133);
+  margin-left: -52%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.search-btn{
+  width: 4%;
+  height: 37px;
+  border: 1px solid rgb(134, 133, 133);
+  padding: 5px;
+  font-size: 14px;
+  background-color: rgb(232, 234, 235);
+  color: black;
+  margin-top: 5px;
+}
+
+.frames form{
+  position: relative;
+  margin-top: 16px;
+  min-height: 490px;
+  background-color: #fff;
+  overflow: hidden;
+}
+.frames form .form{
+  position: absolute;
+  background-color: #fff;
+  transition: 0.3s ease;
+}
+.frames form .form.second{
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(100%);
+  position: relative;
+  margin-top: 16px;
+  min-height: 50px;
+  background-color: #fff;
+  overflow: hidden;
+}
+form.secActive .form.second{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+form.secActive .form.one{
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-100%);
+}
+
+.frames form .admission1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-top: -2%;
+}
+.input-fieldd{
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+ 
+}
+
+.input-fields1{
+  height: 42px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  padding: 0 15px;
+  margin: 8px 0;
+}
+
+.frames form .fields1{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+form .fields1 .input-field1{
+  display: flex;
+  width: calc(100% / 3 - 15px);
+  flex-direction: column;
+  margin: 4px 0;
+}
+.input-field1 label{
+  font-size: 14px;
+  font-weight: 600;
+  color: #585858;
+}
+.input-field1 input, select{
+  outline: none;
+  font-size: 14px;
+  font-weight: 400;
+  color: #333;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  padding: 0 15px;
+  height: 42px;
+  margin: 8px 0;
+}
+.input-field1 input :focus,
+.input-field1 select:focus{
+  box-shadow: 0 3px 6px rgba(0,0,0,0.13);
+}
+.input-field1 select,
+.input-field1 input[type="date"]{
+  color: #707070;
+}
+.input-field1 input[type="date"]:valid{
+  color: #333;
+}
+.frames form button, .backbutton{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  max-width: 100px;
+  width: 100%;
+  border: none;
+  outline: none;
+  color: #fff;
+  border-radius: 50px;
+  margin: 25px 0;
+  background-color: #4070f4;
+  transition: all 0.3s linear;
+  cursor: pointer;
+  float: right;
+}
+.frames form .buttonText{
+  font-size: 14px;
+  font-weight: 400;
+}
+form button:hover{
+  background-color: #265df2;
+}
+form button i,
+form .backbutton i{
+  margin: 0 6px;
+}
+form .backbutton i{
+  transform: rotate(180deg);
+}
+/*form .buttons{
+  display: flex;
+  align-items: center;
+  float: right;
+}*/
+form .buttons button , .backbutton{
+  margin-right: 20px;
+}
+
+@media (max-width: 750px) {
+  .frames form{
+      overflow-y: scroll;
+  }
+  .frames form::-webkit-scrollbar{
+     display: none;
+  }
+  form .fields1 .input-field1{
+      width: calc(100% / 2 - 15px);
+  }
+  .input-fieldd{
+      width: calc(100% / 2 - 15px);
+  }
+}
+
+@media (max-width: 550px) {
+  form .fields1 .input-field1{
+      width: 100%;
+  }
+
+  .input-fieldd{
+      width: 100%;
+  }
+}
+
+
+/*.studentInformation-frame{
   background: rgb(242, 247, 250);
   min-height: 91vh;
   width: calc(100% - 100px);
   transition: all 0.5s ease;
   
-}
+} */
 
 /*
 .studentInformation-frame1{
@@ -684,7 +888,7 @@ tr,td{
   top:0; bottom:0;
 } */
 
-.studentInformation-frame1{
+/*.studentInformation-frame1{
   background: white;
   min-height: 75vh;
   width: calc(100% - 100px);
@@ -696,11 +900,11 @@ tr,td{
   left:0px; right:0;
   top:50px; bottom:50px;
   border-radius: 30px;
-}
+} */
 
 /* for search bar */
 
-.studentInformation-frame1 label{
+/*.studentInformation-frame1 label{
   font-size: 16px;
   margin-left: 2%;
   font-weight: 600;
@@ -1167,7 +1371,7 @@ form .input-box span.details{
     font-size: 14px;
   }
 
-}
+} */
 
 /*### Student Information - Student Personal Information css ends here ###*/
 
@@ -1179,11 +1383,10 @@ form .input-box span.details{
   height: 105vh;
   justify-content: center;
   align-items: center;
- 
  }
 
  .requestForm-frame2{
-  background-color: rgb(242, 247, 250);
+  background-color: red;
   width: 100%;
   height: 15vh;
   justify-content: center;
@@ -1191,12 +1394,27 @@ form .input-box span.details{
   
  }
 
+ .deactivatelistForm-frame{
+  position: absolute;
+  left:95px; right:0;
+  top:200px; bottom:0px;
+  width: 90%;
+  height: 60vh;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+  justify-content: center;
+  align-items: center;
+ }
+
  .deactivate-form{
   position: absolute;
   left:18px; right:0;
-  top:200px; bottom:0px;
-  background-color: rgb(242, 247, 250);
-
+  top:20px; bottom:0px;
+  background-color: #ffffff;
+  width: 98.2%;
  }
 
  .deactivate-form .deac-label{
@@ -1207,8 +1425,7 @@ form .input-box span.details{
  .deactivated-form{
   position: absolute;
   left:18px; right:0;
-  top:610px; bottom:0px;
-  background-color: rgb(242, 247, 250);
+  top:130px; bottom:0px;
  }
 
  .deactivated-form .deac-label{
@@ -1216,13 +1433,14 @@ form .input-box span.details{
   margin-left: 2%;
  }
 
- .requestform-table{
+ .deactform-table{
   border-collapse: collapse;
   width: 98%;
   position: absolute; 
   left:20px; right:0;
   top:250px; bottom:0px;
-  border: 2px solid black;
+  border: none;
+  margin-top: -10%;
 }
 
 .rf, .req{
@@ -1249,17 +1467,21 @@ form .input-box span.details{
 }
 
 
-/* css for admin-Deactivated */
+/* css for admin-Deactivated  */
 
 .requestForm-frame3{
-  background-color: rgb(242, 247, 250);
-  width: 100%;
-  height: 15vh;
+  background-color: #ffffff;
+  width: 90%;
+  height: 60vh;
   justify-content: center;
   align-items: center;
   position: absolute; 
-  left:18px; right:0;
-  top:500px; bottom:0px;
+  left:98px; right:0;
+  top:820px; bottom:0px;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
  }
 
  .requestform-table1{
@@ -1267,8 +1489,7 @@ form .input-box span.details{
   width: 98%;
   position: absolute; 
   left:18px; right:0;
-  top:660px; bottom:0px;
-  border: 2px solid black;
+  top:180px; bottom:0px;
 }
 
 /* admin Deactivate List Modal Delete */
@@ -1370,18 +1591,18 @@ hr {
   align-items: center;
   justify-content: space-between;
   padding: 20px 20px 10px 20px;
-  border-bottom: 2px solid #2FA5EB;
+  border-bottom: 2px solid #363636;
   margin-left: 2%;  
 }
  
 .requestinfo{
   font-size: 22px;
   font-weight: 600;
-  color: #2FA5EB; 
+  color: #363636; 
 }
 
 .requestcon{
-  color: #2FA5EB;
+  color: #363636;
 }
 
 .request-table{
@@ -1430,14 +1651,14 @@ hr {
   align-items: center;
   justify-content: space-between;
   padding: 20px 20px 10px 20px;
-  border-bottom: 2px solid #2FA5EB;
+  border-bottom: 2px solid #363636;
   margin-left: 2%;
 }
  
 .requestinfo1{
   font-size: 22px;
   font-weight: 600;
-  color: #2FA5EB;
+  color: #363636;
 }
 
 .request-table1{
@@ -1721,7 +1942,7 @@ a .addStud-btn{
   width: 98%;
   position: absolute; 
   left:20px; right:0;
-  top:500px; bottom:0px;
+  top:470px; bottom:0px;
   border: 2px solid black;
 }
 
@@ -1765,13 +1986,31 @@ a .addStud-btn{
   width: 98%;
   position: absolute; 
   left:20px; right:0;
-  top:770px; bottom:0px;
+  top:720px; bottom:0px;
   border: 2px solid black;
 }
 
 /* ##### Add Transferee, edit, octoberian end css #####*/
 
 /* Section Management - Section List css */
+
+.filtercourse-frame{
+  width: 82%;
+  height: 10vh;
+  margin-left: 6%;
+  margin-top: -1%;
+}
+
+.filtercourse-frame .filterbox{
+  margin-left: 1%;
+}
+
+.filtercourse-frame .filtername{
+  float: right;
+  font-size: 18px;
+  margin-top: 1.5%;
+  margin-right: 2%;
+}
 
 .sectionlist-container{
   min-height: 350px;
@@ -1943,6 +2182,103 @@ a .addStud-btn{
 
 /*#### Master List end css ####*/
 
+/* Section Management - Manage Class css*/
+
+.fields1{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-top: 1%;
+}
+
+.fields1 .box-fields1{
+  display: flex;
+  width: calc(100% / 2 - 15px);
+  width: 38%;
+  height: 120px;
+  flex-direction: column;
+  margin: 10px 0px;
+  border: 1px solid black;
+  padding: 20px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px rgb(51, 51, 51);
+  margin-left: -5%;
+}
+
+.fields-label{
+  font-size: 16px;
+  font-weight: 600;
+  color: #585858;
+  text-align: center;
+  margin-top: 5px;
+}
+
+a .addStud-btn{
+  width: 50%;
+  height: 50px;
+  margin-top: 5%;
+  margin-left: 25%;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+@media (max-width: 750px){
+  body{
+    
+    overflow-x: hidden;
+    display: flex;
+  }
+  .requestForm-frame1{
+    height: 100vh;
+  }
+  .sidenav .fields1{
+      overflow-y: scroll;
+  }
+  .sidenav .fields1::-webkit-scrollbar{
+     display: none;
+  }
+  .fields1 .box-fields1{
+      width: calc(100% / 2 - 15px);
+  }
+}
+
+@media (max-width: 550px){
+  body{
+    width: 80vh;
+    overflow-x: hidden;
+    display: flex;
+  }
+  .fields1 .box-fields1{
+      width: 70%;
+  }
+}
+
+@media (max-width: 320px){
+  body{
+    width: 101vw;
+    overflow-x: hidden;
+    display: flex;
+  }
+ 
+  #uppernav{
+  overflow-x: hidden;
+  }
+  
+  .requestForm-frame1{
+    position: absolute; 
+    left:2px; right:0;
+    top:70px; bottom:0px;
+    overflow-x: hidden;
+  }
+
+}
+
+
+/*#### Manage Class end css ####*/
+
 
 /* Document Manangement Dropdown */
 
@@ -1988,6 +2324,149 @@ a .addStud-btn{
     transition: all 0.4s ease;
   
 }
+
+/* Document Management - Document Request Css*/
+
+.documentrequest-container{
+  height: 450px;
+  max-width: 80%;
+  margin: 70px auto 0px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  padding: 0px 40px 40px 0px;
+  margin-top: -1%;
+  margin-left: 6%; 
+  position: absolute; 
+  left:30px; right:0;
+  top:210px; bottom:0px;  
+}
+.requestinfo-header{
+  height: 70px;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 2px solid #585858;
+  margin-left: 2%;  
+}
+ 
+.requestinfo{
+  font-size: 22px;
+  font-weight: 600;
+  color: #585858; 
+}
+
+.requestcon{
+  color: #000000;
+}
+
+.documentrequest-table{
+  width: 90%;
+  height: 20px;
+  margin-top: 32%;
+  margin-left: -25%; 
+}
+
+.reqdata{
+  border-collapse: collapse;
+  height: 40px;
+  text-align: center; 
+}
+
+/* Document Management - Request Document css*/
+
+.documentrequestForm-frame{
+  width: 82%;
+  min-height: 50vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:720px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .documentrequestForm-frame::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .documentrequestForm-table{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:170px; bottom:0px;
+}
+
+.documentrequest-search{
+  position: absolute;
+  left:50px; right:0;
+  top:120px; bottom:0px;
+  width: 30%;
+ }
+
+/* #### Document Request end css ####*/
+
+/* Document Management - Document Submit css*/
+
+.documentsubmit-container{
+  height: 450px;
+  max-width: 80%;
+  margin: 70px auto 0px auto;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  padding: 0px 40px 40px 0px;
+  margin-top: -1%;
+  margin-left: 6%; 
+  position: absolute; 
+  left:30px; right:0;
+  top:210px; bottom:0px;  
+}
+.requestinfo-header{
+  height: 70px;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 2px solid #585858;
+  margin-left: 2%;  
+}
+ 
+.requestinfo{
+  font-size: 22px;
+  font-weight: 600;
+  color: #585858; 
+}
+
+.requestcon{
+  color: #000000;
+  position: relative;
+}
+
+.documentsubmit-table{
+  width: 90%;
+  height: 20px;
+  margin-top: 20%;
+  margin-left: -15%; 
+}
+
+.reqdata{
+  border-collapse: collapse;
+  height: 40px;
+  text-align: center; 
+}
+
+
+/* #### Document Submit end css ####*/
+
+
 
 /* Curriculum Dropdown */
 
