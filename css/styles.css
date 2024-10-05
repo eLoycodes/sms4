@@ -1377,21 +1377,36 @@ form .input-box span.details{
 
 /* css for admin-Deactivate and Pending Student */
 
-.requestForm-frame1{
+.deactivatelist-frame1{
   background-color: rgb(242, 247, 250);
   width: 100%;
-  height: 105vh;
+  height: 141vh;
   justify-content: center;
   align-items: center;
  }
 
- .requestForm-frame2{
-  background-color: red;
+ .deactivatelist-frame2{
+  background-color: rgb(242, 247, 250);
   width: 100%;
-  height: 15vh;
+  height: 12vh;
   justify-content: center;
   align-items: center;
-  
+ }
+
+ .pending-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 141vh;
+  justify-content: center;
+  align-items: center;
+ }
+
+ .pending-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 12vh;
+  justify-content: center;
+  align-items: center;
  }
 
  .deactivatelistForm-frame{
@@ -1811,6 +1826,46 @@ a .addStud-btn{
 
 /*Section Management - add new & old css */
 
+.newold-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 95.3%;
+  height: 105vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.newold-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 12vh;
+ }
+
+ .newold-form{
+  width: 95%;
+  height: 25vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:46px; right:0;
+  top:200px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .newold-form::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .newold-table{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:80px; bottom:0px;
+}
+
 .add-form{
   background: white;
   height: 60vh;
@@ -1888,6 +1943,384 @@ a .addStud-btn{
 
 
 /* Section Management - Add Transferee, edit, octoberian css  */
+
+.edit-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 97%;
+  height: 170vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.edit-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 12vh;
+ }
+
+.edit-form{
+  width: 82%;
+  height: 25vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:200px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .edit-form::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .edit-table{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+.edit-search{
+  position: absolute;
+  left:50px; right:0;
+  top:50px; bottom:0px;
+  width: 30%;
+ }
+
+ /* box 2*/
+ 
+ .edit-form1{
+  width: 82%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:470px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .edit-form1::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .edit-table1{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+/* box 3 */
+
+.edit-form2{
+  width: 82%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:1075px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .edit-form2::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .edit-table2{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+/* MODAL */
+
+.modal-overlay{
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.modal-wrapper{
+  width: 55%;
+  height: 50%;
+  background: black;
+  position: fixed;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.open-modal-btn-wrapper{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.costumization-frame{
+  width: 88%;
+  height: 70%;
+  border: 1px solid white;
+  margin-top: 2%;
+  margin-left: 5%;
+}
+
+.close-modal-btn{
+  padding: 8px;
+  background: red;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  color: ghostwhite;
+  font-weight: 5px;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  width: 40px;
+  height: 30px;
+}
+
+.close-btn-wrapper{
+  display: flex;
+}
+
+.hide{
+  display: none;
+}
+
+.order-costumize{
+  width: 93%;
+  height: 40px;
+  background-color: rgba(177, 177, 177, 1);
+  padding: 5px;
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
+
+.apply-buttons{
+  width: 100px;
+  height: 40px;
+  background-color: transparent;
+  border: 1px solid white;
+  margin-left: 79%;
+  margin-top: 15px;
+  color: white;
+  cursor: pointer;
+}
+
+/* MODAL END */
+
+
+
+
+ /* edit end css*/
+
+ /* transferee css*/
+
+ .transferees-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 97%;
+  height: 205vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.transferees-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 12vh;
+ }
+
+.transferees-form{
+  width: 82%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:200px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .transferees-form::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .transferees-table{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+.transferees-search{
+  position: absolute;
+  left:50px; right:0;
+  top:50px; bottom:0px;
+  width: 30%;
+ }
+
+ /* box 2*/
+ 
+ .transferees-form1{
+  width: 82%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:800px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .transferees-form1::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .transferees-table1{
+  border-collapse: collapse;
+  width: 102.8%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+/* box 3 */
+
+.transferees-form2{
+  width: 82%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:1400px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .transferees-form2::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .transferees-table2{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+ /* transferee end css*/
+
+ /* octoberian css*/
+
+ .octoberian-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 97%;
+  height: 140vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.octoberian-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 12vh;
+ }
+
+.octoberian-form{
+  width: 82%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:200px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .octoberian-form::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .octoberian-table{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+.octoberian-search{
+  position: absolute;
+  left:50px; right:0;
+  top:50px; bottom:0px;
+  width: 30%;
+ }
+
+ /* box 2*/
+ 
+ .octoberian-form1{
+  width: 82%;
+  height: 60vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:800px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .octoberian-form1::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .octoberian-table1{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+ /* octoberian end css*/
 
 .requestForm-frame1{
   background-color: rgb(242, 247, 250);
@@ -1969,9 +2402,10 @@ a .addStud-btn{
   color: red;
 }
 
-.trans-heading{
+.edit-heading{
   float: left;
-  margin-left: 4%;
+  margin-left: 2%;
+  margin-top: 3%;
 }
 
 .selected{
@@ -2327,6 +2761,20 @@ a .addStud-btn{
 
 /* Document Management - Document Request Css*/
 
+.documentrequest-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 97%;
+  height: 120vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.documentrequest-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 12vh;
+ }
+
 .documentrequest-container{
   height: 450px;
   max-width: 80%;
@@ -2401,6 +2849,7 @@ a .addStud-btn{
   position: absolute; 
   left:0px; right:0;
   top:170px; bottom:0px;
+  overflow-y: auto;
 }
 
 .documentrequest-search{
@@ -2466,7 +2915,63 @@ a .addStud-btn{
 
 /* #### Document Submit end css ####*/
 
+/* Document Management - Pay Later css*/
 
+
+
+/* #### Pay Later end css ####*/
+
+/* Document Management - Release History css rgb(242, 247, 250)*/
+
+.releasehistory-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 97%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.releasehistory-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 15vh;
+ }
+
+.releasehistory-frame{
+  width: 82%;
+  min-height: 50vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:200px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .releasehistory-frame::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .releasehistory-table{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+.releasehistory-search{
+  position: absolute;
+  left:50px; right:0;
+  top:50px; bottom:0px;
+  width: 30%;
+ }
+
+/* #### Release History end css ####*/
 
 /* Curriculum Dropdown */
 
@@ -2512,6 +3017,58 @@ a .addStud-btn{
     transition: all 0.4s ease;
   
 }
+
+/* Curriculum - Course css*/
+
+.course-frame1{
+  background-color: rgb(242, 247, 250);
+  width: 97%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.course-frame2{
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 15vh;
+ }
+
+.course-frame{
+  width: 82%;
+  min-height: 50vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:200px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .course-frame::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .course-table{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:110px; bottom:0px;
+}
+
+.course-search{
+  position: absolute;
+  left:50px; right:0;
+  top:50px; bottom:0px;
+  width: 30%;
+ }
+
+/* #### Course end css ####*/
 
 
 

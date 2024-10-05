@@ -168,8 +168,8 @@
         <div class="dropdown-container">
           <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Request</span></a>
           <a class="dropdown-a" href="admin-DocumentSubmit.html"><span class="droplinks_name">Document Submit</span></a>
-          <a class="dropdown-a" href="#"><span class="droplinks_name">Pay Later</span></a>
-          <a class="dropdown-a" href="#"><span class="droplinks_name">release history</span></a>    
+          <a class="dropdown-a" href="admin-PayLater.html"><span class="droplinks_name">Pay Later</span></a>
+          <a class="dropdown-a" href="admin-ReleaseHistory.html"><span class="droplinks_name">release history</span></a>    
         </div>
         </div><br><br>
 
@@ -181,7 +181,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-container">    
-            <a class="dropdown-a" href="#"><span class="droplinks_name">Courses</span></a>   
+            <a class="dropdown-a" href="admin-Course.html"><span class="droplinks_name">Courses</span></a>   
           </div>
           </div>
 
@@ -215,12 +215,74 @@
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
 
-    <div class="requestForm-frame1">
+    <div class="octoberian-frame1">
         <!-- dito ka mag simula-->
-        <div class="requestForm-frame2"><br><br>
+        <div class="octoberian-frame2"><br><br>
           <span class="dashboardName"><b>Section Management</b></span><br>
           <h1 class="dashboardAnnouncement">Edit Octoberian</h1>
         </div>
+
+
+        <div class="octoberian-form">
+          <div class="octoberian-search">
+            <label class="deac-label">Search Student ID:</label>
+            <input type="text" name="deac-search" class="search-deac">
+            <button type="submit" name="submit" class="search-deac-btn">Search</button>
+          </div>
+        <table class="octoberian-table">
+            <tr>
+              <th class="rf">Student&nbspID</th>
+              <th class="rf">Name</th>
+              <th class="rf">Course</th>
+              <th class="rf">Year&nbspLevel</th>
+              <th class="rf">Academic&nbspYear</th>
+              <th class="rf">Student&nbspType</th>
+            </tr>
+            <tr class="reqf">
+              <td class="req">1</td>
+              <td class="req">Evaluation Grade</td>   
+              <td class="req">Evaluation Grade</td>
+              <td class="req">1</td>
+              <td class="req">Evaluation Grade</td>
+              <td class="req">200</td>
+            </tr>
+          </table>
+        </div>
+
+        <div class="octoberian-form1">
+          <tr>
+            <td class="trans-td"><h3 class="edit-heading" style="font-size: 18px;">Select Subject that will take</h3></td>
+        </tr>
+        <table class="octoberian-table1">
+          <tr>
+            <th class="trans-th">Search Subject</th>
+            <th class="trans-th">Subject Code</th>
+            <th class="trans-th">Subject Name</th>
+            <th class="trans-th">Semester</th>
+            <th class="trans-th">Action</th>
+          </tr>
+          <tr>
+            <td class="trans-td">
+              <input type="text" name="deac-search" class="search-deac">
+              <button type="submit" name="submit" class="search-deac-btn">Search</button>
+            </td>
+            
+            <td class="trans-td"></td>
+            <td class="trans-td"></td>
+            <td class="trans-td"></td>
+            <td class="req"></td>
+          </tr>
+          <tr class="trans-tr">
+            <td class="trans-td">-</td>  
+            <td class="trans-td">DB1</td>
+            <td class="trans-td">Database 1</td>
+            <td class="trans-td">1st</td>
+            <td class="req"><a href="#"><button class="reqform-btn">retake</button></a></td>
+          </tr>
+        </table>
+      </div>
+
+        <!--
 
         <div class="transferee-form">
             <label class="deac-label">Search Student ID:</label>
@@ -303,7 +365,7 @@
                 <td class="trans-td">1st</td>
                 
             </tr>
-          </table>  
+          </table>  -->
     </div>
 </div>
 

@@ -168,8 +168,8 @@
         <div class="dropdown-container">
           <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Request</span></a>
           <a class="dropdown-a" href="admin-DocumentSubmit.html"><span class="droplinks_name">Document Submit</span></a>
-          <a class="dropdown-a" href="#"><span class="droplinks_name">Pay Later</span></a>
-          <a class="dropdown-a" href="#"><span class="droplinks_name">release history</span></a>    
+          <a class="dropdown-a" href="admin-PayLater.html"><span class="droplinks_name">Pay Later</span></a>
+          <a class="dropdown-a" href="admin-ReleaseHistory.html"><span class="droplinks_name">release history</span></a>    
         </div>
         </div><br><br>
 
@@ -181,7 +181,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-container">    
-            <a class="dropdown-a" href="#"><span class="droplinks_name">Courses</span></a>   
+            <a class="dropdown-a" href="admin-Course.html"><span class="droplinks_name">Courses</span></a>   
           </div>
           </div>
 
@@ -215,129 +215,169 @@
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
 
-    <div class="requestForm-frame1">
+    <div class="edit-frame1">
         <!-- dito ka mag simula-->
-        <div class="requestForm-frame2"><br><br>
+        <div class="edit-frame2"><br><br>
           <span class="dashboardName"><b>Section Management</b></span><br>
           <h1 class="dashboardAnnouncement">Edit Student</h1>
         </div>
 
-        <div class="transferee-form">
+        <div class="edit-form">
+          <div class="edit-search">
             <label class="deac-label">Search Student ID:</label>
             <input type="text" name="deac-search" class="search-deac">
             <button type="submit" name="submit" class="search-deac-btn">Search</button>
-        </div>
-        <table class="requestform-table">
+            <button class="update-student-btn" style="float: right; margin-right: -210%;">Edit Student</button>
+          </div>
+        <table class="edit-table">
             <tr>
               <th class="rf">Student&nbspID</th>
               <th class="rf">Name</th>
               <th class="rf">Course</th>
               <th class="rf">Year&nbspLevel</th>
               <th class="rf">Academic&nbspYear</th>
-              <th class="rf">Student&nbspType</th>
+              <th class="rf">Type</th>
+              <th class="rf">Status</th>
             </tr>
             <tr class="reqf">
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>   
-              <td class="req">Evaluation Grade</td>
-              <td class="req">1</td>
-              <td class="req">Evaluation Grade</td>
-              <td class="req">200</td>
-           
+              <td class="req">23012419</td>
+              <td class="req">Illumi Moroe</td>   
+              <td class="req">BsIT</td>
+              <td class="req">3rd</td>
+              <td class="req">2023-2024</td>
+              <td class="req">Old</td>
+              <td class="req">Regular</td>
             </tr>
-            <tr>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>    
-                <td class="req">Evaluation Grade</td>               
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-                
-            </tr>
-            <tr class="reqf">
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>    
-                <td class="req">Evaluation Grade</td>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>
-            </tr>
-            <tr>
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">Evaluation Grade</td>              
-                <td class="req">1</td>
-                <td class="req">Evaluation Grade</td>
-                <td class="req">200</td>    
-            </tr>
+          </table>
+        </div>
+
+        <div class="edit-form1">
+          <tr>
+            <td class="trans-td"><h3 class="edit-heading" style="font-size: 18px;">Select Subject that will retake</h3></td>
+        </tr>
+        <table class="edit-table1">
+          <tr>
+            <th class="trans-th">Search Subject</th>
+            <th class="trans-th">Subject Code</th>
+            <th class="trans-th">Subject Name</th>
+            <th class="trans-th">Semester</th>
+            <th class="trans-th">Action</th>
+          </tr>
+          <tr>
+            <td class="trans-td">
+              <input type="text" name="deac-search" class="search-deac">
+              <button type="submit" name="submit" class="search-deac-btn">Search</button>
+            </td>
             
-          </table>
+            <td class="trans-td"></td>
+            <td class="trans-td"></td>
+            <td class="trans-td"></td>
+            <td class="req"></td>
+          </tr>
+          <tr class="trans-tr">
+            <td class="trans-td">-</td>  
+            <td class="trans-td">DB1</td>
+            <td class="trans-td">Database 1</td>
+            <td class="trans-td">1st</td>
+            <td class="req"><a href="#"><button class="reqform-btn">retake</button></a></td>
+          </tr>
+        </table>
+      </div>
 
-         
-          <table class="transferee-table">
-            <tr>
-                <td class="trans-td"><h3 class="trans-heading" style="font-size: 18px;">Select Subject that will retake</h3></td>
-            </tr>
-            <tr>
-                <th class="trans-th">Search Subject</th>
-                <th class="trans-th">Subject Code</th>
-                <th class="trans-th">Subject Name</th>
-                <th class="trans-th">Semester</th>
-                <th class="trans-th">Action</th>
-            </tr>
-            <tr>
-                <td class="trans-td">
+      <div class="edit-form2">
+        <tr>
+          <td class="trans-td"><h3 class="edit-heading" style="font-size: 18px;">Select Subject that will remove</h3></td>
+      </tr>
+      <table class="edit-table2">
+        <tr>
+          <th class="trans-th">Search Subject</th>
+          <th class="trans-th">Subject Code</th>
+          <th class="trans-th">Subject Name</th>
+          <th class="trans-th">Semester</th>
+          <th class="trans-th">Action</th>
+        </tr>
+        <tr>
+          <td class="trans-td">
             <input type="text" name="deac-search" class="search-deac">
             <button type="submit" name="submit" class="search-deac-btn">Search</button>
-                </td>
-                
-                <td class="trans-td"></td>
-                <td class="trans-td"></td>
-                <td class="trans-td"></td>
-                <td class="req"></td>
-            </tr>
-            <tr class="trans-tr">
-                <td class="trans-td">-</td>  
-                <td class="trans-td">DB1</td>
-                <td class="trans-td">Database 1</td>
-                <td class="trans-td">1st</td>
-                <td class="req"><a href="#"><button class="reqform-btn">retake</button></a></td>
-            </tr>
+          </td>
+          
+          <td class="trans-td"></td>
+          <td class="trans-td"></td>
+          <td class="trans-td"></td>
+          <td class="req"></td>
+        </tr>
+        <tr class="trans-tr">
+          <td class="trans-td">-</td>  
+          <td class="trans-td">DB1</td>
+          <td class="trans-td">Database 1</td>
+          <td class="trans-td">1st</td>
+          <td class="req"><a href="#"><button class="reqform-btn">remove</button></a></td>
+        </tr>
+      </table>
+    </div>
 
-          </table>
-
-          <table class="retake-table">
-            <tr>
-                <td class="trans-td"><h3 class="trans-heading" style="font-size: 18px;">Select Subject that will remove</h3></td>
-            </tr>
-            <tr>
-                <th class="trans-th">Search Subject</th>
-                <th class="trans-th">Subject Code</th>
-                <th class="trans-th">Subject Name</th>
-                <th class="trans-th">Semester</th>
-                <th class="trans-th">Action</th>
-            </tr>
-            <tr>
-                <td class="trans-td">
-            <input type="text" name="deac-search" class="search-deac">
-            <button type="submit" name="submit" class="search-deac-btn">Search</button>
-                </td>
-                
-                <td class="trans-td"></td>
-                <td class="trans-td"></td>
-                <td class="trans-td"></td>
-                <td class="trans-td"></td>
-            </tr>
-            <tr class="trans-tr">
-                <td class="trans-td">-</td>  
-                <td class="trans-td">DB1</td>
-                <td class="trans-td">Database 1</td>
-                <td class="trans-td">1st</td>
-                <td class="req"><a href="#"><button class="reqform-btn">remove</button></a></td>
-                
-            </tr>
-          </table>
-
+    <div class="modal-overlay hide">
+      <div class="modal-wrapper">
+          <div class="close-btn-wrapper">
+              <button class="close-modal-btn">X</button>
+          </div>
+         <div class="costumization-frame">
+          <div id="inputFields" class="inputclass">
+            <label class="add-label" style="color: white;">Student ID
+            <input type="text" placeholder="" class="input-field"></label>
+            <label class="add-label" style="color: white;">Name
+              <input type="text" placeholder="" class="input-field"></label>
+            <label class="add-label" style="color: white;">Course
+              <select required>
+                  <option disabled selected></option>
+                  <option>BsIT</option>
+                  <option>BsCrim</option>
+                  <option>BsP</option>
+                  <option>BsCpE</option>
+              </select>
+          </label>
+            <label class="add-label" style="color: white;">Year Level
+                <select required>
+                    <option disabled selected></option>
+                    <option>1st</option>
+                    <option>2nd</option>
+                    <option>3rd</option>
+                    <option>4th</option>
+                </select>
+            </label>
+            <label class="add-label" style="color: white;">Acad&nbspYear
+                <select required>
+                    <option disabled selected></option>
+                    <option>2023-2024</option>
+                    <option>2024-2025</option>
+                </select>
+            </label>
+            <label class="add-label" style="color: white;">Type
+                <select required>
+                    <option disabled selected></option>
+                    <option>Freshmen</option>
+                    <option>Transferee</option>
+                    <option>Octoberian</option>
+                </select>
+            </label>
+            <label class="add-label" style="color: white;">Status
+              <select required>
+                  <option disabled selected></option>
+                  <option>Freshmen</option>
+                  <option>Transferee</option>
+                  <option>Octoberian</option>
+              </select>
+          </label>
+            
+                   
+        </div>
+          </div>
+           <!--<button class="cancel-buttons"><a href="cake.html">CANCEL</a></button>-->
+          <button class="apply-buttons">Update</button>
+      </div>
+  </div>
+   
 
        
     </div>
@@ -377,13 +417,26 @@ for (i = 0; i < dropdown.length; i++) {
   });
 }
 
-var modal = document.getElementById('id01');
 
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+const openBtn = document.querySelector(".update-student-btn");
+        const modal = document.querySelector(".modal-overlay");
+        const closeBtn = document.querySelector(".close-modal-btn");
+
+        function openModal() {
+            modal.classList.remove("hide");
+        }
+
+        function closeModal(e, clickedOutside) {
+            if (clickedOutside) {
+                if (e.target.classList.contains("modal-overlay"))
+                    modal.classList.add("hide");
+            } else modal.classList.add("hide");
+        }
+
+        openBtn.addEventListener("click", openModal);
+        modal.addEventListener("click", (e) => closeModal(e, true));
+        closeBtn.addEventListener("click", closeModal);
+
 
     </script>
 </body>

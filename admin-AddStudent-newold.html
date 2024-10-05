@@ -168,8 +168,8 @@
         <div class="dropdown-container">
           <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Request</span></a>
           <a class="dropdown-a" href="admin-DocumentSubmit.html"><span class="droplinks_name">Document Submit</span></a>
-          <a class="dropdown-a" href="#"><span class="droplinks_name">Pay Later</span></a>
-          <a class="dropdown-a" href="#"><span class="droplinks_name">release history</span></a>    
+          <a class="dropdown-a" href="admin-PayLater.html"><span class="droplinks_name">Pay Later</span></a>
+          <a class="dropdown-a" href="admin-ReleaseHistory.html"><span class="droplinks_name">release history</span></a>    
         </div>
         </div><br><br>
 
@@ -181,7 +181,7 @@
             <i class="fa fa-caret-down"></i>
           </button>
           <div class="dropdown-container">    
-            <a class="dropdown-a" href="#"><span class="droplinks_name">Courses</span></a>   
+            <a class="dropdown-a" href="admin-Course.html"><span class="droplinks_name">Courses</span></a>   
           </div>
           </div>
 
@@ -215,18 +215,45 @@
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
 
-    <div class="requestForm-frame1">
+    <div class="newold-frame1">
         <!-- dito ka mag simula-->
-        <div class="requestForm-frame2"><br><br>
+        <div class="newold-frame2"><br><br>
           <span class="dashboardName"><b>Section Management</b></span><br>
           <h1 class="dashboardAnnouncement">Add Student</h1>
         </div>
-        <div class="add-form">
+
+        <div class="newold-form">
+          <div class="edit-search">
+            <h3 class="edit-heading" style="font-size: 18px; margin-top: -4%;">New Student</h3>
+            <button class="update-student-btn" style="float: right; margin-right: -210%; margin-top: -4%;">Add Student</button>
+          </div>
+        <table class="newold-table">
+            <tr>
+              <th class="rf">First Name</th>
+              <th class="rf">Middle Name</th>
+              <th class="rf">Last Name</th>
+              <th class="rf">Course</th>
+              <th class="rf">Year&nbspLevel</th>    
+            </tr>
+            <tr class="reqf">
+              <td class="req">23012419</td>
+              <td class="req">Illumi Moroe</td>   
+              <td class="req">BsIT</td>
+              <td class="req">3rd</td>
+              <td class="req">2023-2024</td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div class="add-form" style="margin-top: 22%;">
         <div class="add-container">
             <button class="add-button" onclick="addFn()">Add New Input</button>
             <div id="inputFields" class="inputclass">
                 <label class="add-label">Student ID
-                <input type="text" placeholder="Enter value" class="input-field"></label>
+                <input type="text" placeholder="" class="input-field"></label>
+                <label class="add-label">Full Name
+                <input type="text" placeholder="" class="input-field"></label>
                 <label class="add-label">Course
                   <select required>
                       <option disabled selected></option>
@@ -243,14 +270,6 @@
                         <option>2nd</option>
                         <option>3rd</option>
                         <option>4th</option>
-                    </select>
-                </label>
-                <label class="add-label">Major
-                    <select required>
-                        <option></option>
-                        <option>Information Management</option>
-                        <option>Network Administration</option>
-                        <option>Information Security</option>
                     </select>
                 </label>
                 <label class="add-label">Semester
@@ -279,7 +298,7 @@
                        
             </div>
                 
-            <button type="submit" name="submit" class="addinput-btn">Submit</button>
+            <button type="submit" name="submit" class="addinput-btn">Add Student</button>
         </div>
     </div>
     </div>
@@ -332,8 +351,10 @@ window.onclick = function(event) {
             const divEle = document.getElementById("inputFields");
             divEle.innerHTML += `
         <div>
-           <label class="add-label">Student ID
-                <input type="text" placeholder="Enter value" class="input-field"></label>
+                <label class="add-label">Student ID
+                <input type="text" placeholder="" class="input-field"></label>
+                <label class="add-label">Full Name
+                <input type="text" placeholder="" class="input-field"></label>
                 <label class="add-label">Course
                   <select required>
                       <option disabled selected></option>
@@ -350,14 +371,6 @@ window.onclick = function(event) {
                         <option>2nd</option>
                         <option>3rd</option>
                         <option>4th</option>
-                    </select>
-                </label>
-                <label class="add-label">Major
-                    <select required>
-                        <option></option>
-                        <option>Information Management</option>
-                        <option>Network Administration</option>
-                        <option>Information Security</option>
                     </select>
                 </label>
                 <label class="add-label">Semester

@@ -150,97 +150,37 @@
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
 
-    <div class="requestForm-frame1">
+    <div class="releasehistory-frame1">
         <!-- dito ka mag simula-->
-        <div class="requestForm-frame2"><br><br>
-          <span class="dashboardName"><b>Student Information</b></span><br>
-          <h1 class="dashboardAnnouncement">Request Information</h1>
+        <div class="releasehistory-frame2"><br><br>
+          <span class="dashboardName"><b>Document Management</b></span><br>
+          <h1 class="dashboardAnnouncement">Release History</h1>
         </div><br>
-
-        <div class="requestinfo-container">
-            <div class="requestinfo-header">
-                <h1 class="requestinfo">Lms</h1>
-
-            <table class="request-table">
-              <tr>
-                <th class="requestcon">No</th>
-                <th class="requestcon">Request</th>
-                <th class="requestcon">Department</th>
-                <th class="requestcon">Status</th>
-                <th class="requestcon">Request Date</th>
-                <th class="requestcon">Action</th>
-              </tr>
-              <tr>
-                <td class="reqdata">01</td>
-                <td class="reqdata">Juan Dela Cruz</td>
-                <td class="reqdata">BSIT</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
-              </tr>
-              <tr>
-                <td class="reqdata">01</td>
-                <td class="reqdata">Pedro Puyat</td>
-                <td class="reqdata">BSIT</td>
-                <td class="reqdata">4102</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
-              </tr>
-              <tr>
-                <td class="reqdata">01</td>
-                <td class="reqdata">Illumi ZolD</td>
-                <td class="reqdata">BSIT</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
-              </tr>
-            </table><br>
-        </div>
-    </div>
-            <div class="requestinfo-container1">
-                <div class="requestinfo-header1">
-                    <h1 class="requestinfo1">Admission</h1>
-    
-                <table class="request-table1">
-                  <tr>
-                    <th class="requestcon">No</th>
-                    <th class="requestcon">Request</th>
-                    <th class="requestcon">Department</th>
-                    <th class="requestcon">Status</th>
-                    <th class="requestcon">Request Date</th>
-                    <th class="requestcon">Action</th>
-                  </tr>
-                  <tr>
-                    <td class="reqdata">01</td>
-                    <td class="reqdata">Juan Dela Cruz</td>
-                    <td class="reqdata">BSIT</td>
-                    <td class="reqdata">4012</td>
-                    <td class="reqdata">4012</td>
-                    <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
-                  </tr>
-                  <tr>
-                    <td class="reqdata">01</td>
-                    <td class="reqdata">Pedro Puyat</td>
-                    <td class="reqdata">BSIT</td>
-                    <td class="reqdata">4102</td>
-                    <td class="reqdata">4012</td>
-                    <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
-                  </tr>
-                  <tr>
-                    <td class="reqdata">01</td>
-                    <td class="reqdata">Illumi ZolD</td>
-                    <td class="reqdata">BSIT</td>
-                    <td class="reqdata">4012</td>
-                    <td class="reqdata">4012</td>
-                    <td class="reqdata"><button class="reqdata-btn">Submit</button></td>
-                  </tr>
-                </table><br><br>
-            </div>
+      <div class="releasehistory-frame"><br><br>
+      <div class="releasehistory-search">
+        <label class="deac-label">Search Student ID:</label>
+        <input type="text" name="deac-search" class="search-deac">
+        <button type="submit" name="submit" class="search-deac-btn">Search</button>
+      </div>
+      <table class="releasehistory-table">
+          <tr>
+            <th class="rf">Student ID</th>
+            <th class="rf">Document ID</th>
+            <th class="rf">Request Date</th>
+            <th class="rf">Release Date</th>
+            <th class="rf">Request Status</th>
+          </tr>
+          <tr class="reqf">
+            <td class="req">1</td>
+            <td class="req">Evaluation Grade</td>
+            <td class="req">200</td>
+            <td class="req">1</td>
+            <td class="req">Evaluation Grade</td>
+          </tr>
+        </table>
         </div>
     </div>
 </div>
-
-
 
 
     <script type="text/javascript">
