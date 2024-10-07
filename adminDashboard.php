@@ -6,7 +6,6 @@ if(!isset($_SESSION["id"])){
 		echo"<script>window.open('index.php?mes=Access Denied..','_self');</script>";
 	}	
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>

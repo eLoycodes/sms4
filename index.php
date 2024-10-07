@@ -20,7 +20,6 @@ if (isset($_POST['submit'])){
 		$password=$_POST["password"];
 	}
 }
-
 if(isset($_POST["submit"])){
 					$sql="select * from admin where username='{$_POST["username"]}' and password='{$_POST["password"]}'";
 					$res=$connect->query($sql);
