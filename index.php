@@ -4,7 +4,6 @@ include("connect.php");
 session_start();
 $username = $password = "";
 $username_error = $password_error = "";
-
 if (isset($_POST['submit'])){
     if(empty($_POST["username"])){
 		$username_error=" Username is Required!";
