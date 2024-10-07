@@ -33,7 +33,7 @@ if(isset($_POST["submit"])){
                         echo "<script>
                             alert('Successfully Login');
                          </script>";
-						echo "<script>window.open('adminDashboard.html','_self');</script>";
+						echo "<script>window.open('adminDashboard.php','_self');</script>";
 					}
 					
 				}
