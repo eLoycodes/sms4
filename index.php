@@ -40,8 +40,6 @@ if(isset($_POST["submit"])){
 				if(isset($_GET["mes"])){
 					echo "<div class='error'>{$_GET["mes"]}</div>";
 				}
-				
-
 ?>
 
 <!DOCTYPE html>
