@@ -10,70 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 </head>
-<style>
-  .add-form{
-  background: white;
-  height: 60vh;
-  width: calc(100% - 100px);
-  margin-left: 2.5%;
-  margin-top: 8%;
-  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgb(226, 225, 225);
-  position: absolute; 
-  left:0px; right:0;
-  top:50px; bottom:0px;
-  overflow: auto;
-  
-}
 
-.add-container{
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  min-height: 20vh;
-}
-
-.input-field,select{
-  width: 160px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 10px auto;
-  margin-left: 30%;
-  margin-top: 1%;
-}
-
-
-.add-label{
- font-size: 15px;
- display: inline-block;
-  margin-top: 20px;
-
-}
-
-.inputclass{
-  margin-left: -5%;
-  text-align: center;
-  padding: 10px;
-  
-}
-
-.add-button{
-  padding: 8px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-left: -85%;
-}
-
-.addinput-btn{
-  padding: 8px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  float: right;
-  margin-top: 1%;
-  margin-right: 5%;
-}
-</style>
 <body>
     <div id="sidenav" class="sidenav">
         <img src="image/bcplogo-mini.png" alt="img" class="bcplogo">
@@ -167,7 +104,7 @@
         </button>
         <div class="dropdown-container">
           <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Request</span></a>
-          <a class="dropdown-a" href="admin-DocumentSubmit.html"><span class="droplinks_name">Document Submit</span></a>
+          <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Submit</span></a>
           <a class="dropdown-a" href="admin-PayLater.html"><span class="droplinks_name">Pay Later</span></a>
           <a class="dropdown-a" href="admin-ReleaseHistory.html"><span class="droplinks_name">release history</span></a>    
         </div>
@@ -221,7 +158,7 @@
           <h1 class="dashboardAnnouncement">Section List</h1>
         </div>
         <div class="filtercourse-frame">
-          <h6 class="filtername">BS - Computer Engineering</h6>
+          <h6 class="filtername">BS - Information Technology</h6>
           <h1 class="dashboardAnnouncement" style="font-size: 18px;">Filter Course
             <select required onchange="location = this.value;" class="filterbox">
                 <option disabled selected></option>
@@ -249,8 +186,8 @@
               <tr>
                 <td class="reqdata">01</td>
                 <td class="reqdata">Juan Dela Cruz</td>
-                <td class="reqdata">BsCpE</td>
-                <td class="reqdata">2nd</td>
+                <td class="reqdata">BSIT</td>
+                <td class="reqdata">4012</td>
                 <td class="reqdata">4012</td>
                 <td class="reqdata">01</td>
                 <td class="reqdata"><button class="reqdata-btns">View</button></td>
@@ -258,8 +195,8 @@
               <tr>
                 <td class="reqdata">01</td>
                 <td class="reqdata">Pedro Puyat</td>
-                <td class="reqdata">BsCpE</td>
-                <td class="reqdata">2nd</td>
+                <td class="reqdata">BSIT</td>
+                <td class="reqdata">4102</td>
                 <td class="reqdata">4012</td>
                 <td class="reqdata">01</td>
                 <td class="reqdata"><button class="reqdata-btns">View</button></td>
@@ -267,8 +204,8 @@
               <tr>
                 <td class="reqdata">01</td>
                 <td class="reqdata">Illumi ZolD</td>
-                <td class="reqdata">BsCpE</td>
-                <td class="reqdata">2nd</td>
+                <td class="reqdata">BSIT</td>
+                <td class="reqdata">4012</td>
                 <td class="reqdata">4012</td>
                 <td class="reqdata">01</td>
                 <td class="reqdata"><button class="reqdata-btns">View</button></td>
@@ -296,7 +233,7 @@
           <tr>
             <td class="reqdata">01</td>
             <td class="reqdata">Juan Dela Cruz</td>
-            <td class="reqdata">BsCpE</td>
+            <td class="reqdata">BSIT</td>
             <td class="reqdata">4012</td>
             <td class="reqdata">4012</td>
             <td class="reqdata">01</td>
@@ -305,7 +242,7 @@
           <tr>
             <td class="reqdata">01</td>
             <td class="reqdata">Pedro Puyat</td>
-            <td class="reqdata">BsCpE</td>
+            <td class="reqdata">BSIT</td>
             <td class="reqdata">4102</td>
             <td class="reqdata">4012</td>
             <td class="reqdata">01</td>
@@ -314,7 +251,7 @@
           <tr>
             <td class="reqdata">01</td>
             <td class="reqdata">Illumi ZolD</td>
-            <td class="reqdata">BsCpE</td>
+            <td class="reqdata">BSIT</td>
             <td class="reqdata">4012</td>
             <td class="reqdata">4012</td>
             <td class="reqdata">01</td>
@@ -421,9 +358,6 @@
     </div>
 </div><br>
 
-
-
-
     <script type="text/javascript">
 // SideNav
     function toggleNav() {
@@ -464,5 +398,69 @@ window.onclick = function(event) {
 }
 
     </script>
+    <style>
+      .add-form{
+      background: white;
+      height: 60vh;
+      width: calc(100% - 100px);
+      margin-left: 2.5%;
+      margin-top: 8%;
+      box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgb(226, 225, 225);
+      position: absolute; 
+      left:0px; right:0;
+      top:50px; bottom:0px;
+      overflow: auto;
+      
+    }
+    
+    .add-container{
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      min-height: 20vh;
+    }
+    
+    .input-field,select{
+      width: 160px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin: 10px auto;
+      margin-left: 30%;
+      margin-top: 1%;
+    }
+    
+    
+    .add-label{
+     font-size: 15px;
+     display: inline-block;
+      margin-top: 20px;
+    
+    }
+    
+    .inputclass{
+      margin-left: -5%;
+      text-align: center;
+      padding: 10px;
+      
+    }
+    
+    .add-button{
+      padding: 8px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: -85%;
+    }
+    
+    .addinput-btn{
+      padding: 8px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      float: right;
+      margin-top: 1%;
+      margin-right: 5%;
+    }
+    </style>
 </body>
 </html>

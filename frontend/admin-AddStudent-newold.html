@@ -1,3 +1,12 @@
+<?php
+
+include("connect.php");
+session_start();
+if(!isset($_SESSION["id"])){
+		echo"<script>window.open('index.php?mes=Access Denied..','_self');</script>";
+	}	
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -167,7 +176,7 @@
         </button>
         <div class="dropdown-container">
           <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Request</span></a>
-          <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Submit</span></a>
+          <a class="dropdown-a" href="admin-DocumentSubmit.html"><span class="droplinks_name">Document Submit</span></a>
           <a class="dropdown-a" href="admin-PayLater.html"><span class="droplinks_name">Pay Later</span></a>
           <a class="dropdown-a" href="admin-ReleaseHistory.html"><span class="droplinks_name">release history</span></a>    
         </div>
@@ -215,211 +224,93 @@
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
 
-    <div class="requestForm-frame1">
-        <div class="requestForm-frame2"><br><br>
+    <div class="newold-frame1">
+        <div class="newold-frame2"><br><br>
           <span class="dashboardName"><b>Section Management</b></span><br>
-          <h1 class="dashboardAnnouncement">Section List</h1>
+          <h1 class="dashboardAnnouncement">Add Student</h1>
         </div>
-        <div class="filtercourse-frame">
-          <h6 class="filtername">BS - Information Technology</h6>
-          <h1 class="dashboardAnnouncement" style="font-size: 18px;">Filter Course
-            <select required onchange="location = this.value;" class="filterbox">
-                <option disabled selected></option>
-                <option value=admin-SectionList.html>BsIT</option>
-                <option value=admin-SectionListBsCrim.html>BsCrim</option>
-                <option value=admin-SectionListBsP.html>BsP</option>
-                <option value=admin-SectionListBsCpE.html>BsCpE</option>
-            </select>
-          </h1>
-        </div>
-        <div class="sectionlist-container">
-            <div class="sectionlistinfo-header">
-                <h1 class="requestinfo">1st Year</h1>
 
-            <table class="request-table">
-              <tr>
-                <th class="requestcon">Course</th>
-                <th class="requestcon">Year&nbspLevel</th>
-                <th class="requestcon">Section</th>
-                <th class="requestcon">Semester</th>
-                <th class="requestcon">Academic&nbspYear</th>
-                <th class="requestcon">Total</th>
-                <th class="requestcon">Action</th>
-              </tr>
-              <tr>
-                <td class="reqdata">01</td>
-                <td class="reqdata">Juan Dela Cruz</td>
-                <td class="reqdata">BSIT</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata">01</td>
-                <td class="reqdata"><button class="reqdata-btns">View</button></td>
-              </tr>
-              <tr>
-                <td class="reqdata">01</td>
-                <td class="reqdata">Pedro Puyat</td>
-                <td class="reqdata">BSIT</td>
-                <td class="reqdata">4102</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata">01</td>
-                <td class="reqdata"><button class="reqdata-btns">View</button></td>
-              </tr>
-              <tr>
-                <td class="reqdata">01</td>
-                <td class="reqdata">Illumi ZolD</td>
-                <td class="reqdata">BSIT</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata">4012</td>
-                <td class="reqdata">01</td>
-                <td class="reqdata"><button class="reqdata-btns">View</button></td>
-              </tr>
-            </table><br>
+        <div class="newold-form">
+          <div class="edit-search">
+            <h3 class="edit-heading" style="font-size: 18px; margin-top: -4%;">New Student</h3>
+            <button class="update-student-btn" style="float: right; margin-right: -210%; margin-top: -4%;">Add Student</button>
+          </div>
+        <table class="newold-table">
+            <tr>
+              <th class="rf">First Name</th>
+              <th class="rf">Middle Name</th>
+              <th class="rf">Last Name</th>
+              <th class="rf">Course</th>
+              <th class="rf">Year&nbspLevel</th>    
+            </tr>
+            <tr class="reqf">
+              <td class="req">23012419</td>
+              <td class="req">Illumi Moroe</td>   
+              <td class="req">BsIT</td>
+              <td class="req">3rd</td>
+              <td class="req">2023-2024</td>
+            </tr>
+          </table>
+        </div>
+
+
+        <div class="add-form" style="margin-top: 22%;">
+        <div class="add-container">
+            <button class="add-button" onclick="addFn()">Add New Input</button>
+            <div id="inputFields" class="inputclass">
+                <label class="add-label">Student ID
+                <input type="text" placeholder="" class="input-field"></label>
+                <label class="add-label">Full Name
+                <input type="text" placeholder="" class="input-field"></label>
+                <label class="add-label">Course
+                  <select required>
+                      <option disabled selected></option>
+                      <option>BsIT</option>
+                      <option>BsCrim</option>
+                      <option>BsP</option>
+                      <option>BsCpE</option>
+                  </select>
+              </label>
+                <label class="add-label">Year Level
+                    <select required>
+                        <option disabled selected></option>
+                        <option>1st</option>
+                        <option>2nd</option>
+                        <option>3rd</option>
+                        <option>4th</option>
+                    </select>
+                </label>
+                <label class="add-label">Semester
+                    <select required>
+                        <option disabled selected></option>
+                        <option>1st</option>
+                        <option>2nd</option>
+                    </select>
+                </label>
+                <label class="add-label">Acad&nbspYear
+                    <select required>
+                        <option disabled selected></option>
+                        <option>2023-2024</option>
+                        <option>2024-2025</option>
+                    </select>
+                </label>
+                <label class="add-label">Student&nbspType
+                    <select required>
+                        <option disabled selected></option>
+                        <option>Freshmen</option>
+                        <option>Transferee</option>
+                        <option>Octoberian</option>
+                    </select>
+                </label>
+                
+                       
+            </div>
+                
+            <button type="submit" name="submit" class="addinput-btn">Add Student</button>
         </div>
     </div>
-
-    <!--Section List Container 2-->
-
-    <div class="sectionlist-container1">
-        <div class="sectionlistinfo-header1">
-            <h1 class="requestinfo1">2nd Year</h1>
-
-        <table class="request-table">
-          <tr>
-            <th class="requestcon">Course</th>
-            <th class="requestcon">Year&nbspLevel</th>
-            <th class="requestcon">Section</th>
-            <th class="requestcon">Semester</th>
-            <th class="requestcon">Academic&nbspYear</th>
-            <th class="requestcon">Total</th>
-            <th class="requestcon">Action</th>
-          </tr>
-          <tr>
-            <td class="reqdata">01</td>
-            <td class="reqdata">Juan Dela Cruz</td>
-            <td class="reqdata">BSIT</td>
-            <td class="reqdata">4012</td>
-            <td class="reqdata">4012</td>
-            <td class="reqdata">01</td>
-            <td class="reqdata"><button class="reqdata-btns">View</button></td>
-          </tr>
-          <tr>
-            <td class="reqdata">01</td>
-            <td class="reqdata">Pedro Puyat</td>
-            <td class="reqdata">BSIT</td>
-            <td class="reqdata">4102</td>
-            <td class="reqdata">4012</td>
-            <td class="reqdata">01</td>
-            <td class="reqdata"><button class="reqdata-btns">View</button></td>
-          </tr>
-          <tr>
-            <td class="reqdata">01</td>
-            <td class="reqdata">Illumi ZolD</td>
-            <td class="reqdata">BSIT</td>
-            <td class="reqdata">4012</td>
-            <td class="reqdata">4012</td>
-            <td class="reqdata">01</td>
-            <td class="reqdata"><button class="reqdata-btns">View</button></td>
-          </tr>
-        </table><br>
     </div>
 </div>
-
- <!--Section List Container 3-->
-
- <div class="sectionlist-container2">
-    <div class="sectionlistinfo-header2">
-        <h1 class="requestinfo2">3rd Year</h1>
-
-    <table class="request-table">
-      <tr>
-        <th class="requestcon">Course</th>
-        <th class="requestcon">Year&nbspLevel</th>
-        <th class="requestcon">Section</th>
-        <th class="requestcon">Semester</th>
-        <th class="requestcon">Academic&nbspYear</th>
-        <th class="requestcon">Total</th>
-        <th class="requestcon">Action</th>
-      </tr>
-      <tr>
-        <td class="reqdata">01</td>
-        <td class="reqdata">Juan Dela Cruz</td>
-        <td class="reqdata">BSIT</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">01</td>
-        <td class="reqdata"><button class="reqdata-btns">View</button></td>
-      </tr>
-      <tr>
-        <td class="reqdata">01</td>
-        <td class="reqdata">Pedro Puyat</td>
-        <td class="reqdata">BSIT</td>
-        <td class="reqdata">4102</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">01</td>
-        <td class="reqdata"><button class="reqdata-btns">View</button></td>
-      </tr>
-      <tr>
-        <td class="reqdata">01</td>
-        <td class="reqdata">Illumi ZolD</td>
-        <td class="reqdata">BSIT</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">01</td>
-        <td class="reqdata"><button class="reqdata-btns">View</button></td>
-      </tr>
-    </table><br>
-</div>
-</div>
-
- <!--Section List Container 4-->
-
- <div class="sectionlist-container3">
-    <div class="sectionlistinfo-header3">
-        <h1 class="requestinfo3">4th Year</h1>
-
-    <table class="request-table">
-      <tr>
-        <th class="requestcon">Course</th>
-        <th class="requestcon">Year&nbspLevel</th>
-        <th class="requestcon">Section</th>
-        <th class="requestcon">Semester</th>
-        <th class="requestcon">Academic&nbspYear</th>
-        <th class="requestcon">Total</th>
-        <th class="requestcon">Action</th>
-      </tr>
-      <tr>
-        <td class="reqdata">01</td>
-        <td class="reqdata">Juan Dela Cruz</td>
-        <td class="reqdata">BSIT</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">01</td>
-        <td class="reqdata"><button class="reqdata-btns">View</button></td>
-      </tr>
-      <tr>
-        <td class="reqdata">01</td>
-        <td class="reqdata">Pedro Puyat</td>
-        <td class="reqdata">BSIT</td>
-        <td class="reqdata">4102</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">01</td>
-        <td class="reqdata"><button class="reqdata-btns">View</button></td>
-      </tr>
-      <tr>
-        <td class="reqdata">01</td>
-        <td class="reqdata">Illumi ZolD</td>
-        <td class="reqdata">BSIT</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">4012</td>
-        <td class="reqdata">01</td>
-        <td class="reqdata"><button class="reqdata-btns">View</button></td>
-      </tr>
-    </table>
-</div>
-</div>
-        
-    </div>
-</div><br>
 
 
 
@@ -462,6 +353,63 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
+
+    //add new and old student
+    function addFn() {
+            const divEle = document.getElementById("inputFields");
+            divEle.innerHTML += `
+        <div>
+                <label class="add-label">Student ID
+                <input type="text" placeholder="" class="input-field"></label>
+                <label class="add-label">Full Name
+                <input type="text" placeholder="" class="input-field"></label>
+                <label class="add-label">Course
+                  <select required>
+                      <option disabled selected></option>
+                      <option>BsIT</option>
+                      <option>BsCrim</option>
+                      <option>BsP</option>
+                      <option>BsCpE</option>
+                  </select>
+              </label>
+                <label class="add-label">Year Level
+                    <select required>
+                        <option disabled selected></option>
+                        <option>1st</option>
+                        <option>2nd</option>
+                        <option>3rd</option>
+                        <option>4th</option>
+                    </select>
+                </label>
+                <label class="add-label">Semester
+                    <select required>
+                        <option disabled selected></option>
+                        <option>1st</option>
+                        <option>2nd</option>
+                    </select>
+                </label>
+                <label class="add-label">Acad&nbspYear
+                    <select required>
+                        <option disabled selected></option>
+                        <option>2023-2024</option>
+                        <option>2024-2025</option>
+                    </select>
+                </label>
+                <label class="add-label">Student&nbspType
+                    <select required>
+                        <option disabled selected></option>
+                        <option>Freshmen</option>
+                        <option>Transferee</option>
+                        <option>Octoberian</option>
+                    </select>
+                </label>
+         
+        </div>
+      `;
+    }
+
+
+
 
     </script>
 </body>

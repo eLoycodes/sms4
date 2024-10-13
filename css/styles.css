@@ -23,6 +23,7 @@ body{
     z-index: 1;
 }
 
+
 .sidenav .bcplogo{
     width: 12%;
     height: 3.5%;
@@ -663,6 +664,25 @@ tr,td{
 
 /*  Student Information - Student Personal Information css */
 
+.form-control {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.admission1 {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+}
+
+.SSI {
+  margin-right: 10px; /* Space between label and input */
+}
+
 .frames{
   position: relative;
   max-width: 1200px;
@@ -705,7 +725,7 @@ tr,td{
 .frames form{
   position: relative;
   margin-top: 16px;
-  min-height: 490px;
+  min-height: 80px;
   background-color: #fff;
   overflow: hidden;
 }
@@ -735,13 +755,14 @@ form.secActive .form.one{
   transform: translateX(-100%);
 }
 
-.frames form .admission1{
+
+/*.frames form .admission1{
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   margin-top: -2%;
-}
+} 
 .input-fieldd{
   display: flex;
   width: calc(100% / 3 - 15px);
@@ -777,7 +798,7 @@ form .fields1 .input-field1{
   font-size: 14px;
   font-weight: 600;
   color: #585858;
-}
+} */
 .input-field1 input, select{
   outline: none;
   font-size: 14px;
@@ -831,11 +852,7 @@ form .backbutton i{
 form .backbutton i{
   transform: rotate(180deg);
 }
-/*form .buttons{
-  display: flex;
-  align-items: center;
-  float: right;
-}*/
+
 form .buttons button , .backbutton{
   margin-right: 20px;
 }
@@ -1939,6 +1956,7 @@ a .addStud-btn{
   margin-right: 5%;
 }
 
+
 /*#### new & old css ends here */
 
 
@@ -1947,7 +1965,7 @@ a .addStud-btn{
 .edit-frame1{
   background-color: rgb(242, 247, 250);
   width: 97%;
-  height: 170vh;
+  height: 150vh;
   justify-content: center;
   align-items: center;
 }
@@ -1960,7 +1978,7 @@ a .addStud-btn{
 
 .edit-form{
   width: 82%;
-  height: 25vh;
+  height: 20vh;
   justify-content: center;
   align-items: center;
   position: absolute; 
@@ -1981,26 +1999,52 @@ a .addStud-btn{
   width: 100%;
   position: absolute; 
   left:0px; right:0;
-  top:110px; bottom:0px;
+  top:80px; bottom:0px;
 }
 
 .edit-search{
   position: absolute;
   left:50px; right:0;
-  top:50px; bottom:0px;
+  top:40px; bottom:0px;
   width: 30%;
  }
 
  /* box 2*/
+
+ .edit-form0{
+  width: 82%;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute; 
+  left:150px; right:0;
+  top:410px; bottom:0px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  resize: vertical;
+  overflow-x: hidden;
+ }
+ .edit-form0::-webkit-scrollbar{
+  width: 0px;
+ }
+
+ .edit-table0{
+  border-collapse: collapse;
+  width: 100%;
+  position: absolute; 
+  left:0px; right:0;
+  top:70px; bottom:0px;
+}
  
  .edit-form1{
-  width: 82%;
+  width: 41%;
   height: 60vh;
   justify-content: center;
   align-items: center;
   position: absolute; 
   left:150px; right:0;
-  top:470px; bottom:0px;
+  top:910px; bottom:0px;
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 3px 3px 10px rgb(188, 188, 188);
@@ -2016,19 +2060,19 @@ a .addStud-btn{
   width: 100%;
   position: absolute; 
   left:0px; right:0;
-  top:110px; bottom:0px;
+  top:75px; bottom:0px;
 }
 
 /* box 3 */
 
 .edit-form2{
-  width: 82%;
+  width: 41%;
   height: 60vh;
   justify-content: center;
   align-items: center;
   position: absolute; 
-  left:150px; right:0;
-  top:1075px; bottom:0px;
+  left:935px; right:0;
+  top:910px; bottom:0px;
   background-color: #ffffff;
   border-radius: 20px;
   box-shadow: 3px 3px 10px rgb(188, 188, 188);
@@ -2044,7 +2088,7 @@ a .addStud-btn{
   width: 100%;
   position: absolute; 
   left:0px; right:0;
-  top:110px; bottom:0px;
+  top:75px; bottom:0px;
 }
 
 /* MODAL */

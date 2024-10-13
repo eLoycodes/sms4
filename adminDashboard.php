@@ -5,6 +5,34 @@ session_start();
 if(!isset($_SESSION["id"])){
 		echo"<script>window.open('index.php?mes=Access Denied..','_self');</script>";
 	}	
+
+  $total_students = 0; // Variable to hold total number of students
+  $firsyeartotal_students = 0;
+  $secondyeartotal_students = 0;
+  $thirdyeartotal_students = 0;
+  $forthyeartotal_students = 0;
+  
+  // Query to count total number of students in each year
+  $count_query = "
+      SELECT 
+          (SELECT COUNT(*) FROM firstyear) AS firsyeartotal,
+          (SELECT COUNT(*) FROM secondyear) AS secondyeartotal,
+          (SELECT COUNT(*) FROM thirdyear) AS thirdyeartotal,
+          (SELECT COUNT(*) FROM forthyear) AS forthyeartotal
+  ";
+  
+  $count_result = $connect->query($count_query);
+  if ($count_result && $count_result->num_rows > 0) {
+      $row = $count_result->fetch_assoc();
+      $firsyeartotal_students = $row['firsyeartotal'];
+      $secondyeartotal_students = $row['secondyeartotal'];
+      $thirdyeartotal_students = $row['thirdyeartotal'];
+      $forthyeartotal_students = $row['forthyeartotal'];
+  
+      // Calculate total number of students across all years
+      $total_students = $firsyeartotal_students + $secondyeartotal_students + $thirdyeartotal_students + $forthyeartotal_students;
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,148 +46,12 @@ if(!isset($_SESSION["id"])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 </head>
-<style>
-    a{
-        text-decoration: none;
-    }
-</style>
+
 <body>
-    <div id="sidenav" class="sidenav">
-        <img src="image/bcplogo-mini.png" alt="img" class="bcplogo">
-        <ul class="nav-link">
-            <li class="bellNotiff">
-            <a href="#" class="active">
-                <i class='bx bx-bell'></i>
-            </a>
-            </li>
-            <li class="userProfile">
-            <a href="#">
-                 <i class='bx bx-user'></i>
-            </a>
-            </li>
-            <img src="image/avatar.jpg" alt="avatar" class="avatar"><br><br>
-            <table class="user-profile">
-              <tr>
-                <td><span class="user-name"><b>Admin@gmail.com</b></span></td>
-              </tr>
-              <tr>
-                  <td> <span class="user-mail">Admin</span></td>    
-              </tr>
-            </table>        
-        </ul><br><br>
-
-        <table class="dashboard">
-          <tr>
-            <td>
-              <ul class="nav-links">
-              <li>
-                <a href="adminDashboard.html">
-                  <i class='bx bx-grid-alt' ></i>
-                  <span class="links_name">Dashboard</span>
-                </a>
-              </li>
-            </ul>   
-            </td>
-          </tr>            
-        </table>
-
-        <div class="dropdownSmsprofile">
-          <button class="dropdown-btn"> <i class='bx bx-user' ></i>
-            <span class="droplinks_name">Admnin Profile</span>
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-container">
-            <a class="dropdown-a" href="#"><span class="droplinks_name">Account</span></a>
-            <a class="dropdown-a" href="#"><span class="droplinks_name">Security</span></a>
-            <a class="dropdown-a" href="#"><span class="droplinks_name">Additional Information</span></a>
-          </div>
-          </div>
-
-        <br><br>
-          <span class="main"><b>ADMISSION</b></span><br>
-          <span class="sub"><b>Student Admission</b></span>
-        <br><br><br>
-
-        <div class="dropdownStudentInformation">
-          <button class="dropdown-btn"> <i class='bx bx-user' ></i>
-            <span class="droplinks_name">Student Information</span>
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-container">
-            <a class="dropdown-a" href="admin-StudentPersonalInformation.html"><span class="droplinks_name">Student Personal Information</span></a>
-            <a class="dropdown-a" href="admin-DeactivateList.html"><span class="droplinks_name">Deactivate List</span></a> 
-            <a class="dropdown-a" href="admin-PendingStudent.html"><span class="droplinks_name">Pending Student</span></a> 
-            <a class="dropdown-a" href="admin-RequestInformation.html"><span class="droplinks_name">Request Information</span></a> 
-          </div>
-          </div>
-
-          <div class="dropdownSectionManagement">
-            <button class="dropdown-btn"> <i class='bx bx-user' ></i>
-              <span class="droplinks_name">Section Management</span>
-              <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
-              <a class="dropdown-a" href="admin-AddStudent.html"><span class="droplinks_name">Add Student</span></a>
-              <a class="dropdown-a" href="admin-SectionList.html"><span class="droplinks_name">Section List</span></a>
-              <a class="dropdown-a" href="admin-MasterList.html"><span class="droplinks_name">Master List</span></a> 
-              <a class="dropdown-a" href="admin-ManageClass.html"><span class="droplinks_name">Manage Class</span></a> 
-            </div>
-            </div><br><br>
-
-        <div class="dropdownDocumentManangement">
-        <span class="main"><b>Document Manangement</b></span><br>
-        <span class="sub"><b>Document Details</b></span><br><br><br>
-        <button class="dropdown-btn"> <i class='bx bx-money' ></i>
-          <span class="droplinks_name">Document</span>
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-container">
-          <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Request</span></a>
-          <a class="dropdown-a" href="admin-DocumentSubmit.html"><span class="droplinks_name">Document Submit</span></a>
-          <a class="dropdown-a" href="admin-PayLater.html"><span class="droplinks_name">Pay Later</span></a>
-          <a class="dropdown-a" href="admin-ReleaseHistory.html"><span class="droplinks_name">release history</span></a> 
-        </div>
-        </div><br><br>
-
-        <div class="dropdownCurriculum">
-          <span class="main"><b>Curriculum</b></span><br>
-          <span class="sub"><b>School Curriculum</b></span><br><br><br>
-          <button class="dropdown-btn"> <i class='bx bx-file' ></i>
-            <span class="droplinks_name">Curriculum</span>
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-container">    
-            <a class="dropdown-a" href="admin-Course.html"><span class="droplinks_name">Courses</span></a>   
-          </div>
-          </div>
-
-        <table class="otherService"><br><br>
-          <span class="main"><b>OTHER SERVICES</b></span><br>
-          <tr>
-            <td>
-              <ul class="nav-links">
-              <li>
-                <a href="#">
-                  <i class='bx bx-file' ></i>
-                  <span class="links_name">Non Academic Affairs</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class='bx bx-file' ></i>
-                  <span class="links_name">Appointment</span>
-                </a>
-              </li>
-            </ul>   
-            </td>
-          </tr>            
-        </table><br><br><br>
-    </div>
-
-    <div id="uppernav">
-        <div class="upnav">
-        <button class="openbtn" onclick="toggleNav()">☰</button>
-    </div>
+   <!-- navbar -->
+   <?php include('navbar.php'); ?>
+   <!-- end navbar -->
+    
     <section class="home-section">
       <div class="frame2"><br><br>
         <span class="dashboardName"><b>Dashboard</b></span><br>
@@ -170,7 +62,7 @@ if(!isset($_SESSION["id"])){
           <div class="box">
             <div class="right-side">
               <div class="box-topic">1st Year</div><br>
-              <div class="number">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp--</div>
+              <div class="number">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $firsyeartotal_students; ?></div>
               <div class="indicator">
                      
               </div>
@@ -180,7 +72,7 @@ if(!isset($_SESSION["id"])){
           <div class="box">
             <div class="right-side">
               <div class="box-topic">2nd Year</div><br>
-              <div class="number">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp--</div>
+              <div class="number">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $secondyeartotal_students; ?></div>
               <div class="indicator">
               </div>
             </div>
@@ -189,7 +81,7 @@ if(!isset($_SESSION["id"])){
           <div class="box">
             <div class="right-side">
               <div class="box-topic">3rd Year</div><br>
-              <div class="number">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp--</div>
+              <div class="number">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $thirdyeartotal_students; ?></div>
               <div class="indicator">
                </div>
             </div>
@@ -197,7 +89,7 @@ if(!isset($_SESSION["id"])){
           <div class="box">
             <div class="right-side">
               <div class="box-topic">4th Year</div><br>
-              <div class="number">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp--</div>       
+              <div class="number">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $forthyeartotal_students; ?></div>     
               <div class="indicator">           
               </div>
             </div>
@@ -220,7 +112,7 @@ if(!isset($_SESSION["id"])){
               <?php
                 
               include('connect.php'); 
-              $s="SELECT * from student";
+              $s="SELECT * from firstyear";
               $res=$connect->query($s);
               if($res->num_rows>0){
               $i=0;
@@ -228,11 +120,11 @@ if(!isset($_SESSION["id"])){
               $i++;
               echo"
               <tr>
-              <td>{$r["studentid"]}</td>
+              <td>{$r["studentID"]}</td>
               <td>{$r["firstname"]} {$r["lastname"]}</td>  
               <td>{$r["course"]}</td>               
               <td>{$r["section"]}</td> 
-              <td><button><a href='#?userid={$r["sid"]}'>View</a></button></td>	
+              <td><button><a href='#?userid={$r["firstyear_id"]}'>View</a></button></td>	
               </tr>
               ";	
                   }
@@ -242,20 +134,24 @@ if(!isset($_SESSION["id"])){
       
         </div><br>
         <div class="sales-boxes">
-          <div class="top-sales box">
-            <div class="title">Announcement</div>
+    <div class="top-sales box">
+        <div class="title">Announcement</div>
+        <form action="upload.php" method="post" enctype="multipart/form-data" id="uploadForm">
             <div class="announcement-btn">
-              <button type="file" class="announcement-button">Upload File</button>
+                <input type="file" name="announcementFile" class="announcement-button" required id="fileInput" style="display: none;">
+                <button type="button" id="uploadButton">Choose File</button>
+                <button type="submit" id="submitButton" style="display: none;">Upload File</button>
             </div>
-            <ul class="top-sales-details">
-              
-          </div><br><br>
-        </div>
-      </div>
+        </form>
+        <ul class="top-sales-details" id="fileList">
+            <!-- Optional: Display uploaded files or announcements here -->
+        </ul>
+    </div><br><br>
+</div>
+
     </section>
    </div>
 </div>
-
 
 
 
@@ -290,68 +186,94 @@ for (i = 0; i < dropdown.length; i++) {
   });
 }
 
-// Pagination
 
-const galleryItems=document.querySelector(".gallery-items").children;
- const prev=document.querySelector(".prev");
- const next=document.querySelector(".next");
- const page=document.querySelector(".page-num");
- const maxItem=1;
- let index=1;
-  
-  const pagination=Math.ceil(galleryItems.length/maxItem);
-  console.log(pagination)
+//announcement
 
-  prev.addEventListener("click",function(){
-    index--;
-    check();
-    showItems();
-  })
-  next.addEventListener("click",function(){
-  	index++;
-  	check();
-    showItems();  
-  })
+const fileInput = document.getElementById('fileInput');
+    const uploadButton = document.getElementById('uploadButton');
+    const submitButton = document.getElementById('submitButton');
+    const fileList = document.getElementById('fileList');
 
-  function check(){
-  	 if(index==pagination){
-  	 	next.classList.add("disabled");
-  	 }
-  	 else{
-  	   next.classList.remove("disabled");	
-  	 }
+    uploadButton.addEventListener('click', function() {
+        fileInput.click(); 
+    });
 
-  	 if(index==1){
-  	 	prev.classList.add("disabled");
-  	 }
-  	 else{
-  	   prev.classList.remove("disabled");	
-  	 }
-  }
+    fileInput.addEventListener('change', function() {
+ 
+        fileList.innerHTML = '';
 
-  function showItems() {
-  	 for(let i=0;i<galleryItems.length; i++){
-  	 	galleryItems[i].classList.remove("show");
-  	 	galleryItems[i].classList.add("hide");
+   
+        const file = this.files[0];
+        if (file) {
 
+            const listItem = document.createElement('li');
+            listItem.textContent = file.name;
 
-  	    if(i>=(index*maxItem)-maxItem && i<index*maxItem){
-  	 	  // if i greater than and equal to (index*maxItem)-maxItem;
-  		  // means  (1*8)-8=0 if index=2 then (2*8)-8=8
-          galleryItems[i].classList.remove("hide");
-          galleryItems[i].classList.add("show");
-  	    }
-  	    page.innerHTML=index;
-  	 }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                listItem.appendChild(img);
+            };
+            reader.readAsDataURL(file);
 
-  	 	
-  }
+            fileList.appendChild(listItem);
+            submitButton.style.display = 'inline-block';
+        }
+    });
+</script>
 
-  window.onload=function(){
-  	showItems();
-  	check();
-  }
+<style>
+    a{
+        text-decoration: none;
+        color: black;
+    }
+    
+    .announcement-btn {
+        position: relative;
+    }
 
-    </script>
+    #uploadButton {
+        background-color: rgb(78, 78, 78); /* Green */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    #submitButton {
+        background-color: #007BFF; /* Blue */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        margin-left: 10px; 
+    }
+
+    .top-sales-details {
+        list-style: none; 
+        padding: 0; 
+        text-align: center; 
+    }
+
+    .top-sales-details li {
+        margin: 10px 0; 
+    }
+
+    .top-sales-details img {
+        display: block; 
+        margin: 0 auto; 
+        max-width: 130px; 
+        height: auto; 
+    }
+</style>
 </body>
 </html>

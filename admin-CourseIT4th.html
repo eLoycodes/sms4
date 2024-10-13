@@ -10,6 +10,70 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 </head>
+<style>
+  .add-form{
+  background: white;
+  height: 60vh;
+  width: calc(100% - 100px);
+  margin-left: 2.5%;
+  margin-top: 8%;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(226, 225, 225);
+  position: absolute; 
+  left:0px; right:0;
+  top:50px; bottom:0px;
+  overflow: auto;
+  
+}
+
+.add-container{
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  min-height: 20vh;
+}
+
+.input-field,select{
+  width: 160px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px auto;
+  margin-left: 30%;
+  margin-top: 1%;
+}
+
+
+.add-label{
+ font-size: 15px;
+ display: inline-block;
+  margin-top: 20px;
+
+}
+
+.inputclass{
+  margin-left: -5%;
+  text-align: center;
+  padding: 10px;
+  
+}
+
+.add-button{
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: -85%;
+}
+
+.addinput-btn{
+  padding: 8px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  float: right;
+  margin-top: 1%;
+  margin-right: 5%;
+}
+</style>
 <body>
     <div id="sidenav" class="sidenav">
         <img src="image/bcplogo-mini.png" alt="img" class="bcplogo">
@@ -20,7 +84,7 @@
             </a>
             </li>
             <li class="userProfile">
-            <a href="#">
+            <a href="index.php">
                  <i class='bx bx-user'></i>
             </a>
             </li>
@@ -59,6 +123,7 @@
             <a class="dropdown-a" href="#"><span class="droplinks_name">Account</span></a>
             <a class="dropdown-a" href="#"><span class="droplinks_name">Security</span></a>
             <a class="dropdown-a" href="#"><span class="droplinks_name">Additional Information</span></a>
+            <a class="dropdown-a" href="#"><span class="droplinks_name">Log Out</span></a>
           </div>
           </div>
 
@@ -102,7 +167,7 @@
         </button>
         <div class="dropdown-container">
           <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Request</span></a>
-          <a class="dropdown-a" href="admin-DocumentSubmit.html"><span class="droplinks_name">Document Submit</span></a>
+          <a class="dropdown-a" href="admin-DocumentRequest.html"><span class="droplinks_name">Document Submit</span></a>
           <a class="dropdown-a" href="admin-PayLater.html"><span class="droplinks_name">Pay Later</span></a>
           <a class="dropdown-a" href="admin-ReleaseHistory.html"><span class="droplinks_name">release history</span></a>    
         </div>
@@ -149,114 +214,87 @@
         <div class="upnav">
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
-<!-- start -->
 
-        <div class="studentInformation-frame" method="POST">
-            <div class="frame2"><br><br>
-                <span class="dashboardName"><b>Student Information</b></span><br>
-                <h1 class="dashboardAnnouncement">Student Personal Information</h1>
-              </div>
+    <div class="requestForm-frame1">
+        <div class="requestForm-frame2"><br><br>
+          <span class="dashboardName"><b>Section Management</b></span><br>
+          <h1 class="dashboardAnnouncement">Subject List</h1>
+        </div>
+        <div class="filtercourse-frame">
+          <h6 class="filtername">BS - Information Technology</h6>
+          <h1 class="dashboardAnnouncement" style="font-size: 18px;">Year Level
+            <select required onchange="location = this.value;" class="filterbox">
+                <option disabled selected></option>
+                <option value=admin-CourseIT.html>First Year</option>
+                <option value=admin-CourseIT2nd.html>Second Year</option>
+                <option value=admin-CourseIT3rd.html>Third Year</option>
+                <option value=admin-CourseIT4th.html>Forth Year</option>
+            </select>
+          </h1>
+        </div>
+        <div class="sectionlist-container">
+            <div class="sectionlistinfo-header">
+                <h1 class="requestinfo" style="font-size: 18px;">1st Sem</h1>
+            <table class="request-table">
+              <tr>
+                <th class="requestcon">NO.</th>
+                <th class="requestcon">&nbsp&nbsp</th>
+                <th class="requestcon">&nbsp&nbsp</th>
+                <th class="requestcon">Subject Code</th>
+                <th class="requestcon">Subject Name</th>
+              </tr>
+              <tr>   
+                <td class="reqdata">01</td>
+                <td class="reqdata"></td>
+                <td class="reqdata"></td>
+                <td class="reqdata">Juan Dela Cruz</td>
+                <td class="reqdata">BSIT</td>
+              </tr>
+              <tr>
+                <td class="reqdata">02</td>
+                <td class="reqdata"></td>
+                <td class="reqdata"></td>
+                <td class="reqdata">Pedro Puyat</td>
+                <td class="reqdata">BSIT</td>
+              </tr>
+            </table><br>
+        </div>
+    </div>
 
-              <div class="frames">
-                <form>
-                  <div class="form one">
-                    <div class="details personal">
-                      <div class="admission1">
-                        <label class="SSI">Search Student ID:</label>
-                        <input type="text" name="Search" class="search-txt">
-                        <button type="submit" name="submit" class="search-btn" style=" margin-left: -52%;">Search</button><br><br><br>
-                      </div>
-                    <div class="fields1">
-                      <div class="input-field1">
-                        <label>Student ID *</label>
-                          <input type="text" name="studnumber" placeholder="" required>
-                        </div>
-                        <div class="input-field1">
-                          <label>First Name *</label>
-                            <input type="text" name="fname" placeholder="" required>
-                      </div>
-                      <div class="input-field1">
-                        <label>Middle Name *</label>
-                          <input type="text" name="mname" placeholder="" required>
-                      </div>
-                      <div class="input-field1">
-                        <label>Last Name *</label>
-                          <input type="text" name="lname" placeholder="" required>
-                        </div>
-                        <div class="input-field1">
-                          <label>Suffix Name *</label>
-                            <input type="text" name="sname" placeholder="" required>
-                        </div>
-                        <div class="input-field1">
-                          <label>Email *</label>
-                          <input type="text" name="email" placeholder="" required>
-                        </div>
-                        <div class="input-field1">
-                          <label>Gender *</label>
-                            <input type="text" name="gender" placeholder="" required>
-                        </div>
-                        <div class="input-field1">
-                          <label>Date of Birth *</label>
-                            <input type="date" name="dob" placeholder="" required>
-                        </div>
-                        <div class="input-field1">
-                          <label>Age *</label>
-                          <input type="text" name="age" placeholder="" required>
-                        </div>
-                        <div class="input-field1">
-                          <label>Contact Number *</label>
-                          <input type="number" placeholder="" required>
-                        </div>
-                      </div>
-                    </div>
-                      <button class="nextbutton">
-                        <span class="buttonText">Next</span>     
-                      </button> 
-                    </div>
+    <!--Section List Container 2-->
 
-                    <div class="form second">
-                        <div class="details address">
-                            <div class="fields1">
-                                <div class="input-field1">
-                                    <label>Course *</label>
-                                    <input type="text" placeholder="" required>
-                                </div>
-        
-                                <div class="input-field1">
-                                    <label>Year Level *</label>
-                                    <input type="text" placeholder="" required>
-                                </div>
-        
-                                <div class="input-field1">
-                                    <label>Section *</label>
-                                    <input type="text" placeholder="" required>
-                                </div>
-                                <div class="input-field1">
-                                  <label>Academic Year *</label>
-                                  <input type="text" placeholder="" required>
-                              </div>
-                              <div class="input-field1">
-                                <label>Status *</label>
-                                <input type="text" placeholder="" required>
-                            </div>
-                            <div class="input-field1">
-                              <label>Student Type *</label>
-                              <input type="text" placeholder="" required>
-                          </div>
-                            </div>
-                        </div><br><br><br><br><br><br><br>
-                        <div class="buttons">  
-                            <div class="backbutton">
-                                <span class="buttonText">Back</span>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+    <div class="sectionlist-container1">
+        <div class="sectionlistinfo-header1">
+            <h1 class="requestinfo" style="font-size: 18px;">2nd Sem</h1>
 
-<!-- end -->
-   </div>
+            <table class="request-table">
+                <tr>
+                  <th class="requestcon">NO.</th>
+                  <th class="requestcon">&nbsp&nbsp</th>
+                  <th class="requestcon">&nbsp&nbsp</th>
+                  <th class="requestcon">Subject Code</th>
+                  <th class="requestcon">Subject Name</th>
+                </tr>
+                <tr>   
+                  <td class="reqdata">01</td>
+                  <td class="reqdata"></td>
+                  <td class="reqdata"></td>
+                  <td class="reqdata">Juan Dela Cruz</td>
+                  <td class="reqdata">BSIT</td>
+                </tr>
+                <tr>
+                  <td class="reqdata">01</td>
+                  <td class="reqdata"></td>
+                  <td class="reqdata"></td>
+                  <td class="reqdata">Pedro Puyat</td>
+                  <td class="reqdata">BSIT</td>
+                </tr>
+              </table><br>
+    </div>
 </div>
+        
+    </div>
+</div><br>
 
 
 
@@ -292,24 +330,13 @@ for (i = 0; i < dropdown.length; i++) {
   });
 }
 
-// profile
-const form = document.querySelector("form"),
-        nextbutton = form.querySelector(".nextbutton"),
-        backbutton = form.querySelector(".backbutton"),
-        allInput = form.querySelectorAll(".one input");
-        nextbutton.addEventListener("click", ()=> {
-            allInput.forEach(input => {
-                if(input.value != ""){
-                    form.classList.add('secActive');
-                }else{
-                    form.classList.remove('secActive');
-                }
-            })
-        })
+var modal = document.getElementById('id01');
 
-        backbutton.addEventListener("click", () => form.classList.remove('secActive'));
-   
-
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
     </script>
 </body>
