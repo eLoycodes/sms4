@@ -7,10 +7,17 @@ ini_set('session.use_only_cookies', 1);
 session_start();
 session_regenerate_id(true); 
 
-if (!isset($_SESSION["id"])) {
-    echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
+// Debugging: Output current session variables
+if (session_status() === PHP_SESSION_ACTIVE) {
+    echo "<pre>";
+    print_r($_SESSION);
+    echo "</pre>";
 }
 
+if (!isset($_SESSION["id"])) {
+    echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
+    exit(); // Ensure that no further code is executed
+}
 $student_ID = null; 
 $error_message = "";
 
