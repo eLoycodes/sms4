@@ -1,5 +1,8 @@
 <?php
 include("connect.php");
+ini_set('session.cookie_httponly', 1);
+ini_set('session.cookie_secure', 1);
+ini_set('session.use_only_cookies', 1);
 session_start();
 
 
@@ -8,7 +11,7 @@ if (!isset($_SESSION["id"])) {
     echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
 }
 
-$student_ID = null; 
+
 $error_message = "";
 
 if (isset($_POST['studentID'])) {
