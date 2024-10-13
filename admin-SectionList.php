@@ -1,7 +1,6 @@
 <?php
 include("connect.php");
 session_start();
-session_regenerate_id(true); // Regenerate session ID
 
 if (!isset($_SESSION["id"])) {
     echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
