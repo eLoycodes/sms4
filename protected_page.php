@@ -1,8 +1,9 @@
 <?php
+include("connect.php");
 session_start();
 
 if (!isset($_SESSION["id"])) {
-    header("Location: adminDashboard.php?mes=Access Denied..");
+    header("Location: index.php?mes=Access Denied..");
     exit();
 }
 
