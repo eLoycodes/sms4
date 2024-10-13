@@ -2,13 +2,15 @@
 
 include("connect.php");
 ini_set('session.cookie_httpsonly', 1);
-ini_set('session.cookie_secure', 1); 
+ini_set('session.cookie_secure', 1);
 ini_set('session.use_only_cookies', 1);
 session_start();
-session_regenerate_id(true); 
+session_regenerate_id(true);
 
+// Check if user is logged in
 if (!isset($_SESSION["id"])) {
     echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
+    exit(); // Ensure to stop script execution
 }
 
 $student_ID = null; 
