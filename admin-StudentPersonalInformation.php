@@ -7,7 +7,6 @@ session_regenerate_id(true);
 // Check if user is logged in
 if (!isset($_SESSION["id"])) {
     echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
-    exit(); // Ensure to stop script execution
 }
 
 $student_ID = null; 
