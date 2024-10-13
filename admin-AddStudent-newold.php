@@ -21,7 +21,7 @@ include("connect.php");
 if (isset($_POST['submit'])) {
     ini_set("display_errors", 0);
     require_once("connect.php");
-$newstudent_id = null;
+    $newstudent_id = null;
    
     if ($_POST["newstudent_id"] != "" && $_POST["studentID"] != "" && $_POST["firstname"] != "" && $_POST["middlename"] != "" && $_POST["lastname"] != "" && $_POST["course"] != "" && 
         $_POST["yearlevel"] != "" && $_POST["semester"] != "" && $_POST["academicyear"] != "" && 
@@ -137,7 +137,7 @@ $newstudent_id = null;
                 <td>{$r["lastname"]}</td>
                 <td>{$r["course"]}</td>  
                 <td>{$r["yearlevel"]}</td>  
-                 <td><button><a href='admin-addStudent-newold.php?userid={$r["newstudent_id"]}'>Copy</a></button></td>	 
+                 <td><button><a href='admin-AddStudent-newold.php?userid={$r["newstudent_id"]}'>Copy</a></button></td>	 
                 </tr>
                 "; 
           }
