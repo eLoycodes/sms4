@@ -57,9 +57,9 @@ if (isset($_POST['submit'])) {
                 exit;
         }
 
-        // Prepare the SQL statement for insertion
-        $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype)  
-                VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype')";
+            // Prepare the SQL statement for insertion
+        $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype, status)  
+        VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active')";
 
         if ($connect->query($sql) === TRUE) {
             // After successful registration, delete from newstudent table
