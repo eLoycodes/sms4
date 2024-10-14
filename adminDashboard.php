@@ -234,7 +234,7 @@ const fileInput = document.getElementById('fileInput');
 </script>
 
 <style>
-   /* a{
+    a{
         text-decoration: none;
         color: black;
     }
@@ -245,7 +245,7 @@ const fileInput = document.getElementById('fileInput');
 
     #uploadButton {
         background-color: rgb(78, 78, 78); /* Green */
-    /*    color: white;
+        color: white;
         border: none;
         padding: 10px 20px;
         text-align: center;
@@ -257,7 +257,7 @@ const fileInput = document.getElementById('fileInput');
 
     #submitButton {
         background-color: #007BFF; /* Blue */
-    /*    color: white;
+        color: white;
         border: none;
         padding: 10px 20px;
         text-align: center;
