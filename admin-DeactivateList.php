@@ -161,7 +161,7 @@ $connect->close();
                             <td class="req"><?php echo htmlspecialchars($r['middlename']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['course']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['yearlevel']); ?></td>
-                            <td class="req"><?php echo htmlspecialchars($r['section']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['section']) ?? 'N/A'; ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['academicyear']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['status']); ?></td>
                             <td class="req">
