@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
         $lastname = $studentData['lastname'] ?? '';
         $course = $studentData['course'] ?? '';
         $yearlevel = $studentData['yearlevel'] ?? '';
-        $section = $studentData['section'] ?? 'N/A'; // Set to 'N/A' if null
+        $section = isset($studentData['section']) ? $studentData['section'] : 'N/A'; // Check if 'section' exists
         $academicyear = $studentData['academicyear'] ?? '';
         $status = $studentData['status'] ?? '';
 
@@ -106,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
 
 $connect->close();
 ?>
+
 
 
 
@@ -161,7 +162,7 @@ $connect->close();
                             <td class="req"><?php echo htmlspecialchars($r['middlename']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['course']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['yearlevel']); ?></td>
-                            <td class="req"><?php echo htmlspecialchars($r['section']) ?? 'N/A'; ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['section']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['academicyear']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['status']); ?></td>
                             <td class="req">
