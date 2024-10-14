@@ -26,31 +26,19 @@ body {
 .sidenav .bcplogo {
   width: 12%;
   height: 3.5%;
-  margin-top: -150px;
-  margin-left: 9%;
+  margin: 0 auto; /* Center the logo */
 }
 
-/* upper nav open */
 .sidenav .nav-link {
-  margin-top: -16%;
-  margin-left: 38%;
+  margin: 0 auto; /* Center the nav links */
 }
 
 .sidenav .nav-link li {
   position: relative;
   list-style: none;
   height: 50px;
-  width: 45%;
-}
-
-.sidenav .nav-link .bellNotiff {
-  margin-top: -16%;
-  margin-left: 10%;
-}
-
-.sidenav .nav-link .userProfile {
-  margin-top: -38%;
-  margin-left: 50%;
+  width: 90%; /* Adjust width for centering */
+  margin: 0 auto; /* Center the list items */
 }
 
 .sidenav .nav-link li a {
@@ -58,6 +46,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center; /* Center content */
   text-decoration: none;
   transition: all 0.4s ease;
 }
@@ -72,13 +61,11 @@ body {
 .avatar {
   width: 80%;
   height: 80%;
-  margin-left: -47%;
-  margin-top: 30%;
-  border-radius: 50%;
+  margin: 0 auto; /* Center the avatar */
 }
 
 .user-profile {
-  margin-left: -60%;
+  margin: 0 auto; /* Center the user profile */
 }
 
 tr, td {
@@ -98,15 +85,13 @@ tr, td {
 
 /* lower nav */
 .sidenav .nav-links {
-  margin-top: 5%;
-  margin-left: -15%;
-  text-decoration: none;
+  margin: 5% auto; /* Center the nav links */
 }
 
 .sidenav .nav-links li {
-  position: relative;
-  list-style: none;
   height: 50px;
+  width: 90%; /* Adjust width for centering */
+  margin: 0 auto; /* Center the list items */
 }
 
 .sidenav .nav-links li a {
@@ -114,6 +99,7 @@ tr, td {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center; /* Center content */
   text-decoration: none;
   transition: all 0.4s ease;
 }
@@ -156,12 +142,11 @@ tr, td {
   border-bottom: none;
 }
 
-/* CSS for admin-Dashboard */
 .home-section {
   background: rgb(242, 247, 250);
   min-height: 100vh;
   width: calc(100% - 100px);
-  left: 2%;
+  margin: 0 auto; /* Center the home section */
   transition: all 0.5s ease;
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
@@ -201,11 +186,10 @@ tr, td {
 .home-content .overview-boxes {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center; /* Center content */
   flex-wrap: wrap;
   padding: 0 20px;
   margin-bottom: 26px;
-  color: rgb(78, 78, 78);
 }
 
 .overview-boxes .box {
@@ -217,6 +201,7 @@ tr, td {
   padding: 30px 1px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px; /* Add margin for spacing between boxes */
 }
 
 .overview-boxes .box-topic {
@@ -243,12 +228,11 @@ tr, td {
 .report-container {
   min-height: 300px;
   max-width: 92%;
-  margin: 70px auto 0px auto;
+  margin: 70px auto; /* Center the report container */
   background-color: #ffffff;
   border-radius: 30px;
   box-shadow: 3px 3px 10px rgb(188, 188, 188);
-  padding: 0px 40px 20px 0px;
-  margin-top: 2%;
+  padding: 20px; /* Adjust padding */
 }
 
 .report-header {
@@ -324,7 +308,7 @@ tr, td {
   width: 92%;
   background: white;
   padding: 20px 30px;
-  margin: 0 20px;
+  margin: 20px auto; /* Center the recent sales box */
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: black;
@@ -378,64 +362,13 @@ tr, td {
 }
 
 .sales-boxes .box .button a:hover {
-  background: #0d3073;
-}
-
-/* Announcement box */
-.home-content .sales-boxes .top-sales {
-  width: 92%;
-  height: 200px;
-  background: white;
-  padding: 20px 30px;
-  margin: 0 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  margin-top: 1%;
-}
-
-.sales-boxes .top-sales li {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 10px 0;
-}
-
-.sales-boxes .top-sales li a img {
-  height: 40px;
-  width: 40px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-right: 10px;
-  background: #333;
-}
-
-.sales-boxes .top-sales li a {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.announcement-btn {
-  float: right;
-  padding: 10px;
-  margin-top: -2.5%;
-}
-
-.announcement-button {
-  height: 35px;
-  width: 90px;
-  border-radius: 8px;
-  background-color: rgb(78, 78, 78);
+  background: gray;
   color: white;
-  font-size: 13px;
-  border: none;
-  cursor: pointer;
 }
 
-/* Media Queries for Responsiveness */
 @media (max-width: 1600px) {
   .home-content .overview-boxes .box {
-      width: calc(100% / 2 - 15px);
+      width: calc(100% / 3 - 15px);
   }
 }
 
