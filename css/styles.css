@@ -585,7 +585,7 @@ tr, td {
 
 @media (max-width: 480px) {
   .sidenav {
-      width: 280px; /* Adjust sidenav width for small screens */
+      width: 250px; /* Adjust sidenav width for small screens */
   }
 
   .sidenav .nav-link li {
@@ -598,6 +598,8 @@ tr, td {
 
   .overview-boxes .box {
       padding: 20px 5px; /* Adjust box padding */
+      width: 100%;
+      margin-bottom: 20px;
   }
 
   .home-section {
