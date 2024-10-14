@@ -868,6 +868,47 @@ form.secActive .form.one {
   transform: translateX(-100%);
 }
 
+.callout {
+  padding: 20px;
+}
+
+.fields1 {
+  display: flex;
+  flex-wrap: wrap; /* Allow fields to wrap to the next line */
+  gap: 15px; /* Space between input fields */
+}
+
+.input-field1 {
+  flex: 1 1 calc(25% - 15px); /* Adjust the width for larger screens */
+  min-width: 200px; /* Minimum width for smaller screens */
+}
+
+@media (max-width: 1200px) {
+  .input-field1 {
+      flex: 1 1 calc(33% - 15px); /* Adjust for medium screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .input-field1 {
+      flex: 1 1 calc(50% - 15px); /* Adjust for smaller screens */
+  }
+}
+
+@media (max-width: 576px) {
+  .input-field1 {
+      flex: 1 1 100%; /* Full width for very small screens */
+  }
+}
+
+.form-control {
+  width: 100%; /* Full width for inputs */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding and border in the element's total width */
+}
+
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
   .frames {
