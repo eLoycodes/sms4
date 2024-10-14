@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $course = trim($_POST['course']);
     $yearlevel = trim($_POST['yearlevel']);
     $academicyear = trim($_POST['academicyear']);
-    $status = trim($_POST['semester']);
+    $semester = trim($_POST['semester']);
     $studenttype = trim($_POST['studenttype']);
     $status = trim($_POST['status']);
 
