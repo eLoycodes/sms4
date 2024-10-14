@@ -176,6 +176,7 @@ tr, td {
   width: calc(100% - 100px);
   left: 2%;
   transition: all 0.5s ease;
+  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
 .frame2 {
@@ -293,7 +294,7 @@ tr, td {
 
 .report-body {
   max-width: 100%;
-  overflow-x: hidden; /*auto*/
+  overflow-x: hidden; /* Prevent horizontal overflow */
   padding: 20px;
 }
 
@@ -445,10 +446,15 @@ tr, td {
 }
 
 /* Media Queries for Responsiveness */
+@media (max-width: 1600px) {
+  .home-content .overview-boxes .box {
+    width: calc(100% / 3 - 15px);
+  }
+}
+
 @media (max-width: 1200px) {
   .home-content .overview-boxes .box {
     width: calc(100% / 2 - 15px);
-    margin-bottom: 20px;
   }
 
   .sales-boxes .top-sales, .recent-sales {
@@ -456,7 +462,7 @@ tr, td {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .home-section {
     width: 100%;
     left: 0;
@@ -471,6 +477,12 @@ tr, td {
     width: 100%;
     margin-bottom: 20px;
   }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    padding: 10px; /* Add some padding for smaller screens */
+  }
 
   .announcement-btn {
     float: none;
@@ -478,6 +490,32 @@ tr, td {
     margin-top: 10px;
   }
 }
+
+@media (max-width: 576px) {
+  .frame2 {
+    height: 6vh; /* Adjust height for smaller screens */
+  }
+
+  .dashboardName,
+  .dashboardAnnouncement {
+    font-size: 14px; /* Reduce font size for smaller screens */
+  }
+
+  .report-header {
+    flex-direction: column; /* Stack elements vertically */
+    align-items: flex-start; /* Align items to the start */
+  }
+
+  .new {
+    font-size: 18px; /* Further reduce font size */
+  }
+
+  .view {
+    width: 80px; /* Reduce button size */
+    font-size: 14px; /* Reduce font size */
+  }
+}
+
 
 
 
