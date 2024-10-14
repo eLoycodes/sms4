@@ -1,51 +1,43 @@
 <?php
-
 include("connect.php");
 session_start();
-if(!isset($_SESSION["id"])){
-		echo"<script>window.open('index.php?mes=Access Denied..','_self');</script>";
-	}	
+if (!isset($_SESSION["id"])) {
+    echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
+}
 
+$studentData = []; // Initialize the array to hold student data
+$error_message = "";
 
-  $studentData = []; // Initialize the array to hold student data
-  $error_message = "";
-  
-  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
-      $student_ID_input = trim($_POST['studentID']);
-  
-      // Define tables to search
-      $tables = [
-          'deactivate',
-          'firstyear',
-          'secondyear',
-          'thirdyear',
-          'forthyear',
-          'returnee'
-      ];
-  
-      // Loop through each table
-      foreach ($tables as $table) {
-          $sql = "SELECT * FROM $table WHERE status = 'dropped'";
-          
-          // Prepare and execute statement
-          if ($stmt = $connect->prepare($sql)) {
-              $stmt->execute();
-              $result = $stmt->get_result();
-              
-              // Fetch results if any
-              if ($result && $result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
-                      $studentData[] = $row; // Store each student's data
-                  }
-              }
-              $stmt->close();
-          } else {
-              $error_message = "Database error: " . $connect->error; 
-          }
-      }
-  }
+// Fetch all dropped students from specified tables
+$tables = [
+    'deactivate',
+    'firstyear',
+    'secondyear',
+    'thirdyear',
+    'forthyear',
+    'returnee'
+];
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+foreach ($tables as $table) {
+    $sql = "SELECT * FROM $table WHERE status = 'dropped'";
+    
+    if ($stmt = $connect->prepare($sql)) {
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $studentData[] = $row; // Store each student's data
+            }
+        }
+        $stmt->close();
+    } else {
+        $error_message = "Database error: " . $connect->error; 
+    }
+}
+
+// Deactivation process
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
     $studentID = $_POST['studentID'];
 
     // Fetch the student's data from the deactivate table
@@ -76,10 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $deleteStmt = $connect->prepare("DELETE FROM deactivate WHERE studentID = ?");
             $deleteStmt->bind_param("s", $studentID);
             $deleteStmt->execute();
+            $deleteStmt->close();
         }
 
         $insertStmt->close();
-        $deleteStmt->close();
     } else {
         echo "Student not found.";
     }
@@ -103,133 +95,121 @@ $connect->close();
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 </head>
 <style>
-  a{
-    text-decoration: none;
-    color: black;
-  }
+    a {
+        text-decoration: none;
+        color: black;
+    }
 </style>
 <body>
-     <!-- navbar -->
-   <?php include('navbar.php'); ?>
-   <!-- end navbar -->
+    <!-- navbar -->
+    <?php include('navbar.php'); ?>
+    <!-- end navbar -->
 
     <div class="deactivatelist-frame1">
         <div class="deactivatelist-frame2"><br><br>
-          <span class="dashboardName"><b>Student Information</b></span><br>
-          <h1 class="dashboardAnnouncement">Deactivate List</h1>
+            <span class="dashboardName"><b>Student Information</b></span><br>
+            <h1 class="dashboardAnnouncement">Deactivate List</h1>
         </div><br>
         <div class="deactivatelistForm-frame">
-        <div class="deactivate-form">
-        <div>
-        <form method="POST" action="">
-            <label for="studentID">Search Student ID:</label>
-            <input type="text" name="studentID" required>
-            <button type="submit">Search</button>
-        </form>
-    </div>
-
-    <table>
-        <tr>
-            <th>Student ID</th>
-            <th>First Name</th>
-            <th>Middle Name</th>
-            <th>Last Name</th>
-            <th>Course</th>
-            <th>Year Level</th>
-            <th>Section</th>
-            <th>Academic Year</th>
-            <th>Status</th>
-        </tr>
-        <?php if (!empty($studentData)) {
-            foreach ($studentData as $r) { ?>
+            <table class="deactform-table">
                 <tr>
-                    <td><?php echo htmlspecialchars($r['studentID']); ?></td>
-                    <td><?php echo htmlspecialchars($r['firstname']); ?></td>
-                    <td><?php echo htmlspecialchars($r['middlename']); ?></td>
-                    <td><?php echo htmlspecialchars($r['lastname']); ?></td>
-                    <td><?php echo htmlspecialchars($r['course']); ?></td>
-                    <td><?php echo htmlspecialchars($r['yearlevel']); ?></td>
-                    <td><?php echo htmlspecialchars($r['section']); ?></td>
-                    <td><?php echo htmlspecialchars($r['academicyear']); ?></td>
-                    <td><?php echo htmlspecialchars($r['status']); ?></td>
+                    <th class="rf">Student ID</th>
+                    <th class="rf">Last Name</th>
+                    <th class="rf">First Name</th>
+                    <th class="rf">Middle Name</th>
+                    <th class="rf">Course</th>
+                    <th class="rf">Year Level</th>
+                    <th class="rf">Section</th>
+                    <th class="rf">Academic Year</th>
+                    <th class="rf">Status</th>
+                    <th class="rf">Action</th>
                 </tr>
-            <?php } 
-        } else {   
-            echo "<tr><td colspan='9'>No Record Found</td></tr>";
-        } ?> 
-    </table>
-          <!-- Deactivated List -->
-
-          <div class="requestForm-frame3"><br><br>
-            <h1 class="dashboardAnnouncement">Deactivated List</h1>
-          <div class="deactivated-form">
-            <label class="deac-label">Search Student ID:</label>
-            <input type="text" name="deac-search" class="search-deac">
-            <button type="submit" name="submit" class="search-deac-btn">Search</button>
-        </div>
-          <table class="requestform-table1">
-              <tr>
-                <th class="rf">Student ID</th>
-                <th class="rf">Last Name</th>
-                <th class="rf">First Name</th>
-                <th class="rf">Middle Name</th>
-                <th class="rf">Course</th>
-                <th class="rf">Year Level</th>
-                <th class="rf">Section</th>
-                <th class="rf">Academic Year</th>
-                <th class="rf">Status</th>
-              </tr>
-              <?php
-        
-                include('connect.php'); 
-                  $s="SELECT * from deactivated";
-                  $res=$connect->query($s);
-                  if($res->num_rows>0){
-                  $i=0;
-                  while($r=$res->fetch_assoc()){
-                    $i++;
-                 echo"
-                  <tr>
-                    <td>{$r["studentID"]}</td>
-                    <td>{$r["firstname"]}</td> 
-                    <td>{$r["middlename"]}</td>
-                    <td>{$r["lastname"]}</td>
-                    <td>{$r["course"]}</td>              
-                    <td>{$r["yearlevel"]}</td> 
-                    <td>{$r["section"]}</td>  
-                    <td>{$r["academicyear"]}</td>  
-                    <td>{$r["status"]}</td>  
-                    </tr>
-                    "; 
-              }
-            }
-            else{   
-                echo "No Record Found";
-            }
-            ?>     
+                <?php
+                if (!empty($studentData)) {
+                    foreach ($studentData as $r) { ?>
+                        <tr class="reqf">
+                            <td class="req"><?php echo htmlspecialchars($r['studentID']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['lastname']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['firstname']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['middlename']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['course']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['yearlevel']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['section']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['academicyear']); ?></td>
+                            <td class="req"><?php echo htmlspecialchars($r['status']); ?></td>
+                            <td class="req">
+                                <a href='#' onclick="openDeactivateModal('<?php echo $r['studentID']; ?>', '<?php echo $r['firstname']; ?>', '<?php echo $r['lastname']; ?>')">
+                                    <button class="reqform-btn">Deactivate</button>
+                                </a>
+                            </td>
+                        </tr>
+                    <?php }
+                } else {   
+                    echo "<tr><td colspan='10'>No Record Found</td></tr>";
+                }
+                ?> 
             </table>
-          </div>
-          <div id="id01" class="modal">
-    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
-    <form class="modal-content" action="admin-DeactivateList.php" method="post">
-        <div class="deactivate-container">
-            <h1>Deactivate Account</h1>
-            <p>Are you sure you want to deactivate the account of <span id="deactivateName"></span>?</p>
-            <input type="hidden" id="deactivateStudentID" name="studentID">
-            <div class="clearfix">
-                <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
-                <button type="submit" class="deletebtn">Delete</button>
-            </div>
         </div>
-    </form>
-</div>
-          <!--navbar end-->      
+
+        <!-- Deactivated List -->
+        <div class="requestForm-frame3"><br><br>
+            <h1 class="dashboardAnnouncement">Deactivated List</h1>
+            <table class="requestform-table1">
+                <tr>
+                    <th class="rf">Student ID</th>
+                    <th class="rf">Last Name</th>
+                    <th class="rf">First Name</th>
+                    <th class="rf">Middle Name</th>
+                    <th class="rf">Course</th>
+                    <th class="rf">Year Level</th>
+                    <th class="rf">Section</th>
+                    <th class="rf">Academic Year</th>
+                    <th class="rf">Status</th>
+                </tr>
+                <?php
+                $s = "SELECT * from deactivated";
+                $res = $connect->query($s);
+                if ($res->num_rows > 0) {
+                    while ($r = $res->fetch_assoc()) {
+                        echo "<tr>
+                                <td>{$r["studentID"]}</td>
+                                <td>{$r["lastname"]}</td>
+                                <td>{$r["firstname"]}</td>
+                                <td>{$r["middlename"]}</td>
+                                <td>{$r["course"]}</td>              
+                                <td>{$r["yearlevel"]}</td> 
+                                <td>{$r["section"]}</td>  
+                                <td>{$r["academicyear"]}</td>  
+                                <td>{$r["status"]}</td>  
+                              </tr>"; 
+                    }
+                } else {   
+                    echo "<tr><td colspan='9'>No Record Found</td></tr>";
+                }
+                ?>     
+            </table>
+        </div>
+
+        <div id="id01" class="modal">
+            <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal"></span>
+            <form class="modal-content" action="admin-DeactivateList.php" method="post">
+                <div class="deactivate-container">
+                    <h1>Deactivate Account</h1>
+                    <p>Are you sure you want to deactivate the account of <span id="deactivateName"></span>?</p>
+                    <input type="hidden" id="deactivateStudentID" name="studentID">
+                    <div class="clearfix">
+                        <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+                        <button type="submit" class="deletebtn">Delete</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-    <script type="text/javascript">
+<script type="text/javascript">
 // SideNav
-    function toggleNav() {
+function toggleNav() {
     const sidenav = document.getElementById("sidenav");
     const uppernav = document.getElementById("uppernav");
 
@@ -241,39 +221,31 @@ $connect->close();
         uppernav.style.marginLeft = "280px";
     }
 }
- 
+
 // Dropdown
 var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
+for (var i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+    });
 }
 
 var modal = document.getElementById('id01');
 
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 
-// deactivate
-
+// Deactivate
 function openDeactivateModal(studentID, firstName, lastName) {
     document.getElementById('deactivateStudentID').value = studentID;
     document.getElementById('deactivateName').innerText = firstName + " " + lastName;
     document.getElementById('id01').style.display = 'block';
 }
-
-    </script>
+</script>
 </body>
 </html>
