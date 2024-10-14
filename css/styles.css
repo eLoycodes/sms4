@@ -160,53 +160,27 @@ tr, td {
 .home-section {
   background: rgb(242, 247, 250);
   min-height: 100vh;
-  width: 100%; /* Full width */
-  left: 0; /* Align to the left */
+  width: calc(100% - 280px); /* Ensure full width minus sidenav */
+  margin-left: 280px; /* Offset by sidenav width */
   transition: all 0.5s ease;
   overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+/* Centering content */
+.home-content {
   display: flex;
-  justify-content: center; /* Center content */
-}
-
-.frame2 {
-  background-color: rgb(242, 247, 250);
-  width: 100%;
-  height: 8vh;
-  justify-content: center;
-  align-items: center;
-}
-
-.dashboardName {
-  margin-left: 2%;
-  font-size: 14px;
-  color: #7064DD;
-}
-
-.dashboardAnnouncement {
-  margin-left: 2%;
-  font-size: 22px;
-  color: black;
-  justify-content: center;
-  align-items: center;
-}
-
-.sidenav.active ~ .home-section {
-  width: calc(100% - 60px);
-  left: 60px;
-}
-
-.home-section .home-content {
-  position: relative;
-  padding-top: 50px;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center items */
+  padding: 20px; /* Add padding for spacing */
   width: 100%; /* Full width */
 }
 
 .home-content .overview-boxes {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center content */
+  justify-content: center; /* Center the boxes */
   flex-wrap: wrap;
-  padding: 0 20px;
+  padding: 0; /* Remove side padding */
   margin-bottom: 26px;
   color: rgb(78, 78, 78);
 }
@@ -215,114 +189,14 @@ tr, td {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% / 4 - 15px);
+  width: calc(25% - 15px); /* Adjust to fit 4 boxes in a row */
   background: white;
   padding: 30px 1px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  margin: 10px; /* Add margin for spacing between boxes */
 }
 
-.overview-boxes .box-topic {
-  font-size: 20px;
-  font-weight: 500;
-  margin-left: -10%;
-}
-
-.home-content .box .number {
-  display: inline-block;
-  font-size: 35px;
-  margin-top: -6px;
-  font-weight: 500;
-}
-
-.home-content .box .indicator {
-  display: flex;
-  align-items: center;
-  height: 30%;
-  width: 30%;
-}
-
-/* Middle report container */
-.report-container {
-  min-height: 300px;
-  max-width: 92%;
-  margin: 70px auto 0px auto;
-  background-color: #ffffff;
-  border-radius: 30px;
-  box-shadow: 3px 3px 10px rgb(188, 188, 188);
-  padding: 0px 40px 20px 0px;
-  margin-top: 2%;
-}
-
-.report-header {
-  height: 80px;
-  width: 96%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 20px 10px 20px;
-  border-bottom: 2px solid #b2b2b4;
-  margin-left: 2%;
-}
-
-.new {
-  font-size: 22px;
-  font-weight: 600;
-  color: rgb(78, 78, 78);
-}
-
-.view {
-  height: 35px;
-  width: 90px;
-  border-radius: 5px;
-  background-color: rgb(78, 78, 78);
-  color: white;
-  font-size: 15px;
-  border: none;
-  cursor: pointer;
-}
-
-.report-body {
-  max-width: 100%;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  padding: 20px;
-}
-
-.report-topic-heading,
-.item1 {
-  width: 900px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.rcon {
-  color: rgb(78, 78, 78);
-}
-
-.repcon {
-  width: 90%;
-  height: 50%;
-  margin-top: 3%;
-}
-
-.rpcon {
-  border-collapse: collapse;
-  height: 40px;
-  text-align: center;
-}
-
-.rpcon-btn {
-  width: 50%;
-  background-color: white;
-  color: rgb(19, 18, 18);
-  font-size: 18px;
-  font-family: 'Times New Roman', Times, serif;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-/* Sales Boxes */
 .home-content .sales-boxes .recent-sales {
   width: 92%;
   background: white;
@@ -447,30 +321,28 @@ tr, td {
       width: calc(100% / 2 - 15px);
   }
 
-  .sales-boxes .top-sales,
-  .recent-sales {
+  .sales-boxes .top-sales, .recent-sales {
       width: 100%;
   }
 }
 
 @media (max-width: 992px) {
   .home-section {
-      width: 100%; /* Full width */
-      left: 0; /* Align to the left */
-  }
-
-  .home-content .overview-boxes {
-      flex-direction: column;
-      align-items: center; /* Center content */
+      width: 100%; /* Full width on smaller screens */
+      margin-left: 0; /* Remove sidenav offset */
   }
 
   .home-content .overview-boxes .box {
-      width: 100%;
-      margin-bottom: 20px;
+      width: calc(50% - 15px); /* Two boxes per row */
+      margin-bottom: 20px; /* Space between boxes */
   }
 }
 
 @media (max-width: 768px) {
+  .home-content .overview-boxes .box {
+      width: 100%; /* Full width on smaller screens */
+  }
+
   .home-section {
       padding: 10px; /* Add some padding for smaller screens */
   }
@@ -547,6 +419,7 @@ tr, td {
       font-size: 14px; /* Adjust font size for smaller boxes */
   }
 }
+
 
 
 
