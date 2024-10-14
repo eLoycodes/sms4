@@ -454,6 +454,9 @@ $(document).ready(function() {
                             <option>2024-2025</option>
                         </select>
                     </label>
+                    <label class="add-label" style="color: white;">Semester
+                        <input type="text" placeholder="" class="input-field" name="semester" required>
+                    </label>
                     <label class="add-label" style="color: white;">Type
                         <select name="studenttype" required>
                             <option disabled selected></option>
