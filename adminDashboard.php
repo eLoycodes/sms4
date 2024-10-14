@@ -105,7 +105,7 @@ if(!isset($_SESSION["id"])){
         </div>
           <div class="report-container">
             <div class="report-header">
-                <h1 class="new">New Enrolled Students</h1>
+                <h1 class="new">Pending Students</h1>
                 <button class="view">View All</button>
             </div>
 
@@ -120,7 +120,7 @@ if(!isset($_SESSION["id"])){
               <?php
                 // <td>{$r["section"]}</td> 
               include('connect.php'); 
-              $s="SELECT * from firstyear";
+              $s="SELECT * from newstudent";
               $res=$connect->query($s);
               if($res->num_rows>0){
               $i=0;
@@ -129,10 +129,10 @@ if(!isset($_SESSION["id"])){
               echo"
               <tr>
               <td>{$r["studentID"]}</td>
-              <td>{$r["firstname"]} {$r["lastname"]}</td>  
+              <td>{$r["firstname"]} {$r["middlename"]} {$r["lastname"]}</td>  
               <td>{$r["course"]}</td>               
              
-              <td><button><a href='#?userid={$r["firstyear_id"]}'>View</a></button></td>	
+              <td><button><a href='admin-AddStudent-newold.php?userid={$r["newstudent_id"]}'>Add Student</a></button></td>	
               </tr>
               ";	
                   }
