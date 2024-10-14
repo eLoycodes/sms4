@@ -69,12 +69,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
         $lastname = $studentData['lastname'] ?? '';
         $course = $studentData['course'] ?? '';
         $yearlevel = $studentData['yearlevel'] ?? '';
-        $section = isset($studentData['section']) ? $studentData['section'] : 'N/A'; // Check if 'section' exists
         $academicyear = $studentData['academicyear'] ?? '';
         $status = $studentData['status'] ?? '';
 
         // Insert into the deactivated table
-        $insertStmt = $connect->prepare("INSERT INTO deactivated (studentID, firstname, middlename, lastname, course, yearlevel, section, academicyear, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $insertStmt = $connect->prepare("INSERT INTO deactivated (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insertStmt->bind_param("sssssssss", 
             $studentID, 
             $firstname, 
@@ -82,7 +81,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
             $lastname, 
             $course, 
             $yearlevel, 
-            $section, 
             $academicyear, 
             $status
         );
@@ -147,7 +145,6 @@ $connect->close();
                     <th class="rf">Middle Name</th>
                     <th class="rf">Course</th>
                     <th class="rf">Year Level</th>
-                    <th class="rf">Section</th>
                     <th class="rf">Academic Year</th>
                     <th class="rf">Status</th>
                     <th class="rf">Action</th>
@@ -162,7 +159,6 @@ $connect->close();
                             <td class="req"><?php echo htmlspecialchars($r['middlename']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['course']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['yearlevel']); ?></td>
-                            <td class="req"><?php echo htmlspecialchars($r['section']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['academicyear']); ?></td>
                             <td class="req"><?php echo htmlspecialchars($r['status']); ?></td>
                             <td class="req">
@@ -190,7 +186,6 @@ $connect->close();
                     <th class="rf">Middle Name</th>
                     <th class="rf">Course</th>
                     <th class="rf">Year Level</th>
-                    <th class="rf">Section</th>
                     <th class="rf">Academic Year</th>
                     <th class="rf">Status</th>
                 </tr>
@@ -206,7 +201,6 @@ $connect->close();
                                 <td>{$r["middlename"]}</td>
                                 <td>{$r["course"]}</td>              
                                 <td>{$r["yearlevel"]}</td> 
-                                <td>{$r["section"]}</td>  
                                 <td>{$r["academicyear"]}</td>  
                                 <td>{$r["status"]}</td>  
                               </tr>"; 
