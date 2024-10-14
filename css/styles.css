@@ -154,23 +154,23 @@ body{
 
 }
 
-.dashboard{
+
+
+.dashboard {
   border: 0.5px solid #4D6EA0;
   height: 10%;
   width: 100%;
   border-left: none;
   border-right: none;
   border-bottom: none;
- 
 }
 
-tr,td{
+tr, td {
   text-align: center;
 }
 
-/* css for admin-Dashboard */
-
-.home-section{
+/* CSS for admin-Dashboard */
+.home-section {
   background: rgb(242, 247, 250);
   min-height: 100vh;
   width: calc(100% - 100px);
@@ -178,23 +178,21 @@ tr,td{
   transition: all 0.5s ease;
 }
 
-.frame2{
+.frame2 {
   background-color: rgb(242, 247, 250);
   width: 100%;
   height: 8vh;
   justify-content: center;
   align-items: center;
-  
- }
+}
 
- .dashboardName{
+.dashboardName {
   margin-left: 2%;
   font-size: 14px;
   color: #7064DD;
-
 }
 
-.dashboardAnnouncement{
+.dashboardAnnouncement {
   margin-left: 2%;
   font-size: 22px;
   color: black;
@@ -202,16 +200,17 @@ tr,td{
   align-items: center;
 }
 
-.sidenav.active ~ .home-section{
+.sidenav.active ~ .home-section {
   width: calc(100% - 60px);
   left: 60px;
-  
 }
-.home-section .home-content{
+
+.home-section .home-content {
   position: relative;
   padding-top: 50px;
 }
-.home-content .overview-boxes{
+
+.home-content .overview-boxes {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -220,7 +219,8 @@ tr,td{
   margin-bottom: 26px;
   color: rgb(78, 78, 78);
 }
-.overview-boxes .box{
+
+.overview-boxes .box {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,29 +228,31 @@ tr,td{
   background: white;
   padding: 30px 1px;
   border-radius: 12px;
-  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.overview-boxes .box-topic{
+
+.overview-boxes .box-topic {
   font-size: 20px;
   font-weight: 500;
   margin-left: -10%;
 }
-.home-content .box .number{
+
+.home-content .box .number {
   display: inline-block;
   font-size: 35px;
   margin-top: -6px;
   font-weight: 500;
 }
-.home-content .box .indicator{
+
+.home-content .box .indicator {
   display: flex;
   align-items: center;
   height: 30%;
   width: 30%;
 }
 
-/* middle report container */
-
-.report-container{
+/* Middle report container */
+.report-container {
   min-height: 300px;
   max-width: 92%;
   margin: 70px auto 0px auto;
@@ -259,9 +261,9 @@ tr,td{
   box-shadow: 3px 3px 10px rgb(188, 188, 188);
   padding: 0px 40px 20px 0px;
   margin-top: 2%;
-  
 }
-.report-header{
+
+.report-header {
   height: 80px;
   width: 96%;
   display: flex;
@@ -270,17 +272,15 @@ tr,td{
   padding: 20px 20px 10px 20px;
   border-bottom: 2px solid #b2b2b4;
   margin-left: 2%;
-  
 }
- 
-.new{
+
+.new {
   font-size: 22px;
   font-weight: 600;
   color: rgb(78, 78, 78);
-  
 }
- 
-.view{
+
+.view {
   height: 35px;
   width: 90px;
   border-radius: 5px;
@@ -289,40 +289,39 @@ tr,td{
   font-size: 15px;
   border: none;
   cursor: pointer;
-  
 }
- 
-.report-body{
+
+.report-body {
   max-width: 100%;
   overflow-x: hidden; /*auto*/
   padding: 20px;
-   
 }
+
 .report-topic-heading,
-.item1{
+.item1 {
   width: 900px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.rcon{
+.rcon {
   color: rgb(78, 78, 78);
 }
 
-.repcon{
+.repcon {
   width: 90%;
   height: 50%;
   margin-top: 3%;
 }
 
-.rpcon{
+.rpcon {
   border-collapse: collapse;
   height: 40px;
   text-align: center;
 }
 
- .rpcon-btn{
+.rpcon-btn {
   width: 50%;
   background-color: white;
   color: rgb(19, 18, 18);
@@ -330,15 +329,10 @@ tr,td{
   font-family: 'Times New Roman', Times, serif;
   border-radius: 5px;
   cursor: pointer;
-  
 }
 
-
-
-/*############################*/
-
-
-.home-content .sales-boxes .recent-sales{
+/* Sales Boxes */
+.home-content .sales-boxes .recent-sales {
   width: 92%;
   background: white;
   padding: 20px 30px;
@@ -347,38 +341,44 @@ tr,td{
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: black;
 }
-.home-content .sales-boxes .sales-details{
+
+.home-content .sales-boxes .sales-details {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.sales-boxes .box .title{
+
+.sales-boxes .box .title {
   font-size: 22px;
   font-weight: 600;
   color: rgb(78, 78, 78);
-  /* margin-bottom: 10px; */
 }
-.sales-boxes .sales-details li.topic{
+
+.sales-boxes .sales-details li.topic {
   font-size: 18px;
   font-weight: 500;
   padding-right: 65px;
 }
-.sales-boxes .sales-details li{
+
+.sales-boxes .sales-details li {
   list-style: none;
   margin: 10px 0;
 }
-.sales-boxes .sales-details li a{
+
+.sales-boxes .sales-details li a {
   font-size: 17px;
   color: black;
   font-size: 400;
   text-decoration: none;
 }
-.sales-boxes .box .button{
+
+.sales-boxes .box .button {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
-.sales-boxes .box .button a{
+
+.sales-boxes .box .button a {
   color: black;
   background: lightgray;
   padding: 4px 12px;
@@ -388,12 +388,13 @@ tr,td{
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.sales-boxes .box .button a:hover{
-  background:  #0d3073;
+
+.sales-boxes .box .button a:hover {
+  background: #0d3073;
 }
 
 /* Announcement box */
-.home-content .sales-boxes .top-sales{
+.home-content .sales-boxes .top-sales {
   width: 92%;
   height: 200px;
   background: white;
@@ -402,16 +403,16 @@ tr,td{
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   margin-top: 1%;
- 
-  
 }
-.sales-boxes .top-sales li{
+
+.sales-boxes .top-sales li {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin: 10px 0;
 }
-.sales-boxes .top-sales li a img{
+
+.sales-boxes .top-sales li a img {
   height: 40px;
   width: 40px;
   object-fit: cover;
@@ -419,19 +420,20 @@ tr,td{
   margin-right: 10px;
   background: #333;
 }
-.sales-boxes .top-sales li a{
+
+.sales-boxes .top-sales li a {
   display: flex;
   align-items: center;
   text-decoration: none;
 }
 
-.announcement-btn{
+.announcement-btn {
   float: right;
   padding: 10px;
   margin-top: -2.5%;
 }
 
-.announcement-button{
+.announcement-button {
   height: 35px;
   width: 90px;
   border-radius: 8px;
@@ -442,100 +444,41 @@ tr,td{
   cursor: pointer;
 }
 
-     /* Responsive Media Query */
-     @media (max-width: 1280px) {
-      .sidebar{
-        width: 60px;
-      }
-      .sidebar.active{
-        width: 220px;
-      }
-      .home-section{
-        position: absolute;
-        width: calc(100% - 60px);
-        left: 30px;
-      }
-      .sidebar.active ~ .home-section{
-        /* width: calc(100% - 220px); */
-        overflow: hidden;
-        left: 220px;
-      }
-      .home-section nav{
-        width: calc(100% - 60px);
-        left: 60px;
-      }
-      .sidebar.active ~ .home-section nav{
-        width: calc(100% - 220px);
-        left: 220px;
-      }
-    }
-    @media (max-width: 1150px) {
-      .home-content .sales-boxes{
-        flex-direction: column;
-      }
-      .home-content .sales-boxes .box{
-        position: absolute;
-        width: 100%;
-        overflow-x: scroll;
-        margin-bottom: 30px;
-      }
-      .home-content .sales-boxes .top-sales{
-        margin: 0;
-      }
-    }
-    @media (max-width: 1000px) {
-      .overview-boxes .box{
-        width: calc(100% / 2 - 15px);
-        margin-bottom: 15px;
-      }
-    }
-    @media (max-width: 700px) {
-      nav .sidebar-button .dashboard,
-      nav .profile-details .admin_name,
-      nav .profile-details i{
-        display: none;
-      }
-      .home-section nav .profile-details{
-        height: 50px;
-        min-width: 40px;
-      }
-      .home-content .sales-boxes .sales-details{
-        width: 560px;
-      }
-    }
-    @media (max-width: 550px) {
-      .overview-boxes .box{
-        width: 100%;
-        margin-bottom: 15px;
-      }
-      .sidebar.active ~ .home-section nav .profile-details{
-        display: none;
-      }
-    }
-      @media (max-width: 400px) {
-      .sidebar{
-        width: 0;
-      }
-      .sidebar.active{
-        width: 60px;
-      }
-      .home-section{
-        width: 100%;
-        left: 0;
-      }
-      .sidebar.active ~ .home-section{
-        left: 60px;
-        width: calc(100% - 60px);
-      }
-      .home-section nav{
-        width: 100%;
-        left: 0;
-      }
-      .sidebar.active ~ .home-section nav{
-        left: 60px;
-        width: calc(100% - 60px);
-      }
-    }
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .home-content .overview-boxes .box {
+    width: calc(100% / 2 - 15px);
+    margin-bottom: 20px;
+  }
+
+  .sales-boxes .top-sales, .recent-sales {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-section {
+    width: 100%;
+    left: 0;
+  }
+
+  .home-content .overview-boxes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .home-content .overview-boxes .box {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .announcement-btn {
+    float: none;
+    text-align: center;
+    margin-top: 10px;
+  }
+}
+
 
 
 /* #################################################### */
