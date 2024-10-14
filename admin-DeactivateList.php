@@ -63,18 +63,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
     }
 
     if ($found) {
+        // Set fields and handle missing values
+        $firstname = $studentData['firstname'] ?? '';
+        $middlename = $studentData['middlename'] ?? '';
+        $lastname = $studentData['lastname'] ?? '';
+        $course = $studentData['course'] ?? '';
+        $yearlevel = $studentData['yearlevel'] ?? '';
+        $section = $studentData['section'] ?? 'N/A'; // Set to 'N/A' if null
+        $academicyear = $studentData['academicyear'] ?? '';
+        $status = $studentData['status'] ?? '';
+
         // Insert into the deactivated table
         $insertStmt = $connect->prepare("INSERT INTO deactivated (studentID, firstname, middlename, lastname, course, yearlevel, section, academicyear, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $insertStmt->bind_param("sssssssss", 
-            $studentData['studentID'], 
-            $studentData['firstname'], 
-            $studentData['middlename'], 
-            $studentData['lastname'], 
-            $studentData['course'], 
-            $studentData['yearlevel'], 
-            $studentData['section'], 
-            $studentData['academicyear'], 
-            $studentData['status']
+            $studentID, 
+            $firstname, 
+            $middlename, 
+            $lastname, 
+            $course, 
+            $yearlevel, 
+            $section, 
+            $academicyear, 
+            $status
         );
 
         if ($insertStmt->execute()) {
@@ -96,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
 
 $connect->close();
 ?>
+
 
 
 <!DOCTYPE html>
