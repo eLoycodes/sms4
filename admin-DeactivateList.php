@@ -41,7 +41,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
     $studentID = $_POST['studentID'];
 
     // Fetch the student's data from the deactivate table
-    $stmt = $connect->prepare("SELECT * FROM deactivate WHERE studentID = ?");
+    $stmt = $connect->prepare("SELECT * FROM  'deactivate',
+    'firstyear',
+    'secondyear',
+    'thirdyear',
+    'forthyear',
+    'returnee' WHERE studentID = ?");
     $stmt->bind_param("s", $studentID);
     $stmt->execute();
     $result = $stmt->get_result();
