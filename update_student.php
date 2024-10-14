@@ -81,25 +81,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         exit;
                 }
 
-                // If the student is being updated in the same table
-                if ($current_table === $insert_table) {
-                    // Update the existing record
-                    $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ? WHERE studentID = ?";
-                    if ($update_stmt = $connect->prepare($update_sql)) {
-                        $update_stmt->bind_param('sssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $studentID);
-                        if ($update_stmt->execute()) {
-                            echo "Student data updated successfully.";
-                            echo "<script>alert('Student data updated successfully.');</script>";
-                            echo "<script>window.open('admin-AddStudent-edit.php','_self');</script>";
-                            $updated = true;
-                        } else {
-                            echo "Error updating record in $current_table: " . $update_stmt->error;
+               // If the student is being updated in the same table
+                    if ($current_table === $insert_table){
+                        // Update the existing record
+                        $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ? WHERE studentID = ?";
+                        if ($update_stmt = $connect->prepare($update_sql)){
+                            // The types string should match the number of variables (9 in this case)
+                            $update_stmt->bind_param('ssssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $studentID);
+                            if ($update_stmt->execute()){
+                                echo "Student data updated successfully.";
+                                echo "<script>alert('Student data updated successfully.');</script>";
+                                echo "<script>window.open('admin-AddStudent-edit.php','_self');</script>";
+                                $updated = true;
+                            } else{
+                                echo "Error updating record in $current_table: " . $update_stmt->error;
+                            }
+                            $update_stmt->close();
+                        } else{
+                            echo "Error preparing update statement for $current_table: " . $connect->error;
                         }
-                        $update_stmt->close();
-                    } else {
-                        echo "Error preparing update statement for $current_table: " . $connect->error;
-                    }
-                } else {
+                    } else{
                     // Insert into the new table
                     $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     error_log("Inserting into table for year level: '$insert_table'");
