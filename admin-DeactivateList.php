@@ -7,43 +7,43 @@ if(!isset($_SESSION["id"])){
 	}	
 
 
-  $studentData = [];
-$error_message = "";
-
-if (isset($_POST['studentID'])) {
-    $student_ID_input = trim($_POST['studentID']);
-    if (empty($student_ID_input)) {
-        $error_message = "Student ID cannot be empty.";
-    } elseif (!preg_match('/^[a-zA-Z0-9]+$/', $student_ID_input)) {
-        $error_message = "Invalid Student ID format.";
-    } else {
-        $tables = [
-            'deactivate',
-            'firstyear',
-            'secondyear',
-            'thirdyear',
-            'forthyear',
-            'returnee'
-        ];
-        
-        foreach ($tables as $table) {
-            $sql = "SELECT * FROM $table WHERE status = 'dropped' AND studentID = ?";
-            if ($stmt = $connect->prepare($sql)) {
-                $stmt->bind_param("s", $student_ID_input);
-                $stmt->execute();
-                $result = $stmt->get_result();
-                if ($result && $result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
-                        $studentData[] = $row; // Store data if found
-                    }
-                }
-                $stmt->close();
-            } else {
-                $error_message = "Database error: " . $connect->error; 
-            }
-        }
-    }
-}
+  $studentData = []; // Initialize the array to hold student data
+  $error_message = "";
+  
+  if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
+      $student_ID_input = trim($_POST['studentID']);
+  
+      // Define tables to search
+      $tables = [
+          'deactivate',
+          'firstyear',
+          'secondyear',
+          'thirdyear',
+          'forthyear',
+          'returnee'
+      ];
+  
+      // Loop through each table
+      foreach ($tables as $table) {
+          $sql = "SELECT * FROM $table WHERE status = 'dropped'";
+          
+          // Prepare and execute statement
+          if ($stmt = $connect->prepare($sql)) {
+              $stmt->execute();
+              $result = $stmt->get_result();
+              
+              // Fetch results if any
+              if ($result && $result->num_rows > 0) {
+                  while ($row = $result->fetch_assoc()) {
+                      $studentData[] = $row; // Store each student's data
+                  }
+              }
+              $stmt->close();
+          } else {
+              $error_message = "Database error: " . $connect->error; 
+          }
+      }
+  }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $studentID = $_POST['studentID'];
