@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+/* Base Styles */
 body {
   margin: 0;
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
-  width: 100%; /* Changed to 100% */
   overflow-x: hidden;
   background-color: rgb(242, 247, 250);
 }
@@ -17,7 +17,6 @@ body {
   top: 0;
   left: -280px; 
   background-color: #033683;
-  overflow-x: hidden;
   transition: 0.3s;
   padding-top: 39px;
   z-index: 1;
@@ -40,17 +39,7 @@ body {
   position: relative;
   list-style: none;
   height: 50px;
-  width: 45%;
-}
-
-.sidenav .nav-link .bellNotiff {
-  margin-top: -16%;
-  margin-left: 10%;
-}
-
-.sidenav .nav-link .userProfile {
-  margin-top: -38%;
-  margin-left: 50%;
+  width: 100%; /* Adjusted for responsiveness */
 }
 
 .sidenav .nav-link li a {
@@ -69,34 +58,7 @@ body {
   color: lightgray;
 }
 
-.avatar {
-  width: 80%;
-  height: 80%;
-  margin-left: -47%;
-  margin-top: 30%;
-  border-radius: 50%;
-}
-
-.user-profile {
-  margin-left: -60%;
-}
-
-tr, td {
-  text-align: center;
-}
-
-.user-name {
-  color: white;
-  font-size: 14px;
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-.user-mail {
-  color: #A8A8A8;
-  font-size: 13px;
-}
-
-/* lower nav */
+/* Lower nav */
 .sidenav .nav-links {
   margin-top: 5%;
   margin-left: -15%;
@@ -130,42 +92,20 @@ tr, td {
   color: white;
 }
 
-.sidenav .nav-links li a .links_name {
-  color: white;
-  font-size: 14px;
-  font-weight: 400;
-  white-space: nowrap;
-}
-
-/* hover effect for links */
 .sidenav a:hover {
   color: #f1f1f1;
 }
 
-/* Departments */
-.sidenav::-webkit-scrollbar {
-  width: 0px;
-}
-
-.dashboard {
-  border: 0.5px solid #4D6EA0;
-  height: 10%;
-  width: 100%;
-  border-left: none;
-  border-right: none;
-  border-bottom: none;
-}
-
-/* CSS for admin-Dashboard */
+/* Home Section */
 .home-section {
   background: rgb(242, 247, 250);
   min-height: 100vh;
-  width: calc(100% - 100px);
-  left: 2%;
+  width: calc(100% - 280px); /* Adjust for sidenav */
+  left: 0;
   transition: all 0.5s ease;
-  overflow-x: hidden; /* Prevent horizontal overflow */
 }
 
+/* Dashboard */
 .frame2 {
   background-color: rgb(242, 247, 250);
   width: 100%;
@@ -193,11 +133,12 @@ tr, td {
   left: 60px;
 }
 
-.home-section .home-content {
+.home-content {
   position: relative;
   padding-top: 50px;
 }
 
+/* Overview Boxes */
 .home-content .overview-boxes {
   display: flex;
   align-items: center;
@@ -212,17 +153,12 @@ tr, td {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(100% / 4 - 15px);
+  flex: 1; /* Allows boxes to share space equally */
+  margin: 10px; /* Added margin for spacing */
   background: white;
   padding: 30px 1px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-}
-
-.overview-boxes .box-topic {
-  font-size: 20px;
-  font-weight: 500;
-  margin-left: -10%;
 }
 
 .home-content .box .number {
@@ -232,14 +168,7 @@ tr, td {
   font-weight: 500;
 }
 
-.home-content .box .indicator {
-  display: flex;
-  align-items: center;
-  height: 30%;
-  width: 30%;
-}
-
-/* Middle report container */
+/* Report Container */
 .report-container {
   min-height: 300px;
   max-width: 92%;
@@ -257,7 +186,7 @@ tr, td {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 20px 10px 20px;
+  padding: 20px;
   border-bottom: 2px solid #b2b2b4;
   margin-left: 2%;
 }
@@ -281,42 +210,14 @@ tr, td {
 
 .report-body {
   max-width: 100%;
-  overflow-x: hidden; /* Prevent horizontal overflow */
   padding: 20px;
 }
 
-.report-topic-heading,
-.item1 {
+.report-topic-heading {
   width: 900px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.rcon {
-  color: rgb(78, 78, 78);
-}
-
-.repcon {
-  width: 90%;
-  height: 50%;
-  margin-top: 3%;
-}
-
-.rpcon {
-  border-collapse: collapse;
-  height: 40px;
-  text-align: center;
-}
-
-.rpcon-btn {
-  width: 50%;
-  background-color: white;
-  color: rgb(19, 18, 18);
-  font-size: 18px;
-  font-family: 'Times New Roman', Times, serif;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 /* Sales Boxes */
@@ -342,47 +243,7 @@ tr, td {
   color: rgb(78, 78, 78);
 }
 
-.sales-boxes .sales-details li.topic {
-  font-size: 18px;
-  font-weight: 500;
-  padding-right: 65px;
-}
-
-.sales-boxes .sales-details li {
-  list-style: none;
-  margin: 10px 0;
-}
-
-.sales-boxes .sales-details li a {
-  font-size: 17px;
-  color: black;
-  font-size: 400;
-  text-decoration: none;
-}
-
-.sales-boxes .box .button {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.sales-boxes .box .button a {
-  color: black;
-  background: lightgray;
-  padding: 4px 12px;
-  font-size: 15px;
-  font-weight: 400;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.sales-boxes .box .button a:hover {
-  background: #0d3073;
-}
-
-/* Announcement box */
-.home-content .sales-boxes .top-sales {
+.sales-boxes .top-sales {
   width: 92%;
   height: 200px;
   background: white;
@@ -415,21 +276,36 @@ tr, td {
   text-decoration: none;
 }
 
+/* Buttons */
+#uploadButton {
+  background-color: rgb(78, 78, 78); /* Green */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#submitButton {
+  background-color: #007BFF; /* Blue */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  margin-left: 10px; 
+}
+
 .announcement-btn {
   float: right;
   padding: 10px;
   margin-top: -2.5%;
-}
-
-.announcement-button {
-  height: 35px;
-  width: 90px;
-  border-radius: 8px;
-  background-color: rgb(78, 78, 78);
-  color: white;
-  font-size: 13px;
-  border: none;
-  cursor: pointer;
 }
 
 /* Media Queries for Responsiveness */
@@ -452,7 +328,6 @@ tr, td {
 @media (max-width: 992px) {
   .home-section {
       width: 100%;
-      left: 0;
   }
 
   .home-content .overview-boxes {
@@ -468,7 +343,7 @@ tr, td {
 
 @media (max-width: 768px) {
   .home-section {
-      padding: 10px; /* Add some padding for smaller screens */
+      padding: 10px; /* Add padding for smaller screens */
   }
 
   .announcement-btn {
@@ -483,8 +358,7 @@ tr, td {
       height: 6vh; /* Adjust height for smaller screens */
   }
 
-  .dashboardName,
-  .dashboardAnnouncement {
+  .dashboardName, .dashboardAnnouncement {
       font-size: 14px; /* Reduce font size for smaller screens */
   }
 
@@ -501,15 +375,6 @@ tr, td {
       width: 80px; /* Reduce button size */
       font-size: 14px; /* Reduce font size */
   }
-
-  .report-topic-heading,
-  .item1 {
-      width: 100%; /* Make topic heading responsive */
-  }
-
-  .sales-boxes .top-sales {
-      height: auto; /* Allow height to adjust */
-  }
 }
 
 @media (max-width: 480px) {
@@ -519,10 +384,6 @@ tr, td {
 
   .sidenav .nav-link li {
       height: 40px; /* Reduce link height */
-  }
-
-  .sidenav .nav-link li a {
-      padding: 10px; /* Adjust padding for links */
   }
 
   .overview-boxes .box {
@@ -543,6 +404,7 @@ tr, td {
       font-size: 14px; /* Adjust font size for smaller boxes */
   }
 }
+
 
 
 
