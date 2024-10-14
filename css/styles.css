@@ -435,7 +435,7 @@ tr, td {
 /* Media Queries for Responsiveness */
 @media (max-width: 1600px) {
   .home-content .overview-boxes .box {
-      width: calc(100% / 3 - 15px);
+      width: calc(100% / 2 - 15px);
   }
 }
 
