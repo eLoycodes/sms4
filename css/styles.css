@@ -598,7 +598,7 @@ tr, td {
 
   .overview-boxes .box {
       padding: 20px 5px; /* Adjust box padding */
-      width: 100%;
+      width: 120%;
       margin-bottom: 20px;
   }
 
