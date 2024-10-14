@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $studenttype = trim($_POST['studenttype']);
     $status = trim($_POST['status']);
 
-    if (empty($studentID) || empty($firstname) || empty($lastname) || empty($course) || empty($yearlevel) || empty($academicyear) || empty($studenttype) || empty($status)) {
+    if (empty($studentID) || empty($firstname) || empty($middlename) || empty($lastname) || empty($course) || empty($yearlevel) || empty($academicyear) || empty($studenttype) || empty($status)) {
         echo "All fields are required.";
         exit;
     }
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     foreach ($tables as $table) {
         $check_sql = "SELECT * FROM $table WHERE studentID = ?";
         if ($check_stmt = $connect->prepare($check_sql)) {
-            $check_stmt->bind_param('s', $studentID);
+            $check_stmt->bind_param('i', $studentID);
             error_log("Executing query: $check_sql with studentID: $studentID");
             $check_stmt->execute();
             $check_result = $check_stmt->get_result();
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 error_log("Inserting into table for year level: '$insert_table'");
 
                 if ($insert_stmt = $connect->prepare($insert_sql)) {
-                    $insert_stmt->bind_param('sssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $studenttype, $status);
+                    $insert_stmt->bind_param('issssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $studenttype, $status);
                     if ($insert_stmt->execute()) {
                         $delete_sql = "DELETE FROM $current_table WHERE studentID = ?";
                         if ($delete_stmt = $connect->prepare($delete_sql)) {
