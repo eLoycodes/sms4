@@ -120,55 +120,44 @@ $connect->close();
         </div><br>
         <div class="deactivatelistForm-frame">
         <div class="deactivate-form">
-    <label class="deac-label">Search Student ID:</label>
-        <input type="text" name="deac-search" class="search-deac" required>
-        <button type="submit" name="submit" class="search-deac-btn">Search</button>
+        <div>
+        <form method="POST" action="">
+            <label for="studentID">Search Student ID:</label>
+            <input type="text" name="studentID" required>
+            <button type="submit">Search</button>
+        </form>
     </div>
 
-        <table class="deactform-table">
-            <tr>
-              <th class="rf">Student ID</th>
-              <th class="rf">LastName</th>
-              <th class="rf">FirstName</th>
-              <th class="rf">MiddleName</th>
-              <th class="rf">Course</th>
-              <th class="rf">YearLevel</th>
-              <th class="rf">Section</th>
-              <th class="rf">AcademicYear</th>
-              <th class="rf">Status</th>
-              <th class="rf">Action</th>
-            </tr>
-            <?php
-                include('connect.php'); 
-                  $s="SELECT * from deactivate";
-                  $res=$connect->query($s);
-                  if($res->num_rows>0){
-                  $i=0;
-                  while($r=$res->fetch_assoc()){
-                    $i++; ?>
-              <tr class="reqf">
-              <td class="req"><?php echo $r['studentID'];?></td>
-              <td class="req"><?php echo $r['firstname'];?></td>
-              <td class="req"><?php echo $r["middlename"];?></td>
-              <td class="req"><?php echo $r["lastname"];?></td>
-              <td class="req"><?php echo $r["course"];?></td>
-              <td class="req"><?php echo $r["yearlevel"];?></td>
-              <td class="req"><?php echo $r["section"];?></td>
-              <td class="req"><?php echo $r["academicyear"];?></td>
-              <td class="req"><?php echo $r["status"];?></td>
-              <td class="req">
-    <a href='#' onclick="openDeactivateModal('<?php echo $r['studentID']; ?>', '<?php echo $r['firstname']; ?>', '<?php echo $r['lastname']; ?>')">
-        <button class="reqform-btn">Deactivate</button></a></td>
-      </tr>
-        <?php  
-            }
-          }
-            else{   
-                echo "No Record Found";
-            }
-            ?> 
-          </table>
-        </div>
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>First Name</th>
+            <th>Middle Name</th>
+            <th>Last Name</th>
+            <th>Course</th>
+            <th>Year Level</th>
+            <th>Section</th>
+            <th>Academic Year</th>
+            <th>Status</th>
+        </tr>
+        <?php if (!empty($studentData)) {
+            foreach ($studentData as $r) { ?>
+                <tr>
+                    <td><?php echo htmlspecialchars($r['studentID']); ?></td>
+                    <td><?php echo htmlspecialchars($r['firstname']); ?></td>
+                    <td><?php echo htmlspecialchars($r['middlename']); ?></td>
+                    <td><?php echo htmlspecialchars($r['lastname']); ?></td>
+                    <td><?php echo htmlspecialchars($r['course']); ?></td>
+                    <td><?php echo htmlspecialchars($r['yearlevel']); ?></td>
+                    <td><?php echo htmlspecialchars($r['section']); ?></td>
+                    <td><?php echo htmlspecialchars($r['academicyear']); ?></td>
+                    <td><?php echo htmlspecialchars($r['status']); ?></td>
+                </tr>
+            <?php } 
+        } else {   
+            echo "<tr><td colspan='9'>No Record Found</td></tr>";
+        } ?> 
+    </table>
           <!-- Deactivated List -->
 
           <div class="requestForm-frame3"><br><br>
