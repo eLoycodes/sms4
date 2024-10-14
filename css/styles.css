@@ -775,7 +775,15 @@ tr,td{
 
 /*  Student Information - Student Personal Information css */
 
-
+.form-control {
+  width: 80%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex-grow: 1;
+  margin-right: 10px;
+}
 
 .admission1 {
   display: flex;
@@ -787,15 +795,6 @@ tr,td{
 
 .SSI {
   margin-right: 10px; /* Space between label and input */
-}
-
-.form-control {
-  width: 100%; /* Full width */
-  max-width: 300px; /* Limit max width */
-  padding: 10px; /* Padding inside input */
-  margin: 10px 0; /* Margin above and below */
-  border: 1px solid #ccc; /* Border styling */
-  border-radius: 5px; /* Rounded corners */
 }
 
 .btn {
