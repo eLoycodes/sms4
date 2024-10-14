@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
 
         // Insert into the deactivated table
         $insertStmt = $connect->prepare("INSERT INTO deactivated (studentID, firstname, middlename, lastname, course, yearlevel, section, academicyear, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $insertStmt->bind_param("sssssssss", 
+        $insertStmt->bind_param("issssssss", 
             $studentData['studentID'], 
             $studentData['firstname'], 
             $studentData['middlename'], 
@@ -64,19 +64,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
         );
 
         if ($insertStmt->execute()) {
-            // Delete from deactivate table after successful insertion
+            // Delete from deactivate table
             $deleteStmt = $connect->prepare("DELETE FROM deactivate WHERE studentID = ?");
             $deleteStmt->bind_param("s", $studentID);
             $deleteStmt->execute();
             $deleteStmt->close();
-            $success_message = "Student deactivated successfully.";
-        } else {
-            $error_message = "Failed to deactivate student: " . $insertStmt->error;
         }
 
         $insertStmt->close();
     } else {
-        $error_message = "Student not found.";
+        echo "Student not found.";
     }
 
     $stmt->close();
@@ -202,19 +199,53 @@ $connect->close();
                     <input type="hidden" id="deactivateStudentID" name="studentID">
                     <div class="clearfix">
                         <button type="button" class="cancelbtn" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
-                        <button type="submit" class="deletebtn">Delete</button>
+                        <button type="submit" class="deletebtn">Deactivate</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
+</div>
 
-    <script type="text/javascript">
-        function openDeactivateModal(studentID, firstName, lastName) {
-            document.getElementById('deactivateStudentID').value = studentID;
-            document.getElementById('deactivateName').innerText = firstName + " " + lastName;
-            document.getElementById('id01').style.display = 'block';
-        }
-    </script>
+<script type="text/javascript">
+// SideNav
+function toggleNav() {
+    const sidenav = document.getElementById("sidenav");
+    const uppernav = document.getElementById("uppernav");
+
+    if (sidenav.style.left === "0px") {
+        sidenav.style.left = "-280px";
+        uppernav.style.marginLeft = "0";
+    } else {
+        sidenav.style.left = "0";
+        uppernav.style.marginLeft = "280px";
+    }
+}
+
+// Dropdown
+var dropdown = document.getElementsByClassName("dropdown-btn");
+for (var i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var dropdownContent = this.nextElementSibling;
+        dropdownContent.style.display = dropdownContent.style.display === "block" ? "none" : "block";
+    });
+}
+
+var modal = document.getElementById('id01');
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Deactivate
+function openDeactivateModal(studentID, firstName, lastName) {
+    document.getElementById('deactivateStudentID').value = studentID;
+    document.getElementById('deactivateName').innerText = firstName + " " + lastName;
+    document.getElementById('id01').style.display = 'block';
+}
+</script>
 </body>
 </html>
