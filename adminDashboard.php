@@ -111,14 +111,14 @@ if(!isset($_SESSION["id"])){
 
             <table class="repcon">  
               <tr>
-                <th class="rcon">Student ID</th>
-                <th class="rcon">Name</th>
+                <th class="rcon">First Name</th>
+                <th class="rcon">Middle Name</th>
+                <th class="rcon">Last Name</th>
                 <th class="rcon">Course</th>
-               <!-- <th class="rcon">Section</th> -->
+                <th class="rcon">Year Level</th>
                 <th class="rcon">Action</th>
               </tr>
               <?php
-                // <td>{$r["section"]}</td> 
               include('connect.php'); 
               $s="SELECT * from newstudent";
               $res=$connect->query($s);
@@ -128,9 +128,11 @@ if(!isset($_SESSION["id"])){
               $i++;
               echo"
               <tr>
-              <td>{$r["studentID"]}</td>
-              <td>{$r["firstname"]} {$r["middlename"]} {$r["lastname"]}</td>  
-              <td>{$r["course"]}</td>               
+              <td>{$r["firstname"]}</td>
+              <td>{$r["middlename"]}</td>
+              <td>{$r["lastname"]}</td>  
+              <td>{$r["course"]}</td>  
+              <td>{$r["yearlevel"]}</td>               
              
               <td><button><a href='admin-AddStudent-newold.php?userid={$r["newstudent_id"]}'>Add Student</a></button></td>	
               </tr>
