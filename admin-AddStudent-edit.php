@@ -455,7 +455,11 @@ $(document).ready(function() {
                         </select>
                     </label>
                     <label class="add-label" style="color: white;">Semester
-                        <input type="text" placeholder="" class="input-field" name="semester" required>
+                        <select name="status" required>
+                            <option disabled selected></option>
+                            <option>1st</option>
+                            <option>2nd</option>
+                        </select>
                     </label>
                     <label class="add-label" style="color: white;">Type
                         <select name="studenttype" required>
