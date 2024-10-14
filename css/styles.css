@@ -856,7 +856,7 @@ tr,td{
 .frames {
   position: relative;
   max-width: 1200px;
-  width: 100%;
+  width: 80%;
   border-radius: 20px;
   padding: 30px;
   margin: 0 auto; /* Center horizontally */
