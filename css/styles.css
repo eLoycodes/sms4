@@ -434,13 +434,15 @@ tr, td {
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1600px) {
+  .sales-boxes .top-sales, .recent-sales {
+    width: 100%;
+}
+
  .home-section {
     width: 100%;
     left: 0;
 }
-.home-content .overview-boxes {
-    flex-direction: column;
-}
+
 .home-content .overview-boxes .box {
   width: calc(100% / 2 - 15px);
   margin-bottom: 20px;
@@ -458,9 +460,6 @@ tr, td {
     left: 0;
 }
 
-.home-content .overview-boxes {
-    flex-direction: column;
-}
 
 .home-content .overview-boxes .box {
   width: calc(100% / 2 - 15px);
