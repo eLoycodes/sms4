@@ -284,6 +284,77 @@ const fileInput = document.getElementById('fileInput');
         max-width: 130px; 
         height: auto; 
     }
+
+
+
+    .home-section {
+    padding: 20px;
+}
+
+.overview-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.box {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 200px; /* Allow the boxes to grow and shrink */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.report-container {
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.rcon {
+    padding: 10px;
+    text-align: left;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .overview-boxes {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .box {
+        width: 100%; /* Full width for smaller screens */
+        margin: 5px 0; /* Reduce margins for smaller screens */
+    }
+
+    .home-content {
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .box {
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .number {
+        font-size: 1.2em; /* Increase font size for better readability */
+    }
+
+    #uploadButton, #submitButton {
+        width: 100%; /* Full width buttons for small screens */
+        margin: 5px 0; /* Space between buttons */
+    }
+
+    .top-sales-details img {
+        max-width: 100px; /* Smaller images for small screens */
+    }
+}
 </style>
 </body>
 </html>
