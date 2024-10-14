@@ -62,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
                             // Insert into deactivate table
                             $insert_sql = "INSERT INTO deactivate (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
                             $insert_stmt = $connect->prepare($insert_sql);
-                            $insert_stmt->bind_param("sssssisss", $row['studentID'], $row['firstname'], $row['middlename'], $row['lastname'], $row['course'], $row['yearlevel'], $row['academicyear'], $row['semester'], $row['studenttype']);
+                            $insert_stmt->bind_param("issssssss", $row['studentID'], $row['firstname'], $row['middlename'], $row['lastname'], $row['course'], $row['yearlevel'], $row['academicyear'], $row['semester'], $row['studenttype']);
                             $insert_stmt->execute();
                             $insert_stmt->close();
         
