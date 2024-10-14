@@ -286,35 +286,14 @@ const fileInput = document.getElementById('fileInput');
     }
 
 
-/* Base styles for body and containers */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa; /* Light background for contrast */
-}
 
-.home-section {
+
+
+    /* Base styles for containers */
+.home-content {
     padding: 20px;
 }
 
-/* Navbar */
-.navbar {
-    background-color: #343a40;
-    color: white;
-}
-
-/* Dashboard Title */
-.dashboardName {
-    font-size: 24px;
-}
-
-.dashboardAnnouncement {
-    font-size: 32px;
-    font-weight: bold;
-}
-
-/* Overview Boxes */
 .overview-boxes {
     display: flex;
     flex-wrap: wrap;
@@ -322,12 +301,14 @@ body {
     margin-bottom: 20px;
 }
 
+/* Box styles */
 .box {
     background-color: #f4f4f4;
     padding: 20px;
     margin: 10px;
-    flex: 1 1 200px; /* Flexbox allows growth and shrink */
+    flex: 1 1 200px; /* Allow boxes to grow and shrink */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Slightly rounded corners */
 }
 
 .box-topic {
@@ -337,20 +318,27 @@ body {
 
 .number {
     font-size: 24px;
+    margin-top: 10px;
 }
 
 /* Report Container */
 .report-container {
     margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
 }
 
+/* Report Header */
 .report-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.repcon {
+/* Table styles */
+table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
@@ -362,97 +350,38 @@ body {
     background-color: #e9ecef;
 }
 
-/* Sales Box */
-.sales-boxes {
-    display: flex;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-.top-sales {
-    background-color: #ffffff;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.announcement-btn {
-    display: flex;
-    align-items: center;
-    margin-top: 10px;
-}
-
-/* Buttons */
-button {
-    cursor: pointer;
-    border: none;
-    color: white;
-    padding: 10px 20px;
-}
-
-#uploadButton {
-    background-color: rgb(78, 78, 78); /* Dark gray */
-}
-
-#submitButton {
-    background-color: #007BFF; /* Blue */
-    margin-left: 10px;
-}
-
-/* Top Sales Details */
-.top-sales-details {
-    list-style: none;
-    padding: 0;
-    text-align: center;
-}
-
-.top-sales-details li {
-    margin: 10px 0;
-}
-
-.top-sales-details img {
-    display: block;
-    margin: 0 auto;
-    max-width: 130px;
-    height: auto;
-}
-
 /* Responsive styles */
 @media (max-width: 768px) {
     .overview-boxes {
         flex-direction: column;
-        align-items: center;
+        align-items: center; /* Center align on smaller screens */
     }
 
     .box {
-        width: 100%; /* Full width for smaller screens */
+        width: 100%; /* Full width for boxes */
         margin: 5px 0; /* Reduce margins */
     }
 
-    .report-container, .sales-boxes {
+    .report-container {
         margin: 0; /* Remove extra margins */
     }
 }
 
 @media (max-width: 480px) {
-    .dashboardName {
-        font-size: 20px; /* Smaller title for mobile */
-    }
-
-    .dashboardAnnouncement {
-        font-size: 24px; /* Smaller announcement for mobile */
+    .box-topic {
+        font-size: 16px; /* Smaller title for mobile */
     }
 
     .number {
         font-size: 20px; /* Smaller numbers for mobile */
     }
 
-    #uploadButton, #submitButton {
-        width: 100%; /* Full width buttons */
-        margin: 5px 0; /* Space between buttons */
+    .report-header h1.new {
+        font-size: 20px; /* Adjust font size for pending students */
     }
 
-    .top-sales-details img {
-        max-width: 100px; /* Smaller images */
+    .rcon {
+        font-size: 14px; /* Adjust font size for table headers */
     }
 }
 
