@@ -5,13 +5,16 @@ ini_set('session.cookie_secure', 1);
 ini_set('session.use_only_cookies', 1);
 session_start();
 
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 // Check if user is logged in
 if (!isset($_SESSION["id"])) {
     echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
 }
 
-
+$student_ID = null;
 $error_message = "";
 
 if (isset($_POST['studentID'])) {
@@ -21,7 +24,6 @@ if (isset($_POST['studentID'])) {
     } elseif (!preg_match('/^[a-zA-Z0-9]+$/', $student_ID_input)) {
         $error_message = "Invalid Student ID format.";
     } else {
-        $student_ID = [];
         $tables = [
             'deactivate',
             'deactivated',
@@ -31,59 +33,47 @@ if (isset($_POST['studentID'])) {
             'forthyear',
             'returnee'    
         ];
-        foreach ($tables as $table) {
-          $columns_result = $connect->query("SHOW COLUMNS FROM $table");
-          $existing_columns = [];
-      
-          while ($column = $columns_result->fetch_assoc()) {
-              $existing_columns[] = $column['Field'];
-          }
-          $selected_columns = ['studentID']; 
-          $possible_columns = [
-              'firstname',
-              'middlename',
-              'lastname',
-              'suffixname',
-              'email',
-              'gender',
-              'dob',
-              'age',
-              'contactnum',
-              'course',
-              'yearlevel',
-              'section',
-              'academicyear',
-              'status',
-              'studenttype'
-          ];
-       
-          foreach ($possible_columns as $column) {
-              if (in_array($column, $existing_columns)) {
-                  $selected_columns[] = $column;
-              }
-          }
         
-          $selected_columns_str = implode(', ', $selected_columns);
-          $sql = "SELECT '$table' AS source, $selected_columns_str FROM $table WHERE studentID = ?";
-          
-      
-          if ($stmt = $connect->prepare($sql)) {
-              $stmt->bind_param("s", $student_ID_input);
-              $stmt->execute();
-              $result = $stmt->get_result();
-      
-              if ($result && $result->num_rows > 0) {
-                  while ($row = $result->fetch_assoc()) {
-                    $student_ID = $row; 
+        foreach ($tables as $table) {
+            $columns_result = $connect->query("SHOW COLUMNS FROM $table");
+            $existing_columns = [];
+
+            while ($column = $columns_result->fetch_assoc()) {
+                $existing_columns[] = $column['Field'];
+            }
+
+            $selected_columns = ['studentID']; 
+            $possible_columns = [
+                'firstname', 'middlename', 'lastname', 'suffixname',
+                'email', 'gender', 'dob', 'age', 'contactnum',
+                'course', 'yearlevel', 'section', 'academicyear',
+                'status', 'studenttype'
+            ];
+
+            foreach ($possible_columns as $column) {
+                if (in_array($column, $existing_columns)) {
+                    $selected_columns[] = $column;
                 }
-              }
-              $stmt->close();
-          } else {
-              $error_message = "Database error: " . $connect->error; 
-        }
-      } 
+            }
+
+            $selected_columns_str = implode(', ', $selected_columns);
+            $sql = "SELECT '$table' AS source, $selected_columns_str FROM $table WHERE studentID = ?";
+
+            if ($stmt = $connect->prepare($sql)) {
+                $stmt->bind_param("s", $student_ID_input);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result && $result->num_rows > 0) {
+                    $student_ID = $result->fetch_assoc();
+                }
+                $stmt->close();
+            } else {
+                $error_message = "Database error: " . $connect->error; 
+            }
+        } 
     }
-  }
+}
 ?>
 
 <!DOCTYPE html>
