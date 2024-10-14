@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     foreach ($tables as $table) {
         $check_sql = "SELECT * FROM $table WHERE studentID = ?";
         if ($check_stmt = $connect->prepare($check_sql)) {
-            $check_stmt->bind_param('i', $studentID);
+            $check_stmt->bind_param('s', $studentID); // Changed 'i' to 's' for studentID
             error_log("Executing query: $check_sql with studentID: $studentID");
             $check_stmt->execute();
             $check_result = $check_stmt->get_result();
@@ -58,7 +58,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             error_log("Found " . $check_result->num_rows . " records in table: $table");
 
             if ($check_result && $check_result->num_rows > 0) {
-                
                 error_log("Found student ID in table: $table");
                 $current_table = $table; 
 
@@ -82,33 +81,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         exit;
                 }
 
-                $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                error_log("Inserting into table for year level: '$insert_table'");
-
-                if ($insert_stmt = $connect->prepare($insert_sql)) {
-                    $insert_stmt->bind_param('isssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status);
-                    if ($insert_stmt->execute()) {
-                        $delete_sql = "DELETE FROM $current_table WHERE studentID = ?";
-                        if ($delete_stmt = $connect->prepare($delete_sql)) {
-                            $delete_stmt->bind_param('s', $studentID);
-                            if ($delete_stmt->execute()) {
-                                echo "Student data moved successfully to $insert_table.";
-                                echo "<script>alert('Student data moved successfully.');</script>";
-                                echo "<script>window.open('admin-AddStudent-edit.php','_self');</script>";
-                                $updated = true;
-                            } else {
-                                echo "Error deleting record from $current_table: " . $delete_stmt->error;
-                            }
-                            $delete_stmt->close();
+                // If the student is being updated in the same table
+                if ($current_table === $insert_table) {
+                    // Update the existing record
+                    $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ? WHERE studentID = ?";
+                    if ($update_stmt = $connect->prepare($update_sql)) {
+                        $update_stmt->bind_param('sssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $studentID);
+                        if ($update_stmt->execute()) {
+                            echo "Student data updated successfully.";
+                            echo "<script>alert('Student data updated successfully.');</script>";
+                            echo "<script>window.open('admin-AddStudent-edit.php','_self');</script>";
+                            $updated = true;
                         } else {
-                            echo "Error preparing delete statement for $current_table: " . $connect->error;
+                            echo "Error updating record in $current_table: " . $update_stmt->error;
                         }
+                        $update_stmt->close();
                     } else {
-                        echo "Error inserting record into new table: " . $insert_stmt->error;
+                        echo "Error preparing update statement for $current_table: " . $connect->error;
                     }
-                    $insert_stmt->close();
                 } else {
-                    echo "Error preparing insert statement for new table: " . $connect->error;
+                    // Insert into the new table
+                    $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    error_log("Inserting into table for year level: '$insert_table'");
+
+                    if ($insert_stmt = $connect->prepare($insert_sql)) {
+                        $insert_stmt->bind_param('isssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status);
+                        if ($insert_stmt->execute()) {
+                            $delete_sql = "DELETE FROM $current_table WHERE studentID = ?";
+                            if ($delete_stmt = $connect->prepare($delete_sql)) {
+                                $delete_stmt->bind_param('s', $studentID);
+                                if ($delete_stmt->execute()) {
+                                    echo "Student data moved successfully to $insert_table.";
+                                    echo "<script>alert('Student data moved successfully.');</script>";
+                                    echo "<script>window.open('admin-AddStudent-edit.php','_self');</script>";
+                                    $updated = true;
+                                } else {
+                                    echo "Error deleting record from $current_table: " . $delete_stmt->error;
+                                }
+                                $delete_stmt->close();
+                            } else {
+                                echo "Error preparing delete statement for $current_table: " . $connect->error;
+                            }
+                        } else {
+                            echo "Error inserting record into new table: " . $insert_stmt->error;
+                        }
+                        $insert_stmt->close();
+                    } else {
+                        echo "Error preparing insert statement for new table: " . $connect->error;
+                    }
                 }
                 break; 
             }
