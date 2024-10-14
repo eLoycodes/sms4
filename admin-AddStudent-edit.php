@@ -455,7 +455,7 @@ $(document).ready(function() {
                         </select>
                     </label>
                     <label class="add-label" style="color: white;">Semester
-                        <select name="status" required>
+                        <select name="semester" required>
                             <option disabled selected></option>
                             <option>1st</option>
                             <option>2nd</option>
