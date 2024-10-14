@@ -10,7 +10,6 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-session_start();
 if(!isset($_SESSION["id"])){
 		echo"<script>window.open('index.php?mes=Access Denied..','_self');</script>";
 	}	
@@ -115,11 +114,11 @@ if(!isset($_SESSION["id"])){
                 <th class="rcon">Student ID</th>
                 <th class="rcon">Name</th>
                 <th class="rcon">Course</th>
-                <th class="rcon">Section</th>
+               <!-- <th class="rcon">Section</th> -->
                 <th class="rcon">Action</th>
               </tr>
               <?php
-                
+                // <td>{$r["section"]}</td> 
               include('connect.php'); 
               $s="SELECT * from firstyear";
               $res=$connect->query($s);
@@ -132,7 +131,7 @@ if(!isset($_SESSION["id"])){
               <td>{$r["studentID"]}</td>
               <td>{$r["firstname"]} {$r["lastname"]}</td>  
               <td>{$r["course"]}</td>               
-              <td>{$r["section"]}</td> 
+             
               <td><button><a href='#?userid={$r["firstyear_id"]}'>View</a></button></td>	
               </tr>
               ";	
