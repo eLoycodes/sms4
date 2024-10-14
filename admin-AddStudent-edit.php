@@ -52,13 +52,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
                 $stmt->bind_param("s", $student_ID_input);
                 $stmt->execute();
                 $result = $stmt->get_result();
-
+        
                 if ($result && $result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
                         $students[] = $row; // Store results
+                        
+                        // Check if the status is "Dropped"
+                        if ($row['status'] === 'Dropped') {
+                            // Insert into deactivate table
+                            $insert_sql = "INSERT INTO deactivate (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                            $insert_stmt = $connect->prepare($insert_sql);
+                            $insert_stmt->bind_param("sssssisss", $row['studentID'], $row['firstname'], $row['middlename'], $row['lastname'], $row['course'], $row['yearlevel'], $row['academicyear'], $row['semester'], $row['studenttype']);
+                            $insert_stmt->execute();
+                            $insert_stmt->close();
+        
+                            // Delete from current table
+                            $delete_sql = "DELETE FROM $table WHERE studentID = ?";
+                            $delete_stmt = $connect->prepare($delete_sql);
+                            $delete_stmt->bind_param("s", $row['studentID']);
+                            $delete_stmt->execute();
+                            $delete_stmt->close();
+        
+                            // Optionally, you can break out of the loop if only one match is expected
+                            break;
+                        }
                     }
                 }
-
+        
                 $stmt->close();
             } else {
                 $error_message = "Database error: " . $connect->error; // Handle potential errors
