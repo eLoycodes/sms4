@@ -439,8 +439,7 @@ tr, td {
     left: 0;
 }
 .home-content .overview-boxes {
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
 }
 .home-content .overview-boxes .box {
   width: calc(100% / 2 - 15px);
@@ -460,8 +459,7 @@ tr, td {
 }
 
 .home-content .overview-boxes {
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
 }
 
 .home-content .overview-boxes .box {
