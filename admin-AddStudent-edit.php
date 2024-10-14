@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
             }
 
             $selected_columns = ['studentID']; // Always include studentID
-            $possible_columns = ['firstname', 'middlename', 'lastname', 'course', 'yearlevel', 'academicyear', 'status', 'studenttype'];
+            $possible_columns = ['firstname', 'middlename', 'lastname', 'course', 'yearlevel', 'academicyear', 'semester', 'status', 'studenttype'];
 
             foreach ($possible_columns as $column) {
                 if (in_array($column, $existing_columns)) {
@@ -114,6 +114,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
                 <th class="rf">Course</th>
                 <th class="rf">Year Level</th>
                 <th class="rf">Academic Year</th>
+                <th class="rf">Semester</th>
                 <th class="rf">Type</th>
                 <th class="rf">Status</th>
             </tr>
@@ -124,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
                 <td><?php echo htmlspecialchars($student['course'] ?? 'N/A'); ?></td>
                 <td><?php echo htmlspecialchars($student['yearlevel'] ?? 'N/A'); ?></td>
                 <td><?php echo htmlspecialchars($student['academicyear'] ?? 'N/A'); ?></td>
+                <td><?php echo htmlspecialchars($student['semester'] ?? 'N/A'); ?></td>
                 <td><?php echo htmlspecialchars($student['studenttype'] ?? 'N/A'); ?></td>
                 <td><?php echo htmlspecialchars($student['status'] ?? 'N/A'); ?></td>
             </tr>

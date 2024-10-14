@@ -22,10 +22,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $course = trim($_POST['course']);
     $yearlevel = trim($_POST['yearlevel']);
     $academicyear = trim($_POST['academicyear']);
+    $status = trim($_POST['semester']);
     $studenttype = trim($_POST['studenttype']);
     $status = trim($_POST['status']);
 
-    if (empty($studentID) || empty($firstname) || empty($middlename) || empty($lastname) || empty($course) || empty($yearlevel) || empty($academicyear) || empty($studenttype) || empty($status)) {
+    if (empty($studentID) || empty($firstname) || empty($middlename) || empty($lastname) || empty($course) || empty($yearlevel) || empty($academicyear) || empty($semester) || empty($studenttype) || empty($status)) {
         echo "All fields are required.";
         exit;
     }
@@ -81,11 +82,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         exit;
                 }
 
-                $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, studenttype, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 error_log("Inserting into table for year level: '$insert_table'");
 
                 if ($insert_stmt = $connect->prepare($insert_sql)) {
-                    $insert_stmt->bind_param('issssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $studenttype, $status);
+                    $insert_stmt->bind_param('isssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status);
                     if ($insert_stmt->execute()) {
                         $delete_sql = "DELETE FROM $current_table WHERE studentID = ?";
                         if ($delete_stmt = $connect->prepare($delete_sql)) {
