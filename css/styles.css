@@ -794,7 +794,7 @@ tr,td{
   margin-right: 10px; /* Space between label and input */
 }
 
-.frames{
+.frames {
   position: relative;
   max-width: 1200px;
   width: 100%;
@@ -806,14 +806,15 @@ tr,td{
   margin-left: 12%;
   margin-top: 4%;
 }
-.frames header{
+
+.frames header {
   position: relative;
   font-size: 15px;
   font-weight: 600;
   color: #333;
 }
 
-.search-txt{
+.search-txt {
   width: 25%;
   height: 15px;
   border: 1px solid rgb(134, 133, 133);
@@ -822,7 +823,7 @@ tr,td{
   border-radius: 5px;
 }
 
-.search-btn{
+.search-btn {
   width: 4%;
   height: 37px;
   border: 1px solid rgb(134, 133, 133);
@@ -833,19 +834,21 @@ tr,td{
   margin-top: 5px;
 }
 
-.frames form{
+.frames form {
   position: relative;
   margin-top: 16px;
   min-height: 80px;
   background-color: #fff;
   overflow: hidden;
 }
-.frames form .form{
+
+.frames form .form {
   position: absolute;
   background-color: #fff;
   transition: 0.3s ease;
 }
-.frames form .form.second{
+
+.frames form .form.second {
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
@@ -855,15 +858,120 @@ tr,td{
   background-color: #fff;
   overflow: hidden;
 }
-form.secActive .form.second{
+
+form.secActive .form.second {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(0);
 }
-form.secActive .form.one{
+
+form.secActive .form.one {
   opacity: 0;
   pointer-events: none;
   transform: translateX(-100%);
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .frames {
+    margin-left: 5%; /* Adjust margin for smaller screens */
+    padding: 20px; /* Reduce padding */
+  }
+
+  .search-txt {
+    width: 40%; /* Adjust search box width */
+  }
+
+  .search-btn {
+    width: 15%; /* Increase button width */
+  }
+}
+
+@media (max-width: 992px) {
+  .frames {
+    padding: 15px; /* Further reduce padding */
+  }
+
+  .search-txt {
+    width: 50%; /* Further adjust search box width */
+  }
+
+  .search-btn {
+    width: 20%; /* Adjust button width */
+  }
+}
+
+@media (max-width: 768px) {
+  .frames {
+    margin-left: 2%; /* Further reduce left margin */
+    padding: 10px; /* Reduce padding for mobile */
+  }
+
+  .form-control {
+    width: 90%; /* Increase input width */
+  }
+
+  .search-txt {
+    width: 70%; /* Adjust search box width */
+  }
+
+  .search-btn {
+    width: 25%; /* Adjust button width */
+  }
+}
+
+@media (max-width: 576px) {
+  .frames {
+    padding: 5px; /* Reduce padding for very small screens */
+  }
+
+  .search-txt {
+    width: 80%; /* Adjust search box width */
+  }
+
+  .search-btn {
+    width: 30%; /* Adjust button width */
+  }
+
+  .form-control {
+    width: 100%; /* Full width for inputs */
+    margin: 5px 0; /* Reduce margins */
+  }
+}
+
+@media (max-width: 480px) {
+  .frames {
+    margin-left: 0; /* Center the frames */
+    padding: 10px; /* Consistent padding */
+  }
+
+  .search-txt {
+    width: 90%; /* Max width for input */
+  }
+
+  .search-btn {
+    width: 35%; /* Adjust button width */
+    margin-top: 10px; /* Space above button */
+  }
+}
+
+@media (max-width: 360px) {
+  .frames {
+    padding: 5px; /* Further reduce padding */
+  }
+
+  .search-txt {
+    width: 100%; /* Full width for very small screens */
+  }
+
+  .search-btn {
+    width: 40%; /* Increase button size */
+    margin-top: 5px; /* Space above button */
+  }
+
+  .frames header {
+    font-size: 14px; /* Smaller header font size */
+  }
 }
 
 
