@@ -502,28 +502,7 @@ tr, td {
   }
 }
 
-@media (max-width: 768px) {
-  .home-section {
-      width: 100%;
-      left: 0;
-  }
 
-  .home-content .overview-boxes {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .home-content .overview-boxes .box {
-      width: 100%;
-      margin-bottom: 20px;
-  }
-  .announcement-btn {
-    float: none;
-    text-align: center;
-    margin-top: -5px;
-    float: right;
-}
-}
 
 @media (max-width: 750px) {
   .home-section {
@@ -549,8 +528,71 @@ tr, td {
 }
 
 
+@media (max-width: 576px) {
+  .frame2 {
+      height: 6vh; /* Adjust height for smaller screens */
+  }
 
+  .dashboardName,
+  .dashboardAnnouncement {
+      font-size: 14px; /* Reduce font size for smaller screens */
+  }
 
+  .report-header {
+      flex-direction: column; /* Stack elements vertically */
+      align-items: flex-start; /* Align items to the start */
+  }
+
+  .new {
+      font-size: 18px; /* Further reduce font size */
+  }
+
+  .view {
+      width: 80px; /* Reduce button size */
+      font-size: 14px; /* Reduce font size */
+  }
+
+  .report-topic-heading,
+  .item1 {
+      width: 100%; /* Make topic heading responsive */
+  }
+
+  .sales-boxes .top-sales {
+      height: auto; /* Allow height to adjust */
+  }
+}
+
+@media (max-width: 480px) {
+  .sidenav {
+      width: 250px; /* Adjust sidenav width for small screens */
+  }
+
+  .sidenav .nav-link li {
+      height: 40px; /* Reduce link height */
+  }
+
+  .sidenav .nav-link li a {
+      padding: 10px; /* Adjust padding for links */
+  }
+
+  .overview-boxes .box {
+      padding: 20px 5px; /* Adjust box padding */
+  }
+}
+
+@media (max-width: 320px) {
+  .sidenav {
+      width: 200px; /* Further adjust sidenav for very small screens */
+  }
+
+  .sidenav .nav-link li {
+      height: 35px; /* Further reduce link height */
+  }
+
+  .home-content .overview-boxes .box {
+      font-size: 14px; /* Adjust font size for smaller boxes */
+  }
+}
 
 
 
