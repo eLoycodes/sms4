@@ -800,10 +800,9 @@ tr,td{
   width: 100%;
   border-radius: 20px;
   padding: 30px;
-  margin: 0 15px;
+  margin: 0 auto; /* Center horizontally */
   background-color: white;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  margin-left: 12%;
   margin-top: 4%;
   overflow-x: hidden; /* Prevent horizontal overflow */
 }
@@ -819,7 +818,6 @@ tr,td{
   width: 25%;
   height: 15px;
   border: 1px solid rgb(134, 133, 133);
-  margin-left: -52%;
   padding: 10px;
   border-radius: 5px;
 }
@@ -853,11 +851,9 @@ tr,td{
   opacity: 0;
   pointer-events: none;
   transform: translateX(100%);
-  position: relative;
   margin-top: 16px;
   min-height: 50px;
   background-color: #fff;
-  overflow: hidden;
 }
 
 form.secActive .form.second {
@@ -875,7 +871,6 @@ form.secActive .form.one {
 /* Media Queries for Responsiveness */
 @media (max-width: 1200px) {
   .frames {
-    margin-left: 0; /* Adjust margin for smaller screens */
     padding: 20px; /* Reduce padding */
   }
 
@@ -904,7 +899,6 @@ form.secActive .form.one {
 
 @media (max-width: 768px) {
   .frames {
-    margin-left: 2%; /* Further reduce left margin */
     padding: 10px; /* Reduce padding for mobile */
   }
 
@@ -941,15 +935,6 @@ form.secActive .form.one {
 }
 
 @media (max-width: 480px) {
-  .frames {
-    margin-left: 0; /* Center the frames */
-    padding: 10px; /* Consistent padding */
-  }
-
-  .search-txt {
-    width: 90%; /* Max width for input */
-  }
-
   .search-btn {
     width: 35%; /* Adjust button width */
     margin-top: 10px; /* Space above button */
@@ -957,10 +942,6 @@ form.secActive .form.one {
 }
 
 @media (max-width: 360px) {
-  .frames {
-    padding: 5px; /* Further reduce padding */
-  }
-
   .search-txt {
     width: 100%; /* Full width for very small screens */
   }
@@ -978,7 +959,6 @@ form.secActive .form.one {
 /* Media Queries for Larger Screens */
 @media (min-width: 1201px) {
   .frames {
-    margin-left: 12%; /* Maintain larger margin on wide screens */
     padding: 30px; /* Maintain padding */
   }
 
