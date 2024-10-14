@@ -73,8 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
         $status = $studentData['status'] ?? '';
 
         // Insert into the deactivated table
-        $insertStmt = $connect->prepare("INSERT INTO deactivated (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $insertStmt->bind_param("sssssssss", 
+        $insertStmt = $connect->prepare("INSERT INTO deactivated (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $insertStmt->bind_param("isssssss", 
             $studentID, 
             $firstname, 
             $middlename, 
