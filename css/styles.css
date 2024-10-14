@@ -775,15 +775,7 @@ tr,td{
 
 /*  Student Information - Student Personal Information css */
 
-.form-control {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  flex-grow: 1;
-  margin-right: 10px;
-}
+
 
 .admission1 {
   display: flex;
@@ -898,6 +890,8 @@ form.secActive .form.one {
 @media (max-width: 576px) {
   .input-field1 {
       flex: 1 1 100%; /* Full width for small screens */
+      flex-direction: column;
+      align-items: center;
   }
 }
 
