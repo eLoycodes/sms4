@@ -286,11 +286,35 @@ const fileInput = document.getElementById('fileInput');
     }
 
 
+/* Base styles for body and containers */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Light background for contrast */
+}
 
-    .home-section {
+.home-section {
     padding: 20px;
 }
 
+/* Navbar */
+.navbar {
+    background-color: #343a40;
+    color: white;
+}
+
+/* Dashboard Title */
+.dashboardName {
+    font-size: 24px;
+}
+
+.dashboardAnnouncement {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+/* Overview Boxes */
 .overview-boxes {
     display: flex;
     flex-wrap: wrap;
@@ -302,22 +326,94 @@ const fileInput = document.getElementById('fileInput');
     background-color: #f4f4f4;
     padding: 20px;
     margin: 10px;
-    flex: 1 1 200px; /* Allow the boxes to grow and shrink */
+    flex: 1 1 200px; /* Flexbox allows growth and shrink */
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
+.box-topic {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.number {
+    font-size: 24px;
+}
+
+/* Report Container */
 .report-container {
     margin-top: 20px;
 }
 
-.table {
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.repcon {
     width: 100%;
     border-collapse: collapse;
+    margin-top: 10px;
 }
 
 .rcon {
     padding: 10px;
     text-align: left;
+    background-color: #e9ecef;
+}
+
+/* Sales Box */
+.sales-boxes {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.top-sales {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.announcement-btn {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Buttons */
+button {
+    cursor: pointer;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+}
+
+#uploadButton {
+    background-color: rgb(78, 78, 78); /* Dark gray */
+}
+
+#submitButton {
+    background-color: #007BFF; /* Blue */
+    margin-left: 10px;
+}
+
+/* Top Sales Details */
+.top-sales-details {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+.top-sales-details li {
+    margin: 10px 0;
+}
+
+.top-sales-details img {
+    display: block;
+    margin: 0 auto;
+    max-width: 130px;
+    height: auto;
 }
 
 /* Responsive styles */
@@ -329,32 +425,38 @@ const fileInput = document.getElementById('fileInput');
 
     .box {
         width: 100%; /* Full width for smaller screens */
-        margin: 5px 0; /* Reduce margins for smaller screens */
+        margin: 5px 0; /* Reduce margins */
     }
 
-    .home-content {
-        padding: 10px;
+    .report-container, .sales-boxes {
+        margin: 0; /* Remove extra margins */
     }
 }
 
 @media (max-width: 480px) {
-    .box {
-        padding: 15px; /* Adjust padding for smaller screens */
+    .dashboardName {
+        font-size: 20px; /* Smaller title for mobile */
+    }
+
+    .dashboardAnnouncement {
+        font-size: 24px; /* Smaller announcement for mobile */
     }
 
     .number {
-        font-size: 1.2em; /* Increase font size for better readability */
+        font-size: 20px; /* Smaller numbers for mobile */
     }
 
     #uploadButton, #submitButton {
-        width: 100%; /* Full width buttons for small screens */
+        width: 100%; /* Full width buttons */
         margin: 5px 0; /* Space between buttons */
     }
 
     .top-sales-details img {
-        max-width: 100px; /* Smaller images for small screens */
+        max-width: 100px; /* Smaller images */
     }
 }
+
+    
 </style>
 </body>
 </html>
