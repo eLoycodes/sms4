@@ -5,7 +5,7 @@ body {
   margin: 0;
   font-family: "Lato", sans-serif;
   box-sizing: border-box;
-  width: 100%;
+  width: 100%; /* Changed to 100% */
   overflow-x: hidden;
   background-color: rgb(242, 247, 250);
 }
@@ -160,27 +160,62 @@ tr, td {
 .home-section {
   background: rgb(242, 247, 250);
   min-height: 100vh;
-  width: calc(100% - 280px); /* Ensure full width minus sidenav */
-  margin-left: 280px; /* Offset by sidenav width */
+  width: calc(100% - 100px);
+  left: 2%;
   transition: all 0.5s ease;
   overflow-x: hidden; /* Prevent horizontal overflow */
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align items to the start vertically */
 }
 
-/* Centering content */
 .home-content {
-  display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  align-items: center; /* Center items */
-  padding: 20px; /* Add padding for spacing */
-  width: 100%; /* Full width */
+  width: 100%; /* Allow home-content to take full width */
+  max-width: 1200px; /* Optional: max width for larger screens */
+  padding: 20px; /* Add padding for some space around content */
+  display: flex; /* Use flexbox for content alignment */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.frame2 {
+  background-color: rgb(242, 247, 250);
+  width: 100%;
+  height: 8vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.dashboardName {
+  margin-left: 2%;
+  font-size: 14px;
+  color: #7064DD;
+}
+
+.dashboardAnnouncement {
+  margin-left: 2%;
+  font-size: 22px;
+  color: black;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidenav.active ~ .home-section {
+  width: calc(100% - 60px);
+  left: 60px;
+}
+
+.home-content .home-content {
+  position: relative;
+  padding-top: 50px;
 }
 
 .home-content .overview-boxes {
   display: flex;
   align-items: center;
-  justify-content: center; /* Center the boxes */
+  justify-content: center; /* Center items within the overview-boxes */
   flex-wrap: wrap;
-  padding: 0; /* Remove side padding */
+  padding: 0 20px;
   margin-bottom: 26px;
   color: rgb(78, 78, 78);
 }
@@ -189,19 +224,121 @@ tr, td {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: calc(25% - 15px); /* Adjust to fit 4 boxes in a row */
+  width: calc(100% / 4 - 15px);
   background: white;
   padding: 30px 1px;
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  margin: 10px; /* Add margin for spacing between boxes */
+  margin: 10px; /* Add margin for spacing */
 }
 
+.overview-boxes .box-topic {
+  font-size: 20px;
+  font-weight: 500;
+  margin-left: -10%;
+}
+
+.home-content .box .number {
+  display: inline-block;
+  font-size: 35px;
+  margin-top: -6px;
+  font-weight: 500;
+}
+
+.home-content .box .indicator {
+  display: flex;
+  align-items: center;
+  height: 30%;
+  width: 30%;
+}
+
+/* Middle report container */
+.report-container {
+  min-height: 300px;
+  width: 100%; /* Allow report-container to take full width */
+  max-width: 92%; /* Optional: max width */
+  margin: 70px auto 0; /* Center with auto margins */
+  background-color: #ffffff;
+  border-radius: 30px;
+  box-shadow: 3px 3px 10px rgb(188, 188, 188);
+  padding: 0px 40px 20px 0px;
+  margin-top: 2%;
+}
+
+.report-header {
+  height: 80px;
+  width: 96%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 10px 20px;
+  border-bottom: 2px solid #b2b2b4;
+  margin-left: 2%;
+}
+
+.new {
+  font-size: 22px;
+  font-weight: 600;
+  color: rgb(78, 78, 78);
+}
+
+.view {
+  height: 35px;
+  width: 90px;
+  border-radius: 5px;
+  background-color: rgb(78, 78, 78);
+  color: white;
+  font-size: 15px;
+  border: none;
+  cursor: pointer;
+}
+
+.report-body {
+  max-width: 100%;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  padding: 20px;
+}
+
+.report-topic-heading,
+.item1 {
+  width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rcon {
+  color: rgb(78, 78, 78);
+}
+
+.repcon {
+  width: 90%;
+  height: 50%;
+  margin-top: 3%;
+}
+
+.rpcon {
+  border-collapse: collapse;
+  height: 40px;
+  text-align: center;
+}
+
+.rpcon-btn {
+  width: 50%;
+  background-color: white;
+  color: rgb(19, 18, 18);
+  font-size: 18px;
+  font-family: 'Times New Roman', Times, serif;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Sales Boxes */
 .home-content .sales-boxes .recent-sales {
   width: 92%;
   background: white;
   padding: 20px 30px;
-  margin: 0 20px;
+  margin: 20px 0; /* Center with auto margins */
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   color: black;
@@ -264,7 +401,7 @@ tr, td {
   height: 200px;
   background: white;
   padding: 20px 30px;
-  margin: 0 20px;
+  margin: 20px 0; /* Center with auto margins */
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
   margin-top: 1%;
@@ -328,21 +465,22 @@ tr, td {
 
 @media (max-width: 992px) {
   .home-section {
-      width: 100%; /* Full width on smaller screens */
-      margin-left: 0; /* Remove sidenav offset */
+      width: 100%;
+      left: 0;
+  }
+
+  .home-content .overview-boxes {
+      flex-direction: column;
+      align-items: center;
   }
 
   .home-content .overview-boxes .box {
-      width: calc(50% - 15px); /* Two boxes per row */
-      margin-bottom: 20px; /* Space between boxes */
+      width: 100%;
+      margin-bottom: 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .home-content .overview-boxes .box {
-      width: 100%; /* Full width on smaller screens */
-  }
-
   .home-section {
       padding: 10px; /* Add some padding for smaller screens */
   }
