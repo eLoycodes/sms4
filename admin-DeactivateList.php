@@ -45,23 +45,27 @@ foreach ($tables as $table) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
     $studentID = $_POST['studentID'];
 
-    // Fetch the student's data from the deactivate table
-    $stmt = $connect->prepare("SELECT * FROM  'deactivate',
-    'firstyear',
-    'secondyear',
-    'thirdyear',
-    'forthyear',
-    'returnee' WHERE studentID = ?");
-    $stmt->bind_param("s", $studentID);
-    $stmt->execute();
-    $result = $stmt->get_result();
+    // Fetch the student's data from all relevant tables
+    $found = false;
+    foreach ($tables as $table) {
+        $stmt = $connect->prepare("SELECT * FROM $table WHERE studentID = ?");
+        $stmt->bind_param("s", $studentID);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-    if ($result->num_rows > 0) {
-        $studentData = $result->fetch_assoc();
+        if ($result->num_rows > 0) {
+            $studentData = $result->fetch_assoc();
+            $found = true;
+            break; // Stop searching once we find the student
+        }
 
+        $stmt->close();
+    }
+
+    if ($found) {
         // Insert into the deactivated table
         $insertStmt = $connect->prepare("INSERT INTO deactivated (studentID, firstname, middlename, lastname, course, yearlevel, section, academicyear, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $insertStmt->bind_param("issssssss", 
+        $insertStmt->bind_param("sssssssss", 
             $studentData['studentID'], 
             $studentData['firstname'], 
             $studentData['middlename'], 
@@ -74,23 +78,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['studentID'])) {
         );
 
         if ($insertStmt->execute()) {
-            // Delete from deactivate table
-            $deleteStmt = $connect->prepare("DELETE FROM deactivate WHERE studentID = ?");
+            // Delete from the original table where the student was found
+            $deleteStmt = $connect->prepare("DELETE FROM " . $table . " WHERE studentID = ?");
             $deleteStmt->bind_param("s", $studentID);
             $deleteStmt->execute();
             $deleteStmt->close();
+            echo "Student deactivated successfully.";
+        } else {
+            echo "Failed to deactivate student: " . $insertStmt->error;
         }
 
         $insertStmt->close();
     } else {
         echo "Student not found.";
     }
-
-    $stmt->close();
 }
 
 $connect->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
