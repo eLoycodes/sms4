@@ -28,9 +28,9 @@
     </style>
 </head>
 <body>
-    <div class="container mt-5"><br><br><br><br>
+    <div class="container mt-5"><br><br>
         <h1 class="text-center" style="color: white;">Bestlink College of the Philippines</h1><br><br><br>
-        <br><br>
+        <br>
         <div class="row">
             <div class="col-md-3">
                 <div class="course-box">

@@ -76,7 +76,7 @@ if (isset($_GET["mes"])) {
         </div>
     </div>
 <style>
-
+    
 .error {
     color: red;
     text-align: center;
@@ -123,7 +123,7 @@ body {
     border-radius: 10px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 350px;
+    width: 300px;
     box-shadow: 5px 5px 10px #888888;
     animation: fadeInBox 1s ease-in-out;
 }
