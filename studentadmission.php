@@ -14,7 +14,7 @@ if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get common fields
     var_dump($_POST);
-    $course = $_POST['course'] ?? '';
+    exit; $course = $_POST['course'] ?? '';
     $admissionType = $_POST['admissionType'] ?? '';
 
     // Debugging output
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close the statement and connection
     $stmt->close();
     $connect->close();
-}  exit; 
+} 
 ?>
 
 <!DOCTYPE html>
