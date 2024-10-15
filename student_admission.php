@@ -17,32 +17,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $admissionType = $_POST['admissionType'] ?? '';
 
     try {
-        if ($admissionType === "newRegular") {
-            // Insert New Regular Student
-            $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
+        switch ($admissionType) {
+            case "newRegular":
+                // Insert New Regular Student
+                $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
+                break;
 
-        } elseif ($admissionType === "transferee") {
-            // Get transferee-specific fields
-            $lastschool = $_POST['transferee_lastschool'] ?? '';
-            $prevcourse = $_POST['transferee_prevcourse'] ?? '';
-            $prevyear = $_POST['transferee_prevyear'] ?? '';
+            case "transferee":
+                // Get transferee-specific fields
+                $lastschool = $_POST['transferee_lastschool'] ?? '';
+                $prevcourse = $_POST['transferee_prevcourse'] ?? '';
+                $prevyear = $_POST['transferee_prevyear'] ?? '';
 
-            // Insert Transferee Student
-            $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear]);
+                // Insert Transferee Student
+                $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear]);
+                break;
 
-        } elseif ($admissionType === "returnee") {
-            // Get returnee-specific fields
-            $studentID = $_POST['returnee_studentID'] ?? '';
+            case "returnee":
+                // Get returnee-specific fields
+                $studentID = $_POST['returnee_studentID'] ?? '';
 
-            // Insert Returnee Student
-            $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?, ?)");
-            $stmt->execute([$studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel]);
+                // Insert Returnee Student
+                $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $stmt->execute([$studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel]);
+                break;
 
-        } else {
-            echo "Invalid admission type.";
-            exit();
+            default:
+                echo "Invalid admission type.";
+                exit();
         }
 
         echo "Registration successful!";
