@@ -16,31 +16,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $yearlevel = $_POST['yearlevel'] ?? '';
     $admissionType = $_POST['admissionType'] ?? '';
 
+    // Debugging: Print POST data
+    echo '<pre>';
+    var_dump($_POST);
+    echo '</pre>';
+    
     try {
         switch ($admissionType) {
             case "newRegular":
-                // Insert New Regular Student
                 $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
+                echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
                 $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
                 break;
 
             case "transferee":
-                // Get transferee-specific fields
                 $lastschool = $_POST['transferee_lastschool'] ?? '';
                 $prevcourse = $_POST['transferee_prevcourse'] ?? '';
                 $prevyear = $_POST['transferee_prevyear'] ?? '';
 
-                // Insert Transferee Student
                 $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
                 $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear]);
                 break;
 
             case "returnee":
-                // Get returnee-specific fields
                 $studentID = $_POST['returnee_studentID'] ?? '';
 
-                // Insert Returnee Student
                 $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
                 $stmt->execute([$studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel]);
                 break;
 
