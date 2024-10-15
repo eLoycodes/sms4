@@ -1,98 +1,62 @@
 <?php
 include("connect.php");
+
 session_start();
-
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-if (!isset($_SESSION["id"])) {
-    echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
-}
-
-$identifier = $password = "";
-$identifier_error = $password_error = "";
+$username = $password = "";
+$username_error = $password_error = "";
+$user_type = ""; // Para malaman kung admin o student
 
 if (isset($_POST['submit'])) {
-    if (empty($_POST["username"])) { // Changed from identifier to username
-        $identifier_error = "Email or Student Number is required!";
+    if (empty($_POST["username"])) {
+        $username_error = "Username is Required!";
     } else {
-        $identifier = $_POST["username"]; // Get the username directly
+        $username = $_POST["username"];
     }
 
     if (empty($_POST["password"])) {
-        $password_error = "Password is required!";
+        $password_error = "Password is Required!";
     } else {
         $password = $_POST["password"];
     }
 
-    if (empty($identifier_error) && empty($password_error)) {
-        // Check if the identifier is an email or student number
-        if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
-            // It's an email for admin
-            $stmt = $connect->prepare("SELECT * FROM admin WHERE username = ?");
-            $stmt->bind_param("s", $identifier);
-            $stmt->execute();
-            $res = $stmt->get_result();
-
-            if ($res && $res->num_rows > 0) {
-                $ro = $res->fetch_assoc();
-                // Admin login without hashing
-                if ($password === $ro['password']) { // Direct comparison
-                    $_SESSION["id"] = $ro["username"];
-                    $_SESSION["username"] = $ro["username"];
-                    $_SESSION["role"] = 'admin';
-                    header("Location: adminDashboard.php");
-                    exit();
-                } else {
-                    echo "Invalid admin credentials.";
-                }
-            } else {
-                echo "No user found for identifier: $identifier";
-            }
-        } else {
-            // It's a student number
-            $sql = "
-               SELECT studentID, password FROM deactivate WHERE studentID = ?
-                UNION ALL
-                SELECT studentID, password FROM deactivated WHERE studentID = ?
-                UNION ALL
-                SELECT studentID, password FROM firstyear WHERE studentID = ?
-                UNION ALL
-                SELECT studentID, password FROM secondyear WHERE studentID = ?
-                UNION ALL
-                SELECT studentID, password FROM thirdyear WHERE studentID = ?
-                UNION ALL
-                SELECT studentID, password FROM forthyear WHERE studentID = ?
-                UNION ALL
-                SELECT studentID, password FROM returnee WHERE studentID = ?";
-
-            // Prepare statement for student login
-            $stmt = $connect->prepare($sql);
-            $stmt->bind_param("sssssss", $identifier, $identifier, $identifier, $identifier, $identifier, $identifier, $identifier);
-            $stmt->execute();
-            $res = $stmt->get_result();
-
-            if ($res && $res->num_rows > 0) {
-                $ro = $res->fetch_assoc();
-                // Student login
-                if ($password === $ro['password']) { // Direct comparison
-                    $_SESSION["id"] = $ro["studentID"];
-                    $_SESSION["studentID"] = $ro["studentID"];
-                    $_SESSION["role"] = 'student';
-                    header("Location: studentDashboard.php");
-                    exit();
-                } else {
-                    echo "Invalid student credentials.";
-                }
-            } else {
-                echo "No user found for identifier: $identifier";
+    if (empty($username_error) && empty($password_error)) {
+        // Una, tingnan kung admin
+        $sql = "SELECT * FROM admin WHERE username='$username'";
+        $res = $connect->query($sql);
+        if ($res->num_rows > 0) {
+            $ro = $res->fetch_assoc();
+            // Verify password (make sure to use password_verify for hashed passwords)
+            if (password_verify($password, $ro["password"])) {
+                $_SESSION["id"] = $ro["id"];
+                $_SESSION["username"] = $ro["username"];
+                $_SESSION["type"] = "admin";
+                echo "<script>alert('Successfully Logged In as Admin');</script>";
+                echo "<script>window.open('adminDashboard.php','_self');</script>";
+                exit();
             }
         }
+
+        // Kung hindi, tingnan kung student
+        $sql = "SELECT * FROM students WHERE student_id='$username'";
+        $res = $connect->query($sql);
+        if ($res->num_rows > 0) {
+            $ro = $res->fetch_assoc();
+            // Verify password (make sure to use password_verify for hashed passwords)
+            if (password_verify($password, $ro["password"])) {
+                $_SESSION["id"] = $ro["id"];
+                $_SESSION["student_id"] = $ro["student_id"];
+                $_SESSION["type"] = "student";
+                echo "<script>alert('Successfully Logged In as Student');</script>";
+                echo "<script>window.open('studentDashboard.php','_self');</script>";
+                exit();
+            }
+        }
+
+        // Kung walang match, mag-error
+        echo "<script>alert('Invalid Username or Password');</script>";
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -109,12 +73,13 @@ if (isset($_POST['submit'])) {
         <h2><b>Sign in</b></h2>
         <form method="POST">
             <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username">
-                <span class='error'><?php echo $identifier_error; ?></span>
+                <label for="username">Username (Email or Student ID)</label>
+                <input type="text" id="username" name="username" required>
+                <span class='error'><?php echo $username_error; ?></span>
             </div>
             <div class="input-group">
-                <input type="password" id="password" name="password" placeholder="Password">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
                 <span class='error'><?php echo $password_error; ?></span>
                 <div class="show-password">
                     <input type="checkbox" id="showPassword" onclick="togglePassword()">
@@ -131,12 +96,13 @@ if (isset($_POST['submit'])) {
 </div>
 
 <script>
-    function togglePassword() {
-        const passwordField = document.getElementById("password");
-        const showPasswordCheckbox = document.getElementById("showPassword");
-        passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
-    }
+function togglePassword() {
+    const passwordField = document.getElementById("password");
+    const showPasswordCheckbox = document.getElementById("showPassword");
+    passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
+}
 </script>
+
 <style>
 
 .show-password {
