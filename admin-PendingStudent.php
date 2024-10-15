@@ -43,9 +43,13 @@ if(!isset($_SESSION["id"])){
         </div>
         <table class="deactform-table">
             <tr>
-              <th class="rf">Track ID</th>
               <th class="rf">Student ID</th>
-              <th class="rf">Full Name</th>
+              <th class="rf">First Name</th>
+              <th class="rf">Middle Name</th>
+              <th class="rf">Last Name</th>
+              <th class="rf">Email</th>
+              <th class="rf">Course</th>
+              <th class="rf">Year Level</th>
               <th class="rf">Status</th>
               <th class="rf">Action</th>
             </tr>
@@ -60,11 +64,14 @@ if(!isset($_SESSION["id"])){
                 $i++;
              echo"
               <tr>
-                <td>{$r["trackID"]}</td>
                 <td>{$r["studentID"]}</td> 
-                <td>{$r["firstname"]}  {$r["middlename"]}  {$r["lastname"]}</td>
-                <td>{$r["status"]}</td>  
-                <td><button onclick='id01'><a href='admin-PendingStudent.php?userid={$r["returnee_id"]}'>View</a></button></td>	
+                <td>{$r["middlename"]}</td>
+                <td>{$r["firstname"]}</td>
+                <td>{$r["lastname"]}</td>
+                <td>{$r["course"]}</td> 
+                <td>{$r["yearlevel"]}</td>  
+                <td>{$r["status"]}</td> 
+                <td><button onclick='id01'><a href='admin-AddStudent-edit.php?userid={$r["returnee_id"]}'>Edit Student</a></button></td>	
                 </tr>
                 "; 
           }
@@ -93,9 +100,10 @@ if(!isset($_SESSION["id"])){
         </div>
           <table class="requestform-table1">
               <tr>
-                <th class="rf">Track ID</th>
-                <th class="rf">Last Name</th>
                 <th class="rf">First Name</th>
+                <th class="rf">Middle Name</th>
+                <th class="rf">Last Name</th>
+                <th class="rf">Email</th>
                 <th class="rf">Last School</th>
                 <th class="rf">Prev Course</th>
                 <th class="rf">Prev Year</th>
@@ -114,15 +122,16 @@ if(!isset($_SESSION["id"])){
                 $i++;
              echo"
               <tr>
-                <td>{$r["trackID"]}</td>
-                <td>{$r["lastname"]}</td>
                 <td>{$r["firstname"]}</td> 
+                <td>{$r["middlename"]}</td>
+                <td>{$r["lastname"]}</td>
+                <td>{$r["email"]}</td>
                 <td>{$r["lastschool"]}</td>              
                 <td>{$r["prevcourse"]}</td> 
                 <td>{$r["prevyear"]}</td>  
-                <td>{$r["datesubmitted"]}</td>  
-                <td>{$r["status"]}</td>  
-                <td><button onclick='id01'><a href='admin-PendingStudent.php?userid={$r["transferee_id"]}'>View</a></button></td>	
+                <td>{$r["datesubmitted"]}</td>   
+                <td>{$r["status"]}</td> 
+                <td><button onclick='id01'><a href='admin-AddStudent-newold.php?userid={$r["transferee_id"]}'>View</a></button></td>	
                 </tr>
                 "; 
           }

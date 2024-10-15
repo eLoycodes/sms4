@@ -57,30 +57,32 @@ if(isset($_POST["submit"])){
         color: red;
         text-align: center;
     }
+
 </style>
 
 <body>
-
+  
     <div class="login-container">
-
+        <h1>Bestlink College of the Philippines</h1><br>
         <div class="login-box">
             <img src="image/bcplogo-mini.png" alt="Bestlink College" class="logo">
-
             <h2><b>Sign in</b></h2>
-
             <form method="POST">
                 <div class="input-group">
                     <label for="username">Username</label>
                     <input type="text" id="username" name="username">
                     <span class='error' > <?php echo $username_error; ?></span>
+                  
                 </div>
                 <div class="input-group">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password">
                     <span class='error' > <?php echo $password_error; ?></span>
+                    
                 </div>
                 <div class="input-group">
-                <button type="submit" class="submit-button" name ="submit">Sign in</button>
+                <button type="submit" class="submit-button" name ="submit">Sign in</button><br><br>
+               <a href="option.php"><button type="submit" class="submit-button" name ="submit">Student Amission</button></a> 
 
                 </div>
 
