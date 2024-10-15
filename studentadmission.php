@@ -152,9 +152,9 @@ ini_set('display_errors', 1);
 
     <script>
         // Get course from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const course = urlParams.get('course');
-        document.getElementById('course').value = course;
+        //const urlParams = new URLSearchParams(window.location.search);
+        //const course = urlParams.get('course');
+        //document.getElementById('course').value = course;
 
         function showFields() {
             const admissionType = document.getElementById("admissionType").value;
