@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Close the statement and connection
     $stmt->close();
     $connect->close();
-}
+}  exit; 
 ?>
 
 <!DOCTYPE html>
@@ -221,7 +221,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-   <?php exit; ?>
+ 
     <script>
         // Get course from URL
         const urlParams = new URLSearchParams(window.location.search);
