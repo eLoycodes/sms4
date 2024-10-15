@@ -14,6 +14,7 @@ if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get common fields
     $firstname = $_POST['firstname'];
+    $middlename = $_POST['middlename'];
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $course = $_POST['course'];
