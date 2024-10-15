@@ -43,19 +43,19 @@ if (isset($_POST['submit'])) {
         // tingnan kung student (dapat may s)
         if (strpos($username, 's') === 0) {
             $sql = "
-                SELECT id, studentID, password FROM firstyear WHERE studentID='$username'
+                SELECT firstyear_id AS id, studentID, password FROM firstyear WHERE studentID='$username'
                 UNION ALL
-                SELECT id, studentID, password FROM secondyear WHERE studentID='$username'
+                SELECT secondyear_id AS id, studentID, password FROM secondyear WHERE studentID='$username'
                 UNION ALL
-                SELECT id, studentID, password FROM thirdyear WHERE studentID='$username'
+                SELECT thirdyear_id AS id, studentID, password FROM thirdyear WHERE studentID='$username'
                 UNION ALL
-                SELECT id, studentID, password FROM forthyear WHERE studentID='$username'
+                SELECT forthyear_id AS id, studentID, password FROM forthyear WHERE studentID='$username'
                 UNION ALL
-                SELECT id, studentID, password FROM deactivate WHERE studentID='$username'
+                SELECT deactivate_id AS id, studentID, password FROM deactivate WHERE studentID='$username'
                 UNION ALL
-                SELECT id, studentID, password FROM deactivated WHERE studentID='$username'
+                SELECT deactivated_id AS id, studentID, password FROM deactivated WHERE studentID='$username'
                 UNION ALL
-                SELECT id, studentID, password FROM returnee WHERE studentID='$username'";
+                SELECT returnee_id AS id, studentID, password FROM returnee WHERE studentID='$username'";
         
             $res = $connect->query($sql);
             if ($res->num_rows > 0) {
@@ -136,7 +136,7 @@ input[type="password"] {
 .show-password {
     position: absolute; /* Position the checkbox absolutely */
     right: 10px; /* Position it to the right inside the input */
-    top: 50%; /* Align it vertically */
+    top: 60%; /* Align it vertically */
     transform: translateY(-50%); /* Center the checkbox vertically */
     display: flex; /* Use flexbox for centering */
     align-items: center; /* Center checkbox vertically */
