@@ -65,7 +65,7 @@
 
     <script>
         function proceed(course) {
-            window.location.href = `studentadmission.html?course=${course}`;
+            window.location.href = `studentadmission.php?course=${course}`;
         }
     </script>
 </body>

@@ -35,7 +35,7 @@
                 <div class="option-box">
                     <h3 style="color: white;">College</h3>
                     <p style="color: white;">Explore various degree programs and career opportunities.</p>
-                    <a href="courseoption.html"><button class="btn btn-primary">Proceed</button></a>
+                    <a href="courseoption.php"><button class="btn btn-primary">Proceed</button></a>
                 </div>
             </div>
             <div class="col-md-6">
