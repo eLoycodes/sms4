@@ -21,31 +21,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     var_dump($_POST);
     echo '</pre>';
 
-    try {
-        if ($admissionType === "newRegular") {
-            // Prepare the SQL statement
-            $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
-            
-            // Execute the statement with provided data
-            $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
+    // Check for newRegular admission type
+    if ($admissionType === "newRegular") {
+        // Prepare the SQL statement
+        $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
 
-            // Check if the registration was successful
-            if ($stmt->rowCount() > 0) {
-                echo "Registration successful!";
-            } else {
-                echo "Registration failed, please try again.";
-            }
+        // Bind parameters
+        $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel);
+
+        // Execute the statement
+        if ($stmt->execute()) {
+            echo "Registration successful!";
         } else {
-            echo "Invalid admission type.";
+            echo "Registration failed, please try again.";
         }
-    } catch (PDOException $e) {
-        echo "Error: " . $e->getMessage();
+        
+        // Close the statement
+        $stmt->close();
+    } else {
+        echo "Invalid admission type.";
     }
 
     // Close the connection
-    $connect = null; 
+    $connect->close(); 
 }
 ?>
+
 
 
 <!DOCTYPE html>
