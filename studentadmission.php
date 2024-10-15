@@ -55,23 +55,23 @@ ini_set('display_errors', 1);
                 <h2>New Regular Student</h2>
                 <div class="form-group">
                     <label for="newRegular_firstname">First Name:</label>
-                    <input type="text" id="newRegular_firstname" class="form-control" name="firstname" required>
+                    <input type="text" id="newRegular_firstname" class="form-control" name="newRegular_firstname" required>
                 </div>
                 <div class="form-group">
                     <label for="newRegular_middlename">Middle Name:</label>
-                    <input type="text" id="newRegular_middlename" class="form-control" name="middlename">
+                    <input type="text" id="newRegular_middlename" class="form-control" name="newRegular_middlename">
                 </div>
                 <div class="form-group">
                     <label for="newRegular_lastname">Last Name:</label>
-                    <input type="text" id="newRegular_lastname" class="form-control" name="lastname" required>
+                    <input type="text" id="newRegular_lastname" class="form-control" name="newRegular_lastname" required>
                 </div>
                 <div class="form-group">
                     <label for="newRegular_email">Email:</label>
-                    <input type="email" id="newRegular_email" class="form-control" name="email" required>
+                    <input type="email" id="newRegular_email" class="form-control" name="newRegular_email" required>
                 </div>
                 <div class="form-group">
                     <label for="newRegular_yearlevel">Year Level:</label>
-                    <select id="newRegular_yearlevel" class="form-control" name="yearlevel">
+                    <select id="newRegular_yearlevel" class="form-control" name="newRegular_yearlevel">
                         <option value="1st">1st</option>
                         <option value="2nd">2nd</option>
                         <option value="3rd">3rd</option>
@@ -84,19 +84,19 @@ ini_set('display_errors', 1);
                 <h2>Transferee Student</h2>
                 <div class="form-group">
                     <label for="transferee_firstname">First Name:</label>
-                    <input type="text" id="transferee_firstname" class="form-control" name="firstname" required>
+                    <input type="text" id="transferee_firstname" class="form-control" name="transferee_firstname" required>
                 </div>
                 <div class="form-group">
                     <label for="transferee_middlename">Middle Name:</label>
-                    <input type="text" id="transferee_middlename" class="form-control" name="middlename">
+                    <input type="text" id="transferee_middlename" class="form-control" name="transferee_middlename">
                 </div>
                 <div class="form-group">
                     <label for="transferee_lastname">Last Name:</label>
-                    <input type="text" id="transferee_lastname" class="form-control" name="lastname" required>
+                    <input type="text" id="transferee_lastname" class="form-control" name="transferee_lastname" required>
                 </div>
                 <div class="form-group">
                     <label for="transferee_email">Email:</label>
-                    <input type="email" id="transferee_email" class="form-control" name="email" required>
+                    <input type="email" id="transferee_email" class="form-control" name="transferee_email" required>
                 </div>
                 <div class="form-group">
                     <label for="transferee_lastschool">Last School:</label>
@@ -125,23 +125,23 @@ ini_set('display_errors', 1);
                 </div>
                 <div class="form-group">
                     <label for="returnee_firstname">First Name:</label>
-                    <input type="text" id="returnee_firstname" class="form-control" name="firstname" required>
+                    <input type="text" id="returnee_firstname" class="form-control" name="returnee_firstname" required>
                 </div>
                 <div class="form-group">
                     <label for="returnee_middlename">Middle Name:</label>
-                    <input type="text" id="returnee_middlename" class="form-control" name="middlename">
+                    <input type="text" id="returnee_middlename" class="form-control" name="returnee_middlename">
                 </div>
                 <div class="form-group">
                     <label for="returnee_lastname">Last Name:</label>
-                    <input type="text" id="returnee_lastname" class="form-control" name="lastname" required>
+                    <input type="text" id="returnee_lastname" class="form-control" name="returnee_lastname" required>
                 </div>
                 <div class="form-group">
                     <label for="returnee_email">Email:</label>
-                    <input type="email" id="returnee_email" class="form-control" name="email" required>
+                    <input type="email" id="returnee_email" class="form-control" name="returnee_email" required>
                 </div>
                 <div class="form-group">
                     <label for="returnee_yearlevel">Year Level:</label>
-                    <select id="returnee_yearlevel" class="form-control" name="yearlevel">
+                    <select id="returnee_yearlevel" class="form-control" name="returnee_yearlevel">
                         <option value="1st">1st</option>
                         <option value="2nd">2nd</option>
                         <option value="3rd">3rd</option>

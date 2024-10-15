@@ -8,13 +8,8 @@ ini_set('display_errors', 1);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get fields
-    $firstname = $_POST['firstname'] ?? '';
-    $middlename = $_POST['middlename'] ?? '';
-    $lastname = $_POST['lastname'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $course = $_POST['course'] ?? '';
-    $yearlevel = $_POST['yearlevel'] ?? '';
     $admissionType = $_POST['admissionType'] ?? '';
+    $course = $_POST['course'] ?? '';
 
     // Debugging: Print POST data
     echo '<pre>';
@@ -23,6 +18,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Handle new regular student registration
     if ($admissionType === "newRegular") {
+        $firstname = $_POST['newRegular_firstname'] ?? '';
+        $middlename = $_POST['newRegular_middlename'] ?? '';
+        $lastname = $_POST['newRegular_lastname'] ?? '';
+        $email = $_POST['newRegular_email'] ?? '';
+        $yearlevel = $_POST['newRegular_yearlevel'] ?? '';
+
         $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel);
         if ($stmt->execute()) {
@@ -35,6 +36,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Handle transferee student registration
     elseif ($admissionType === "transferee") {
+        $firstname = $_POST['transferee_firstname'] ?? '';
+        $middlename = $_POST['transferee_middlename'] ?? '';
+        $lastname = $_POST['transferee_lastname'] ?? '';
+        $email = $_POST['transferee_email'] ?? '';
         $lastschool = $_POST['transferee_lastschool'] ?? '';
         $prevcourse = $_POST['transferee_prevcourse'] ?? '';
         $prevyear = $_POST['transferee_prevyear'] ?? '';
@@ -55,6 +60,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle returnee student registration
     elseif ($admissionType === "returnee") {
         $studentID = $_POST['returnee_studentID'] ?? '';
+        $firstname = $_POST['returnee_firstname'] ?? '';
+        $middlename = $_POST['returnee_middlename'] ?? '';
+        $lastname = $_POST['returnee_lastname'] ?? '';
+        $email = $_POST['returnee_email'] ?? '';
+        $yearlevel = $_POST['returnee_yearlevel'] ?? '';
         $status = NULL; // Default status
         $password = NULL; // Default password
 
