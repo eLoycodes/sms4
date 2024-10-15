@@ -67,7 +67,7 @@ if (isset($_GET["mes"])) {
                 <span class='error'><?php echo $password_error; ?></span>
                 <div class="show-password">
                     <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                    <label for="showPassword" style="margin-left: 5px;">Show Password</label>
+                    <label for="showPassword" style="margin-left: 5px;"></label>
                 </div>
             </div>
             <div class="input-group">
@@ -102,20 +102,20 @@ if (isset($_GET["mes"])) {
 }
 
 .responsive-heading {
-        font-size: 5vw; /* Adjust the base size */
+        font-size: 24px; /* Adjust the base size */
         text-align: center;
         margin: 0; /* Optional: reset margin for cleaner layout */
     }
 
     @media (max-width: 768px) {
         .responsive-heading {
-            font-size: 8vw; /* Slightly larger for smaller screens */
+            font-size: 18px; /* Slightly larger for smaller screens */
         }
     }
 
     @media (max-width: 480px) {
         .responsive-heading {
-            font-size: 10vw; /* Even larger for very small screens */
+            font-size: 14vw; /* Even larger for very small screens */
         }
     }
     
