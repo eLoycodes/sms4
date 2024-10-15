@@ -1,47 +1,64 @@
 <?php
-// Initialize variables
-$course = $admissionType = $firstname = $middlename = $lastname = $email = $yearlevel = '';
-$lastschool = $prevcourse = $prevyear = $studentID = '';
+include("connect.php");
+session_start();
 
-// Process form when submitted
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
+    header("Location: index.php");
+    exit();
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $course = htmlspecialchars($_POST['course']);
-    $admissionType = htmlspecialchars($_POST['admissionType']);
-    
-    // Common fields
-    $firstname = htmlspecialchars($_POST[$admissionType . '_firstname']);
-    $middlename = htmlspecialchars($_POST[$admissionType . '_middlename']);
-    $lastname = htmlspecialchars($_POST[$admissionType . '_lastname']);
-    $email = htmlspecialchars($_POST[$admissionType . '_email']);
-    $yearlevel = htmlspecialchars($_POST[$admissionType . '_yearlevel']);
-    
-    // Specific fields based on admission type
-    if ($admissionType == 'transferee') {
-        $lastschool = htmlspecialchars($_POST['transferee_lastschool']);
-        $prevcourse = htmlspecialchars($_POST['transferee_prevcourse']);
-        $prevyear = htmlspecialchars($_POST['transferee_prevyear']);
-    } elseif ($admissionType == 'returnee') {
-        $studentID = htmlspecialchars($_POST['returnee_studentID']);
+    // Get common fields
+    $firstname = $_POST['firstname'] ?? '';
+    $middlename = $_POST['middlename'] ?? '';
+    $lastname = $_POST['lastname'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $course = $_POST['course'] ?? '';
+    $yearlevel = $_POST['yearlevel'] ?? '';
+    $admissionType = $_POST['admissionType'] ?? '';
+
+    try {
+        if ($admissionType === "newRegular") {
+            // Insert New Regular Student
+            $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
+
+        } elseif ($admissionType === "transferee") {
+            // Get transferee-specific fields
+            $lastschool = $_POST['transferee_lastschool'] ?? '';
+            $prevcourse = $_POST['transferee_prevcourse'] ?? '';
+            $prevyear = $_POST['transferee_prevyear'] ?? '';
+
+            // Insert Transferee Student
+            $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear]);
+
+        } elseif ($admissionType === "returnee") {
+            // Get returnee-specific fields
+            $studentID = $_POST['returnee_studentID'] ?? '';
+
+            // Insert Returnee Student
+            $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->execute([$studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel]);
+
+        } else {
+            echo "Invalid admission type.";
+            exit();
+        }
+
+        echo "Registration successful!";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
     }
 
-    // Here, you would typically insert the data into a database
-    // For demonstration, we'll just echo the values
-    echo "<h2>Registration Successful!</h2>";
-    echo "<p>Course: $course</p>";
-    echo "<p>Admission Type: $admissionType</p>";
-    echo "<p>Name: $firstname $middlename $lastname</p>";
-    echo "<p>Email: $email</p>";
-    echo "<p>Year Level: $yearlevel</p>";
-
-    if ($admissionType == 'transferee') {
-        echo "<p>Last School: $lastschool</p>";
-        echo "<p>Previous Course: $prevcourse</p>";
-        echo "<p>Previous Year: $prevyear</p>";
-    } elseif ($admissionType == 'returnee') {
-        echo "<p>Previous Student ID: $studentID</p>";
-    }
+    $connect = null; // Close the connection
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,10 +89,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Bestlink College of the Philippines</h1>
-        <form id="registrationForm" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <form id="registrationForm" method="POST" action="studentadmission.php">
             <div class="form-group">
                 <label for="course">Course:</label>
-                <input type="text" id="course" class="form-control" name="course" value="<?php echo htmlspecialchars($_GET['course'] ?? ''); ?>" readonly>
+                <input type="text" id="course" class="form-control" name="course" readonly>
             </div>
             <div class="form-group">
                 <label for="admissionType">Admission Type:</label>
@@ -91,23 +108,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2>New Regular Student</h2>
                 <div class="form-group">
                     <label for="newRegular_firstname">First Name:</label>
-                    <input type="text" id="newRegular_firstname" class="form-control" name="newRegular_firstname" required>
+                    <input type="text" id="newRegular_firstname" class="form-control" name="firstname" required>
                 </div>
                 <div class="form-group">
                     <label for="newRegular_middlename">Middle Name:</label>
-                    <input type="text" id="newRegular_middlename" class="form-control" name="newRegular_middlename">
+                    <input type="text" id="newRegular_middlename" class="form-control" name="middlename">
                 </div>
                 <div class="form-group">
                     <label for="newRegular_lastname">Last Name:</label>
-                    <input type="text" id="newRegular_lastname" class="form-control" name="newRegular_lastname" required>
+                    <input type="text" id="newRegular_lastname" class="form-control" name="lastname" required>
                 </div>
                 <div class="form-group">
                     <label for="newRegular_email">Email:</label>
-                    <input type="email" id="newRegular_email" class="form-control" name="newRegular_email" required>
+                    <input type="email" id="newRegular_email" class="form-control" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="newRegular_yearlevel">Year Level:</label>
-                    <select id="newRegular_yearlevel" class="form-control" name="newRegular_yearlevel">
+                    <select id="newRegular_yearlevel" class="form-control" name="yearlevel">
                         <option value="1st">1st</option>
                     </select>
                 </div>
@@ -117,19 +134,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <h2>Transferee Student</h2>
                 <div class="form-group">
                     <label for="transferee_firstname">First Name:</label>
-                    <input type="text" id="transferee_firstname" class="form-control" name="transferee_firstname" required>
+                    <input type="text" id="transferee_firstname" class="form-control" name="firstname" required>
                 </div>
                 <div class="form-group">
                     <label for="transferee_middlename">Middle Name:</label>
-                    <input type="text" id="transferee_middlename" class="form-control" name="transferee_middlename">
+                    <input type="text" id="transferee_middlename" class="form-control" name="middlename">
                 </div>
                 <div class="form-group">
                     <label for="transferee_lastname">Last Name:</label>
-                    <input type="text" id="transferee_lastname" class="form-control" name="transferee_lastname" required>
+                    <input type="text" id="transferee_lastname" class="form-control" name="lastname" required>
                 </div>
                 <div class="form-group">
                     <label for="transferee_email">Email:</label>
-                    <input type="email" id="transferee_email" class="form-control" name="transferee_email" required>
+                    <input type="email" id="transferee_email" class="form-control" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="transferee_lastschool">Last School:</label>
@@ -158,23 +175,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div class="form-group">
                     <label for="returnee_firstname">First Name:</label>
-                    <input type="text" id="returnee_firstname" class="form-control" name="returnee_firstname" required>
+                    <input type="text" id="returnee_firstname" class="form-control" name="firstname" required>
                 </div>
                 <div class="form-group">
                     <label for="returnee_middlename">Middle Name:</label>
-                    <input type="text" id="returnee_middlename" class="form-control" name="returnee_middlename">
+                    <input type="text" id="returnee_middlename" class="form-control" name="middlename">
                 </div>
                 <div class="form-group">
                     <label for="returnee_lastname">Last Name:</label>
-                    <input type="text" id="returnee_lastname" class="form-control" name="returnee_lastname" required>
+                    <input type="text" id="returnee_lastname" class="form-control" name="lastname" required>
                 </div>
                 <div class="form-group">
                     <label for="returnee_email">Email:</label>
-                    <input type="email" id="returnee_email" class="form-control" name="returnee_email" required>
+                    <input type="email" id="returnee_email" class="form-control" name="email" required>
                 </div>
                 <div class="form-group">
                     <label for="returnee_yearlevel">Year Level:</label>
-                    <select id="returnee_yearlevel" class="form-control" name="returnee_yearlevel" required>
+                    <select id="returnee_yearlevel" class="form-control" name="yearlevel">
                         <option value="1st">1st</option>
                         <option value="2nd">2nd</option>
                         <option value="3rd">3rd</option>
@@ -185,8 +202,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
- 
+
     <script>
+        // Get course from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const course = urlParams.get('course');
+        document.getElementById('course').value = course;
+
         function showFields() {
             const admissionType = document.getElementById("admissionType").value;
             document.getElementById("newRegularFields").classList.add("hidden");
