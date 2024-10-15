@@ -22,37 +22,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     echo '</pre>';
     
     try {
-        switch ($admissionType) {
-            case "newRegular":
-                $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
-                echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
-                $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
-                break;
+        // Focus on newRegular admission type
+        if ($admissionType === "newRegular") {
+            $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
+            echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
+            $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
 
-            case "transferee":
-                $lastschool = $_POST['transferee_lastschool'] ?? '';
-                $prevcourse = $_POST['transferee_prevcourse'] ?? '';
-                $prevyear = $_POST['transferee_prevyear'] ?? '';
-
-                $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
-                $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear]);
-                break;
-
-            case "returnee":
-                $studentID = $_POST['returnee_studentID'] ?? '';
-
-                $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?, ?)");
-                echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
-                $stmt->execute([$studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel]);
-                break;
-
-            default:
-                echo "Invalid admission type.";
-                exit();
+            echo "Registration successful!";
+        } else {
+            echo "Invalid admission type.";
+            exit();
         }
-
-        echo "Registration successful!";
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
