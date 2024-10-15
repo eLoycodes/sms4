@@ -35,6 +35,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
     } elseif ($admissionType === "transferee") {
         // Get transferee-specific fields
+        $firstname = $_POST['firstname'] ?? '';
+        $middlename = $_POST['middlename'] ?? '';
+        $lastname = $_POST['lastname'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $course = $_POST['course'] ?? '';
         $lastschool = $_POST['lastschool'] ?? '';
         $prevcourse = $_POST['prevcourse'] ?? '';
         $prevyear = $_POST['prevyear'] ?? '';
@@ -48,6 +53,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } elseif ($admissionType === "returnee") {
         // Get returnee-specific fields
         $studentID = $_POST['studentID'] ?? '';
+        $firstname = $_POST['firstname'] ?? '';
+        $middlename = $_POST['middlename'] ?? '';
+        $lastname = $_POST['lastname'] ?? '';
+        $email = $_POST['email'] ?? '';
+        $course = $_POST['course'] ?? '';
+        $yearlevel = $_POST['yearlevel'] ?? '';
 
         // Insert the returnee data into the database
         $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel, status, password) 
