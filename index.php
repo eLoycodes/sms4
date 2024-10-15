@@ -40,8 +40,8 @@ if (isset($_POST['submit'])) {
                 }
             }
         }
-        // tingnan kung student (dapat may s)
-        if (strpos($username, 'studentID') === 0) {
+        // Tingnan kung student (dapat nagsisimula sa 's' at may tamang format ng ID)
+        if (preg_match('/^s\d{8}$/', $username)) {
             $sql = "
                 SELECT firstyear_id AS id, studentID, password FROM firstyear WHERE studentID='$username'
                 UNION ALL
@@ -77,6 +77,7 @@ if (isset($_POST['submit'])) {
     } 
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
