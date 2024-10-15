@@ -30,7 +30,7 @@ if (isset($_POST['submit'])) {
         // Check if the identifier is an email or student number
         if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
             // It's an email for admin
-            $stmt = $connect->prepare("SELECT * FROM admin WHERE username = ?");
+            $stmt = $connect->prepare("SELECT * FROM admin WHERE username = 'admin'");
             $stmt->bind_param("s", $identifier);
             $stmt->execute();
             $res = $stmt->get_result();
