@@ -1,7 +1,15 @@
 <?php
 include("connect.php");
-
 session_start();
+
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+if (!isset($_SESSION["id"])) {
+    echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
+}
+
 $identifier = $password = "";
 $identifier_error = $password_error = "";
 
