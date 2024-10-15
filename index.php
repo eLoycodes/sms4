@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
             <span class='error'><?php echo $password_error; ?></span>
             <div class="show-password">
                 <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                <label for="showPassword" style="margin-left: 5px; margin-top: 8px;"></label>
+                <label for="showPassword" style="margin-left: 5px;"></label>
             </div>
         </div>
             <div class="input-group">
@@ -123,6 +123,14 @@ function togglePassword() {
 </script>
 
 <style>
+
+.input-group {
+    position: relative; /* Position relative for absolute positioning of checkbox */
+}
+
+input[type="password"] {
+    padding-right: 40px; /* Add padding to the right to make space for the checkbox */
+}
 
 .show-password {
     position: absolute; /* Position the checkbox absolutely */
