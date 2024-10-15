@@ -40,8 +40,9 @@ if (isset($_POST['submit'])) {
                 }
             }
         }
-        // Tingnan kung student (dapat nagsisimula sa 's' at may tamang format ng ID)
-        if (preg_match('/^s\d{8}$/', $username)) {
+
+        // Tingnan kung student (dapat student ID format: 21011418)
+        if (preg_match('/^\d{8}$/', $username)) { // Change to allow only 8 digits
             $sql = "
                 SELECT firstyear_id AS id, studentID, password FROM firstyear WHERE studentID='$username'
                 UNION ALL
@@ -77,6 +78,7 @@ if (isset($_POST['submit'])) {
     } 
 }
 ?>
+
 
 
 <!DOCTYPE html>
