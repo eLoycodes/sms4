@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
             } else {
                 // Student login
                 if (password_verify($password, $ro['password'])) {
-                    $_SESSION["id"] = $ro["id"];
+                    $_SESSION["id"] = $ro["studentID"]; // Updated to use studentID
                     $_SESSION["studentID"] = $ro["studentID"];
                     $_SESSION["role"] = 'student';
                     header("Location: studentDashboard.php");
@@ -81,7 +81,6 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
