@@ -6,11 +6,6 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
-    header("Location: index.php");
-    exit();
-}
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get common fields
     $firstname = $_POST['firstname'] ?? '';
