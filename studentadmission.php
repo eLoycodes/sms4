@@ -38,16 +38,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $prevyear = $_POST['prevyear'] ?? '';
 
         // Insert the transferee data into the database
-        $sql = "INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) 
-                VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$lastschool', '$prevcourse', '$prevyear')";
+        $sql = "INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear, status, password) 
+                VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$lastschool', '$prevcourse', '$prevyear' ,'Active','Active')";
         
     } elseif ($admissionType === "returnee") {
         // Get returnee-specific fields
         $studentID = $_POST['studentID'] ?? '';
 
         // Insert the returnee data into the database
-        $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) 
-                VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$email', '$course', '$yearlevel')";
+        $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel, status, password) 
+                VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$email', '$course', '$yearlevel', 'Active','Active',)";
     } else {
         echo "Invalid admission type.";
         exit();
@@ -204,7 +204,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </select>
                 </div>
             </div>
-
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
