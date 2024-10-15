@@ -97,14 +97,14 @@ if (isset($_POST['submit'])) {
                 <span class='error'><?php echo $username_error; ?></span>
             </div>
             <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
-                <span class='error'><?php echo $password_error; ?></span>
-                <div class="show-password">
-                    <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                    <label for="showPassword" style="margin-left: 5px; margin-top: 3px;"></label>
-                </div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            <span class='error'><?php echo $password_error; ?></span>
+            <div class="show-password">
+                <input type="checkbox" id="showPassword" onclick="togglePassword()">
+                <label for="showPassword" style="margin-left: 5px; margin-top: 3px;"></label>
             </div>
+        </div>
             <div class="input-group">
                 <button type="submit" class="submit-button" name="submit">Sign in</button>
                 <br><br>
@@ -124,11 +124,13 @@ function togglePassword() {
 
 <style>
 
-..show-password {
+.show-password {
     position: absolute; /* Position the checkbox absolutely */
-    right: 10px; /* Adjust the right position */
-    top: 50%; /* Center vertically */
-    transform: translateY(-50%); /* Adjust for exact centering */
+    right: 10px; /* Position it to the right inside the input */
+    top: 50%; /* Align it vertically */
+    transform: translateY(-50%); /* Center the checkbox vertically */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center checkbox vertically */
 }
 
 input[type="checkbox"] {
