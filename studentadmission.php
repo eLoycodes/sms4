@@ -14,7 +14,7 @@ if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get common fields
     $firstname = $_POST['firstname'] ?? '';
-    $middlename = $_POST['middlename'] ?? ''; // Added middlename
+    $middlename = $_POST['middlename'] ?? '';
     $lastname = $_POST['lastname'] ?? '';
     $email = $_POST['email'] ?? '';
     $course = $_POST['course'] ?? '';
@@ -29,7 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($admissionType === "newRegular") {
         // Insert the new regular student data into the database
         $sql = "INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) 
-                VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$yearlevel')";
+                VALUES (?, ?, ?, ?, ?, ?)";
+        $stmt = $connect->prepare($sql);
+        $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel);
         
     } elseif ($admissionType === "transferee") {
         // Get transferee-specific fields
@@ -39,7 +41,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert the transferee data into the database
         $sql = "INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear, status, password) 
-                VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$lastschool', '$prevcourse', '$prevyear' ,'Active','Active')";
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Active', 'Active')";
+        $stmt = $connect->prepare($sql);
+        $stmt->bind_param("ssssssss", $firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear);
         
     } elseif ($admissionType === "returnee") {
         // Get returnee-specific fields
@@ -47,23 +51,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Insert the returnee data into the database
         $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel, status, password) 
-                VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$email', '$course', '$yearlevel', 'Active','Active',)";
+                VALUES (?, ?, ?, ?, ?, ?, ?, 'Active', 'Active')";
+        $stmt = $connect->prepare($sql);
+        $stmt->bind_param("sssssss", $studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel);
     } else {
         echo "Invalid admission type.";
         exit();
     }
 
     // Execute the SQL query
-    if ($connect->query($sql) === TRUE) {
+    if ($stmt->execute()) {
         echo "Registration successful!";
     } else {
-        echo "Error: " . $sql . "<br>" . $connect->error;
+        echo "Error: " . $stmt->error;
     }
 
-    // Close the database connection
+    // Close the statement and connection
+    $stmt->close();
     $connect->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -231,3 +239,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 </body>
 </html>
+
