@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
                 $ro = $res->fetch_assoc();
                 // Admin login without hashing
                 if ($password === $ro['password']) { // Direct comparison
-                    $_SESSION["id"] = $ro["id"];
+                    $_SESSION["id"] = $ro["username"];
                     $_SESSION["username"] = $ro["username"];
                     $_SESSION["role"] = 'admin';
                     header("Location: adminDashboard.php");
