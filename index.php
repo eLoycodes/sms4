@@ -34,19 +34,19 @@ if (isset($_POST['submit'])) {
         } else {
             // It's a student number
             $sql = "
-               SELECT studentID, password, other_field FROM deactivate WHERE studentID='$identifier'
+               SELECT studentID, password FROM deactivate WHERE studentID='$identifier'
                 UNION ALL
-                SELECT studentID, password, other_field FROM deactivated WHERE studentID='$identifier'
+                SELECT studentID, password FROM deactivated WHERE studentID='$identifier'
                 UNION ALL
-                SELECT studentID, password, other_field FROM firstyear WHERE studentID='$identifier'
+                SELECT studentID, password FROM firstyear WHERE studentID='$identifier'
                 UNION ALL
-                SELECT studentID, password, other_field FROM secondyear WHERE studentID='$identifier'
+                SELECT studentID, password FROM secondyear WHERE studentID='$identifier'
                 UNION ALL
-                SELECT studentID, password, other_field FROM thirdyear WHERE studentID='$identifier'
+                SELECT studentID, password FROM thirdyear WHERE studentID='$identifier'
                 UNION ALL
-                SELECT studentID, password, other_field FROM forthyear WHERE studentID='$identifier'
+                SELECT studentID, password FROM forthyear WHERE studentID='$identifier'
                 UNION ALL
-                SELECT studentID, password, other_field FROM returnee WHERE studentID='$identifier'";
+                SELECT studentID, password FROM returnee WHERE studentID='$identifier'";
         }
 
         $res = $connect->query($sql);
