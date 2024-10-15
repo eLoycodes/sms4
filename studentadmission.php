@@ -17,14 +17,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $lastname = $_POST['lastname'];
     $email = $_POST['email'];
     $course = $_POST['course'];
-    $yearLevel = $_POST['yearLevel'];
+    $yearlevel = $_POST['yearlevel'];
     
     // Determine the admission type
     $admissionType = $_POST['admissionType'];
 
     if ($admissionType === "newRegular") {
         // Insert the new regular student data into the database
-        $sql = "INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearLevel) VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$yearLevel')";
+        $sql = "INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$yearlevel')";
         
     } elseif ($admissionType === "transferee") {
         // Get transferee-specific fields
@@ -40,7 +40,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $studentID = $_POST['studentID'];
 
         // Insert the returnee data into the database
-        $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearLevel) VALUES ('$studentID', '$middlename', '$firstname', '$lastname', '$email', '$course', '$yearLevel')";
+        $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) VALUES ('$studentID', '$middlename', '$firstname', '$lastname', '$email', '$course', '$yearlevel')";
     } else {
         echo "Invalid admission type.";
         exit();
@@ -122,8 +122,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="email" id="email" class="form-control" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="yearLevel">Year Level:</label>
-                    <select id="yearLevel" class="form-control" name="yearLevel">
+                    <label for="yearlevel">Year Level:</label>
+                    <select id="yearlevel" class="form-control" name="yearlevel">
                         <option value="1st">1st</option>
                     </select>
                 </div>
