@@ -26,15 +26,15 @@ if (isset($_POST['submit'])) {
         $password = $_POST["password"];
     }
 
-    if (empty($identifier_error) && empty($password_error)){
+    if (empty($identifier_error) && empty($password_error)) {
         // Check if the identifier is an email or student number
-        if(filter_var($identifier, FILTER_VALIDATE_EMAIL)){
+        if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
             // It's an email for admin
-            $stmt = $connect->prepare("SELECT * FROM admin WHERE username='$identifier'");
+            $stmt = $connect->prepare("SELECT * FROM admin WHERE username = ?");
             $stmt->bind_param("s", $identifier);
             $stmt->execute();
             $res = $stmt->get_result();
-        }else {
+        } else {
             // It's a student number
             $sql = "
                SELECT studentID, password FROM deactivate WHERE studentID='$identifier'
@@ -50,10 +50,11 @@ if (isset($_POST['submit'])) {
                 SELECT studentID, password FROM forthyear WHERE studentID='$identifier'
                 UNION ALL
                 SELECT studentID, password FROM returnee WHERE studentID='$identifier'";
+
+            $res = $connect->query($sql);
         }
 
-        $res = $connect->query($sql);
-        if ($res->num_rows > 0) {
+        if ($res && $res->num_rows > 0) {
             $ro = $res->fetch_assoc();
             if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
                 // Admin login
@@ -69,7 +70,7 @@ if (isset($_POST['submit'])) {
             } else {
                 // Student login
                 if (password_verify($password, $ro['password'])) {
-                    $_SESSION["id"] = $ro["studentID"]; // Updated to use studentID
+                    $_SESSION["id"] = $ro["studentID"];
                     $_SESSION["studentID"] = $ro["studentID"];
                     $_SESSION["role"] = 'student';
                     header("Location: studentDashboard.php");
@@ -79,7 +80,7 @@ if (isset($_POST['submit'])) {
                 }
             }
         } else {
-            echo "No user found.";
+            echo "No user found for identifier: $identifier";
         }
     }
 }
@@ -87,14 +88,12 @@ if (isset($_POST['submit'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestlink College - Login</title>
     <link rel="stylesheet" href="css/login.css">
 </head>
-
 <body>
 <div class="login-container">
     <div class="login-box">
