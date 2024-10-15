@@ -40,10 +40,22 @@ if (isset($_POST['submit'])) {
                 }
             }
         }
-
-        // Kung hindi, tingnan kung student (dapat magsimula sa 's')
+        // tingnan kung student (dapat may s)
         if (strpos($username, 's') === 0) {
-            $sql = "SELECT * FROM firstyear WHERE studentID='$username'";
+            $sql = "SELECT * FROM firstyear WHERE studentID='$username'
+                    UNION ALL
+                    SELECT * FROM secondyear WHERE studentID='$username'
+                    UNION ALL
+                    SELECT * FROM thirdyear WHERE studentID='$username'
+                    UNION ALL
+                    SELECT * FROM forthyear WHERE studentID='$username'
+                    UNION ALL
+                    SELECT * FROM deactivate WHERE studentID='$username'
+                    UNION ALL
+                    SELECT * FROM deactivated WHERE studentID='$username'
+                    UNION ALL
+                    SELECT * FROM returnee WHERE studentID='$username'";
+        
             $res = $connect->query($sql);
             if ($res->num_rows > 0) {
                 $ro = $res->fetch_assoc();
@@ -58,10 +70,10 @@ if (isset($_POST['submit'])) {
                 }
             }
         }
-
+        
         // Kung walang match, mag-error
         echo "<script>alert('Invalid Username or Password');</script>";
-    }
+        
 }
 ?>
 
@@ -90,7 +102,7 @@ if (isset($_POST['submit'])) {
                 <span class='error'><?php echo $password_error; ?></span>
                 <div class="show-password">
                     <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                    <label for="showPassword" style="margin-left: 5px;">Show Password</label>
+                    <label for="showPassword" style="margin-left: 5px; margin-top: 3px;"></label>
                 </div>
             </div>
             <div class="input-group">
