@@ -82,7 +82,7 @@ if(isset($_POST["submit"])){
                 </div>
                 <div class="input-group">
                 <button type="submit" class="submit-button" name ="submit">Sign in</button><br><br>
-               <a href="option.php"><button class="submit-button">Student Amission</button></a> 
+               <a href="option.php"><button>Student Amission</button></a> 
 
                 </div>
 
