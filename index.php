@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
             <span class='error'><?php echo $password_error; ?></span>
             <div class="show-password">
                 <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                <label for="showPassword" style="margin-left: 5px; margin-top: 3px;"></label>
+                <label for="showPassword" style="margin-left: 5px; margin-top: 8px;"></label>
             </div>
         </div>
             <div class="input-group">
