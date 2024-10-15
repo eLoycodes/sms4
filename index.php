@@ -42,19 +42,20 @@ if (isset($_POST['submit'])) {
         }
         // tingnan kung student (dapat may s)
         if (strpos($username, 's') === 0) {
-            $sql = "SELECT * FROM firstyear WHERE studentID='$username'
-                    UNION ALL
-                    SELECT * FROM secondyear WHERE studentID='$username'
-                    UNION ALL
-                    SELECT * FROM thirdyear WHERE studentID='$username'
-                    UNION ALL
-                    SELECT * FROM forthyear WHERE studentID='$username'
-                    UNION ALL
-                    SELECT * FROM deactivate WHERE studentID='$username'
-                    UNION ALL
-                    SELECT * FROM deactivated WHERE studentID='$username'
-                    UNION ALL
-                    SELECT * FROM returnee WHERE studentID='$username'";
+            $sql = "
+                SELECT id, studentID, password FROM firstyear WHERE studentID='$username'
+                UNION ALL
+                SELECT id, studentID, password FROM secondyear WHERE studentID='$username'
+                UNION ALL
+                SELECT id, studentID, password FROM thirdyear WHERE studentID='$username'
+                UNION ALL
+                SELECT id, studentID, password FROM forthyear WHERE studentID='$username'
+                UNION ALL
+                SELECT id, studentID, password FROM deactivate WHERE studentID='$username'
+                UNION ALL
+                SELECT id, studentID, password FROM deactivated WHERE studentID='$username'
+                UNION ALL
+                SELECT id, studentID, password FROM returnee WHERE studentID='$username'";
         
             $res = $connect->query($sql);
             if ($res->num_rows > 0) {
