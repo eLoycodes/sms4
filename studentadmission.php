@@ -113,7 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Bestlink College of the Philippines</h1>
-        <form id="registrationForm" method="POST" action="studentadmission.php">
+        <form id="registrationForm" action = "<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method = "POST">
             <div class="form-group">
                 <label for="course">Course:</label>
                 <input type="text" id="course" class="form-control" name="course" readonly>
