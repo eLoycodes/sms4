@@ -77,17 +77,84 @@ ini_set('display_errors', 1);
                 </div>
             </div>
 
-           
-        
+            <div id="transfereeFields" class="hidden">
+                <h2>Transferee Student</h2>
+                <div class="form-group">
+                    <label for="transferee_firstname">First Name:</label>
+                    <input type="text" id="transferee_firstname" class="form-control" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="transferee_middlename">Middle Name:</label>
+                    <input type="text" id="transferee_middlename" class="form-control" name="middlename">
+                </div>
+                <div class="form-group">
+                    <label for="transferee_lastname">Last Name:</label>
+                    <input type="text" id="transferee_lastname" class="form-control" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="transferee_email">Email:</label>
+                    <input type="email" id="transferee_email" class="form-control" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="transferee_lastschool">Last School:</label>
+                    <input type="text" id="transferee_lastschool" class="form-control" name="transferee_lastschool" required>
+                </div>
+                <div class="form-group">
+                    <label for="transferee_prevcourse">Previous Course:</label>
+                    <input type="text" id="transferee_prevcourse" class="form-control" name="transferee_prevcourse" required>
+                </div>
+                <div class="form-group">
+                    <label for="transferee_prevyear">Previous Year:</label>
+                    <select id="transferee_prevyear" class="form-control" name="transferee_prevyear">
+                        <option value="1st">1st</option>
+                        <option value="2nd">2nd</option>
+                        <option value="3rd">3rd</option>
+                        <option value="4th">4th</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="returneeFields" class="hidden">
+                <h2>Returnee Student</h2>
+                <div class="form-group">
+                    <label for="returnee_studentID">Previous Student ID:</label>
+                    <input type="text" id="returnee_studentID" class="form-control" name="returnee_studentID" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnee_firstname">First Name:</label>
+                    <input type="text" id="returnee_firstname" class="form-control" name="firstname" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnee_middlename">Middle Name:</label>
+                    <input type="text" id="returnee_middlename" class="form-control" name="middlename">
+                </div>
+                <div class="form-group">
+                    <label for="returnee_lastname">Last Name:</label>
+                    <input type="text" id="returnee_lastname" class="form-control" name="lastname" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnee_email">Email:</label>
+                    <input type="email" id="returnee_email" class="form-control" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="returnee_yearlevel">Year Level:</label>
+                    <select id="returnee_yearlevel" class="form-control" name="yearlevel">
+                        <option value="1st">1st</option>
+                        <option value="2nd">2nd</option>
+                        <option value="3rd">3rd</option>
+                        <option value="4th">4th</option>
+                    </select>
+                </div>
+            </div>
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
     <script>
         // Get course from URL
-        const urlParams = new URLSearchParams(window.location.search);
-        const course = urlParams.get('course');
-        document.getElementById('course').value = course;
+       // const urlParams = new URLSearchParams(window.location.search);
+        //const course = urlParams.get('course');
+       // document.getElementById('course').value = course;
 
         function showFields() {
             const admissionType = document.getElementById("admissionType").value;
