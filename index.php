@@ -34,26 +34,8 @@ if (isset($_POST['submit'])) {
             $stmt->bind_param("s", $identifier);
             $stmt->execute();
             $res = $stmt->get_result();
-        } else {
-            // It's a student number
-            $sql = "
-               SELECT studentID, password FROM deactivate WHERE studentID='$identifier'
-                UNION ALL
-                SELECT studentID, password FROM deactivated WHERE studentID='$identifier'
-                UNION ALL
-                SELECT studentID, password FROM firstyear WHERE studentID='$identifier'
-                UNION ALL
-                SELECT studentID, password FROM secondyear WHERE studentID='$identifier'
-                UNION ALL
-                SELECT studentID, password FROM thirdyear WHERE studentID='$identifier'
-                UNION ALL
-                SELECT studentID, password FROM forthyear WHERE studentID='$identifier'
-                UNION ALL
-                SELECT studentID, password FROM returnee WHERE studentID='$identifier'";
-
-            $res = $connect->query($sql);
         }
-
+        $res = $connect->query($sql);
         if ($res && $res->num_rows > 0) {
             $ro = $res->fetch_assoc();
             if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
