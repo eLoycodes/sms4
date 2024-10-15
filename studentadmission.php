@@ -39,7 +39,7 @@ ini_set('display_errors', 1);
         <form id="registrationForm" method="POST" action="student_admission.php">
             <div class="form-group">
                 <label for="course">Course:</label>
-                <input type="text" id="course" class="form-control" name="course" readonly>
+                <input type="text" id="course" class="form-control" name="course" value="<?php echo htmlspecialchars($student_ID['course'] ?? ''); ?>" readonly>
             </div>
             <div class="form-group">
                 <label for="admissionType">Admission Type:</label>
@@ -152,9 +152,9 @@ ini_set('display_errors', 1);
 
     <script>
         // Get course from URL
-        //const urlParams = new URLSearchParams(window.location.search);
-        //const course = urlParams.get('course');
-        //document.getElementById('course').value = course;
+        const urlParams = new URLSearchParams(window.location.search);
+        const course = urlParams.get('course');
+        document.getElementById('course').value = course;
 
         function showFields() {
             const admissionType = document.getElementById("admissionType").value;
