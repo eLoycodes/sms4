@@ -52,7 +52,7 @@ if (isset($_GET["mes"])) {
 
 <body>
 <div class="login-container">
-    <h1>Bestlink College of the Philippines</h1><br>
+    <h1 class="responsive-heading">Bestlink College of the Philippines</h1><br>
     <div class="login-box">
         <img src="image/bcplogo-mini.png" alt="Bestlink College" class="logo">
         <h2><b>Sign in</b></h2>
@@ -63,12 +63,11 @@ if (isset($_GET["mes"])) {
                 <span class='error'><?php echo $username_error; ?></span>
             </div>
             <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password">
+                <input type="password" id="password" name="password" placeholder="Password">
                 <span class='error'><?php echo $password_error; ?></span>
                 <div class="show-password">
                     <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                    <label for="showPassword">Show Password</label>
+                    <label for="showPassword" style="margin-left: 5px;">Show Password</label>
                 </div>
             </div>
             <div class="input-group">
@@ -81,7 +80,7 @@ if (isset($_GET["mes"])) {
 </div>
 
 <script>
-    function togglePassword(){
+    function togglePassword() {
         const passwordField = document.getElementById("password");
         const showPasswordCheckbox = document.getElementById("showPassword");
         passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
@@ -89,10 +88,36 @@ if (isset($_GET["mes"])) {
 </script>
 <style>
 
-.show-password{
-    margin-top: 10px;
-    font-size: 14px;
+.show-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
 }
+
+.show-password input {
+     margin-left: 5px;
+}
+
+.responsive-heading {
+        font-size: 5vw; /* Adjust the base size */
+        text-align: center;
+        margin: 0; /* Optional: reset margin for cleaner layout */
+    }
+
+    @media (max-width: 768px) {
+        .responsive-heading {
+            font-size: 8vw; /* Slightly larger for smaller screens */
+        }
+    }
+
+    @media (max-width: 480px) {
+        .responsive-heading {
+            font-size: 10vw; /* Even larger for very small screens */
+        }
+    }
     
 .error{
     color: red;
@@ -183,6 +208,7 @@ h2 {
     text-align: left;
     opacity: 0;
     animation: fadeInBox 1s ease-in-out forwards;
+    position: relative;
 }
 
 .input-group label {
