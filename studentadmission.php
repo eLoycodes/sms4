@@ -1,10 +1,51 @@
 <?php
-include("connect.php");
+// Start the session
 session_start();
+
+// Check if the course parameter exists in the URL
+if (isset($_GET['course'])) {
+    // Redirect to the same page without the course parameter
+    header("Location: " . strtok($_SERVER["REQUEST_URI"], '?'));
+    exit();
+}
+
+// Include database connection
+include("connect.php");
 
 // Enable error reporting
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+// Process form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get common fields
+    $firstname = $_POST['firstname'] ?? '';
+    $middlename = $_POST['middlename'] ?? '';
+    $lastname = $_POST['lastname'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $course = $_POST['course'] ?? '';
+    $yearlevel = $_POST['yearlevel'] ?? '';
+    $admissionType = $_POST['admissionType'] ?? '';
+
+    // Debugging: Print POST data
+    echo '<pre>';
+    var_dump($_POST);
+    echo '</pre>';
+    
+    try {
+        if ($admissionType === "newRegular") {
+            $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
+            echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
+            $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
+        }
+
+        echo "Registration successful!";
+    } catch (PDOException $e) {
+        echo "Error: " . $e->getMessage();
+    }
+
+    $connect = null; // Close the connection
+}
 ?>
 
 <!DOCTYPE html>
@@ -36,10 +77,10 @@ ini_set('display_errors', 1);
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Bestlink College of the Philippines</h1>
-        <form id="registrationForm" method="POST" action="student_admission.php">
+        <form id="registrationForm" method="POST" action="studentadmission.php">
             <div class="form-group">
                 <label for="course">Course:</label>
-                <input type="text"  class="form-control" name="course" readonly>
+                <input type="text" id="course" class="form-control" name="course" readonly>
             </div>
             <div class="form-group">
                 <label for="admissionType">Admission Type:</label>
