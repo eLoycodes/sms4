@@ -88,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <div class="container mt-5">
         <h1 class="text-center">Bestlink College of the Philippines</h1>
-        <form id="registrationForm">
+        <form id="registrationForm" method="POST" action="studentadmission.php">
             <div class="form-group">
                 <label for="course">Course:</label>
                 <input type="text" id="course" class="form-control" name="course" readonly>
@@ -199,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 
