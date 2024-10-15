@@ -73,7 +73,7 @@ if (isset($_POST['submit'])) {
         
         // Kung walang match, mag-error
         echo "<script>alert('Invalid Username or Password');</script>";
-        
+    } 
 }
 ?>
 
