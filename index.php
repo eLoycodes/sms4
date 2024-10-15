@@ -34,19 +34,19 @@ if (isset($_POST['submit'])) {
         } else {
             // It's a student number
             $sql = "
-                SELECT * FROM deactivate WHERE studentID='$identifier'
+               SELECT studentID, password, other_field FROM deactivate WHERE studentID='$identifier'
                 UNION ALL
-                SELECT * FROM deactivated WHERE studentID='$identifier'
+                SELECT studentID, password, other_field FROM deactivated WHERE studentID='$identifier'
                 UNION ALL
-                SELECT * FROM firstyear WHERE studentID='$identifier'
+                SELECT studentID, password, other_field FROM firstyear WHERE studentID='$identifier'
                 UNION ALL
-                SELECT * FROM secondyear WHERE studentID='$identifier'
+                SELECT studentID, password, other_field FROM secondyear WHERE studentID='$identifier'
                 UNION ALL
-                SELECT * FROM thirdyear WHERE studentID='$identifier'
+                SELECT studentID, password, other_field FROM thirdyear WHERE studentID='$identifier'
                 UNION ALL
-                SELECT * FROM forthyear WHERE studentID='$identifier'
+                SELECT studentID, password, other_field FROM forthyear WHERE studentID='$identifier'
                 UNION ALL
-                SELECT * FROM returnee WHERE studentID='$identifier'";
+                SELECT studentID, password, other_field FROM returnee WHERE studentID='$identifier'";
         }
 
         $res = $connect->query($sql);
@@ -67,7 +67,7 @@ if (isset($_POST['submit'])) {
                 // Student login
                 if (password_verify($password, $ro['password'])) {
                     $_SESSION["id"] = $ro["id"];
-                    $_SESSION["username"] = $ro["username"];
+                    $_SESSION["studentID"] = $ro["studentID"];
                     $_SESSION["role"] = 'student';
                     header("Location: studentDashboard.php");
                     exit();
