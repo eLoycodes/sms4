@@ -30,15 +30,13 @@ if (isset($_POST['submit'])) {
         // Check if the identifier is an email or student number
         if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
             // It's an email for admin
-            $stmt = $connect->prepare("SELECT username, password FROM admin WHERE username = ?");
+            $stmt = $connect->prepare("SELECT * FROM admin WHERE username = ?");
             $stmt->bind_param("s", $identifier);
             $stmt->execute();
             $res = $stmt->get_result();
-        }
-       
-        if ($res && $res->num_rows > 0) {
-            $ro = $res->fetch_assoc();
-            if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
+
+            if ($res && $res->num_rows > 0) {
+                $ro = $res->fetch_assoc();
                 // Admin login
                 if (password_verify($password, $ro['password'])) {
                     $_SESSION["id"] = $ro["id"];
@@ -50,6 +48,29 @@ if (isset($_POST['submit'])) {
                     echo "Invalid admin credentials.";
                 }
             } else {
+                echo "No user found for identifier: $identifier";
+            }
+        } else {
+            // It's a student number
+            $sql = "
+               SELECT studentID, password FROM deactivate WHERE studentID='$identifier'
+                UNION ALL
+                SELECT studentID, password FROM deactivated WHERE studentID='$identifier'
+                UNION ALL
+                SELECT studentID, password FROM firstyear WHERE studentID='$identifier'
+                UNION ALL
+                SELECT studentID, password FROM secondyear WHERE studentID='$identifier'
+                UNION ALL
+                SELECT studentID, password FROM thirdyear WHERE studentID='$identifier'
+                UNION ALL
+                SELECT studentID, password FROM forthyear WHERE studentID='$identifier'
+                UNION ALL
+                SELECT studentID, password FROM returnee WHERE studentID='$identifier'";
+
+            $res = $connect->query($sql);
+
+            if ($res && $res->num_rows > 0) {
+                $ro = $res->fetch_assoc();
                 // Student login
                 if (password_verify($password, $ro['password'])) {
                     $_SESSION["id"] = $ro["studentID"];
@@ -60,13 +81,14 @@ if (isset($_POST['submit'])) {
                 } else {
                     echo "Invalid student credentials.";
                 }
+            } else {
+                echo "No user found for identifier: $identifier";
             }
-        } else {
-            echo "No user found for identifier: $identifier";
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
