@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
         if ($res->num_rows > 0) {
             $ro = $res->fetch_assoc();
             // Verify password (make sure to use password_verify for hashed passwords)
-            if ($password === $stored_password) {
+            if ($password, $ro["password"]) {
                 $_SESSION["id"] = $ro["id"];
                 $_SESSION["username"] = $ro["username"];
                 $_SESSION["type"] = "admin";
@@ -45,7 +45,7 @@ if (isset($_POST['submit'])) {
         if ($res->num_rows > 0) {
             $ro = $res->fetch_assoc();
             // Verify password (make sure to use password_verify for hashed passwords)
-            if ($password === $stored_password) {
+            if ($password, $ro["password"]) {
                 $_SESSION["id"] = $ro["id"];
                 $_SESSION["studentID"] = $ro["studentID"];
                 $_SESSION["type"] = "student";
