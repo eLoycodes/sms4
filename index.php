@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
         <form method="POST">
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" name="identifier">
+                <input type="text" id="username" name="username">
                 <span class='error'><?php echo $identifier_error; ?></span>
             </div>
             <div class="input-group">
