@@ -13,11 +13,12 @@ if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get common fields
+    var_dump($_POST);
     $course = $_POST['course'] ?? '';
     $admissionType = $_POST['admissionType'] ?? '';
 
     // Debugging output
-     var_dump($_POST); exit; 
+     
 
     if ($admissionType === "newRegular") {
         $firstname = $_POST['newRegular_firstname'] ?? '';
@@ -220,7 +221,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" name="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
-
+   <?php exit; ?>
     <script>
         // Get course from URL
         const urlParams = new URLSearchParams(window.location.search);
