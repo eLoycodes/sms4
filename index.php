@@ -26,12 +26,15 @@ if (isset($_POST['submit'])) {
         $password = $_POST["password"];
     }
 
-    if (empty($identifier_error) && empty($password_error)) {
+    if (empty($identifier_error) && empty($password_error)){
         // Check if the identifier is an email or student number
-        if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
+        if(filter_var($identifier, FILTER_VALIDATE_EMAIL)){
             // It's an email for admin
-            $sql = "SELECT * FROM admin WHERE username='$identifier'"; 
-        } else {
+            $stmt = $connect->prepare("SELECT * FROM admin WHERE username='$identifier'");
+            $stmt->bind_param("s", $identifier);
+            $stmt->execute();
+            $res = $stmt->get_result();
+        }else {
             // It's a student number
             $sql = "
                SELECT studentID, password FROM deactivate WHERE studentID='$identifier'
@@ -66,7 +69,7 @@ if (isset($_POST['submit'])) {
             } else {
                 // Student login
                 if (password_verify($password, $ro['password'])) {
-                    $_SESSION["deactivate_id","deactivated_id","firstyear_id","secondyear_id","thirdyear_id","forthyear_id","returnee_id"] = $ro["studentID"]; // Updated to use studentID
+                    $_SESSION["id"] = $ro["studentID"]; // Updated to use studentID
                     $_SESSION["studentID"] = $ro["studentID"];
                     $_SESSION["role"] = 'student';
                     header("Location: studentDashboard.php");
