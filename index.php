@@ -40,7 +40,7 @@ if (isset($_POST['submit'])) {
         }
 
         // Kung hindi, tingnan kung student
-        $sql = "SELECT * FROM students WHERE studentID='$username'";
+        $sql = "SELECT * FROM firstyear WHERE studentID='$username'";
         $res = $connect->query($sql);
         if ($res->num_rows > 0) {
             $ro = $res->fetch_assoc();
