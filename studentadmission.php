@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($admissionType === "newRegular") {
         // Insert the new regular student data into the database
-        $sql = "INSERT INTO newstudent (firstname, lastname, email, course, yearLevel) VALUES ('$firstname', '$lastname', '$email', '$course', '$yearLevel')";
+        $sql = "INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearLevel) VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$yearLevel')";
         
     } elseif ($admissionType === "transferee") {
         // Get transferee-specific fields
@@ -33,14 +33,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $prevyear = $_POST['prevyear'];
 
         // Insert the transferee data into the database
-        $sql = "INSERT INTO transferee (firstname, lastname, email, course, lastschool, prevcourse, prevyear) VALUES ('$firstname', '$lastname', '$email', '$course', '$lastschool', '$prevcourse', '$prevyear')";
+        $sql = "INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$lastschool', '$prevcourse', '$prevyear')";
         
     } elseif ($admissionType === "returnee") {
         // Get returnee-specific fields
         $studentID = $_POST['studentID'];
 
         // Insert the returnee data into the database
-        $sql = "INSERT INTO returnee (studentID, firstname, lastname, email, course, yearLevel) VALUES ('$studentID', '$firstname', '$lastname', '$email', '$course', '$yearLevel')";
+        $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearLevel) VALUES ('$studentID', '$middlename', '$firstname', '$lastname', '$email', '$course', '$yearLevel')";
     } else {
         echo "Invalid admission type.";
         exit();
