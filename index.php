@@ -51,33 +51,50 @@ if (isset($_GET["mes"])) {
 </head>
 
 <body>
-    <div class="login-container">
-        <h1>Bestlink College of the Philippines</h1><br>
-        <div class="login-box">
-            <img src="image/bcplogo-mini.png" alt="Bestlink College" class="logo">
-            <h2><b>Sign in</b></h2>
-            <form method="POST">
-                <div class="input-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username">
-                    <span class='error'><?php echo $username_error; ?></span>
+<div class="login-container">
+    <h1>Bestlink College of the Philippines</h1><br>
+    <div class="login-box">
+        <img src="image/bcplogo-mini.png" alt="Bestlink College" class="logo">
+        <h2><b>Sign in</b></h2>
+        <form method="POST">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username">
+                <span class='error'><?php echo $username_error; ?></span>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <span class='error'><?php echo $password_error; ?></span>
+                <div class="show-password">
+                    <input type="checkbox" id="showPassword" onclick="togglePassword()">
+                    <label for="showPassword">Show Password</label>
                 </div>
-                <div class="input-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password">
-                    <span class='error'><?php echo $password_error; ?></span>
-                </div>
-                <div class="input-group">
-                    <button type="submit" class="submit-button" name="submit">Sign in</button>
-                    <br><br>
-                    <a href="option.php" class="submit-button">Student Admission</a>
-                </div>
-            </form>
-        </div>
+            </div>
+            <div class="input-group">
+                <button type="submit" class="submit-button" name="submit">Sign in</button>
+                <br><br>
+                <a href="option.php" class="submit-button">Student Admission</a>
+            </div>
+        </form>
     </div>
+</div>
+
+<script>
+    function togglePassword(){
+        const passwordField = document.getElementById("password");
+        const showPasswordCheckbox = document.getElementById("showPassword");
+        passwordField.type = showPasswordCheckbox.checked ? "text" : "password";
+    }
+</script>
 <style>
+
+.show-password{
+    margin-top: 10px;
+    font-size: 14px;
+}
     
-.error {
+.error{
     color: red;
     text-align: center;
 }
