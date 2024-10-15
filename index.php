@@ -1,5 +1,8 @@
 <?php
 include("connect.php");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 session_start();
 $username = $password = "";
@@ -37,14 +40,14 @@ if (isset($_POST['submit'])) {
         }
 
         // Kung hindi, tingnan kung student
-        $sql = "SELECT * FROM students WHERE student_id='$username'";
+        $sql = "SELECT * FROM students WHERE studentID='$username'";
         $res = $connect->query($sql);
         if ($res->num_rows > 0) {
             $ro = $res->fetch_assoc();
             // Verify password (make sure to use password_verify for hashed passwords)
             if (password_verify($password, $ro["password"])) {
                 $_SESSION["id"] = $ro["id"];
-                $_SESSION["student_id"] = $ro["student_id"];
+                $_SESSION["studentID"] = $ro["studentID"];
                 $_SESSION["type"] = "student";
                 echo "<script>alert('Successfully Logged In as Student');</script>";
                 echo "<script>window.open('studentDashboard.php','_self');</script>";

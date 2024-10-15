@@ -6,8 +6,9 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-if (!isset($_SESSION["id"])) {
-    echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
+if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
+    header("Location: index.php");
+    exit();
 }
 
 $studentData = []; // Initialize the array to hold student data
