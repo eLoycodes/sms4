@@ -66,7 +66,7 @@ if (isset($_POST['submit'])) {
             } else {
                 // Student login
                 if (password_verify($password, $ro['password'])) {
-                    $_SESSION["id"] = $ro["studentID"]; // Updated to use studentID
+                    $_SESSION["deactivate_id","deactivated_id","firstyear_id","secondyear_id","thirdyear_id","forthyear_id","returnee_id"] = $ro["studentID"]; // Updated to use studentID
                     $_SESSION["studentID"] = $ro["studentID"];
                     $_SESSION["role"] = 'student';
                     header("Location: studentDashboard.php");
