@@ -1,44 +1,79 @@
 <?php
-
 include("connect.php");
 
 session_start();
-$username = $password = "";
-$username_error = $password_error = "";
+$identifier = $password = "";
+$identifier_error = $password_error = "";
+
 if (isset($_POST['submit'])) {
-    if (empty($_POST["username"])) {
-        $username_error = "Username is Required!";
+    if (empty($_POST["identifier"])) {
+        $identifier_error = "Email or Student Number is required!";
     } else {
-        $username = $_POST["username"];
+        $identifier = $_POST["identifier"];
     }
 
     if (empty($_POST["password"])) {
-        $password_error = "Password is Required!";
+        $password_error = "Password is required!";
     } else {
         $password = $_POST["password"];
     }
 
-    if (empty($username_error) && empty($password_error)) {
-        $sql = "SELECT * FROM admin WHERE username='$username' AND password='$password'";
+    if (empty($identifier_error) && empty($password_error)) {
+        // Check if the identifier is an email or student number
+        if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
+            // It's an email for admin
+            $sql = "SELECT * FROM admin WHERE username='$identifier'"; 
+        } else {
+            // It's a student number
+            $sql = "
+                SELECT * FROM deactivate WHERE studentID='$identifier'
+                UNION ALL
+                SELECT * FROM deactivated WHERE studentID='$identifier'
+                UNION ALL
+                SELECT * FROM firstyear WHERE studentID='$identifier'
+                UNION ALL
+                SELECT * FROM secondyear WHERE studentID='$identifier'
+                UNION ALL
+                SELECT * FROM thirdyear WHERE studentID='$identifier'
+                UNION ALL
+                SELECT * FROM forthyear WHERE studentID='$identifier'
+                UNION ALL
+                SELECT * FROM returnee WHERE studentID='$identifier'";
+        }
+
         $res = $connect->query($sql);
         if ($res->num_rows > 0) {
             $ro = $res->fetch_assoc();
-            $_SESSION["id"] = $ro["id"];
-            $_SESSION["username"] = $ro["username"];
-            $_SESSION["password"] = $ro["password"];
-
-            echo "<script>
-                alert('Successfully Login');
-            </script>";
-            echo "<script>window.open('adminDashboard.php','_self');</script>";
+            if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
+                // Admin login
+                if (password_verify($password, $ro['password'])) {
+                    $_SESSION["id"] = $ro["id"];
+                    $_SESSION["username"] = $ro["username"];
+                    $_SESSION["role"] = 'admin';
+                    header("Location: adminDashboard.php");
+                    exit();
+                } else {
+                    echo "Invalid admin credentials.";
+                }
+            } else {
+                // Student login
+                if (password_verify($password, $ro['password'])) {
+                    $_SESSION["id"] = $ro["id"];
+                    $_SESSION["username"] = $ro["username"];
+                    $_SESSION["role"] = 'student';
+                    header("Location: studentDashboard.php");
+                    exit();
+                } else {
+                    echo "Invalid student credentials.";
+                }
+            }
+        } else {
+            echo "No user found.";
         }
     }
 }
-
-if (isset($_GET["mes"])) {
-    echo "<div class='error'>{$_GET["mes"]}</div>";
-}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

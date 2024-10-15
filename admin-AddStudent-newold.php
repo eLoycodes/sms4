@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
    
     if ($_POST["newstudent_id"] != "" && $_POST["studentID"] != "" && $_POST["firstname"] != "" && $_POST["middlename"] != "" && $_POST["lastname"] != "" && $_POST["course"] != "" && 
         $_POST["yearlevel"] != "" && $_POST["semester"] != "" && $_POST["academicyear"] != "" && 
-        $_POST["studenttype"] != "") {
+        $_POST["studenttype"] != "" $_POST["password"] != "")  {
 
         $newstudent_id = $_POST["newstudent_id"]; 
         $studentID = $_POST["studentID"];
@@ -37,6 +37,7 @@ if (isset($_POST['submit'])) {
         $semester = $_POST["semester"];
         $academicyear = $_POST["academicyear"];
         $studenttype = $_POST["studenttype"];
+        $password = $_POST["password"];
 
         $table = "";
         switch ($yearlevel) {
@@ -58,8 +59,8 @@ if (isset($_POST['submit'])) {
         }
 
             // Prepare the SQL statement for insertion
-        $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype, status)  
-        VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active')";
+        $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype, status, password)  
+        VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$password')";
 
         if ($connect->query($sql) === TRUE) {
             // After successful registration, delete from newstudent table
@@ -226,6 +227,9 @@ if (isset($_POST['submit'])) {
                                   <option <?php echo (isset($userfetch['studenttype']) && $userfetch['studenttype'] == 'Octoberian') ? 'selected' : ''; ?>>Octoberian</option>
                               </select>
                           </label>
+                          <label class="add-label">Set Password
+                              <input type="text" name="password" value="<?php echo isset($userfetch['password']) ? $userfetch['password'] : ''; ?>" placeholder="" class="input-field">
+                          </label>
                       </div>
                   </div>           
                   <button type="submit" name="submit" class="addinput-btn">Add Student</button>
@@ -329,6 +333,9 @@ window.onclick = function(event) {
                     <option>Transferee</option>
                     <option>Octoberian</option>
                 </select>
+            </label>
+             <label class="add-label">Set Password
+                <input type="text" name="password" placeholder="" class="input-field">
             </label>
         </div>
     `;

@@ -1,3 +1,53 @@
+<?php
+include("connect.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get common fields
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $course = $_POST['course'];
+    $yearLevel = $_POST['yearLevel'];
+    
+    // Determine the admission type
+    $admissionType = $_POST['admissionType'];
+
+    if ($admissionType === "newRegular") {
+        // Insert the new regular student data into the database
+        $sql = "INSERT INTO newstudent (firstname, lastname, email, course, yearLevel) VALUES ('$firstname', '$lastname', '$email', '$course', '$yearLevel')";
+        
+    } elseif ($admissionType === "transferee") {
+        // Get transferee-specific fields
+        $lastschool = $_POST['lastschool'];
+        $prevcourse = $_POST['prevcourse'];
+        $prevyear = $_POST['prevyear'];
+
+        // Insert the transferee data into the database
+        $sql = "INSERT INTO transferee (firstname, lastname, email, course, lastschool, prevcourse, prevyear) VALUES ('$firstname', '$lastname', '$email', '$course', '$lastschool', '$prevcourse', '$prevyear')";
+        
+    } elseif ($admissionType === "returnee") {
+        // Get returnee-specific fields
+        $studentID = $_POST['studentID'];
+
+        // Insert the returnee data into the database
+        $sql = "INSERT INTO returnee (studentID, firstname, lastname, email, course, yearLevel) VALUES ('$studentID', '$firstname', '$lastname', '$email', '$course', '$yearLevel')";
+    } else {
+        echo "Invalid admission type.";
+        exit();
+    }
+
+    // Execute the SQL query
+    if ($connect->query($sql) === TRUE) {
+        echo "Registration successful!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $connect->error;
+    }
+
+    // Close the database connection
+    $connect->close();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -166,3 +216,4 @@
     </script>
 </body>
 </html>
+
