@@ -17,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $admissionType = $_POST['admissionType'] ?? '';
 
     // Debugging output
-    // var_dump($_POST); exit; // Uncomment to see posted data
+     var_dump($_POST); exit; 
 
     if ($admissionType === "newRegular") {
         $firstname = $_POST['newRegular_firstname'] ?? '';
