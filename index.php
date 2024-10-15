@@ -136,7 +136,7 @@ input[type="password"] {
 .show-password {
     position: absolute; /* Position the checkbox absolutely */
     right: 10px; /* Position it to the right inside the input */
-    top: 60%; /* Align it vertically */
+    top: 80%; /* Align it vertically */
     transform: translateY(-50%); /* Center the checkbox vertically */
     display: flex; /* Use flexbox for centering */
     align-items: center; /* Center checkbox vertically */
