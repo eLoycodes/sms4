@@ -52,7 +52,6 @@ if (isset($_GET["mes"])) {
 
 <body>
 <div class="login-container">
-    <h1 class="responsive-heading">Bestlink College of the Philippines</h1><br>
     <div class="login-box">
         <img src="image/bcplogo-mini.png" alt="Bestlink College" class="logo">
         <h2><b>Sign in</b></h2>
@@ -100,24 +99,6 @@ if (isset($_GET["mes"])) {
 .show-password input {
      margin-left: 5px;
 }
-
-.responsive-heading {
-        font-size: 24px; /* Adjust the base size */
-        text-align: center;
-        margin: 0; /* Optional: reset margin for cleaner layout */
-    }
-
-    @media (max-width: 768px) {
-        .responsive-heading {
-            font-size: 18px; /* Slightly larger for smaller screens */
-        }
-    }
-
-    @media (max-width: 480px) {
-        .responsive-heading {
-            font-size: 14vw; /* Even larger for very small screens */
-        }
-    }
     
 .error{
     color: red;
