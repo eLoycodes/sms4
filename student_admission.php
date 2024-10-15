@@ -1,3 +1,4 @@
+
 <?php
 include("connect.php");
 session_start();
@@ -24,19 +25,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Focus on newRegular admission type
         if ($admissionType === "newRegular") {
+            // Prepare the SQL statement
             $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
-            echo "Executing: " . $stmt->queryString . "<br>"; // Debugging
+            
+            // Execute the statement with provided data
             $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
 
-            echo "Registration successful!";
+            // Check if the registration was successful
+            if ($stmt->rowCount() > 0) {
+                echo "Registration successful!";
+            } else {
+                echo "Registration failed, please try again.";
+            }
         } else {
             echo "Invalid admission type.";
-            exit();
         }
     } catch (PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
 
-    $connect = null; // Close the connection
+    // Close the connection
+    $connect = null; 
 }
 ?>
