@@ -102,7 +102,7 @@ if (isset($_POST['submit'])) {
             <div class="input-group">
                 <label for="username">Username</label>
                 <input type="text" id="username" name="username">
-                <span class='error'><?php echo $username_error; ?></span>
+                <span class='error'><?php echo $identifier_error; ?></span>
             </div>
             <div class="input-group">
                 <input type="password" id="password" name="password" placeholder="Password">
