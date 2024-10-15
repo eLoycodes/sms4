@@ -1,4 +1,3 @@
-
 <?php
 include("connect.php");
 session_start();
@@ -15,19 +14,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'] ?? '';
     $course = $_POST['course'] ?? '';
     $yearlevel = $_POST['yearlevel'] ?? '';
-    
+    $admissionType = $_POST['admissionType'] ?? '';
 
     // Debugging: Print POST data
     echo '<pre>';
     var_dump($_POST);
     echo '</pre>';
-    
+
     try {
         // Focus on newRegular admission type
         if ($admissionType === "newRegular") {
-            // Prepare the SQL statement
+            // Prepare the SQL statement with correct field names
             $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
-            
+
             // Execute the statement with provided data
             $stmt->execute([$firstname, $middlename, $lastname, $email, $course, $yearlevel]);
 
