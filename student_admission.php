@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'] ?? '';
     $course = $_POST['course'] ?? '';
     $yearlevel = $_POST['yearlevel'] ?? '';
-    $admissionType = $_POST['admissionType'] ?? '';
+    
 
     // Debugging: Print POST data
     echo '<pre>';
