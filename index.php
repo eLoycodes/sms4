@@ -92,7 +92,7 @@ if (isset($_POST['submit'])) {
         <h2><b>Sign in</b></h2>
         <form method="POST">
             <div class="input-group">
-                <label for="username">Username (Email or Student ID)</label>
+                <label for="username">Email or Student ID</label>
                 <input type="text" id="username" name="username" required>
                 <span class='error'><?php echo $username_error; ?></span>
             </div>
@@ -124,13 +124,15 @@ function togglePassword() {
 
 <style>
 
-.show-password {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    display: flex;
-    align-items: center;
+..show-password {
+    position: absolute; /* Position the checkbox absolutely */
+    right: 10px; /* Adjust the right position */
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for exact centering */
+}
+
+input[type="checkbox"] {
+    cursor: pointer; /* Change cursor to pointer when hovering over checkbox */
 }
 
 .show-password input {
