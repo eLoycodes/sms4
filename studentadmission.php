@@ -13,35 +13,41 @@ if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get common fields
-    $firstname = $_POST['firstname'];
-    $middlename = $_POST['middlename'];
-    $lastname = $_POST['lastname'];
-    $email = $_POST['email'];
-    $course = $_POST['course'];
-    $yearlevel = $_POST['yearlevel'];
+    $firstname = $_POST['firstname'] ?? '';
+    $middlename = $_POST['middlename'] ?? ''; // Added middlename
+    $lastname = $_POST['lastname'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $course = $_POST['course'] ?? '';
+    $yearlevel = $_POST['yearlevel'] ?? '';
     
     // Determine the admission type
-    $admissionType = $_POST['admissionType'];
+    $admissionType = $_POST['admissionType'] ?? '';
+
+    // Debugging output
+    // var_dump($_POST); exit; // Uncomment to see posted data
 
     if ($admissionType === "newRegular") {
         // Insert the new regular student data into the database
-        $sql = "INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$yearlevel')";
+        $sql = "INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) 
+                VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$yearlevel')";
         
     } elseif ($admissionType === "transferee") {
         // Get transferee-specific fields
-        $lastschool = $_POST['lastschool'];
-        $prevcourse = $_POST['prevcourse'];
-        $prevyear = $_POST['prevyear'];
+        $lastschool = $_POST['lastschool'] ?? '';
+        $prevcourse = $_POST['prevcourse'] ?? '';
+        $prevyear = $_POST['prevyear'] ?? '';
 
         // Insert the transferee data into the database
-        $sql = "INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$lastschool', '$prevcourse', '$prevyear')";
+        $sql = "INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear) 
+                VALUES ('$firstname', '$middlename', '$lastname', '$email', '$course', '$lastschool', '$prevcourse', '$prevyear')";
         
     } elseif ($admissionType === "returnee") {
         // Get returnee-specific fields
-        $studentID = $_POST['studentID'];
+        $studentID = $_POST['studentID'] ?? '';
 
         // Insert the returnee data into the database
-        $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) VALUES ('$studentID', '$middlename', '$firstname', '$lastname', '$email', '$course', '$yearlevel')";
+        $sql = "INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) 
+                VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$email', '$course', '$yearlevel')";
     } else {
         echo "Invalid admission type.";
         exit();
@@ -65,7 +71,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Registration Form</title>
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
@@ -227,4 +232,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </script>
 </body>
 </html>
-
