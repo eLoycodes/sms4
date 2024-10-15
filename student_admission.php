@@ -6,115 +6,75 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Check database connection
-if ($connect->connect_error) {
-    die("Connection failed: " . $connect->connect_error);
-} else {
-    echo "Database connected successfully.<br>";
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get fields with unique names
+    $firstname = $_POST['firstname'] ?? '';
+    $middlename = $_POST['middlename'] ?? '';
+    $lastname = $_POST['lastname'] ?? '';
+    $email = $_POST['email'] ?? '';
+    $course = $_POST['course'] ?? '';
+    $yearlevel = $_POST['yearlevel'] ?? '';
+    $admissionType = $_POST['admissionType'] ?? '';
+
+    // Additional fields for transferee
+    $transferee_lastschool = $_POST['transferee_lastschool'] ?? '';
+    $transferee_prevcourse = $_POST['transferee_prevcourse'] ?? '';
+    $transferee_prevyear = $_POST['transferee_prevyear'] ?? '';
+
+    // Additional fields for returnee
+    $returnee_studentID = $_POST['returnee_studentID'] ?? '';
+
+    // Encode POST data for URL
+    $encodedData = http_build_query($_POST);
+    
+    // Redirect to the same page with encoded data for debugging
+    header("Location: " . $_SERVER['PHP_SELF'] . '?' . $encodedData);
+    exit;
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debugging: Print POST data
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
+// Handle different admission types
+if (isset($_GET['admissionType'])) {
+    $admissionType = $_GET['admissionType'];
 
-    // Get fields
-    $admissionType = $_POST['admissionType'] ?? '';
-    $course = $_POST['course'] ?? '';
-    
-    echo "Inputs received. Admission Type: $admissionType<br>";
-
-    // Handle new regular student registration
     if ($admissionType === "newRegular") {
-        // Retrieve specific fields
-        $firstname = $_POST['newRegular_firstname'] ?? '';
-        $middlename = $_POST['newRegular_middlename'] ?? '';
-        $lastname = $_POST['newRegular_lastname'] ?? '';
-        $email = $_POST['newRegular_email'] ?? '';
-        $course = $_POST['course'] ?? '';
-        $yearlevel = $_POST['newRegular_yearlevel'] ?? '';
-
-        echo "Processing new regular student registration.<br>";
-
         $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
-        if ($stmt === false) {
-            die("Prepare failed: " . $connect->error);
-        }
-
         $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel);
-        
         if ($stmt->execute()) {
-            echo "New Regular Registration successful!<br>";
+            echo "New Regular Registration successful!";
         } else {
-            echo "New Regular Registration failed: " . $stmt->error . "<br>";
+            echo "New Regular Registration failed, please try again.";
         }
         $stmt->close();
-    }
-
-    // Handle transferee student registration
-    elseif ($admissionType === "transferee") {
-        $firstname = $_POST['transferee_firstname'] ?? '';
-        $middlename = $_POST['transferee_middlename'] ?? '';
-        $lastname = $_POST['transferee_lastname'] ?? '';
-        $email = $_POST['transferee_email'] ?? '';
-        $course = $_POST['course'] ?? '';
-        $lastschool = $_POST['transferee_lastschool'] ?? '';
-        $prevcourse = $_POST['transferee_prevcourse'] ?? '';
-        $prevyear = $_POST['transferee_prevyear'] ?? '';
+    } elseif ($admissionType === "transferee") {
         $datesubmitted = date('Y-m-d H:i:s'); // Current timestamp
         $status = NULL; // Default status
         $password = NULL; // Default password
 
-        echo "Processing transferee registration.<br>";
-
         $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear, datesubmitted, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        if ($stmt === false) {
-            die("Prepare failed: " . $connect->error);
-        }
-
-        $stmt->bind_param("sssssssssss", $firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear, $datesubmitted, $status, $password);
-        
+        $stmt->bind_param("sssssssssss", $firstname, $middlename, $lastname, $email, $course, $transferee_lastschool, $transferee_prevcourse, $transferee_prevyear, $datesubmitted, $status, $password);
         if ($stmt->execute()) {
-            echo "Transferee Registration successful!<br>";
+            echo "Transferee Registration successful!";
         } else {
-            echo "Transferee Registration failed: " . $stmt->error . "<br>";
+            echo "Transferee Registration failed, please try again.";
         }
         $stmt->close();
-    }
-
-    // Handle returnee student registration
-    elseif ($admissionType === "returnee") {
-        $studentID = $_POST['returnee_studentID'] ?? '';
-        $firstname = $_POST['returnee_firstname'] ?? '';
-        $middlename = $_POST['returnee_middlename'] ?? '';
-        $lastname = $_POST['returnee_lastname'] ?? '';
-        $email = $_POST['returnee_email'] ?? '';
-        $course = $_POST['course'] ?? '';
-        $yearlevel = $_POST['returnee_yearlevel'] ?? '';
+    } elseif ($admissionType === "returnee") {
         $status = NULL; // Default status
         $password = NULL; // Default password
 
-        echo "Processing returnee registration.<br>";
-
         $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        if ($stmt === false) {
-            die("Prepare failed: " . $connect->error);
-        }
-
-        $stmt->bind_param("sssssssss", $studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel, $status, $password);
-        
+        $stmt->bind_param("sssssssss", $returnee_studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel, $status, $password);
         if ($stmt->execute()) {
-            echo "Returnee Registration successful!<br>";
+            echo "Returnee Registration successful!";
         } else {
-            echo "Returnee Registration failed: " . $stmt->error . "<br>";
+            echo "Returnee Registration failed, please try again.";
         }
         $stmt->close();
     } else {
-        echo "Invalid admission type.<br>";
+        echo "Invalid admission type.";
     }
-
-    // Close the connection
-    $connect->close(); 
 }
+
+// Close the connection
+$connect->close();
 ?>
