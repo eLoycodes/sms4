@@ -72,7 +72,7 @@ if (isset($_GET["mes"])) {
             <div class="input-group">
                 <button type="submit" class="submit-button" name="submit">Sign in</button>
                 <br><br>
-                <a href="option.php" class="submit-button">Student Admission</a>
+                <a href="option.php" class="submit-button admission-button">Student Admission</a>
             </div>
         </form>
     </div>
@@ -103,6 +103,28 @@ if (isset($_GET["mes"])) {
 .error{
     color: red;
     text-align: center;
+}
+
+/* new css for button */
+.submit-button, .admission-button {
+    display: inline-block; /* Ensures the buttons are treated as blocks for width */
+    width: 100%; /* Makes both buttons take full width */
+    padding: 10px; /* Same padding for both buttons */
+    text-align: center; /* Center the text */
+    background-color: #003366; /* Consistent background color */
+    color: white; /* Text color */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Same border radius */
+    cursor: pointer; /* Cursor change on hover */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.admission-button {
+    text-decoration: none; /* Remove underline from link */
+}
+
+.submit-button:hover, .admission-button:hover {
+    background-color: #002244; /* Darker background on hover */
 }
 
 * {
