@@ -6,10 +6,7 @@ session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
-    header("Location: index.php");
-    exit();
-} 
+
 
 // Database insertion logic
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -26,7 +23,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $stmt = $conn->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, yearlevel, course) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $yearlevel, $course);
-    }else {
+    } elseif ($admissionType == 'transferee') {
+        $firstname = $_POST['transferee_firstname'];
+        $middlename = $_POST['transferee_middlename'] ?? '';
+        $lastname = $_POST['transferee_lastname'];
+        $email = $_POST['transferee_email'];
+        $lastschool = $_POST['transferee_lastschool'];
+        $prevcourse = $_POST['transferee_prevcourse'];
+        $prevyear = $_POST['transferee_prevyear'];
+
+        $stmt = $conn->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, lastschool, prevcourse, prevyear, course) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssss", $firstname, $middlename, $lastname, $email, $lastschool, $prevcourse, $prevyear, $course);
+    } elseif ($admissionType == 'returnee') {
+        $firstname = $_POST['returnee_firstname'];
+        $middlename = $_POST['returnee_middlename'] ?? '';
+        $lastname = $_POST['returnee_lastname'];
+        $email = $_POST['returnee_email'];
+        $studentID = $_POST['returnee_studentID'];
+        $yearlevel = $_POST['returnee_yearlevel'];
+
+        $stmt = $conn->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, yearlevel, course) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssss", $studentID, $firstname, $middlename, $lastname, $email, $yearlevel, $course);
+    } else {
         echo "<div class='alert alert-danger'>Invalid admission type.</div>";
         exit();
     }
