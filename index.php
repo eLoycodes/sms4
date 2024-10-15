@@ -41,7 +41,7 @@ if (isset($_POST['submit'])) {
             }
         }
         // tingnan kung student (dapat may s)
-        if (strpos($username, 's') === 0) {
+        if (strpos($username, 'studentID') === 0) {
             $sql = "
                 SELECT firstyear_id AS id, studentID, password FROM firstyear WHERE studentID='$username'
                 UNION ALL
