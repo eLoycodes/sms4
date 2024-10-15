@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
             $stmt->execute();
             $res = $stmt->get_result();
         }
-        $res = $connect->query($sql);
+       
         if ($res && $res->num_rows > 0) {
             $ro = $res->fetch_assoc();
             if (filter_var($identifier, FILTER_VALIDATE_EMAIL)) {
