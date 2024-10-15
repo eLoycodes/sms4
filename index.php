@@ -14,10 +14,10 @@ $identifier = $password = "";
 $identifier_error = $password_error = "";
 
 if (isset($_POST['submit'])) {
-    if (empty($_POST["identifier"])) {
+    if (empty($_POST["username"])) { // Changed from identifier to username
         $identifier_error = "Email or Student Number is required!";
     } else {
-        $identifier = $_POST["identifier"];
+        $identifier = $_POST["username"]; // Get the username directly
     }
 
     if (empty($_POST["password"])) {
@@ -37,8 +37,8 @@ if (isset($_POST['submit'])) {
 
             if ($res && $res->num_rows > 0) {
                 $ro = $res->fetch_assoc();
-                // Admin login
-                if (password_verify($password, $ro['password'])) {
+                // Admin login without hashing
+                if ($password === $ro['password']) { // Direct comparison
                     $_SESSION["id"] = $ro["id"];
                     $_SESSION["username"] = $ro["username"];
                     $_SESSION["role"] = 'admin';
@@ -53,26 +53,30 @@ if (isset($_POST['submit'])) {
         } else {
             // It's a student number
             $sql = "
-               SELECT studentID, password FROM deactivate WHERE studentID='$identifier'
+               SELECT studentID, password FROM deactivate WHERE studentID = ?
                 UNION ALL
-                SELECT studentID, password FROM deactivated WHERE studentID='$identifier'
+                SELECT studentID, password FROM deactivated WHERE studentID = ?
                 UNION ALL
-                SELECT studentID, password FROM firstyear WHERE studentID='$identifier'
+                SELECT studentID, password FROM firstyear WHERE studentID = ?
                 UNION ALL
-                SELECT studentID, password FROM secondyear WHERE studentID='$identifier'
+                SELECT studentID, password FROM secondyear WHERE studentID = ?
                 UNION ALL
-                SELECT studentID, password FROM thirdyear WHERE studentID='$identifier'
+                SELECT studentID, password FROM thirdyear WHERE studentID = ?
                 UNION ALL
-                SELECT studentID, password FROM forthyear WHERE studentID='$identifier'
+                SELECT studentID, password FROM forthyear WHERE studentID = ?
                 UNION ALL
-                SELECT studentID, password FROM returnee WHERE studentID='$identifier'";
+                SELECT studentID, password FROM returnee WHERE studentID = ?";
 
-            $res = $connect->query($sql);
+            // Prepare statement for student login
+            $stmt = $connect->prepare($sql);
+            $stmt->bind_param("sssssss", $identifier, $identifier, $identifier, $identifier, $identifier, $identifier, $identifier);
+            $stmt->execute();
+            $res = $stmt->get_result();
 
             if ($res && $res->num_rows > 0) {
                 $ro = $res->fetch_assoc();
                 // Student login
-                if (password_verify($password, $ro['password'])) {
+                if ($password === $ro['password']) { // Direct comparison
                     $_SESSION["id"] = $ro["studentID"];
                     $_SESSION["studentID"] = $ro["studentID"];
                     $_SESSION["role"] = 'student';
