@@ -38,9 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $lastschool = $_POST['transferee_lastschool'] ?? '';
         $prevcourse = $_POST['transferee_prevcourse'] ?? '';
         $prevyear = $_POST['transferee_prevyear'] ?? '';
+        $datesubmitted = date('Y-m-d H:i:s'); // Current timestamp
+        $status = NULL; // Default status
+        $password = NULL; // Default password
 
-        $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, yearlevel, lastschool, prevcourse, prevyear) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel, $lastschool, $prevcourse, $prevyear);
+        $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear, datesubmitted, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssssss", $firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear, $datesubmitted, $status, $password);
         if ($stmt->execute()) {
             echo "Transferee Registration successful!";
         } else {
@@ -52,9 +55,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Handle returnee student registration
     elseif ($admissionType === "returnee") {
         $studentID = $_POST['returnee_studentID'] ?? '';
+        $status = NULL; // Default status
+        $password = NULL; // Default password
 
-        $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel);
+        $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssss", $studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel, $status, $password);
         if ($stmt->execute()) {
             echo "Returnee Registration successful!";
         } else {
