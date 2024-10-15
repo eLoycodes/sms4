@@ -23,35 +23,39 @@ if (isset($_POST['submit'])) {
     }
 
     if (empty($username_error) && empty($password_error)) {
-        // Una, tingnan kung admin
-        $sql = "SELECT * FROM admin WHERE username='$username'";
-        $res = $connect->query($sql);
-        if ($res->num_rows > 0) {
-            $ro = $res->fetch_assoc();
-            // Verify password (make sure to use password_verify for hashed passwords)
-            if ($password, $ro["password"]) {
-                $_SESSION["id"] = $ro["id"];
-                $_SESSION["username"] = $ro["username"];
-                $_SESSION["type"] = "admin";
-                echo "<script>alert('Successfully Logged In as Admin');</script>";
-                echo "<script>window.open('adminDashboard.php','_self');</script>";
-                exit();
+        // Una, tingnan kung admin (dapat may @gmail.com)
+        if (strpos($username, '@gmail.com') !== false) {
+            $sql = "SELECT * FROM admin WHERE username='$username'";
+            $res = $connect->query($sql);
+            if ($res->num_rows > 0) {
+                $ro = $res->fetch_assoc();
+                // Directly compare passwords
+                if ($password === $ro["password"]) {
+                    $_SESSION["id"] = $ro["id"];
+                    $_SESSION["username"] = $ro["username"];
+                    $_SESSION["type"] = "admin";
+                    echo "<script>alert('Successfully Logged In as Admin');</script>";
+                    echo "<script>window.open('adminDashboard.php','_self');</script>";
+                    exit();
+                }
             }
         }
 
-        // Kung hindi, tingnan kung student
-        $sql = "SELECT * FROM firstyear WHERE studentID='$username'";
-        $res = $connect->query($sql);
-        if ($res->num_rows > 0) {
-            $ro = $res->fetch_assoc();
-            // Verify password (make sure to use password_verify for hashed passwords)
-            if ($password, $ro["password"]) {
-                $_SESSION["id"] = $ro["id"];
-                $_SESSION["studentID"] = $ro["studentID"];
-                $_SESSION["type"] = "student";
-                echo "<script>alert('Successfully Logged In as Student');</script>";
-                echo "<script>window.open('studentDashboard.php','_self');</script>";
-                exit();
+        // Kung hindi, tingnan kung student (dapat magsimula sa 's')
+        if (strpos($username, 's') === 0) {
+            $sql = "SELECT * FROM firstyear WHERE studentID='$username'";
+            $res = $connect->query($sql);
+            if ($res->num_rows > 0) {
+                $ro = $res->fetch_assoc();
+                // Directly compare passwords
+                if ($password === $ro["password"]) {
+                    $_SESSION["id"] = $ro["id"];
+                    $_SESSION["studentID"] = $ro["studentID"];
+                    $_SESSION["type"] = "student";
+                    echo "<script>alert('Successfully Logged In as Student');</script>";
+                    echo "<script>window.open('studentDashboard.php','_self');</script>";
+                    exit();
+                }
             }
         }
 
@@ -86,7 +90,7 @@ if (isset($_POST['submit'])) {
                 <span class='error'><?php echo $password_error; ?></span>
                 <div class="show-password">
                     <input type="checkbox" id="showPassword" onclick="togglePassword()">
-                    <label for="showPassword" style="margin-left: 5px;"></label>
+                    <label for="showPassword" style="margin-left: 5px;">Show Password</label>
                 </div>
             </div>
             <div class="input-group">
