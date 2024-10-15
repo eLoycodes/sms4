@@ -24,25 +24,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Additional fields for returnee
     $returnee_studentID = $_POST['returnee_studentID'] ?? '';
 
-    // Encode POST data for URL
-    $encodedData = http_build_query($_POST);
-    
-    // Redirect to the same page with encoded data for debugging
-    header("Location: " . $_SERVER['PHP_SELF'] . '?' . $encodedData);
-    exit;
-}
+    // Debugging: Print POST data
+    echo '<pre>';
+    var_dump($_POST);
+    echo '</pre>';
 
-// Handle different admission types
-if (isset($_GET['admissionType'])) {
-    $admissionType = $_GET['admissionType'];
-
+    // Handle different admission types
     if ($admissionType === "newRegular") {
         $stmt = $connect->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, course, yearlevel) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel);
+        
         if ($stmt->execute()) {
             echo "New Regular Registration successful!";
         } else {
-            echo "New Regular Registration failed, please try again.";
+            echo "New Regular Registration failed: " . $stmt->error;
         }
         $stmt->close();
     } elseif ($admissionType === "transferee") {
@@ -52,10 +47,11 @@ if (isset($_GET['admissionType'])) {
 
         $stmt = $connect->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, course, lastschool, prevcourse, prevyear, datesubmitted, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssssssssss", $firstname, $middlename, $lastname, $email, $course, $transferee_lastschool, $transferee_prevcourse, $transferee_prevyear, $datesubmitted, $status, $password);
+        
         if ($stmt->execute()) {
             echo "Transferee Registration successful!";
         } else {
-            echo "Transferee Registration failed, please try again.";
+            echo "Transferee Registration failed: " . $stmt->error;
         }
         $stmt->close();
     } elseif ($admissionType === "returnee") {
@@ -64,10 +60,11 @@ if (isset($_GET['admissionType'])) {
 
         $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("sssssssss", $returnee_studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel, $status, $password);
+        
         if ($stmt->execute()) {
             echo "Returnee Registration successful!";
         } else {
-            echo "Returnee Registration failed, please try again.";
+            echo "Returnee Registration failed: " . $stmt->error;
         }
         $stmt->close();
     } else {
