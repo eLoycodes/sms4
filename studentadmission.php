@@ -1,57 +1,47 @@
 <?php
-include("connect.php");
-session_start();
+// Initialize variables
+$course = $admissionType = $firstname = $middlename = $lastname = $email = $yearlevel = '';
+$lastschool = $prevcourse = $prevyear = $studentID = '';
 
-// Enable error reporting
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-if (!isset($_SESSION["id"]) || $_SESSION["type"] !== "admin") {
-    header("Location: index.php");
-    exit();
-}
-
-// Database insertion logic
+// Process form when submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $admissionType = $_POST['admissionType'];
-    $course = $_POST['course'];
-
-    // Common variables
-    $firstname = $_POST[$admissionType . '_firstname'];
-    $middlename = $_POST[$admissionType . '_middlename'] ?? '';
-    $lastname = $_POST[$admissionType . '_lastname'];
-    $email = $_POST[$admissionType . '_email'];
-
-    // Prepare and bind
-    if ($admissionType == 'newRegular') {
-        $yearlevel = $_POST['newRegular_yearlevel'];
-        $stmt = $conn->prepare("INSERT INTO newstudent (firstname, middlename, lastname, email, yearlevel, course) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $yearlevel, $course);
-    } elseif ($admissionType == 'transferee') {
-        $lastschool = $_POST['transferee_lastschool'];
-        $prevcourse = $_POST['transferee_prevcourse'];
-        $prevyear = $_POST['transferee_prevyear'];
-        $stmt = $conn->prepare("INSERT INTO transferee (firstname, middlename, lastname, email, lastschool, prevcourse, prevyear, course) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssssss", $firstname, $middlename, $lastname, $email, $lastschool, $prevcourse, $prevyear, $course);
+    $course = htmlspecialchars($_POST['course']);
+    $admissionType = htmlspecialchars($_POST['admissionType']);
+    
+    // Common fields
+    $firstname = htmlspecialchars($_POST[$admissionType . '_firstname']);
+    $middlename = htmlspecialchars($_POST[$admissionType . '_middlename']);
+    $lastname = htmlspecialchars($_POST[$admissionType . '_lastname']);
+    $email = htmlspecialchars($_POST[$admissionType . '_email']);
+    $yearlevel = htmlspecialchars($_POST[$admissionType . '_yearlevel']);
+    
+    // Specific fields based on admission type
+    if ($admissionType == 'transferee') {
+        $lastschool = htmlspecialchars($_POST['transferee_lastschool']);
+        $prevcourse = htmlspecialchars($_POST['transferee_prevcourse']);
+        $prevyear = htmlspecialchars($_POST['transferee_prevyear']);
     } elseif ($admissionType == 'returnee') {
-        $studentID = $_POST['returnee_studentID'];
-        $yearlevel = $_POST['returnee_yearlevel'];
-        $stmt = $conn->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, yearlevel, course) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("sssssss", $studentID, $firstname, $middlename, $lastname, $email, $yearlevel, $course);
+        $studentID = htmlspecialchars($_POST['returnee_studentID']);
     }
 
-    // Execute statement and check for success
-    if ($stmt->execute()) {
-        echo "<div class='alert alert-success'>Registration successful!</div>";
-    } else {
-        echo "<div class='alert alert-danger'>Error: " . $stmt->error . "</div>";
-    }
+    // Here, you would typically insert the data into a database
+    // For demonstration, we'll just echo the values
+    echo "<h2>Registration Successful!</h2>";
+    echo "<p>Course: $course</p>";
+    echo "<p>Admission Type: $admissionType</p>";
+    echo "<p>Name: $firstname $middlename $lastname</p>";
+    echo "<p>Email: $email</p>";
+    echo "<p>Year Level: $yearlevel</p>";
 
-    // Close statement and connection
-    $stmt->close();
-    $conn->close();
+    if ($admissionType == 'transferee') {
+        echo "<p>Last School: $lastschool</p>";
+        echo "<p>Previous Course: $prevcourse</p>";
+        echo "<p>Previous Year: $prevyear</p>";
+    } elseif ($admissionType == 'returnee') {
+        echo "<p>Previous Student ID: $studentID</p>";
+    }
 }
-?> 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
