@@ -41,6 +41,7 @@ ini_set('display_errors', 1);
         <label for="course">Course:</label>
         <input type="text" id="course" class="form-control" name="course" value="<?php echo htmlspecialchars($_GET['course']); ?>" readonly>
     </div>
+
     <div class="form-group">
         <label for="admissionType">Admission Type:</label>
         <select id="admissionType" class="form-control" name="admissionType" onchange="showFields()">
@@ -52,7 +53,7 @@ ini_set('display_errors', 1);
     </div>
 
     <div id="newRegularFields" class="hidden">
-        <h2>New Regular Student</h2>
+        <h3>New Regular Student</h3>
         <div class="form-group">
             <label for="newRegular_firstname">First Name:</label>
             <input type="text" id="newRegular_firstname" class="form-control" name="newRegular_firstname" required>
@@ -81,7 +82,7 @@ ini_set('display_errors', 1);
     </div>
 
     <div id="transfereeFields" class="hidden">
-        <h2>Transferee Student</h2>
+        <h3>Transferee Student</h3>
         <div class="form-group">
             <label for="transferee_firstname">First Name:</label>
             <input type="text" id="transferee_firstname" class="form-control" name="transferee_firstname" required>
@@ -118,7 +119,7 @@ ini_set('display_errors', 1);
     </div>
 
     <div id="returneeFields" class="hidden">
-        <h2>Returnee Student</h2>
+        <h3>Returnee Student</h3>
         <div class="form-group">
             <label for="returnee_studentID">Previous Student ID:</label>
             <input type="text" id="returnee_studentID" class="form-control" name="returnee_studentID" required>
@@ -149,6 +150,7 @@ ini_set('display_errors', 1);
             </select>
         </div>
     </div>
+
     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 </form>
 
@@ -168,6 +170,13 @@ ini_set('display_errors', 1);
         }
     }
 </script>
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+
 
 </body>
 </html>
