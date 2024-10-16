@@ -38,10 +38,6 @@ ini_set('display_errors', 1);
         <h1 class="text-center">Bestlink College of the Philippines</h1>
         <form id="registrationForm" method="POST" action="student_admission.php">
             <div class="form-group">
-                <label for="course">Course:</label>
-                <input type="text" id="course" class="form-control" name="course" readonly>
-            </div>
-            <div class="form-group">
                 <label for="admissionType">Admission Type:</label>
                 <select id="admissionType" class="form-control" name="admissionType" onchange="showFields()">
                     <option value="">Select Admission Type</option>
@@ -70,6 +66,10 @@ ini_set('display_errors', 1);
                     <input type="email" id="newRegular_email" class="form-control" name="newRegular_email" required>
                 </div>
                 <div class="form-group">
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" class="form-control" name="course" readonly>
+                 </div>
+                <div class="form-group">
                     <label for="newRegular_yearlevel">Year Level:</label>
                     <select id="newRegular_yearlevel" class="form-control" name="newRegular_yearlevel">
                         <option value="1st">1st</option>
@@ -97,6 +97,10 @@ ini_set('display_errors', 1);
                 <div class="form-group">
                     <label for="transferee_email">Email:</label>
                     <input type="email" id="transferee_email" class="form-control" name="transferee_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" class="form-control" name="course" readonly>
                 </div>
                 <div class="form-group">
                     <label for="transferee_lastschool">Last School:</label>
@@ -138,6 +142,10 @@ ini_set('display_errors', 1);
                 <div class="form-group">
                     <label for="returnee_email">Email:</label>
                     <input type="email" id="returnee_email" class="form-control" name="returnee_email" required>
+                </div>
+                <div class="form-group">
+                    <label for="course">Course:</label>
+                    <input type="text" id="course" class="form-control" name="course" readonly>
                 </div>
                 <div class="form-group">
                     <label for="returnee_yearlevel">Year Level:</label>
