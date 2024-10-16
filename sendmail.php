@@ -186,6 +186,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         /* Media Queries for Responsive Design */
         @media (max-width: 750px) {
+            #uppernav{
+                max-width: 100%; /* Full width on smaller screens */
+            }
             body{
                 width: 90%;
                 margin: 0; /* Reset default margin */
@@ -199,6 +202,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             input, textarea {
                 padding: 8px; /* Adjust padding for smaller screens */
+            }
+        }
+
+        /* Styles for very small screens */
+        @media (min-width: 321px) and (max-width: 750px) {
+            #uppernav{
+                max-width: 100%; /* Adjust as needed */
+                padding: 5px; /* Adjust padding for smaller screens */
             }
         }
 
