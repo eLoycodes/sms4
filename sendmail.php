@@ -203,12 +203,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         @media (max-width: 576px) {
+            .email-container {
+                width: 90%; /* Adjust width for smaller screens */
+                padding: 15px; /* Adjust padding */
+            }
+
+            input, textarea {
+                padding: 8px; /* Adjust padding for smaller screens */
+            }
             h1 {
                 font-size: 1.5em; /* Slightly smaller heading */
             }
         }
 
         @media (max-width: 400px) {
+            .email-container {
+                width: 90%; /* Adjust width for smaller screens */
+                padding: 15px; /* Adjust padding */
+            }
             input, textarea {
                 padding: 6px; /* Further adjust padding for very small screens */
             }
