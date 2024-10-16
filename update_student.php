@@ -25,8 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $semester = trim($_POST['semester']);
     $studenttype = trim($_POST['studenttype']);
     $status = trim($_POST['status']);
+    $password = trim($_POST['password']);
 
-    if (empty($studentID) || empty($firstname) || empty($middlename) || empty($lastname) || empty($course) || empty($yearlevel) || empty($academicyear) || empty($semester) || empty($studenttype) || empty($status)) {
+    if (empty($studentID) || empty($firstname) || empty($middlename) || empty($lastname) || empty($course) || empty($yearlevel) || empty($academicyear) || empty($semester) || empty($studenttype) || empty($status) || empty($password)) {
         echo "All fields are required.";
         exit;
     }
@@ -84,10 +85,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                // If the student is being updated in the same table
                     if ($current_table === $insert_table){
                         // Update the existing record
-                        $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ? WHERE studentID = ?";
+                        $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ?, password = ? WHERE studentID = ?";
                         if ($update_stmt = $connect->prepare($update_sql)){
                             // The types string should match the number of variables (9 in this case)
-                            $update_stmt->bind_param('ssssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $studentID);
+                            $update_stmt->bind_param('sssssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $password, $studentID);
                             if ($update_stmt->execute()){
                                 echo "Student data updated successfully.";
                                 echo "<script>alert('Student data updated successfully.');</script>";
@@ -102,11 +103,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         }
                     } else{
                     // Insert into the new table
-                    $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     error_log("Inserting into table for year level: '$insert_table'");
 
                     if ($insert_stmt = $connect->prepare($insert_sql)) {
-                        $insert_stmt->bind_param('isssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status);
+                        $insert_stmt->bind_param('issssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $password);
                         if ($insert_stmt->execute()) {
                             $delete_sql = "DELETE FROM $current_table WHERE studentID = ?";
                             if ($delete_stmt = $connect->prepare($delete_sql)) {

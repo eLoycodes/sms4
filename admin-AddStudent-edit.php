@@ -478,6 +478,9 @@ $(document).ready(function() {
                             <option>Dropped</option>
                         </select>
                     </label>
+                    <label class="add-label" style="color: white;">Password
+                        <input type="text" placeholder="" class="input-field" name="password" required>
+                    </label>
                 </div>
                 <button type="submit" name="submit" class="apply-buttons">Update</button>
             </form>
