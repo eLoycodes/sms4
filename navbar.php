@@ -130,7 +130,4 @@ include("connect.php");
         </table><br><br><br>    
     </div>
 
-    <div id="uppernav">
-        <div class="upnav">
-        <button class="openbtn" onclick="toggleNav()">☰</button>
-    </div>
+   
