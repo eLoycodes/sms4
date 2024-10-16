@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
-    <!-- end navbar --><br><br>
+    <!-- end navbar -->
 
     <div class="email-container">
         <h1>Email</h1>
@@ -130,9 +130,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0; /* Reset default margin */
-            justify-content: center; /* Centering the container */
-            align-items: center; /* Centering vertically */
-            min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
+            display: flex;
+            flex-direction: column; /* Stack elements vertically */
+            align-items: center; /* Center elements */
         }
 
         .email-container {
@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             box-sizing: border-box; /* Ensure padding is included in width */
-            margin: auto; /* Center the container */
+            margin: 20px auto; /* Center the container and add margin */
         }
 
         h1 {
@@ -187,14 +187,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
-            body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0; /* Reset default margin */
-            justify-content: center; /* Centering the container */
-            align-items: center; /* Centering vertically */
-            min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
-        }
             .email-container {
                 width: 90%; /* Adjust width for smaller screens */
                 padding: 15px; /* Adjust padding */
@@ -206,49 +198,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         @media (max-width: 576px) {
-            body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0; /* Reset default margin */
-            justify-content: center; /* Centering the container */
-            align-items: center; /* Centering vertically */
-            min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
-        }
             h1 {
                 font-size: 1.5em; /* Slightly smaller heading */
             }
-            .email-container {
-                width: 90%; /* Adjust width for smaller screens */
-                padding: 15px; /* Adjust padding */
-            }
-
-            input, textarea {
-                padding: 8px; /* Adjust padding for smaller screens */
-            }
         }
-
-          
-        
 
         @media (max-width: 400px) {
-            body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0; /* Reset default margin */
-            justify-content: center; /* Centering the container */
-            align-items: center; /* Centering vertically */
-            min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
-        }
-            .email-container {
-                width: 90%; /* Adjust width for smaller screens */
-                padding: 15px; /* Adjust padding */
-            }
-
             input, textarea {
                 padding: 6px; /* Further adjust padding for very small screens */
             }
-
-           
         }
     </style>
 </body>
