@@ -12,13 +12,10 @@ if ($connect->connect_error) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Debugging: Print POST data
-    echo '<pre>';
-    var_dump($_POST);
-    echo '</pre>';
-
     // Get fields
     $admissionType = $_POST['admissionType'] ?? '';
+    $message = ""; // Initialize message variable
+    $redirect = "index.php"; // Set the redirect location
 
     // Handle new regular student registration
     if ($admissionType === "newRegular") {
@@ -37,9 +34,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel);
         
         if ($stmt->execute()) {
-            echo "New Regular Registration successful!<br>";
+            $message = "New Regular Registration successful!";
         } else {
-            echo "New Regular Registration failed: " . $stmt->error . "<br>";
+            $message = "New Regular Registration failed: " . $stmt->error;
         }
         $stmt->close();
     }
@@ -65,9 +62,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("sssssssssss", $firstname, $middlename, $lastname, $email, $course, $lastschool, $prevcourse, $prevyear, $datesubmitted, $status, $password);
         
         if ($stmt->execute()) {
-            echo "Transferee Registration successful!<br>";
+            $message = "Transferee Registration successful!";
         } else {
-            echo "Transferee Registration failed: " . $stmt->error . "<br>";
+            $message = "Transferee Registration failed: " . $stmt->error;
         }
         $stmt->close();
     }
@@ -91,16 +88,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bind_param("issssssss", $studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel, $status, $password);
         
         if ($stmt->execute()) {
-            echo "Returnee Registration successful!<br>";
+            $message = "Returnee Registration successful!";
         } else {
-            echo "Returnee Registration failed: " . $stmt->error . "<br>";
+            $message = "Returnee Registration failed: " . $stmt->error;
         }
         $stmt->close();
     } else {
-        echo "Invalid admission type.<br>";
+        $message = "Invalid admission type.";
     }
 
     // Close the connection
     $connect->close(); 
+
+    // Redirect to index.php with alert message
+    echo "<script>alert('$message');</script>";
+    echo "<script>window.open('$redirect', '_self');</script>";
+    exit(); // Prevent further execution
 }
 ?>
