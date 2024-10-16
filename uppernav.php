@@ -26,7 +26,7 @@ body {
 #uppernav {
     background-color: rgb(242, 247, 250);
     max-width: 100%; /* Ensure it doesn't exceed screen width */
-    height: 60px; /* Default height for the nav */
+    height: 40px; /* Default height for the nav */
 }
 
 /* Flexbox layout for upnav */
