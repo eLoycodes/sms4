@@ -8,6 +8,7 @@ include("connect.php");
         <div class="upnav">
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
+
     <style>
    /* Base styles */
    * {
@@ -25,7 +26,7 @@ body {
 
 /* Styles for the upper navigation */
 #uppernav {
-    background-color: #333;
+    background-color: rgb(242, 247, 250);
     max-width: 100%; /* Ensure it doesn't exceed screen width */
     height: 60px; /* Default height for the nav */
 }
