@@ -187,6 +187,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0; /* Reset default margin */
+            justify-content: center; /* Centering the container */
+            align-items: center; /* Centering vertically */
+            min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
+        }
             .email-container {
                 width: 90%; /* Adjust width for smaller screens */
                 padding: 15px; /* Adjust padding */
@@ -198,11 +206,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         @media (max-width: 576px) {
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0; /* Reset default margin */
+            justify-content: center; /* Centering the container */
+            align-items: center; /* Centering vertically */
+            min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
+        }
             h1 {
                 font-size: 1.5em; /* Slightly smaller heading */
             }
             .email-container {
-                width: 75%; /* Adjust width for smaller screens */
+                width: 90%; /* Adjust width for smaller screens */
                 padding: 15px; /* Adjust padding */
             }
 
@@ -217,8 +233,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
 
         @media (max-width: 400px) {
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0; /* Reset default margin */
+            justify-content: center; /* Centering the container */
+            align-items: center; /* Centering vertically */
+            min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
+        }
             .email-container {
-                width: 50%; /* Adjust width for smaller screens */
+                width: 90%; /* Adjust width for smaller screens */
                 padding: 15px; /* Adjust padding */
             }
 
