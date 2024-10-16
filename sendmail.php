@@ -68,7 +68,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <!-- navbar -->
-    <?php include('navbar.php'); ?>
+    <div class="navbar">
+        <!-- Your navigation links go here -->
+        <h2>Upper Nav</h2>
+    </div>
     <!-- end navbar -->
 
     <div class="email-container">
@@ -191,7 +194,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         /* Media Queries for Responsive Design */
-        @media (max-width: 768px) {
+        @media (max-width: 750px) {
+            .navbar {
+                width: 100%; /* Full width for navbar on small screens */
+                padding: 10px; /* Ensure padding is consistent */
+                text-align: center; /* Center text for smaller screens */
+            }
+
             .email-container {
                 width: 90%; /* Adjust width for smaller screens */
                 padding: 15px; /* Adjust padding */
@@ -203,24 +212,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         @media (max-width: 576px) {
-            .email-container {
-                width: 90%; /* Adjust width for smaller screens */
-                padding: 15px; /* Adjust padding */
-            }
-
-            input, textarea {
-                padding: 8px; /* Adjust padding for smaller screens */
-            }
             h1 {
                 font-size: 1.5em; /* Slightly smaller heading */
             }
         }
 
         @media (max-width: 400px) {
-            .email-container {
-                width: 90%; /* Adjust width for smaller screens */
-                padding: 15px; /* Adjust padding */
-            }
             input, textarea {
                 padding: 6px; /* Further adjust padding for very small screens */
             }
