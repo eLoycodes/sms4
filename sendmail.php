@@ -70,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- navbar -->
     <?php include('navbar.php'); ?>
     <!-- end navbar -->
-    
+
     <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
@@ -92,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="emailbtn" name="submit">Send Message</button>
         </form>
     </div>
-    
+
     <script type="text/javascript">
         // SideNav
         function toggleNav() {
@@ -124,16 +124,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             });
         }
     </script>
-    
+
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            padding: 20px;
             margin: 0; /* Reset default margin */
             display: flex;
             justify-content: center; /* Centering the container */
             align-items: center; /* Centering vertically */
-            min-height: 100vh; /* Full height for centering */
+            min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
         }
 
         .email-container {
@@ -144,6 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             box-sizing: border-box; /* Ensure padding is included in width */
+            margin: auto; /* Center the container */
         }
 
         h1 {
@@ -186,20 +188,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         /* Media Queries for Responsive Design */
-        @media (max-width: 1200px) {
-            .email-container {
-                padding: 15px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .email-container {
-                max-width: 90%; /* Allow more width on smaller devices */
-            }
-        }
-
         @media (max-width: 768px) {
             .email-container {
+                width: 90%; /* Adjust width for smaller screens */
                 padding: 15px; /* Adjust padding */
             }
 
@@ -209,10 +200,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         @media (max-width: 576px) {
-            .email-container {
-                padding: 10px; /* Adjust padding */
-            }
-
             h1 {
                 font-size: 1.5em; /* Slightly smaller heading */
             }
