@@ -86,13 +86,6 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<div class="grid-container">
-    <label class="add-label">Student ID
-        <input type="text" placeholder="" class="input-field" name="studentID">
-    </label>
-</div>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
