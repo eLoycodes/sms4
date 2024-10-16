@@ -46,6 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $mail->send();
         echo "<script>alert('Message has been sent');</script>";
+        echo "<script>window.open('sendmail.php','_self');</script>";
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
         
@@ -71,23 +72,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <?php include('navbar.php'); ?>
     <!-- end navbar -->
     <div class="container mt-5">
+        <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
             <div class="form-group">
                 <label for="name">To:</label>
-                <input type="text" id="name" name="name" class="form-control mx-auto" style="max-width: 500px;" required>
+                <input type="text" id="name" name="name" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control mx-auto" style="max-width: 500px;" required>
+                <input type="email" id="email" name="email" required>
             </div>
 
             <div class="form-group">
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" class="form-control mx-auto" rows="5" style="max-width: 500px;" required></textarea>
+                <textarea id="message" name="message" rows="5" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-success btn-block mx-auto" style="max-width: 200px;">Send Message</button>
+            <button type="submit">Send Message</button>
         </form>
     </div>
 
@@ -125,6 +127,110 @@ for (i = 0; i < dropdown.length; i++) {
   });
 }
 </script>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            max-width: 200px;
+            margin: 10px auto;
+            display: block;
+        }
+
+        button:hover {
+            background-color: #4cae4c;
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 15px;
+            }
+
+            button {
+                max-width: 180px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            input, textarea, button {
+                width: 95%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            input, textarea, button {
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            button {
+                max-width: 150px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            input, textarea {
+                padding: 8px;
+            }
+
+            button {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
 </body>
 </html>
 
