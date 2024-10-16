@@ -10,7 +10,11 @@ include("connect.php");
     </div>
     <style>
    /* Base styles */
-   body {
+   html {
+    width: 100%; /* Set the width of the html element to 100% */
+}
+
+body {
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
     overflow-x: hidden; /* Prevent horizontal scroll */
@@ -19,7 +23,7 @@ include("connect.php");
 /* Styles for the upper navigation */
 #uppernav {
     background-color: #333;
-    max-width: 120%; /* Ensure it doesn't exceed screen width */
+    max-width: 100%; /* Ensure it doesn't exceed screen width */
     height: 60px; /* Default height for the nav */
 }
 
@@ -97,4 +101,5 @@ include("connect.php");
         font-size: 18px;
     }
 }
+
 </style>
