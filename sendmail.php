@@ -32,8 +32,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->SMTPAuth   = true;
         $mail->Username   = 'bcpchiefregistrar00@gmail.com'; // SMTP username
         $mail->Password   = 'AdminChiefRegistrar00!!'; // SMTP password (use app password if 2FA is enabled)
-        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // or PHPMailer::ENCRYPTION_SMTPS
-        $mail->Port       = 587; // or 465 for SMTPS
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // or PHPMailer::ENCRYPTION_STARTTLS
+        $mail->Port       = 465; // or 587 for SMTPS
 
         // Recipients
         $mail->setFrom('bcpchiefregistrar00@gmail.com', 'Mailer'); // Use your email
