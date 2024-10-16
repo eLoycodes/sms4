@@ -151,37 +151,70 @@ if (isset($_POST['submit'])) {
                 }
                 }
                 else{   
-                    echo "<tr><td colspan='4'><p align='center'>No Record Found</td></tr>";
+                    echo "<tr><td colspan='10'><p align='center'>No Record Found</td></tr>";
                 }
                 ?>     
                   
 
                     <!-- Returnee Rows -->
-                    <tr class="returnee" style="display: none;">
-                        <td><input type="text" placeholder="Enter First Name"></td>
-                        <td><input type="text" placeholder="Enter Middle Name"></td>
-                        <td><input type="text" placeholder="Enter Last Name"></td>
-                        <td><input type="email" placeholder="Enter Email"></td>
-                        <td><input type="text" placeholder="Enter Last School"></td>
-                        <td><input type="text" placeholder="Enter Prev Course"></td>
-                        <td><input type="text" placeholder="Enter Prev Year"></td> 
-                        <td><input type="text" placeholder="Enter Status"></td>
-                        <td><button>Submit</button></td>
-                    </tr>
+                    <?php
+        
+                        include('connect.php'); 
+                        $s="SELECT * from returnee";
+                        $res=$connect->query($s);
+                        if($res->num_rows>0){
+                        $i=0;
+                        while($r=$res->fetch_assoc()){
+                            $i++;
+                        echo"
+                        <tr class='returnee'>
+                            <td style='font-size: 16px'>{$r["studentID"]}</td>
+                            <td style='font-size: 16px'>{$r["firstname"]}</td>
+                            <td style='font-size: 16px'>{$r["middlename"]}</td>
+                            <td style='font-size: 16px'>{$r["lastname"]}</td>
+                            <td style='font-size: 16px'>{$r["email"]}</td>
+                            <td style='font-size: 16px'>{$r["course"]}</td>  
+                            <td style='font-size: 16px'>{$r["yearlevel"]}</td>  
+                            <td><button><a href='admin-AddStudent-newold.php?userid={$r["returnee_id"]}'>Copy</a></button></td>	 
+                            </tr>
+                            "; 
+                    }
+                    }
+                    else{   
+                        echo "<tr><td colspan='10'><p align='center'>No Record Found</td></tr>";
+                    }
+                    ?>     
 
                     <!-- Transferee Rows -->
-                    <tr class="transferee" style="display: none;">
-                        <td><input type="text" placeholder="Enter First Name"></td>
-                        <td><input type="text" placeholder="Enter Middle Name"></td>
-                        <td><input type="text" placeholder="Enter Last Name"></td>
-                        <td><input type="email" placeholder="Enter Email"></td>
-                        <td><input type="text" placeholder="Enter Last School"></td>
-                        <td><input type="text" placeholder="Enter Prev Course"></td>
-                        <td><input type="text" placeholder="Enter Prev Year"></td>
-                        <td><input type="date"></td>
-                        <td><input type="text" placeholder="Enter Status"></td>
-                        <td><button>Submit</button></td>
-                    </tr>
+                    <?php
+        
+                            include('connect.php'); 
+                            $s="SELECT * from transferee";
+                            $res=$connect->query($s);
+                            if($res->num_rows>0){
+                            $i=0;
+                            while($r=$res->fetch_assoc()){
+                                $i++;
+                            echo"
+                            <tr class='transferee'>
+                                <td style='font-size: 16px'>{$r["firstname"]}</td>
+                                <td style='font-size: 16px'>{$r["middlename"]}</td>
+                                <td style='font-size: 16px'>{$r["lastname"]}</td>
+                                <td style='font-size: 16px'>{$r["email"]}</td>
+                                <td style='font-size: 16px'>{$r["lastschool"]}</td>
+                                <td style='font-size: 16px'>{$r["course"]}</td>
+                                <td style='font-size: 16px'>{$r["prevcourse"]}</td>
+                                <td style='font-size: 16px'>{$r["prevyear"]}</td>  
+                                <td style='font-size: 16px'>{$r["datesubmitted"]}</td>
+                                <td><button><a href='admin-AddStudent-newold.php?userid={$r["transferee_id"]}'>Copy</a></button></td>	 
+                                </tr>
+                                "; 
+                        }
+                        }
+                        else{   
+                            echo "<tr><td colspan='10'><p align='center'>No Record Found</td></tr>";
+                        }
+                        ?>     
                 </tbody>
             </table>
         </div>
