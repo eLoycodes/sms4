@@ -59,7 +59,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>Sms4</title>
     <link rel="stylesheet" href="css/styles.css">
@@ -70,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
-    <!-- end navbar -->
+    <!-- end navbar --><br><br>
     <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
