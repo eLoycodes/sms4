@@ -152,24 +152,58 @@ ini_set('display_errors', 1);
 </form>
 
 <script>
-   function showFields() {
-    const admissionType = document.getElementById("admissionType").value;
-    const fields = ["newRegularFields", "transfereeFields", "returneeFields"];
-    
-    // Hide all fields initially
-    fields.forEach(field => {
-        document.getElementById(field).classList.add("hidden");
+ 
+    function showFields() {
+        const admissionType = document.getElementById("admissionType").value;
+        const fields = ["newRegularFields", "transfereeFields", "returneeFields"];
+        
+        // Hide all fields initially
+        fields.forEach(field => {
+            document.getElementById(field).classList.add("hidden");
+        });
+
+        // Show the relevant field based on admission type
+        if (admissionType === "newRegular") {
+            document.getElementById("newRegularFields").classList.remove("hidden");
+        } else if (admissionType === "transferee") {
+            document.getElementById("transfereeFields").classList.remove("hidden");
+        } else if (admissionType === "returnee") {
+            document.getElementById("returneeFields").classList.remove("hidden");
+        }
+    }
+
+    // Validate form before submission
+    document.getElementById("registrationForm").addEventListener("submit", function(event) {
+        const admissionType = document.getElementById("admissionType").value;
+
+        if (admissionType === "newRegular") {
+            if (!document.getElementById("newRegular_firstname").value || 
+                !document.getElementById("newRegular_lastname").value ||
+                !document.getElementById("newRegular_email").value) {
+                alert("Please fill in all required fields for New Regular.");
+                event.preventDefault(); // Prevent form submission
+            }
+        } else if (admissionType === "transferee") {
+            if (!document.getElementById("transferee_firstname").value || 
+                !document.getElementById("transferee_lastname").value ||
+                !document.getElementById("transferee_email").value ||
+                !document.getElementById("transferee_lastschool").value ||
+                !document.getElementById("transferee_prevcourse").value) {
+                alert("Please fill in all required fields for Transferee.");
+                event.preventDefault(); // Prevent form submission
+            }
+        } else if (admissionType === "returnee") {
+            if (!document.getElementById("returnee_studentID").value || 
+                !document.getElementById("returnee_firstname").value ||
+                !document.getElementById("returnee_lastname").value ||
+                !document.getElementById("returnee_email").value) {
+                alert("Please fill in all required fields for Returnee.");
+                event.preventDefault(); // Prevent form submission
+            }
+        }
     });
 
-    // Show the relevant field based on admission type
-    if (admissionType === "newRegular") {
-        document.getElementById("newRegularFields").classList.remove("hidden");
-    } else if (admissionType === "transferee") {
-        document.getElementById("transfereeFields").classList.remove("hidden");
-    } else if (admissionType === "returnee") {
-        document.getElementById("returneeFields").classList.remove("hidden");
-    }
-}
+
 
 </script>
 
