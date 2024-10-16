@@ -6,61 +6,53 @@ if (!isset($_SESSION["id"])) {
     echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
 }
 
-$sql = "SELECT * FROM newstudent WHERE newstudent_id=newstudent_id";
-$res = $connect->query($sql);
-
-if ($res->num_rows > 0) {
-    $r = $res->fetch_assoc();
-}
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 if (isset($_POST['submit'])) {
-    ini_set("display_errors", 0);
-    require_once("connect.php");
-    
-    $newstudent_id = null;
+    $newstudent_id = $_POST["newstudent_id"] ?? null;
+    $studentID = $_POST["studentID"] ?? '';
+    $firstname = $_POST["firstname"] ?? '';
+    $middlename = $_POST["middlename"] ?? '';
+    $lastname = $_POST["lastname"] ?? '';
+    $course = $_POST["course"] ?? '';
+    $yearlevel = $_POST["yearlevel"] ?? '';
+    $semester = $_POST["semester"] ?? '';
+    $academicyear = $_POST["academicyear"] ?? '';
+    $studenttype = $_POST["studenttype"] ?? '';
+    $password = $_POST["password"] ?? '';
 
-    if ($_POST["newstudent_id"] != "" && $_POST["studentID"] != "" && $_POST["firstname"] != "" && $_POST["middlename"] != "" && $_POST["lastname"] != "" && $_POST["course"] != "" &&
-        $_POST["yearlevel"] != "" && $_POST["semester"] != "" && $_POST["academicyear"] != "" && 
-        $_POST["studenttype"] != "" && $_POST["password"] != "") {
+    // Check if all fields are filled
+    if ($newstudent_id && $studentID && $firstname && $middlename && $lastname && $course &&
+        $yearlevel && $semester && $academicyear && $studenttype && $password) {
 
-        $newstudent_id = $_POST["newstudent_id"];
-        $studentID = $_POST["studentID"];
-        $firstname = $_POST["firstname"];
-        $middlename = $_POST["middlename"];
-        $lastname = $_POST["lastname"];
-        $course = $_POST["course"];
-        $yearlevel = $_POST["yearlevel"];
-        $semester = $_POST["semester"];
-        $academicyear = $_POST["academicyear"];
-        $studenttype = $_POST["studenttype"];
-        $password = $_POST["password"];
+        // Determine the table based on year level
+        switch ($yearlevel) {
+            case '1st':
+                $table = 'firstyear';
+                break;
+            case '2nd':
+                $table = 'secondyear';
+                break;
+            case '3rd':
+                $table = 'thirdyear';
+                break;
+            case '4th':
+                $table = 'forthyear';
+                break;
+            default:
+                echo "<script>alert('Invalid year level');</script>";
+                exit;
+        }
 
         // Check if studentID already exists
         $check_sql = "SELECT * FROM $table WHERE studentID = '$studentID'";
         $check_result = $connect->query($check_sql);
-
-        if ($check_result->num_rows > 0) {
+        
+        if ($check_result && $check_result->num_rows > 0) {
             echo "<script>alert('Student ID already exists. Please use a different Student ID.');</script>";
         } else {
-            $table = "";
-            switch ($yearlevel) {
-                case '1st':
-                    $table = 'firstyear';
-                    break;
-                case '2nd':
-                    $table = 'secondyear';
-                    break;
-                case '3rd':
-                    $table = 'thirdyear';
-                    break;
-                case '4th':
-                    $table = 'forthyear';
-                    break;
-                default:
-                    echo "<script>alert('Invalid year level');</script>";
-                    exit;
-            }
-
             // Prepare the SQL statement for insertion
             $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype, status, password)  
             VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$password')";
@@ -85,6 +77,7 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
