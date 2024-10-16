@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
-    <!-- end navbar --><br>
+    <!-- end navbar --><br><br>
     <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
@@ -126,6 +126,7 @@ for (i = 0; i < dropdown.length; i++) {
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            padding: 20px;
         }
 
         .email-container {
@@ -194,19 +195,20 @@ for (i = 0; i < dropdown.length; i++) {
             }
         }
 
-        @media (max-width: 768px) {
+        @media (max-width: 750px) {
             input, textarea, .emailbtn {
                 width: 90%;
+                padding: 8px; /* Adjust padding for smaller screens */
+            }
+
+            h1 {
+                font-size: 1.5em; /* Slightly smaller heading */
             }
         }
 
         @media (max-width: 576px) {
             .email-container {
                 padding: 10px;
-            }
-
-            h1 {
-                font-size: 1.5em;
             }
 
             .emailbtn {
@@ -216,7 +218,7 @@ for (i = 0; i < dropdown.length; i++) {
 
         @media (max-width: 400px) {
             input, textarea {
-                padding: 8px;
+                padding: 6px; /* Further adjust padding for very small screens */
             }
 
             .emailbtn {
