@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
-    <!-- end navbar --><br><br>
+    <!-- end navbar --><br>
     <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
@@ -126,7 +126,6 @@ for (i = 0; i < dropdown.length; i++) {
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            padding: 20px;
         }
 
         .email-container {
