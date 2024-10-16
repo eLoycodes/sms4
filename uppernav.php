@@ -40,9 +40,7 @@ body {
 
 /* Extra Small Devices (less than 321px) */
 @media (max-width: 320px) {
-    #uppernav {
-        padding: 5px;
-    }
+   
 
     .openbtn {
         width: 100%;
@@ -53,9 +51,7 @@ body {
 
 /* Small Devices (321px to 750px) */
 @media (min-width: 321px) and (max-width: 750px) {
-    #uppernav {
-        padding: 5px;
-    }
+   
 
     .openbtn {
         padding: 8px 12px;
