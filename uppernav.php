@@ -10,7 +10,7 @@ include("connect.php");
     </div>
     <style>
    /* Base styles */
-body {
+   body {
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
     overflow-x: hidden; /* Prevent horizontal scroll */
@@ -19,10 +19,16 @@ body {
 /* Styles for the upper navigation */
 #uppernav {
     background-color: #333;
+    max-width: 120%; /* Ensure it doesn't exceed screen width */
+    height: 60px; /* Default height for the nav */
 }
 
 /* Flexbox layout for upnav */
-
+.upnav {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    height: 100%; /* Make sure the flex container takes the full height */
+}
 
 /* Button styles */
 .openbtn {
@@ -38,7 +44,9 @@ body {
 
 /* Extra Small Devices (less than 321px) */
 @media (max-width: 320px) {
-   
+    #uppernav {
+        height: 50px; /* Adjust height for small screens */
+    }
 
     .openbtn {
         width: 100%;
@@ -49,7 +57,9 @@ body {
 
 /* Small Devices (321px to 750px) */
 @media (min-width: 321px) and (max-width: 750px) {
-   
+    #uppernav {
+        height: 60px; /* Standard height for small devices */
+    }
 
     .openbtn {
         padding: 8px 12px;
@@ -65,6 +75,7 @@ body {
 /* Medium Devices (751px to 1024px) */
 @media (min-width: 751px) and (max-width: 1024px) {
     #uppernav {
+        height: 70px; /* Increased height for medium devices */
         padding: 10px;
     }
 
@@ -77,6 +88,7 @@ body {
 /* Large Devices (1025px and above) */
 @media (min-width: 1025px) {
     #uppernav {
+        height: 80px; /* Larger height for desktops */
         padding: 10px;
     }
 
@@ -85,5 +97,4 @@ body {
         font-size: 18px;
     }
 }
-
-      </style>
+</style>
