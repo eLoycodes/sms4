@@ -1,9 +1,5 @@
 <?php
 include("connect.php");
-session_start();
-if(!isset($_SESSION["id"])){
-		echo"<script>window.open('index.php?mes=Access Denied..','_self');</script>";
-	}	
 ?>
  
  <div id="sidenav" class="sidenav">
