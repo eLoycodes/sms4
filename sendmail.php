@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
-    <!-- end navbar -->
+    <!-- end navbar --><br><br>
 
     <div class="email-container">
         <h1>Email</h1>
@@ -129,9 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-           
             margin: 0; /* Reset default margin */
-           
             justify-content: center; /* Centering the container */
             align-items: center; /* Centering vertically */
             min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
@@ -139,7 +137,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         .email-container {
             width: 100%; /* Full width */
-            max-width: 400px; /* Maximum width for larger screens */
+            max-width: 600px; /* Maximum width for larger screens */
             background: white;
             padding: 20px;
             border-radius: 5px;
