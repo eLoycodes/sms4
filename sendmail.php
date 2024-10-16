@@ -130,7 +130,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0; /* Reset default margin */
-            overflow: none;
+            overflow-x: none;
+            overflow-y: none;
         }
 
         .email-container {
@@ -185,7 +186,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         /* Media Queries for Responsive Design */
         @media (max-width: 750px) {
-
+            body{
+                width: 90%;
+                margin: 0; /* Reset default margin */
+                overflow-x: none;
+                overflow-y: none;
+            }
             .email-container {
                 width: 90%; /* Adjust width for smaller screens */
                 padding: 15px; /* Adjust padding */
@@ -197,12 +203,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         @media (max-width: 576px) {
+            body{
+                width: 90%;
+                margin: 0; /* Reset default margin */
+                overflow-x: none;
+                overflow-y: none;
+            }
             h1 {
                 font-size: 1.5em; /* Slightly smaller heading */
             }
         }
 
         @media (max-width: 400px) {
+            body{
+                width: 90%;
+                margin: 0; /* Reset default margin */
+                overflow-x: none;
+                overflow-y: none;
+            }
             input, textarea {
                 padding: 6px; /* Further adjust padding for very small screens */
             }
