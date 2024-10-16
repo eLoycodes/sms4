@@ -79,7 +79,7 @@ if(!isset($_SESSION["id"])){
           }
         }
         else{   
-            echo "No Record Found";
+            echo "<tr><td colspan='10'>No Record Found</td></tr>";
         }
         ?>     
             <!--<tr class="reqf">
@@ -139,7 +139,7 @@ if(!isset($_SESSION["id"])){
           }
         }
         else{   
-            echo "No Record Found";
+          echo "<tr><td colspan='10'>No Record Found</td></tr>";
         }
         ?>     
             </table>
