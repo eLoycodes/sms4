@@ -195,6 +195,9 @@ if (isset($_POST['submit'])) {
                                   <option <?php echo (isset($userfetch['course']) && $userfetch['course'] == 'BsCpE') ? 'selected' : ''; ?>>BsCpE</option>
                               </select>
                           </label>
+                          <label class="add-label">Set Password
+                              <input type="text" name="password" value="<?php echo isset($userfetch['password']) ? $userfetch['password'] : ''; ?>" placeholder="" class="input-field">
+                          </label>
                           <label class="add-label">Year Level
                               <select name="yearlevel" class="input-field">
                                   <option disabled selected></option>
@@ -226,9 +229,6 @@ if (isset($_POST['submit'])) {
                                   <option <?php echo (isset($userfetch['studenttype']) && $userfetch['studenttype'] == 'Transferee') ? 'selected' : ''; ?>>Transferee</option>
                                   <option <?php echo (isset($userfetch['studenttype']) && $userfetch['studenttype'] == 'Octoberian') ? 'selected' : ''; ?>>Octoberian</option>
                               </select>
-                          </label>
-                          <label class="add-label">Set Password
-                              <input type="text" name="password" value="<?php echo isset($userfetch['password']) ? $userfetch['password'] : ''; ?>" placeholder="" class="input-field">
                           </label>
                       </div>
                   </div>           
