@@ -92,41 +92,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
     </div>
     <script type="text/javascript">
-// SideNav
-    function toggleNav() {
-    const sidenav = document.getElementById("sidenav");
-    const uppernav = document.getElementById("uppernav");
+        // SideNav
+        function toggleNav() {
+            const sidenav = document.getElementById("sidenav");
+            const uppernav = document.getElementById("uppernav");
 
-    if (sidenav.style.left === "0px") {
-        sidenav.style.left = "-280px";
-        uppernav.style.marginLeft = "0";
-    } else {
-        sidenav.style.left = "0";
-        uppernav.style.marginLeft = "280px";
-    }
-}
+            if (sidenav.style.left === "0px") {
+                sidenav.style.left = "-280px";
+                uppernav.style.marginLeft = "0";
+            } else {
+                sidenav.style.left = "0";
+                uppernav.style.marginLeft = "280px";
+            }
+        }
  
-// Dropdown
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
+        // Dropdown
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
 
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-    if (dropdownContent.style.display === "block") {
-      dropdownContent.style.display = "none";
-    } else {
-      dropdownContent.style.display = "block";
-    }
-  });
-}
-</script>
-<style>
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+    <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            padding: 20px;
+           
         }
 
         .email-container {
@@ -179,30 +179,21 @@ for (i = 0; i < dropdown.length; i++) {
         }
 
         /* Media Queries for Responsive Design */
-        @media (max-width: 1200px) {
+        @media (max-width: 750px) {
             .email-container {
                 padding: 15px;
             }
 
+            input, textarea {
+                padding: 12px; /* Increase padding for better touch targets */
+            }
+
             .emailbtn {
-                max-width: 180px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            input, textarea, .emailbtn {
-                width: 95%;
-            }
-        }
-
-        @media (max-width: 750px) {
-            input, textarea, .emailbtn {
-                width: 90%;
-                padding: 8px; /* Adjust padding for smaller screens */
+                max-width: 90%; /* Allow button to expand more on small screens */
             }
 
             h1 {
-                font-size: 1.5em; /* Slightly smaller heading */
+                font-size: 1.5em; /* Adjust heading size for small devices */
             }
         }
 
@@ -211,22 +202,24 @@ for (i = 0; i < dropdown.length; i++) {
                 padding: 10px;
             }
 
-            .emailbtn {
-                max-width: 150px;
+            h1 {
+                font-size: 1.4em; /* Further reduce heading size */
             }
         }
 
         @media (max-width: 400px) {
             input, textarea {
-                padding: 6px; /* Further adjust padding for very small screens */
+                padding: 10px; /* Adjust padding for very small screens */
             }
 
             .emailbtn {
                 padding: 8px 12px;
                 font-size: 0.9em;
+                max-width: 100%; /* Full width on very small screens */
             }
         }
     </style>
 </body>
 </html>
+
 
