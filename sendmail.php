@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>Sms4</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
@@ -70,7 +70,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- navbar -->
     <?php include('navbar.php'); ?>
     <!-- end navbar -->
-
+    <div id="uppernav">
+        <div class="upnav">
+        <button class="openbtn" onclick="toggleNav()">☰</button>
+    </div>
     <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
@@ -210,6 +213,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             #uppernav{
                 max-width: 100%; /* Adjust as needed */
                 padding: 5px; /* Adjust padding for smaller screens */
+            }
+            body{
+                width: 90%;
+                margin: 0; /* Reset default margin */
+                overflow-x: none;
+                overflow-y: none;
             }
         }
 
