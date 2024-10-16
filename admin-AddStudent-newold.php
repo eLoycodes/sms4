@@ -181,7 +181,6 @@ if (isset($_POST['submit'])) {
 
                     <!-- Transferee Rows -->
                     <?php
-        
                             include('connect.php'); 
                             $s="SELECT * from transferee";
                             $res=$connect->query($s);
