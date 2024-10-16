@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- navbar -->
     <?php include('navbar.php'); ?>
     <!-- end navbar -->
-    <div class="container mt-5">
+    <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
             <div class="form-group">
@@ -89,13 +89,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <textarea id="message" name="message" rows="5" required></textarea>
             </div>
 
-            <button type="submit">Send Message</button>
+            <button type="submit" class="emailbtn" name="submit">Send Message</button>
         </form>
     </div>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type="text/javascript">
 // SideNav
     function toggleNav() {
@@ -134,7 +130,7 @@ for (i = 0; i < dropdown.length; i++) {
             padding: 20px;
         }
 
-        .container {
+        .email-container {
             max-width: 600px;
             margin: auto;
             background: white;
@@ -166,7 +162,7 @@ for (i = 0; i < dropdown.length; i++) {
             box-sizing: border-box;
         }
 
-        button {
+        .emailbtn {
             background-color: #5cb85c;
             color: white;
             border: none;
@@ -179,35 +175,35 @@ for (i = 0; i < dropdown.length; i++) {
             display: block;
         }
 
-        button:hover {
+        .emailbtn:hover {
             background-color: #4cae4c;
         }
 
         /* Media Queries for Responsive Design */
         @media (max-width: 1200px) {
-            .container {
+            .email-container {
                 padding: 15px;
             }
 
-            button {
+            .emailbtn {
                 max-width: 180px;
             }
         }
 
         @media (max-width: 992px) {
-            input, textarea, button {
+            input, textarea, .emailbtn {
                 width: 95%;
             }
         }
 
         @media (max-width: 768px) {
-            input, textarea, button {
+            input, textarea, .emailbtn {
                 width: 90%;
             }
         }
 
         @media (max-width: 576px) {
-            .container {
+            .email-container {
                 padding: 10px;
             }
 
@@ -215,7 +211,7 @@ for (i = 0; i < dropdown.length; i++) {
                 font-size: 1.5em;
             }
 
-            button {
+            .emailbtn {
                 max-width: 150px;
             }
         }
@@ -225,7 +221,7 @@ for (i = 0; i < dropdown.length; i++) {
                 padding: 8px;
             }
 
-            button {
+            .emailbtn {
                 padding: 8px 12px;
                 font-size: 0.9em;
             }
