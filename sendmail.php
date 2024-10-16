@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Port       = 465; // or 587 for SMTPS
 
         // Recipients
-        $mail->setFrom('bcpchiefregistrar00@gmail.com', 'Mailer'); // Use your email
+        $mail->setFrom('bcpchiefregistrar00@gmail.com', 'Chief Registrar'); // Use your email
         $mail->addAddress($_POST['email'], $_POST['name']); // Recipient email and name
 
         // Content
@@ -57,73 +57,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Send Mail</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Contact Us</h1>
+    <div class="container mt-5">
+        <h1 class="text-center">Contact Us</h1>
         <form id="contactForm" method="POST" action="">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <div class="form-group">
+                <label for="name">To:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" class="form-control" required>
+            </div>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+            </div>
 
-            <button type="submit">Send Message</button>
+            <button type="submit" class="btn btn-success btn-block">Send Message</button>
         </form>
     </div>
 
-    <script src="script.js"></script>
-    <style>
-        body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
-}
-
-.container {
-    max-width: 500px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-label {
-    display: block;
-    margin: 10px 0 5px;
-}
-
-input, textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-button {
-    background-color: #5cb85c;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #4cae4c;
-}
-
-    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
