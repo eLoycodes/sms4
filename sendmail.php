@@ -70,6 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- navbar -->
     <?php include('navbar.php'); ?>
     <!-- end navbar -->
+    
     <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
@@ -106,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 uppernav.style.marginLeft = "280px";
             }
         }
- 
+
         // Dropdown
         var dropdown = document.getElementsByClassName("dropdown-btn");
         var i;
@@ -128,16 +129,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
+            margin: 0; /* Reset default margin */
+            display: flex;
+            justify-content: center; /* Centering the container */
+            align-items: center; /* Centering vertically */
+            min-height: 100vh; /* Full height for centering */
         }
 
         .email-container {
-            max-width: 400px; /* Set a maximum width for smaller devices */
-            width: 90%; /* Allow it to take 90% of the viewport */
-            margin: 0 auto; /* Center the container */
+            width: 100%; /* Full width */
+            max-width: 400px; /* Maximum width for larger screens */
             background: white;
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-sizing: border-box; /* Ensure padding is included in width */
         }
 
         h1 {
@@ -157,11 +163,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         input, textarea {
-            width: 100%;
+            width: 100%; /* Full width */
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 4px;
-            box-sizing: border-box;
+            box-sizing: border-box; /* Include padding in width */
         }
 
         .emailbtn {
@@ -171,10 +177,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 10px 15px;
             border-radius: 4px;
             cursor: pointer;
-            width: 100%;
-            max-width: 200px;
-            margin: 10px auto;
-            display: block;
+            width: 100%; /* Full width */
+            margin: 10px 0; /* Margin for spacing */
         }
 
         .emailbtn:hover {
@@ -182,25 +186,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         /* Media Queries for Responsive Design */
-        @media (max-width: 750px) {
+        @media (max-width: 1200px) {
             .email-container {
                 padding: 15px;
             }
         }
 
+        @media (max-width: 992px) {
+            .email-container {
+                max-width: 90%; /* Allow more width on smaller devices */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .email-container {
+                padding: 15px; /* Adjust padding */
+            }
+
+            input, textarea {
+                padding: 8px; /* Adjust padding for smaller screens */
+            }
+        }
+
         @media (max-width: 576px) {
             .email-container {
-                padding: 10px;
+                padding: 10px; /* Adjust padding */
             }
 
             h1 {
-                font-size: 1.5em;
+                font-size: 1.5em; /* Slightly smaller heading */
+            }
+
+            .emailbtn {
+                padding: 10px; /* Ensure button is comfortable to click */
             }
         }
 
         @media (max-width: 400px) {
             input, textarea {
-                padding: 8px; /* Adjust padding for very small screens */
+                padding: 6px; /* Further adjust padding for very small screens */
             }
 
             .emailbtn {
