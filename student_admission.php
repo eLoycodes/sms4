@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             die("Prepare failed: " . $connect->error);
         }
 
-        $stmt->bind_param("isssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel);
+        $stmt->bind_param("ssssss", $firstname, $middlename, $lastname, $email, $course, $yearlevel);
         
         if ($stmt->execute()) {
             echo "New Regular Registration successful!<br>";
