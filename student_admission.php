@@ -84,32 +84,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Handle returnee student registration
-    elseif ($admissionType === "returnee") {
-        $studentID = $_POST['returnee_studentID'] ?? '';
-        $firstname = $_POST['returnee_firstname'] ?? '';
-        $middlename = $_POST['returnee_middlename'] ?? '';
-        $lastname = $_POST['returnee_lastname'] ?? '';
-        $email = $_POST['returnee_email'] ?? '';
-        $course = $_POST['course'] ?? '';
-        $yearlevel = $_POST['returnee_yearlevel'] ?? '';
-        $status = NULL; // Default status
-        $password = NULL; // Default password
+    // Check that the student ID is a string
+elseif ($admissionType === "returnee") {
+    $studentID = $_POST['returnee_studentID'] ?? '';
+    $firstname = $_POST['returnee_firstname'] ?? '';
+    $middlename = $_POST['returnee_middlename'] ?? '';
+    $lastname = $_POST['returnee_lastname'] ?? '';
+    $email = $_POST['returnee_email'] ?? '';
+    $course = $_POST['course'] ?? '';
+    $yearlevel = $_POST['returnee_yearlevel'] ?? '';
+    $status = NULL; // Default status
+    $password = NULL; // Default password
 
-        echo "Processing returnee registration.<br>";
+    echo "Processing returnee registration.<br>";
 
-        $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        if ($stmt === false) {
-            die("Prepare failed: " . $connect->error);
-        }
+    // Change bind_param types if necessary
+    $stmt = $connect->prepare("INSERT INTO returnee (studentID, firstname, middlename, lastname, email, course, yearlevel, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    if ($stmt === false) {
+        die("Prepare failed: " . $connect->error);
+    }
 
-        $stmt->bind_param("issssssss", $studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel, $status, $password);
-        
-        if ($stmt->execute()) {
-            echo "Returnee Registration successful!<br>";
-        } else {
-            echo "Returnee Registration failed: " . $stmt->error . "<br>";
-        }
-        $stmt->close();
+    // Adjust the parameter types if studentID is a string
+    $stmt->bind_param("sssssssss", $studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel, $status, $password);
+    
+    if ($stmt->execute()) {
+        echo "Returnee Registration successful!<br>";
+    } else {
+        echo "Returnee Registration failed: " . $stmt->error . "<br>";
+    }
+    $stmt->close();
+}
+
     } else {
         echo "Invalid admission type.<br>";
     }

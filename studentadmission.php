@@ -74,9 +74,6 @@ ini_set('display_errors', 1);
             <label for="newRegular_yearlevel">Year Level:</label>
             <select id="newRegular_yearlevel" class="form-control" name="newRegular_yearlevel">
                 <option value="1st">1st</option>
-                <option value="2nd">2nd</option>
-                <option value="3rd">3rd</option>
-                <option value="4th">4th</option>
             </select>
         </div>
     </div>
