@@ -2,32 +2,28 @@
 
 include("connect.php");
 session_start();
-if(!isset($_SESSION["id"])){
-		echo"<script>window.open('index.php?mes=Access Denied..','_self');</script>";
-	}	
+if (!isset($_SESSION["id"])) {
+    echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
+}
 
-  $sql="SELECT * FROM newstudent WHERE newstudent_id=newstudent_id";
-  $res=$connect->query($sql);
+$sql = "SELECT * FROM newstudent WHERE newstudent_id=newstudent_id";
+$res = $connect->query($sql);
 
-  if($res->num_rows>0)
-  {
-    $r=$res->fetch_assoc();
-  }	
+if ($res->num_rows > 0) {
+    $r = $res->fetch_assoc();
+}
 
-?>
-
-<?php 
-include("connect.php");
 if (isset($_POST['submit'])) {
     ini_set("display_errors", 0);
     require_once("connect.php");
+    
     $newstudent_id = null;
-   
-    if ($_POST["newstudent_id"] != "" && $_POST["studentID"] != "" && $_POST["firstname"] != "" && $_POST["middlename"] != "" && $_POST["lastname"] != "" && $_POST["course"] != "" && 
-        $_POST["yearlevel"] != "" && $_POST["semester"] != "" && $_POST["academicyear"] != "" && 
-        $_POST["studenttype"] != "" && $_POST["password"] != "")  {
 
-        $newstudent_id = $_POST["newstudent_id"]; 
+    if ($_POST["newstudent_id"] != "" && $_POST["studentID"] != "" && $_POST["firstname"] != "" && $_POST["middlename"] != "" && $_POST["lastname"] != "" && $_POST["course"] != "" &&
+        $_POST["yearlevel"] != "" && $_POST["semester"] != "" && $_POST["academicyear"] != "" && 
+        $_POST["studenttype"] != "" && $_POST["password"] != "") {
+
+        $newstudent_id = $_POST["newstudent_id"];
         $studentID = $_POST["studentID"];
         $firstname = $_POST["firstname"];
         $middlename = $_POST["middlename"];
@@ -39,48 +35,63 @@ if (isset($_POST['submit'])) {
         $studenttype = $_POST["studenttype"];
         $password = $_POST["password"];
 
-        $table = "";
-        switch ($yearlevel) {
-            case '1st':
-                $table = 'firstyear';
-                break;
-            case '2nd':
-                $table = 'secondyear';
-                break;
-            case '3rd':
-                $table = 'thirdyear';
-                break;
-            case '4th':
-                $table = 'forthyear';
-                break;
-            default:
-                echo "<script>alert('Invalid year level');</script>";
-                exit;
-        }
+        // Check if studentID already exists
+        $check_sql = "SELECT * FROM $table WHERE studentID = '$studentID'";
+        $check_result = $connect->query($check_sql);
+
+        if ($check_result->num_rows > 0) {
+            echo "<script>alert('Student ID already exists. Please use a different Student ID.');</script>";
+        } else {
+            $table = "";
+            switch ($yearlevel) {
+                case '1st':
+                    $table = 'firstyear';
+                    break;
+                case '2nd':
+                    $table = 'secondyear';
+                    break;
+                case '3rd':
+                    $table = 'thirdyear';
+                    break;
+                case '4th':
+                    $table = 'forthyear';
+                    break;
+                default:
+                    echo "<script>alert('Invalid year level');</script>";
+                    exit;
+            }
 
             // Prepare the SQL statement for insertion
-        $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype, status, password)  
-        VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$password')";
+            $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype, status, password)  
+            VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$password')";
 
-        if ($connect->query($sql) === TRUE) {
-            // After successful registration, delete from newstudent table
-            $delete_sql = "DELETE FROM newstudent WHERE newstudent_id='$newstudent_id'";
-            if ($connect->query($delete_sql) === TRUE) {
-                echo "<script>
-                        alert('Successfully Registered and removed from new student list');
-                        window.location.href = 'admin-AddStudent-newold.php';
-                      </script>";
+            if ($connect->query($sql) === TRUE) {
+                // After successful registration, delete from newstudent table
+                $delete_sql = "DELETE FROM newstudent WHERE newstudent_id='$newstudent_id'";
+                if ($connect->query($delete_sql) === TRUE) {
+                    echo "<script>
+                            alert('Successfully Registered and removed from new student list');
+                            window.location.href = 'admin-AddStudent-newold.php';
+                          </script>";
+                } else {
+                    echo "Error deleting record: " . $connect->error;
+                }
             } else {
-                echo "Error deleting record: " . $connect->error;
+                echo "Error: " . $sql . "<br>" . $connect->error;
             }
-        } else {
-            echo "Error: " . $sql . "<br>" . $connect->error;
         }
     } else {
         echo "<script>alert('Please fill all the fields');</script>";
     }
 }
 ?>
+
+<div class="grid-container">
+    <label class="add-label">Student ID
+        <input type="text" placeholder="" class="input-field" name="studentID">
+    </label>
+</div>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -98,6 +109,7 @@ if (isset($_POST['submit'])) {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
+    <?php include('uppernav.php'); ?>
     <!-- end navbar -->
 
     <div class="newold-frame1">
@@ -117,6 +129,7 @@ if (isset($_POST['submit'])) {
               <th class="rf">First Name</th>
               <th class="rf">Middle Name</th>
               <th class="rf">Last Name</th>
+              <th class="rf">Email</th>
               <th class="rf">Course</th>
               <th class="rf">Year&nbspLevel</th>   
               <th class="rf">Action</th>    
@@ -136,6 +149,7 @@ if (isset($_POST['submit'])) {
                 <td>{$r["firstname"]}</td>
                 <td>{$r["middlename"]}</td>
                 <td>{$r["lastname"]}</td>
+                <td>{$r["email"]}</td>
                 <td>{$r["course"]}</td>  
                 <td>{$r["yearlevel"]}</td>  
                  <td><button><a href='admin-AddStudent-newold.php?userid={$r["newstudent_id"]}'>Copy</a></button></td>	 
