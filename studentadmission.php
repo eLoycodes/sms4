@@ -152,20 +152,25 @@ ini_set('display_errors', 1);
 </form>
 
 <script>
-    function showFields() {
-        const admissionType = document.getElementById("admissionType").value;
-        document.getElementById("newRegularFields").classList.add("hidden");
-        document.getElementById("transfereeFields").classList.add("hidden");
-        document.getElementById("returneeFields").classList.add("hidden");
+   function showFields() {
+    const admissionType = document.getElementById("admissionType").value;
+    const fields = ["newRegularFields", "transfereeFields", "returneeFields"];
+    
+    // Hide all fields initially
+    fields.forEach(field => {
+        document.getElementById(field).classList.add("hidden");
+    });
 
-        if (admissionType === "newRegular") {
-            document.getElementById("newRegularFields").classList.remove("hidden");
-        } else if (admissionType === "transferee") {
-            document.getElementById("transfereeFields").classList.remove("hidden");
-        } else if (admissionType === "returnee") {
-            document.getElementById("returneeFields").classList.remove("hidden");
-        }
+    // Show the relevant field based on admission type
+    if (admissionType === "newRegular") {
+        document.getElementById("newRegularFields").classList.remove("hidden");
+    } else if (admissionType === "transferee") {
+        document.getElementById("transfereeFields").classList.remove("hidden");
+    } else if (admissionType === "returnee") {
+        document.getElementById("returneeFields").classList.remove("hidden");
     }
+}
+
 </script>
 
 <style>
