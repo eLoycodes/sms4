@@ -33,7 +33,7 @@ body {
 .upnav {
     display: flex; /* Use flexbox for layout */
     align-items: center; /* Center items vertically */
-    height: 100%; /* Make sure the flex container takes the full height */
+    height: 80%; /* Make sure the flex container takes the full height */
 }
 
 /* Button styles */
