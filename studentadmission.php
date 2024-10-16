@@ -153,22 +153,31 @@ ini_set('display_errors', 1);
 
 <script>
  
-    function showFields() {
+ function showFields() {
         const admissionType = document.getElementById("admissionType").value;
         const fields = ["newRegularFields", "transfereeFields", "returneeFields"];
-        
-        // Hide all fields initially
+
+        // Hide all fields initially and remove required attributes
         fields.forEach(field => {
-            document.getElementById(field).classList.add("hidden");
+            const fieldSet = document.getElementById(field);
+            fieldSet.classList.add("hidden");
+            const inputs = fieldSet.querySelectorAll('input, select');
+            inputs.forEach(input => input.removeAttribute('required'));
         });
 
-        // Show the relevant field based on admission type
+        // Show the relevant field based on admission type and set required attributes
         if (admissionType === "newRegular") {
-            document.getElementById("newRegularFields").classList.remove("hidden");
+            const newRegularFields = document.getElementById("newRegularFields");
+            newRegularFields.classList.remove("hidden");
+            newRegularFields.querySelectorAll('input, select').forEach(input => input.setAttribute('required', ''));
         } else if (admissionType === "transferee") {
-            document.getElementById("transfereeFields").classList.remove("hidden");
+            const transfereeFields = document.getElementById("transfereeFields");
+            transfereeFields.classList.remove("hidden");
+            transfereeFields.querySelectorAll('input, select').forEach(input => input.setAttribute('required', ''));
         } else if (admissionType === "returnee") {
-            document.getElementById("returneeFields").classList.remove("hidden");
+            const returneeFields = document.getElementById("returneeFields");
+            returneeFields.classList.remove("hidden");
+            returneeFields.querySelectorAll('input, select').forEach(input => input.setAttribute('required', ''));
         }
     }
 
