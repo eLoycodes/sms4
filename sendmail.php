@@ -201,13 +201,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             h1 {
                 font-size: 1.5em; /* Slightly smaller heading */
             }
+            .email-container {
+                width: 75%; /* Adjust width for smaller screens */
+                padding: 15px; /* Adjust padding */
+            }
+
+            input, textarea {
+                padding: 8px; /* Adjust padding for smaller screens */
+            }
+        }
 
             .emailbtn {
                 padding: 10px; /* Ensure button is comfortable to click */
             }
-        }
+        
 
         @media (max-width: 400px) {
+            .email-container {
+                width: 50%; /* Adjust width for smaller screens */
+                padding: 15px; /* Adjust padding */
+            }
+
             input, textarea {
                 padding: 6px; /* Further adjust padding for very small screens */
             }
