@@ -139,12 +139,12 @@ if (isset($_POST['submit'])) {
                         $i++;
                     echo"
                     <tr class='new'>
-                        <td style='font-size: 14px'>{$r["firstname"]}</td>
-                        <td>{$r["middlename"]}</td>
-                        <td>{$r["lastname"]}</td>
-                        <td>{$r["email"]}</td>
-                        <td>{$r["course"]}</td>  
-                        <td>{$r["yearlevel"]}</td>  
+                        <td style='font-size: 16px'>{$r["firstname"]}</td>
+                        <td style='font-size: 16px'>{$r["middlename"]}</td>
+                        <td style='font-size: 16px'>{$r["lastname"]}</td>
+                        <td style='font-size: 16px'>{$r["email"]}</td>
+                        <td style='font-size: 16px'>{$r["course"]}</td>  
+                        <td style='font-size: 16px'>{$r["yearlevel"]}</td>  
                         <td><button><a href='admin-AddStudent-newold.php?userid={$r["newstudent_id"]}'>Copy</a></button></td>	 
                         </tr>
                         "; 
