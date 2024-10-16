@@ -126,12 +126,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-           
         }
 
         .email-container {
-            max-width: 600px;
-            margin: auto;
+            max-width: 600px;  /* Set maximum width for larger screens */
+            width: 90%;  /* Set width to 90% for smaller screens */
+            margin: 20px auto;  /* Center the container */
             background: white;
             padding: 20px;
             border-radius: 5px;
@@ -141,6 +141,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         h1 {
             text-align: center;
             color: #333;
+            margin-bottom: 20px;  /* Add spacing below the heading */
         }
 
         .form-group {
@@ -221,5 +222,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </body>
 </html>
+
 
 
