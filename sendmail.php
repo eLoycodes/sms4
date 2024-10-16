@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
-    <!-- end navbar --><br><br>
+    <!-- end navbar -->
     <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
@@ -91,6 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="emailbtn" name="submit">Send Message</button>
         </form>
     </div>
+    
     <script type="text/javascript">
         // SideNav
         function toggleNav() {
@@ -122,6 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             });
         }
     </script>
+    
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -129,9 +131,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         .email-container {
-            max-width: 600px;  /* Set maximum width for larger screens */
-            width: 90%;  /* Set width to 90% for smaller screens */
-            margin: 20px auto;  /* Center the container */
+            max-width: 400px; /* Set a maximum width for smaller devices */
+            width: 90%; /* Allow it to take 90% of the viewport */
+            margin: 0 auto; /* Center the container */
             background: white;
             padding: 20px;
             border-radius: 5px;
@@ -141,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         h1 {
             text-align: center;
             color: #333;
-            margin-bottom: 20px;  /* Add spacing below the heading */
+            margin-bottom: 20px;
         }
 
         .form-group {
@@ -184,18 +186,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             .email-container {
                 padding: 15px;
             }
-
-            input, textarea {
-                padding: 12px; /* Increase padding for better touch targets */
-            }
-
-            .emailbtn {
-                max-width: 90%; /* Allow button to expand more on small screens */
-            }
-
-            h1 {
-                font-size: 1.5em; /* Adjust heading size for small devices */
-            }
         }
 
         @media (max-width: 576px) {
@@ -204,24 +194,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
 
             h1 {
-                font-size: 1.4em; /* Further reduce heading size */
+                font-size: 1.5em;
             }
         }
 
         @media (max-width: 400px) {
             input, textarea {
-                padding: 10px; /* Adjust padding for very small screens */
+                padding: 8px; /* Adjust padding for very small screens */
             }
 
             .emailbtn {
                 padding: 8px 12px;
                 font-size: 0.9em;
-                max-width: 100%; /* Full width on very small screens */
             }
         }
     </style>
 </body>
 </html>
+
 
 
 
