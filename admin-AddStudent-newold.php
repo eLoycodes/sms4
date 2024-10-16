@@ -52,6 +52,7 @@ if (isset($_POST['submit'])) {
         
         if ($check_result && $check_result->num_rows > 0) {
             echo "<script>alert('Student ID already exists. Please use a different Student ID.');</script>";
+            echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
         } else {
             // Prepare the SQL statement for insertion
             $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype, status, password)  
@@ -74,6 +75,7 @@ if (isset($_POST['submit'])) {
         }
     } else {
         echo "<script>alert('Please fill all the fields');</script>";
+        echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
     }
 }
 ?>
@@ -104,52 +106,69 @@ if (isset($_POST['submit'])) {
           <h1 class="dashboardAnnouncement">Add Student</h1>
         </div>
 
-        <div class="newold-form">
-          <div class="edit-search">
-            <h3 class="edit-heading" style="font-size: 18px; margin-top: -4%;">New Student</h3>
-        
-          </div>
-        <table class="newold-table">
-            <tr>
-           
-              <th class="rf">First Name</th>
-              <th class="rf">Middle Name</th>
-              <th class="rf">Last Name</th>
-              <th class="rf">Email</th>
-              <th class="rf">Course</th>
-              <th class="rf">Year&nbspLevel</th>   
-              <th class="rf">Action</th>    
-            </tr>
-            <?php
-        
-            include('connect.php'); 
-              $s="SELECT * from newstudent";
-              $res=$connect->query($s);
-              if($res->num_rows>0){
-              $i=0;
-              while($r=$res->fetch_assoc()){
-                $i++;
-             echo"
-              <tr>
-               
-                <td>{$r["firstname"]}</td>
-                <td>{$r["middlename"]}</td>
-                <td>{$r["lastname"]}</td>
-                <td>{$r["email"]}</td>
-                <td>{$r["course"]}</td>  
-                <td>{$r["yearlevel"]}</td>  
-                 <td><button><a href='admin-AddStudent-newold.php?userid={$r["newstudent_id"]}'>Copy</a></button></td>	 
-                </tr>
-                "; 
-          }
-        }
-        else{   
-            echo "<tr><td colspan='4'><p align='center'>No Record Found</td></tr>";
-        }
-        ?>     
-          </table>
+        <div class="container">
+        <div class="buttons">
+            <button onclick="showTable('new')">New Student</button>
+            <button onclick="showTable('returnee')">Returnee</button>
+            <button onclick="showTable('transferee')">Transferee</button>
         </div>
+        
+        <div class="table-container">
+            <table>
+                <thead id="tableHeader">
+                    <tr>
+                        <th class="rf">First Name</th>
+                        <th class="rf">Middle Name</th>
+                        <th class="rf">Last Name</th>
+                        <th class="rf">Email</th>
+                        <th class="rf">Course</th>
+                        <th class="rf">Year Level</th>   
+                        <th class="rf">Action</th>    
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- New Student Rows -->
+                    <tr class="new">
+                        <td class="req">Evaluation Grade</td>   
+                        <td class="req">Evaluation Grade</td>   
+                        <td class="req">Evaluation Grade</td>
+                        <td class="req">Evaluation Grade</td>   
+                        <td class="req">Evaluation Grade</td>
+                        <td class="req">Evaluation Grade</td>   
+                        <td><button>Submit</button></td>
+                    </tr>
+                    
 
+                    <!-- Returnee Rows -->
+                    <tr class="returnee" style="display: none;">
+                        <td><input type="text" placeholder="Enter First Name"></td>
+                        <td><input type="text" placeholder="Enter Middle Name"></td>
+                        <td><input type="text" placeholder="Enter Last Name"></td>
+                        <td><input type="email" placeholder="Enter Email"></td>
+                        <td><input type="text" placeholder="Enter Last School"></td>
+                        <td><input type="text" placeholder="Enter Prev Course"></td>
+                        <td><input type="text" placeholder="Enter Prev Year"></td> 
+                        <td><input type="text" placeholder="Enter Status"></td>
+                        <td><button>Submit</button></td>
+                    </tr>
+
+                    <!-- Transferee Rows -->
+                    <tr class="transferee" style="display: none;">
+                        <td><input type="text" placeholder="Enter First Name"></td>
+                        <td><input type="text" placeholder="Enter Middle Name"></td>
+                        <td><input type="text" placeholder="Enter Last Name"></td>
+                        <td><input type="email" placeholder="Enter Email"></td>
+                        <td><input type="text" placeholder="Enter Last School"></td>
+                        <td><input type="text" placeholder="Enter Prev Course"></td>
+                        <td><input type="text" placeholder="Enter Prev Year"></td>
+                        <td><input type="date"></td>
+                        <td><input type="text" placeholder="Enter Status"></td>
+                        <td><button>Submit</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
        
         <?php
         include('connect.php'); 
@@ -343,6 +362,71 @@ window.onclick = function(event) {
 
     </script>
 
+
+
+<script>
+        function showTable(type) {
+            // Hide all rows first
+            document.querySelectorAll('tr.new, tr.returnee, tr.transferee').forEach(row => {
+                row.style.display = 'none';
+            });
+
+            // Change table header based on type and show appropriate rows
+            const header = document.getElementById('tableHeader');
+            if (type === 'new') {
+                header.innerHTML = `
+                    <tr>
+                        <th class="rf">First&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Middle&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Last&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Email</th>
+                        <th class="rf">Course</th>
+                        <th class="rf">Year&nbsp;&nbsp;&nbsp;Level</th>   
+                        <th class="rf">Action</th>    
+                    </tr>`;
+                document.querySelectorAll('tr.new').forEach(row => {
+                    row.style.display = '';
+                });
+            } else if (type === 'returnee') {
+                header.innerHTML = `
+                    <tr>
+                        <th class="rf">Student&nbsp;&nbsp;&nbsp;ID</th>
+                        <th class="rf">First&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Middle&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Last&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Email</th>
+                        <th class="rf">Course</th>
+                        <th class="rf">Year&nbsp;&nbsp;&nbsp;Level</th>
+                        <th class="rf">Status</th>
+                        <th class="rf">Action</th>
+                    </tr>`;
+                document.querySelectorAll('tr.returnee').forEach(row => {
+                    row.style.display = '';
+                });
+            } else if (type === 'transferee') {
+                header.innerHTML = `
+                    <tr>
+                        <th class="rf">First&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Middle&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Last&nbsp;&nbsp;&nbsp;Name</th>
+                        <th class="rf">Email</th>
+                        <th class="rf">Last&nbsp;&nbsp;&nbsp;School</th>
+                        <th class="rf">Prev&nbsp;&nbsp;&nbsp;Course</th>
+                        <th class="rf">Prev&nbsp;&nbsp;&nbsp;Year</th>
+                        <th class="rf">Date&nbsp;&nbsp;&nbsp;Submitted</th>
+                        <th class="rf">Status</th>
+                        <th class="rf">Action</th>
+                    </tr>`;
+                document.querySelectorAll('tr.transferee').forEach(row => {
+                    row.style.display = '';
+                });
+            }
+        }
+
+        // Initially show new student rows
+        showTable('new');
+    </script>
+
 <style>
   .add-form{
   background: white;
@@ -431,6 +515,69 @@ select {
     width: 70%; /* Match the width of select fields to input fields */
     padding: 10px; /* Optional: add padding for select fields */
 }
+
+
+        /* Basic styles for the table */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .container{
+            overflow-x: auto;
+            padding: 20px;
+            width: 80%;
+            margin-top: -18%;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 3px 3px 10px rgb(188, 188, 188);
+        }
+
+        .table-container {
+            overflow-x: auto; /* Allows horizontal scrolling on small screens */
+            width: 100%; /* Ensures the container takes full width */
+        }
+
+        table{
+            width: 100%;
+            max-width: 1500px; /* Adjust max-width for landscape */
+            border-collapse: collapse;
+            table-layout: auto; /* Ensures the table adjusts to content */
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #033683;
+            color: white;
+        }
+
+        .buttons {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 12px; /* Adjusts font size for smaller screens */
+                padding: 6px; /* Reduces padding for smaller screens */
+            }
+        }
+  
 
 </style>
 </body>
