@@ -119,15 +119,9 @@ include("connect.php");
             <td>
               <ul class="nav-links">
               <li>
-                <a href="#">
+                <a href="sendmail.php">
                   <i class='bx bx-file' ></i>
-                  <span class="links_name">Non Academic Affairs</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i class='bx bx-file' ></i>
-                  <span class="links_name">Appointment</span>
+                  <span class="links_name">Email</span>
                 </a>
               </li>
             </ul>   

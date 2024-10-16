@@ -58,25 +58,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <title>Send Mail</title>
+    <title>Contact Form</title>
 </head>
 <body>
+    <!-- navbar -->
+    <?php include('navbar.php'); ?>
+    <!-- end navbar -->
     <div class="container mt-5">
-        <h1 class="text-center">Contact Us</h1>
+        <h1 class="text-center">Send Email</h1>
         <form id="contactForm" method="POST" action="">
             <div class="form-group">
-                <label for="name">To:</label>
-                <input type="text" id="name" name="name" class="form-control" required>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" style="width: 75%;" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" required>
+                <input type="email" id="email" name="email" class="form-control" style="width: 75%;" required>
             </div>
 
             <div class="form-group">
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+                <textarea id="message" name="message" class="form-control" rows="5" style="width: 75%;" required></textarea>
             </div>
 
             <button type="submit" class="btn btn-success btn-block">Send Message</button>
@@ -88,3 +91,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
