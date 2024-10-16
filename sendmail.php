@@ -130,13 +130,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0; /* Reset default margin */
-           
-            flex-direction: column; /* Stack elements vertically */
-            align-items: center; /* Center elements */
         }
 
-        .upnav{
-            max-width: 100%;
+        .navbar {
+            width: 100%; /* Full width for navbar */
+            background-color: #333; /* Example background color */
+            color: white; /* Example text color */
+            padding: 10px; /* Example padding */
+            box-sizing: border-box; /* Include padding in width */
         }
 
         .email-container {
@@ -215,6 +216,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </style>
 </body>
 </html>
+
 
 
 
