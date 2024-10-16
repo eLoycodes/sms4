@@ -135,6 +135,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             align-items: center; /* Center elements */
         }
 
+        .upnav{
+            max-width: 100%;
+        }
+
         .email-container {
             width: 100%; /* Full width */
             max-width: 600px; /* Maximum width for larger screens */
