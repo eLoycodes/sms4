@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0; /* Reset default margin */
-            display: flex;
+           
             flex-direction: column; /* Stack elements vertically */
             align-items: center; /* Center elements */
         }
