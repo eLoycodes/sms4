@@ -59,31 +59,35 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <title>Sms4</title>
     <link rel="stylesheet" href="css/styles.css">
-    <title>Contact Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 </head>
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
     <!-- end navbar -->
-    <div class="container mt-5"><br><br>
+    <div class="container mt-5">
         <form id="contactForm" method="POST" action="">
             <div class="form-group">
                 <label for="name">To:</label>
-                <input type="text" id="name" name="name" class="form-control" style="width: 75%;" required>
+                <input type="text" id="name" name="name" class="form-control mx-auto" style="max-width: 500px;" required>
             </div>
 
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" class="form-control" style="width: 75%;" required>
+                <input type="email" id="email" name="email" class="form-control mx-auto" style="max-width: 500px;" required>
             </div>
 
             <div class="form-group">
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" class="form-control" rows="5" style="width: 60%;" required></textarea>
+                <textarea id="message" name="message" class="form-control mx-auto" rows="5" style="max-width: 500px;" required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-success btn-block">Send Message</button>
+            <button type="submit" class="btn btn-success btn-block mx-auto" style="max-width: 200px;">Send Message</button>
         </form>
     </div>
 
