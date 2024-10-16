@@ -25,7 +25,7 @@ if (isset($_POST['submit'])) {
    
     if ($_POST["newstudent_id"] != "" && $_POST["studentID"] != "" && $_POST["firstname"] != "" && $_POST["middlename"] != "" && $_POST["lastname"] != "" && $_POST["course"] != "" && 
         $_POST["yearlevel"] != "" && $_POST["semester"] != "" && $_POST["academicyear"] != "" && 
-        $_POST["studenttype"] != "" $_POST["password"] != "")  {
+        $_POST["studenttype"] != "" && $_POST["password"] != "")  {
 
         $newstudent_id = $_POST["newstudent_id"]; 
         $studentID = $_POST["studentID"];

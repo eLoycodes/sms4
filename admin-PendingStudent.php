@@ -68,6 +68,7 @@ if(!isset($_SESSION["id"])){
                 <td>{$r["middlename"]}</td>
                 <td>{$r["firstname"]}</td>
                 <td>{$r["lastname"]}</td>
+                <td>{$r["email"]}</td>
                 <td>{$r["course"]}</td> 
                 <td>{$r["yearlevel"]}</td>  
                 <td>{$r["status"]}</td> 
