@@ -9,7 +9,7 @@ include("connect.php");
         <button class="openbtn" onclick="toggleNav()">☰</button>
     </div>
     <style>
-   /* Base styles */
+  
 /* Base styles */
 body {
     margin: 0; /* Remove default body margin */
@@ -25,6 +25,7 @@ body {
     justify-content: center; /* Center content horizontally */
     max-width: 100%; /* Maximum width for the nav */
     max-height: 60px; /* Maximum height for the nav */
+    height: auto; /* Allow height to adjust with content */
     overflow: hidden; /* Hide overflow */
 }
 
@@ -46,10 +47,11 @@ body {
 
 /* Media Queries */
 
-/* Extra Small Devices (less than 321px) */
-@media (max-width: 320px) {
+/* Mobile Phones (max-width: 600px) */
+@media (max-width: 600px) {
     #uppernav {
-        padding: 5px; /* Adjust padding */
+        padding: 5px; /* Adjust padding for small screens */
+        max-height: 60px; /* Ensure the height remains manageable */
     }
 
     .openbtn {
@@ -59,22 +61,11 @@ body {
     }
 }
 
-/* Small Devices (321px to 750px) */
-@media (min-width: 321px) and (max-width: 750px) {
-    #uppernav {
-        padding: 5px; /* Adjust padding */
-    }
-
-    .openbtn {
-        padding: 8px 12px; /* Adjust button padding */
-        font-size: 14px; /* Smaller font size */
-    }
-}
-
-/* Medium Devices (751px to 1024px) */
-@media (min-width: 751px) and (max-width: 1024px) {
+/* Tablets (600px to 1200px) */
+@media (min-width: 601px) and (max-width: 1200px) {
     #uppernav {
         padding: 10px; /* Standard padding */
+        max-height: 70px; /* Slightly taller for tablets */
     }
 
     .openbtn {
@@ -83,15 +74,29 @@ body {
     }
 }
 
-/* Large Devices (1025px and above) */
-@media (min-width: 1025px) {
+/* Laptops (1200px to 3840px) */
+@media (min-width: 1201px) and (max-width: 3840px) {
     #uppernav {
         padding: 10px; /* Standard padding */
+        max-height: 80px; /* Taller for laptops */
     }
 
     .openbtn {
         padding: 10px 20px; /* Larger button padding */
         font-size: 18px; /* Larger font size */
+    }
+}
+
+/* Desktops (3840px and above) */
+@media (min-width: 3841px) {
+    #uppernav {
+        padding: 10px; /* Standard padding */
+        max-height: 90px; /* Maximum height for large screens */
+    }
+
+    .openbtn {
+        padding: 10px 25px; /* More padding for larger screens */
+        font-size: 20px; /* Larger font size */
     }
 }
 
