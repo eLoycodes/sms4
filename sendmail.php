@@ -69,7 +69,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
-    <!-- end navbar -->
+    <?php include('uppernav.php'); ?>
+ <!-- end navbar -->
+  
     <div class="email-container">
         <h1>Email</h1>
         <form id="contactForm" method="POST" action="">
