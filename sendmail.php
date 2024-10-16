@@ -68,10 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
     <!-- navbar -->
-    <div class="navbar">
-        <!-- Your navigation links go here -->
-        <h2>Upper Nav</h2>
-    </div>
+    <?php include('navbar.php'); ?>
     <!-- end navbar -->
 
     <div class="email-container">
@@ -135,14 +132,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             margin: 0; /* Reset default margin */
         }
 
-        .navbar {
-            width: 100%; /* Full width for navbar */
-            background-color: #333; /* Example background color */
-            color: white; /* Example text color */
-            padding: 10px; /* Example padding */
-            box-sizing: border-box; /* Include padding in width */
-        }
-
         .email-container {
             width: 100%; /* Full width */
             max-width: 600px; /* Maximum width for larger screens */
@@ -195,11 +184,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         /* Media Queries for Responsive Design */
         @media (max-width: 750px) {
-            .navbar {
-                width: 100%; /* Full width for navbar on small screens */
-                padding: 10px; /* Ensure padding is consistent */
-                text-align: center; /* Center text for smaller screens */
-            }
 
             .email-container {
                 width: 90%; /* Adjust width for smaller screens */
