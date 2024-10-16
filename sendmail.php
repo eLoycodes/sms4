@@ -227,9 +227,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-            .emailbtn {
-                padding: 10px; /* Ensure button is comfortable to click */
-            }
+          
         
 
         @media (max-width: 400px) {
@@ -250,10 +248,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 padding: 6px; /* Further adjust padding for very small screens */
             }
 
-            .emailbtn {
-                padding: 8px 12px;
-                font-size: 0.9em;
-            }
+           
         }
     </style>
 </body>
