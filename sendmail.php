@@ -129,9 +129,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            padding: 20px;
+           
             margin: 0; /* Reset default margin */
-            display: flex;
+           
             justify-content: center; /* Centering the container */
             align-items: center; /* Centering vertically */
             min-height: calc(100vh - 100px); /* Full height for centering while considering navbar */
