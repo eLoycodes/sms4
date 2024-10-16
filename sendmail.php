@@ -45,9 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body    = nl2br("Name: " . htmlspecialchars($_POST['name']) . "<br>Message: " . nl2br(htmlspecialchars($_POST['message'])));
 
         $mail->send();
-        echo 'Message has been sent';
+        echo "<script>alert('Message has been sent');</script>";
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        
     }
 }
 ?>
@@ -65,8 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <!-- navbar -->
     <?php include('navbar.php'); ?>
     <!-- end navbar -->
-    <div class="container mt-5">
-        <h1 class="text-center">Send Email</h1>
+    <div class="container mt-5"><br><br>
         <form id="contactForm" method="POST" action="">
             <div class="form-group">
                 <label for="name">To:</label>
@@ -80,7 +80,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div class="form-group">
                 <label for="message">Message:</label>
-                <textarea id="message" name="message" class="form-control" rows="5" style="width: 75%;" required></textarea>
+                <textarea id="message" name="message" class="form-control" rows="5" style="width: 60%;" required></textarea>
             </div>
 
             <button type="submit" class="btn btn-success btn-block">Send Message</button>
@@ -90,6 +90,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+// SideNav
+    function toggleNav() {
+    const sidenav = document.getElementById("sidenav");
+    const uppernav = document.getElementById("uppernav");
+
+    if (sidenav.style.left === "0px") {
+        sidenav.style.left = "-280px";
+        uppernav.style.marginLeft = "0";
+    } else {
+        sidenav.style.left = "0";
+        uppernav.style.marginLeft = "280px";
+    }
+}
+ 
+// Dropdown
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
 </body>
 </html>
 
