@@ -19,7 +19,6 @@ body {
 /* Styles for the upper navigation */
 #uppernav {
     background-color: #333;
-    padding: 10px;
 }
 
 /* Flexbox layout for upnav */
