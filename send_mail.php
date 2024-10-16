@@ -1,4 +1,7 @@
 <?php
+$mail->SMTPDebug = 2; // Mag-set ng 1 para sa client messages, 2 para sa client at server messages
+$mail->Debugoutput = 'html';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
@@ -16,8 +19,8 @@ try {
     $mail->SMTPAuth   = true;
     $mail->Username   = 'bcpchiefregistrar00@gmail.com'; // SMTP username
     $mail->Password   = 'AdminChiefRegistrar00!!'; // SMTP password
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // o PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port       = 465; // o 587;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // o PHPMailer::ENCRYPTION_SMTPS
+    $mail->Port       = 587; // 465 para sa SMTPS
 
    
     // Recipients
