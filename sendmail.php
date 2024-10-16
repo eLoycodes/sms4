@@ -58,6 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Contact Form</title>
 </head>
 <body>
@@ -68,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <h1 class="text-center">Send Email</h1>
         <form id="contactForm" method="POST" action="">
             <div class="form-group">
-                <label for="name">Name:</label>
+                <label for="name">To:</label>
                 <input type="text" id="name" name="name" class="form-control" style="width: 75%;" required>
             </div>
 
