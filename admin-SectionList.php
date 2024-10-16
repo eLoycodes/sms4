@@ -57,6 +57,7 @@ if ($count_result && $count_result->num_rows > 0) {
 <body>
      <!-- navbar -->
      <?php include('navbar.php'); ?>
+     <?php include('uppernav.php'); ?>
      <!-- end navbar -->
 
     <div class="requestForm-frame1">

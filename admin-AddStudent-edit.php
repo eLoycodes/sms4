@@ -87,6 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
+    <?php include('uppernav.php'); ?>
     <!-- end navbar -->
 
     <div class="edit-frame1">

@@ -133,6 +133,7 @@ $connect->close();
 <body>
     <!-- navbar -->
     <?php include('navbar.php'); ?>
+    <?php include('uppernav.php'); ?>
     <!-- end navbar -->
 
     <div class="deactivatelist-frame1">

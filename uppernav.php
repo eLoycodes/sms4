@@ -40,8 +40,8 @@ body {
 
 /* Button styles */
 .openbtn {
-    background-color: #555;
-    color: white;
+    background-color: white;
+    color: black;
     border: none;
     padding: 10px 15px;
     cursor: pointer;

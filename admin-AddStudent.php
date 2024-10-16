@@ -22,6 +22,7 @@ if(!isset($_SESSION["id"])){
 <body>
    <!-- navbar -->
    <?php include('navbar.php'); ?>
+   <?php include('uppernav.php'); ?>
    <!-- end navbar -->
 
     <div class="requestForm-frame1">
