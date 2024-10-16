@@ -10,6 +10,9 @@ include("connect.php");
     </div>
     <style>
    /* Base styles */
+   * {
+    box-sizing: border-box; 
+}
    html {
     width: 100%; /* Set the width of the html element to 100% */
 }
