@@ -84,11 +84,12 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <title>Sms4</title>
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="typecss.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
@@ -106,7 +107,7 @@ if (isset($_POST['submit'])) {
           <h1 class="dashboardAnnouncement">Add Student</h1>
         </div>
 
-        <div class="container">
+        <div class="type-container">
         <div class="buttons">
             <button onclick="showTable('new')">New Student</button>
             <button onclick="showTable('returnee')">Returnee</button>
@@ -114,7 +115,7 @@ if (isset($_POST['submit'])) {
         </div>
         
         <div class="table-container">
-            <table>
+            <table class="type-table">
                 <thead id="tableHeader">
                     <tr>
                         <th class="rf">First Name</th>
@@ -127,17 +128,33 @@ if (isset($_POST['submit'])) {
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-                    <!-- New Student Rows -->
-                    <tr class="new">
-                        <td class="req">Evaluation Grade</td>   
-                        <td class="req">Evaluation Grade</td>   
-                        <td class="req">Evaluation Grade</td>
-                        <td class="req">Evaluation Grade</td>   
-                        <td class="req">Evaluation Grade</td>
-                        <td class="req">Evaluation Grade</td>   
-                        <td><button>Submit</button></td>
-                    </tr>
-                    
+                <?php
+        
+                    include('connect.php'); 
+                    $s="SELECT * from newstudent";
+                    $res=$connect->query($s);
+                    if($res->num_rows>0){
+                    $i=0;
+                    while($r=$res->fetch_assoc()){
+                        $i++;
+                    echo"
+                    <tr class='new'>
+                        <td>{$r["firstname"]}</td>
+                        <td>{$r["middlename"]}</td>
+                        <td>{$r["lastname"]}</td>
+                        <td>{$r["email"]}</td>
+                        <td>{$r["course"]}</td>  
+                        <td>{$r["yearlevel"]}</td>  
+                        <td><button><a href='admin-AddStudent-newold.php?userid={$r["newstudent_id"]}'>Copy</a></button></td>	 
+                        </tr>
+                        "; 
+                }
+                }
+                else{   
+                    echo "<tr><td colspan='4'><p align='center'>No Record Found</td></tr>";
+                }
+                ?>     
+                  
 
                     <!-- Returnee Rows -->
                     <tr class="returnee" style="display: none;">
@@ -515,69 +532,6 @@ select {
     width: 70%; /* Match the width of select fields to input fields */
     padding: 10px; /* Optional: add padding for select fields */
 }
-
-
-        /* Basic styles for the table */
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-
-        .container{
-            overflow-x: auto;
-            padding: 20px;
-            width: 80%;
-            margin-top: -18%;
-            background-color: #ffffff;
-            border-radius: 20px;
-            box-shadow: 3px 3px 10px rgb(188, 188, 188);
-        }
-
-        .table-container {
-            overflow-x: auto; /* Allows horizontal scrolling on small screens */
-            width: 100%; /* Ensures the container takes full width */
-        }
-
-        table{
-            width: 100%;
-            max-width: 1500px; /* Adjust max-width for landscape */
-            border-collapse: collapse;
-            table-layout: auto; /* Ensures the table adjusts to content */
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #033683;
-            color: white;
-        }
-
-        .buttons {
-            margin-bottom: 20px;
-        }
-
-        input {
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        @media (max-width: 600px) {
-            th, td {
-                font-size: 12px; /* Adjusts font size for smaller screens */
-                padding: 6px; /* Reduces padding for smaller screens */
-            }
-        }
-  
 
 </style>
 </body>

@@ -1,0 +1,48 @@
+ /* Basic styles for the table */
+    
+
+        .type-container{
+            overflow-x: auto;
+            padding: 20px;
+            width: 97%;
+            margin-top: 0%;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 3px 3px 10px rgb(188, 188, 188);
+            float: left;
+            float: right;
+            margin-right: -2%;
+        }
+
+        .table-container {
+            overflow-x: auto; /* Allows horizontal scrolling on small screens */
+            width: 100%; /* Ensures the container takes full width */
+        }
+
+        .type-table{
+            width: 100%;
+            max-width: 1735px; /* Adjust max-width for landscape */
+            border-collapse: collapse;
+            table-layout: auto; /* Ensures the table adjusts to content */
+        }
+
+        th {
+            background-color: #033683;
+            color: white;
+        }
+
+        .buttons {
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        @media (max-width: 600px) {
+            th, td {
+                font-size: 12px; /* Adjusts font size for smaller screens */
+                padding: 6px; /* Reduces padding for smaller screens */
+            }
+        }
