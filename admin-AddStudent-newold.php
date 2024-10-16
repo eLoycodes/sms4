@@ -139,7 +139,7 @@ if (isset($_POST['submit'])) {
                         $i++;
                     echo"
                     <tr class='new'>
-                        <td>{$r["firstname"]}</td>
+                        <td style='font-size: 14px'>{$r["firstname"]}</td>
                         <td>{$r["middlename"]}</td>
                         <td>{$r["lastname"]}</td>
                         <td>{$r["email"]}</td>
