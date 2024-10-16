@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Table</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Student Type</h1>
+        <div class="buttons">
+            <button onclick="showTable('new')">New Student</button>
+            <button onclick="showTable('returnee')">Returnee</button>
+            <button onclick="showTable('transferee')">Transferee</button>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <!-- New Student Rows -->
+                <tr class="new">
+                    <td>Name</td>
+                    <td><input type="text" placeholder="Enter Name"></td>
+                </tr>
+                <tr class="new">
+                    <td>Age</td>
+                    <td><input type="number" placeholder="Enter Age"></td>
+                </tr>
+                <tr class="new">
+                    <td>Grade</td>
+                    <td><input type="text" placeholder="Enter Grade"></td>
+                </tr>
+                
+                <!-- Returnee Rows -->
+                <tr class="returnee" style="display: none;">
+                    <td>Previous School</td>
+                    <td><input type="text" placeholder="Enter Previous School"></td>
+                </tr>
+                <tr class="returnee" style="display: none;">
+                    <td>Years Away</td>
+                    <td><input type="number" placeholder="Enter Years Away"></td>
+                </tr>
+                
+                <!-- Transferee Rows -->
+                <tr class="transferee" style="display: none;">
+                    <td>Transfer School</td>
+                    <td><input type="text" placeholder="Enter Transfer School"></td>
+                </tr>
+                <tr class="transferee" style="display: none;">
+                    <td>Reason for Transfer</td>
+                    <td><input type="text" placeholder="Enter Reason"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <script> function showTable(type) {
+        // Hide all rows first
+        document.querySelectorAll('tr.new, tr.returnee, tr.transferee').forEach(row => {
+            row.style.display = 'none';
+        });
+    
+        // Show the appropriate rows based on the selected type
+        if (type === 'new') {
+            document.querySelectorAll('tr.new').forEach(row => {
+                row.style.display = '';
+            });
+        } else if (type === 'returnee') {
+            document.querySelectorAll('tr.returnee').forEach(row => {
+                row.style.display = '';
+            });
+        } else if (type === 'transferee') {
+            document.querySelectorAll('tr.transferee').forEach(row => {
+                row.style.display = '';
+            });
+        }
+    }
+    
+    // Initially show new student rows
+    showTable('new');
+    </script>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+}
+
+.buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+    </style>
+</body>
+</html>
