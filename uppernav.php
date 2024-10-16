@@ -7,7 +7,6 @@ include("connect.php");
 <div id="uppernav">
         <div class="upnav">
         <button class="openbtn" onclick="toggleNav()">☰</button>
-        </div>
     </div>
     <style>
    /* Base styles */
