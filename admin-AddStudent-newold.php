@@ -30,28 +30,18 @@ if (isset($_POST['submit'])) {
         // Hash the password
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Check for duplicate names in newstudent and transferee tables
-        $name_check_sql = "
-            SELECT firstname, lastname FROM newstudent WHERE firstname = '$firstname' AND lastname = '$lastname'
-            UNION
-            SELECT firstname, lastname FROM transferee WHERE firstname = '$firstname' AND lastname = '$lastname'
-        ";
-        $name_check_result = $connect->query($name_check_sql);
-
-        if ($name_check_result && $name_check_result->num_rows > 0) {
-            echo "<script>alert('Duplicate name found in newstudent or transferee. Please use a different name.');</script>";
-            echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
-            exit;
-        }
-
         // Check for duplicate studentID in returnee table
-        $id_check_sql = "SELECT * FROM returnee WHERE studentID = '$studentID'";
-        $id_check_result = $connect->query($id_check_sql);
+        $id_check_sql = "SELECT * FROM returnee WHERE studentID = ?";
+        if ($id_check_stmt = $connect->prepare($id_check_sql)) {
+            $id_check_stmt->bind_param('s', $studentID);
+            $id_check_stmt->execute();
+            $id_check_result = $id_check_stmt->get_result();
 
-        if ($id_check_result && $id_check_result->num_rows > 0) {
-            echo "<script>alert('Student ID already exists in returnee. Please use a different Student ID.');</script>";
-            echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
-            exit;
+            if ($id_check_result && $id_check_result->num_rows > 0) {
+                echo "<script>alert('Student ID already exists in returnee. Please use a different Student ID.');</script>";
+                echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
+                exit;
+            }
         }
 
         // Determine the table based on year level
@@ -73,45 +63,98 @@ if (isset($_POST['submit'])) {
                 exit;
         }
 
-        // Check if studentID already exists in the target table
-        $check_sql = "SELECT * FROM $table WHERE studentID = '$studentID'";
-        $check_result = $connect->query($check_sql);
-        
-        if ($check_result && $check_result->num_rows > 0) {
-            echo "<script>alert('Student ID already exists in the target table. Please use a different Student ID.');</script>";
-            echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
-        } else {
-            // Prepare the SQL statement for insertion, retrieving email from newstudent table
-            $sql = "
-                INSERT INTO $table (studentID, firstname, middlename, lastname, email, course, yearlevel, semester, academicyear, studenttype, status, password)  
-                VALUES (
-                    '$studentID', 
-                    '$firstname', 
-                    '$middlename', 
-                    '$lastname', 
-                    (SELECT email FROM newstudent WHERE newstudent_id='$newstudent_id'), 
-                    '$course', 
-                    '$yearlevel', 
-                    '$semester', 
-                    '$academicyear', 
-                    '$studenttype', 
-                    'Active', 
-                    '$hashed_password'
-                )";
+        // Retrieve email from newstudent, transferee, and returnee tables
+        $email = null;
 
-            if ($connect->query($sql) === TRUE) {
-                // After successful registration, delete from newstudent table
-                $delete_sql = "DELETE FROM newstudent WHERE newstudent_id='$newstudent_id'";
-                if ($connect->query($delete_sql) === TRUE) {
-                    echo "<script>
-                            alert('Successfully Registered and removed from new student list');
-                            window.location.href = 'admin-AddStudent-newold.php';
-                          </script>";
-                } else {
-                    echo "Error deleting record: " . $connect->error;
+        // Query newstudent table using firstname and lastname
+        $email_sql = "SELECT email FROM newstudent WHERE firstname = ? AND lastname = ?";
+        if ($email_stmt = $connect->prepare($email_sql)) {
+            $email_stmt->bind_param('ss', $firstname, $lastname);
+            $email_stmt->execute();
+            $email_stmt->bind_result($email_result);
+            $email_stmt->fetch();
+            $email_stmt->close();
+
+            if ($email_result) {
+                $email = $email_result;
+            }
+        }
+
+        // Query transferee table using firstname and lastname
+        if (!$email) { // Only query if email is not already found
+            $email_sql = "SELECT email FROM transferee WHERE firstname = ? AND lastname = ?";
+            if ($email_stmt = $connect->prepare($email_sql)) {
+                $email_stmt->bind_param('ss', $firstname, $lastname);
+                $email_stmt->execute();
+                $email_stmt->bind_result($email_result);
+                $email_stmt->fetch();
+                $email_stmt->close();
+
+                if ($email_result) {
+                    $email = $email_result;
                 }
+            }
+        }
+
+        // Query returnee table using studentID
+        if (!$email) { // Only query if email is not already found
+            $email_sql = "SELECT email FROM returnee WHERE studentID = ?";
+            if ($email_stmt = $connect->prepare($email_sql)) {
+                $email_stmt->bind_param('s', $studentID);
+                $email_stmt->execute();
+                $email_stmt->bind_result($email_result);
+                $email_stmt->fetch();
+                $email_stmt->close();
+
+                if ($email_result) {
+                    $email = $email_result;
+                }
+            }
+        }
+
+        if ($email) {
+            error_log("Email found: $email");
+        } else {
+            error_log("No email found for student ID: $studentID or name: $firstname $lastname");
+        }
+
+        // Check if studentID already exists in the target table
+        $check_sql = "SELECT * FROM $table WHERE studentID = ?";
+        if ($check_stmt = $connect->prepare($check_sql)) {
+            $check_stmt->bind_param('s', $studentID);
+            $check_stmt->execute();
+            $check_result = $check_stmt->get_result();
+            
+            if ($check_result && $check_result->num_rows > 0) {
+                echo "<script>alert('Student ID already exists in the target table. Please use a different Student ID.');</script>";
+                echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
             } else {
-                echo "Error: " . $sql . "<br>" . $connect->error;
+                // Prepare the SQL statement for insertion
+                $sql = "
+                    INSERT INTO $table (studentID, firstname, middlename, lastname, email, course, yearlevel, semester, academicyear, studenttype, status, password)  
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'Active', ?)";
+                
+                if ($insert_stmt = $connect->prepare($sql)) {
+                    $insert_stmt->bind_param('sssssssssss', $studentID, $firstname, $middlename, $lastname, $email, $course, $yearlevel, $semester, $academicyear, $studenttype, $hashed_password);
+                    
+                    if ($insert_stmt->execute()) {
+                        // After successful registration, delete from newstudent table
+                        $delete_sql = "DELETE FROM newstudent WHERE newstudent_id=?";
+                        if ($delete_stmt = $connect->prepare($delete_sql)) {
+                            $delete_stmt->bind_param('s', $newstudent_id);
+                            if ($delete_stmt->execute()) {
+                                echo "<script>
+                                        alert('Successfully Registered and removed from new student list');
+                                        window.location.href = 'admin-AddStudent-newold.php';
+                                      </script>";
+                            } else {
+                                echo "Error deleting record: " . $connect->error;
+                            }
+                        }
+                    } else {
+                        echo "Error: " . $sql . "<br>" . $connect->error;
+                    }
+                }
             }
         }
     } else {
