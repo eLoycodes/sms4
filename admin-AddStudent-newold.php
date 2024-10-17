@@ -55,8 +55,8 @@ if (isset($_POST['submit'])) {
             echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
         } else {
             // Prepare the SQL statement for insertion
-            $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, course, yearlevel, semester, academicyear, studenttype, status, password)  
-            VALUES ('$studentID', '$firstname', '$middlename', '$lastname', '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$password')";
+            $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, email, course, yearlevel, semester, academicyear, studenttype, status, password)  
+            VALUES ('$studentID', '$firstname', '$middlename', '$lastname', 'Active' ,'$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$password')";
 
             if ($connect->query($sql) === TRUE) {
                 // After successful registration, delete from newstudent table
