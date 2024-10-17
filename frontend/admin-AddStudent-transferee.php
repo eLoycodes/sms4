@@ -5,6 +5,64 @@ session_start();
 if (!isset($_SESSION["id"])) {
     echo "<script>window.open('index.php?mes=Access Denied..','_self');</script>";
 }
+
+$students = [];
+$error_message = "";
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['studentID'])) {
+    $student_ID_input = trim($_POST['studentID']);
+    
+    if (empty($student_ID_input)) {
+        $error_message = "Student ID cannot be empty.";
+    } elseif (!preg_match('/^[a-zA-Z0-9]+$/', $student_ID_input)) {
+        $error_message = "Invalid Student ID format.";
+    } else {
+       
+        $tables = [
+            'transferee'    
+        ];
+
+        foreach ($tables as $table) {
+            
+            $columns_result = $connect->query("SHOW COLUMNS FROM $table");
+            $existing_columns = [];
+            while ($column = $columns_result->fetch_assoc()) {
+                $existing_columns[] = $column['Field'];
+            }
+
+            $selected_columns = ['studentID']; // Always include studentID
+            $possible_columns = ['firstname', 'middlename', 'lastname', 'course', 'yearlevel', 'academicyear', 'semester', 'status', 'studenttype'];
+
+            foreach ($possible_columns as $column) {
+                if (in_array($column, $existing_columns)) {
+                    $selected_columns[] = $column;
+                }
+            }
+
+            $selected_columns_str = implode(', ', $selected_columns);
+            $sql = "SELECT '$table' AS source, $selected_columns_str FROM $table WHERE studentID = ?";
+
+            if ($stmt = $connect->prepare($sql)) {
+                $stmt->bind_param("s", $student_ID_input);
+                $stmt->execute();
+                $result = $stmt->get_result();
+
+                if ($result && $result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $students[] = $row; // Store results
+                    }
+                }
+
+                $stmt->close();
+            } else {
+                $error_message = "Database error: " . $connect->error; // Handle potential errors
+            }
+        }
+        if (empty($students)) {
+            $error_message = "No student found with ID: " . htmlspecialchars($student_ID_input);
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,8 +78,8 @@ if (!isset($_SESSION["id"])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
 </head>
 <body>
-   <!-- navbar -->
-   <?php include('navbar.php'); ?>
+     <!-- navbar -->
+     <?php include('navbar.php'); ?>
     <?php include('uppernav.php'); ?>
     <!-- end navbar -->
 
@@ -33,12 +91,18 @@ if (!isset($_SESSION["id"])) {
         </div>
 
 
-        <div class="transferees-form">
-          <div class="transferees-search">
+        <div class="edit-form">
+    <form method="POST" action="">
+        <div class="edit-search">
             <label class="deac-label">Search Student ID:</label>
-            <input type="text" name="deac-search" class="search-deac">
+            <input type="text" name="studentID" class="search-deac" required>
             <button type="submit" name="submit" class="search-deac-btn">Search</button>
-          </div>
+            <button class="update-student-btn" id="open-modal" type="button" style="float: right;">Edit Student</button>
+        </div>
+    </form>
+
+
+
         <table class="transferees-table">
             <tr>
               <th class="rf">Student&nbspID</th>
@@ -65,13 +129,24 @@ if (!isset($_SESSION["id"])) {
         </tr>
         <table class="transferees-table1">
           <tr>
-            <th class="trans-th">No</th>
+            <th class="trans-th">Search Subject</th>
             <th class="trans-th">Subject Code</th>
             <th class="trans-th">Subject Name</th>
             <th class="trans-th">Action</th>
           </tr>
+          <tr>
+            <td class="trans-td">
+              <input type="text" name="deac-search" class="search-deac">
+              <button type="submit" name="submit" class="search-deac-btn">Search</button>
+            </td>
+            
+            <td class="trans-td"></td>
+            <td class="trans-td"></td>
+            <td class="trans-td"></td>
+            <td class="req"></td>
+          </tr>
           <tr class="trans-tr">
-            <td class="trans-td">1</td>  
+            <td class="trans-td">-</td>  
             <td class="trans-td">DB1</td>
             <td class="trans-td">Database 1</td>
             <td class="req"><a href="#"><button class="reqform-btn">credit</button></a></td>
@@ -85,15 +160,28 @@ if (!isset($_SESSION["id"])) {
       </tr>
       <table class="transferees-table2">
         <tr>
-          <th class="trans-th">No</th>
+          <th class="trans-th">Search Subject</th>
           <th class="trans-th">Subject Code</th>
           <th class="trans-th">Subject Name</th>
+          <th class="trans-th">Semester</th>
           <th class="trans-th">Action</th>
         </tr>
+        <tr>
+          <td class="trans-td">
+            <input type="text" name="deac-search" class="search-deac">
+            <button type="submit" name="submit" class="search-deac-btn">Search</button>
+          </td>
+          
+          <td class="trans-td"></td>
+          <td class="trans-td"></td>
+          <td class="trans-td"></td>
+          <td class="req"></td>
+        </tr>
         <tr class="trans-tr">
-          <td class="trans-td">1</td>  
+          <td class="trans-td">-</td>  
           <td class="trans-td">DB1</td>
           <td class="trans-td">Database 1</td>
+          <td class="trans-td">1st</td>
           <td class="req"><a href="#"><button class="reqform-btn">retake</button></a></td>
         </tr>
       </table>
@@ -101,6 +189,8 @@ if (!isset($_SESSION["id"])) {
        
     </div>
 </div>
+
+
 
 
     <script type="text/javascript">
