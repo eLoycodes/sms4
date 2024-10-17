@@ -37,33 +37,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     error_log("Student ID being searched: $studentID");
 
  // Retrieve email from newstudent, transferee, and returnee tables
-$email_tables = [
-    'newstudent' => 'studentID', // newstudent has studentID
-    'transferee' => 'firstname',  // transferee only has firstname
-    'returnee' => 'studentID'      // returnee has studentID
-];
 $email = null;
 
-foreach ($email_tables as $table => $key) {
-    if ($key === 'studentID') {
-        // Prepare the SQL statement for tables with studentID
-        $email_sql = "SELECT email FROM $table WHERE studentID = ?";
-        error_log("Querying $table using studentID");
-    } else if ($key === 'firstname') {
-        // Prepare the SQL statement for transferee table
-        $email_sql = "SELECT email FROM $table WHERE firstname = ?";
-        error_log("Querying $table using firstname");
+// Query newstudent table using firstname and lastname
+$email_sql = "SELECT email FROM newstudent WHERE firstname = ? AND lastname = ?";
+if ($email_stmt = $connect->prepare($email_sql)) {
+    $email_stmt->bind_param('ss', $firstname, $lastname);
+    $email_stmt->execute();
+    $email_stmt->bind_result($email_result);
+    $email_stmt->fetch();
+    $email_stmt->close();
+
+    if ($email_result) {
+        $email = $email_result;
     }
+}
 
+// Query transferee table using firstname and lastname
+if (!$email) { // Only query if email is not already found
+    $email_sql = "SELECT email FROM transferee WHERE firstname = ? AND lastname = ?";
     if ($email_stmt = $connect->prepare($email_sql)) {
-        // Bind parameters based on the current key
-        if ($key === 'studentID') {
-            $email_stmt->bind_param('s', $studentID);
-        } else {
-            $email_stmt->bind_param('s', $firstname);
-        }
-
-        // Execute and fetch results
+        $email_stmt->bind_param('ss', $firstname, $lastname);
         $email_stmt->execute();
         $email_stmt->bind_result($email_result);
         $email_stmt->fetch();
@@ -71,18 +65,32 @@ foreach ($email_tables as $table => $key) {
 
         if ($email_result) {
             $email = $email_result;
-            break; // Exit the loop if email is found
         }
-    } else {
-        error_log("Error preparing statement for $table: " . $connect->error);
+    }
+}
+
+// Query returnee table using studentID
+if (!$email) { // Only query if email is not already found
+    $email_sql = "SELECT email FROM returnee WHERE studentID = ?";
+    if ($email_stmt = $connect->prepare($email_sql)) {
+        $email_stmt->bind_param('s', $studentID);
+        $email_stmt->execute();
+        $email_stmt->bind_result($email_result);
+        $email_stmt->fetch();
+        $email_stmt->close();
+
+        if ($email_result) {
+            $email = $email_result;
+        }
     }
 }
 
 if ($email) {
     error_log("Email found: $email");
 } else {
-    error_log("No email found for student ID: $studentID or firstname: $firstname");
+    error_log("No email found for student ID: $studentID or name: $firstname $lastname");
 }
+
 
 
 
