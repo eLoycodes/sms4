@@ -27,6 +27,31 @@ if (isset($_POST['submit'])) {
     if ($newstudent_id && $studentID && $firstname && $middlename && $lastname && $course &&
         $yearlevel && $semester && $academicyear && $studenttype && $password) {
 
+        // Hash the password
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Check for duplicate names in newstudent and transferee tables
+        $name_check_sql = "SELECT * FROM newstudent WHERE firstname = '$firstname' AND lastname = '$lastname'
+                           UNION
+                           SELECT * FROM transferee WHERE firstname = '$firstname' AND lastname = '$lastname'";
+        $name_check_result = $connect->query($name_check_sql);
+
+        if ($name_check_result && $name_check_result->num_rows > 0) {
+            echo "<script>alert('Duplicate name found in newstudent or transferee. Please use a different name.');</script>";
+            echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
+            exit;
+        }
+
+        // Check for duplicate studentID in returnee table
+        $id_check_sql = "SELECT * FROM returnee WHERE studentID = '$studentID'";
+        $id_check_result = $connect->query($id_check_sql);
+
+        if ($id_check_result && $id_check_result->num_rows > 0) {
+            echo "<script>alert('Student ID already exists in returnee. Please use a different Student ID.');</script>";
+            echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
+            exit;
+        }
+
         // Determine the table based on year level
         switch ($yearlevel) {
             case '1st':
@@ -46,17 +71,17 @@ if (isset($_POST['submit'])) {
                 exit;
         }
 
-        // Check if studentID already exists
+        // Check if studentID already exists in the target table
         $check_sql = "SELECT * FROM $table WHERE studentID = '$studentID'";
         $check_result = $connect->query($check_sql);
         
         if ($check_result && $check_result->num_rows > 0) {
-            echo "<script>alert('Student ID already exists. Please use a different Student ID.');</script>";
+            echo "<script>alert('Student ID already exists in the target table. Please use a different Student ID.');</script>";
             echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
         } else {
             // Prepare the SQL statement for insertion
             $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, email, course, yearlevel, semester, academicyear, studenttype, status, password)  
-            VALUES ('$studentID', '$firstname', '$middlename', '$lastname', 'Active' ,'$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$password')";
+            VALUES ('$studentID', '$firstname', '$middlename', '$lastname', (SELECT email FROM newstudent WHERE newstudent_id='$newstudent_id'), '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$hashed_password')";
 
             if ($connect->query($sql) === TRUE) {
                 // After successful registration, delete from newstudent table
@@ -79,6 +104,7 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+
 
 
 <!DOCTYPE html>
