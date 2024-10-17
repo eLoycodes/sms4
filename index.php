@@ -61,8 +61,9 @@ if (isset($_POST['submit'])) {
             $res = $connect->query($sql);
             if ($res->num_rows > 0) {
                 $ro = $res->fetch_assoc();
-                // Directly compare passwords
-                if ($password === $ro["password"]) {
+                
+                // Verify hashed password
+                if (password_verify($password, $ro["password"])) {
                     $_SESSION["id"] = $ro["id"];
                     $_SESSION["studentID"] = $ro["studentID"];
                     $_SESSION["type"] = "student";
@@ -74,7 +75,7 @@ if (isset($_POST['submit'])) {
         }
         
         // Kung walang match, mag-error
-        echo "<script>alert('Invalid Username or Password');</script>";
+        echo "<script>alert('Invalid Username or Password');</script>";        
     } 
 }
 ?>
