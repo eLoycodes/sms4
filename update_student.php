@@ -36,11 +36,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     error_log("Student ID being searched: $studentID");
 
-    // Retrieve email from newstudent, transferee, and returnee tables
-    $email = null;
+ // Retrieve email from newstudent, transferee, and returnee tables
+$email = null;
 
-    // Query newstudent table using firstname and lastname
-    $email_sql = "SELECT email FROM newstudent WHERE firstname = ? AND lastname = ?";
+// Query newstudent table using firstname and lastname
+$email_sql = "SELECT email FROM newstudent WHERE firstname = ? AND lastname = ?";
+if ($email_stmt = $connect->prepare($email_sql)) {
+    $email_stmt->bind_param('ss', $firstname, $lastname);
+    $email_stmt->execute();
+    $email_stmt->bind_result($email_result);
+    $email_stmt->fetch();
+    $email_stmt->close();
+
+    if ($email_result) {
+        $email = $email_result;
+    }
+}
+
+// Query transferee table using firstname and lastname
+if (!$email) { // Only query if email is not already found
+    $email_sql = "SELECT email FROM transferee WHERE firstname = ? AND lastname = ?";
     if ($email_stmt = $connect->prepare($email_sql)) {
         $email_stmt->bind_param('ss', $firstname, $lastname);
         $email_stmt->execute();
@@ -52,44 +67,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $email = $email_result;
         }
     }
+}
 
-    // Query transferee table using firstname and lastname
-    if (!$email) { // Only query if email is not already found
-        $email_sql = "SELECT email FROM transferee WHERE firstname = ? AND lastname = ?";
-        if ($email_stmt = $connect->prepare($email_sql)) {
-            $email_stmt->bind_param('ss', $firstname, $lastname);
-            $email_stmt->execute();
-            $email_stmt->bind_result($email_result);
-            $email_stmt->fetch();
-            $email_stmt->close();
+// Query returnee table using studentID
+if (!$email) { // Only query if email is not already found
+    $email_sql = "SELECT email FROM returnee WHERE studentID = ?";
+    if ($email_stmt = $connect->prepare($email_sql)) {
+        $email_stmt->bind_param('s', $studentID);
+        $email_stmt->execute();
+        $email_stmt->bind_result($email_result);
+        $email_stmt->fetch();
+        $email_stmt->close();
 
-            if ($email_result) {
-                $email = $email_result;
-            }
+        if ($email_result) {
+            $email = $email_result;
         }
     }
+}
 
-    // Query returnee table using studentID
-    if (!$email) { // Only query if email is not already found
-        $email_sql = "SELECT email FROM returnee WHERE studentID = ?";
-        if ($email_stmt = $connect->prepare($email_sql)) {
-            $email_stmt->bind_param('s', $studentID);
-            $email_stmt->execute();
-            $email_stmt->bind_result($email_result);
-            $email_stmt->fetch();
-            $email_stmt->close();
+if ($email) {
+    error_log("Email found: $email");
+} else {
+    error_log("No email found for student ID: $studentID or name: $firstname $lastname");
+}
 
-            if ($email_result) {
-                $email = $email_result;
-            }
-        }
-    }
 
-    if ($email) {
-        error_log("Email found: $email");
-    } else {
-        error_log("No email found for student ID: $studentID or name: $firstname $lastname");
-    }
+
 
     // Hash the password before storing it
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -136,9 +139,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                 // If the student is being updated in the same table
                 if ($current_table === $insert_table) {
                     // Update the existing record
-                    $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ?, password = ?, email = ? WHERE studentID = ?";
+                    $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ?, password = ? WHERE studentID = ?";
                     if ($update_stmt = $connect->prepare($update_sql)) {
-                        $update_stmt->bind_param('ssssssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $hashed_password, $email, $studentID);
+                        $update_stmt->bind_param('sssssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $hashed_password, $studentID);
                         if ($update_stmt->execute()) {
                             echo "Student data updated successfully.";
                             echo "<script>alert('Student data updated successfully.');</script>";
@@ -153,11 +156,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                     }
                 } else {
                     // Insert into the new table
-                    $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status, password, email) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     error_log("Inserting into table for year level: '$insert_table'");
 
                     if ($insert_stmt = $connect->prepare($insert_sql)) {
-                        $insert_stmt->bind_param('issssssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $hashed_password, $email);
+                        $insert_stmt->bind_param('issssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $hashed_password);
                         if ($insert_stmt->execute()) {
                             $delete_sql = "DELETE FROM $current_table WHERE studentID = ?";
                             if ($delete_stmt = $connect->prepare($delete_sql)) {
