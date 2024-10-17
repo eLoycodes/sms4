@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     error_log("Student ID being searched: $studentID");
 
-   // Retrieve email from newstudent, transferee, and returnee tables
+  // Retrieve email from newstudent, transferee, and returnee tables
 $email_tables = [
     'newstudent' => 'studentID', // newstudent has studentID
     'transferee' => 'firstname',  // transferee only has firstname
@@ -83,6 +83,7 @@ if ($email) {
 } else {
     error_log("No email found for student ID: $studentID or firstname: $firstname");
 }
+
 
     // Hash the password before storing it
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
