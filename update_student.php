@@ -33,25 +33,45 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     }
 
     error_log("Student ID being searched: $studentID");
-    error_log("Year level received: $yearlevel");
 
-    $tables = [
-        'firstyear',
-        'secondyear',
-        'thirdyear',
-        'forthyear',
-        'deactivate',
-        'deactivated',
-        'returnee'
-    ];
+    // Retrieve email from newstudent, transferee, and returnee tables
+    $email_tables = ['newstudent', 'transferee', 'returnee'];
+    $email = null;
 
+    foreach ($email_tables as $table) {
+        $email_sql = "SELECT email FROM $table WHERE studentID = ?";
+        if ($email_stmt = $connect->prepare($email_sql)) {
+            $email_stmt->bind_param('s', $studentID);
+            $email_stmt->execute();
+            $email_stmt->bind_result($email_result);
+            $email_stmt->fetch();
+            $email_stmt->close();
+
+            if ($email_result) {
+                $email = $email_result;
+                break; // Exit the loop if email is found
+            }
+        }
+    }
+
+    if ($email) {
+        error_log("Email found: $email");
+    } else {
+        error_log("No email found for student ID: $studentID");
+    }
+
+    // Hash the password before storing it
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+    // Existing logic for updating/moving student records
+    $tables = ['firstyear', 'secondyear', 'thirdyear', 'forthyear', 'deactivate', 'deactivated', 'returnee'];
     $current_table = '';
     $updated = false;
 
     foreach ($tables as $table) {
         $check_sql = "SELECT * FROM $table WHERE studentID = ?";
         if ($check_stmt = $connect->prepare($check_sql)) {
-            $check_stmt->bind_param('s', $studentID); // Changed 'i' to 's' for studentID
+            $check_stmt->bind_param('s', $studentID);
             error_log("Executing query: $check_sql with studentID: $studentID");
             $check_stmt->execute();
             $check_result = $check_stmt->get_result();
@@ -82,32 +102,31 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
                         exit;
                 }
 
-               // If the student is being updated in the same table
-                    if ($current_table === $insert_table){
-                        // Update the existing record
-                        $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ?, password = ? WHERE studentID = ?";
-                        if ($update_stmt = $connect->prepare($update_sql)){
-                            // The types string should match the number of variables (9 in this case)
-                            $update_stmt->bind_param('sssssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $password, $studentID);
-                            if ($update_stmt->execute()){
-                                echo "Student data updated successfully.";
-                                echo "<script>alert('Student data updated successfully.');</script>";
-                                echo "<script>window.open('admin-AddStudent-edit.php','_self');</script>";
-                                $updated = true;
-                            } else{
-                                echo "Error updating record in $current_table: " . $update_stmt->error;
-                            }
-                            $update_stmt->close();
-                        } else{
-                            echo "Error preparing update statement for $current_table: " . $connect->error;
+                // If the student is being updated in the same table
+                if ($current_table === $insert_table) {
+                    // Update the existing record
+                    $update_sql = "UPDATE $current_table SET firstname = ?, middlename = ?, lastname = ?, course = ?, yearlevel = ?, academicyear = ?, semester = ?, studenttype = ?, status = ?, password = ? WHERE studentID = ?";
+                    if ($update_stmt = $connect->prepare($update_sql)) {
+                        $update_stmt->bind_param('sssssssssss', $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $hashed_password, $studentID);
+                        if ($update_stmt->execute()) {
+                            echo "Student data updated successfully.";
+                            echo "<script>alert('Student data updated successfully.');</script>";
+                            echo "<script>window.open('admin-AddStudent-edit.php','_self');</script>";
+                            $updated = true;
+                        } else {
+                            echo "Error updating record in $current_table: " . $update_stmt->error;
                         }
-                    } else{
+                        $update_stmt->close();
+                    } else {
+                        echo "Error preparing update statement for $current_table: " . $connect->error;
+                    }
+                } else {
                     // Insert into the new table
                     $insert_sql = "INSERT INTO $insert_table (studentID, firstname, middlename, lastname, course, yearlevel, academicyear, semester, studenttype, status, password) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                     error_log("Inserting into table for year level: '$insert_table'");
 
                     if ($insert_stmt = $connect->prepare($insert_sql)) {
-                        $insert_stmt->bind_param('issssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $password);
+                        $insert_stmt->bind_param('issssssssss', $studentID, $firstname, $middlename, $lastname, $course, $yearlevel, $academicyear, $semester, $studenttype, $status, $hashed_password);
                         if ($insert_stmt->execute()) {
                             $delete_sql = "DELETE FROM $current_table WHERE studentID = ?";
                             if ($delete_stmt = $connect->prepare($delete_sql)) {
