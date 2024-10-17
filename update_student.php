@@ -36,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
     error_log("Student ID being searched: $studentID");
 
-  // Retrieve email from newstudent, transferee, and returnee tables
+ // Retrieve email from newstudent, transferee, and returnee tables
 $email_tables = [
     'newstudent' => 'studentID', // newstudent has studentID
     'transferee' => 'firstname',  // transferee only has firstname
@@ -46,35 +46,35 @@ $email = null;
 
 foreach ($email_tables as $table => $key) {
     if ($key === 'studentID') {
-        // Use studentID for newstudent and returnee tables
+        // Prepare the SQL statement for tables with studentID
         $email_sql = "SELECT email FROM $table WHERE studentID = ?";
-        if ($email_stmt = $connect->prepare($email_sql)) {
-            $email_stmt->bind_param('s', $studentID);
-            $email_stmt->execute();
-            $email_stmt->bind_result($email_result);
-            $email_stmt->fetch();
-            $email_stmt->close();
-
-            if ($email_result) {
-                $email = $email_result;
-                break; // Exit the loop if email is found
-            }
-        }
+        error_log("Querying $table using studentID");
     } else if ($key === 'firstname') {
-        // Use firstname for transferee table
+        // Prepare the SQL statement for transferee table
         $email_sql = "SELECT email FROM $table WHERE firstname = ?";
-        if ($email_stmt = $connect->prepare($email_sql)) {
-            $email_stmt->bind_param('s', $firstname);
-            $email_stmt->execute();
-            $email_stmt->bind_result($email_result);
-            $email_stmt->fetch();
-            $email_stmt->close();
+        error_log("Querying $table using firstname");
+    }
 
-            if ($email_result) {
-                $email = $email_result;
-                break; // Exit the loop if email is found
-            }
+    if ($email_stmt = $connect->prepare($email_sql)) {
+        // Bind parameters based on the current key
+        if ($key === 'studentID') {
+            $email_stmt->bind_param('s', $studentID);
+        } else {
+            $email_stmt->bind_param('s', $firstname);
         }
+
+        // Execute and fetch results
+        $email_stmt->execute();
+        $email_stmt->bind_result($email_result);
+        $email_stmt->fetch();
+        $email_stmt->close();
+
+        if ($email_result) {
+            $email = $email_result;
+            break; // Exit the loop if email is found
+        }
+    } else {
+        error_log("Error preparing statement for $table: " . $connect->error);
     }
 }
 
@@ -83,6 +83,7 @@ if ($email) {
 } else {
     error_log("No email found for student ID: $studentID or firstname: $firstname");
 }
+
 
 
     // Hash the password before storing it
