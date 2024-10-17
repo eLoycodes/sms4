@@ -31,9 +31,11 @@ if (isset($_POST['submit'])) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         // Check for duplicate names in newstudent and transferee tables
-        $name_check_sql = "SELECT * FROM newstudent WHERE firstname = '$firstname' AND lastname = '$lastname'
-                           UNION
-                           SELECT * FROM transferee WHERE firstname = '$firstname' AND lastname = '$lastname'";
+        $name_check_sql = "
+            SELECT firstname, lastname FROM newstudent WHERE firstname = '$firstname' AND lastname = '$lastname'
+            UNION
+            SELECT firstname, lastname FROM transferee WHERE firstname = '$firstname' AND lastname = '$lastname'
+        ";
         $name_check_result = $connect->query($name_check_sql);
 
         if ($name_check_result && $name_check_result->num_rows > 0) {
@@ -79,9 +81,23 @@ if (isset($_POST['submit'])) {
             echo "<script>alert('Student ID already exists in the target table. Please use a different Student ID.');</script>";
             echo "<script>window.open('admin-AddStudent-newold.php','_self');</script>";
         } else {
-            // Prepare the SQL statement for insertion
-            $sql = "INSERT INTO $table (studentID, firstname, middlename, lastname, email, course, yearlevel, semester, academicyear, studenttype, status, password)  
-            VALUES ('$studentID', '$firstname', '$middlename', '$lastname', (SELECT email FROM newstudent WHERE newstudent_id='$newstudent_id'), '$course', '$yearlevel', '$semester', '$academicyear', '$studenttype', 'Active', '$hashed_password')";
+            // Prepare the SQL statement for insertion, retrieving email from newstudent table
+            $sql = "
+                INSERT INTO $table (studentID, firstname, middlename, lastname, email, course, yearlevel, semester, academicyear, studenttype, status, password)  
+                VALUES (
+                    '$studentID', 
+                    '$firstname', 
+                    '$middlename', 
+                    '$lastname', 
+                    (SELECT email FROM newstudent WHERE newstudent_id='$newstudent_id'), 
+                    '$course', 
+                    '$yearlevel', 
+                    '$semester', 
+                    '$academicyear', 
+                    '$studenttype', 
+                    'Active', 
+                    '$hashed_password'
+                )";
 
             if ($connect->query($sql) === TRUE) {
                 // After successful registration, delete from newstudent table
@@ -104,7 +120,6 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-
 
 
 <!DOCTYPE html>
